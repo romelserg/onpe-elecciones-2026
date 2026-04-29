@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EG2026 — Resultados Electorales Perú</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --fp:  #93c5fd; --fp-dark: #3b82f6;
+    --jpp: #fca5a5; --jpp-dark: #ef4444;
+    --rp:  #c4b5fd; --rp-dark: #8b5cf6;
+    --bg:  #86efac; --bg-dark: #22c55e;
+    --pco: #fdba74; --pco-dark: #f97316;
+    --an:  #fde68a; --an-dark: #f59e0b;
+    --oth: #e5e7eb; --oth-dark: #9ca3af;
+    --ppt: #a5f3fc; --ppt-dark: #06b6d4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: #f8f9fe;
+    color: #1e293b;
+    min-height: 100vh;
+  }
+
+  /* ── Header ─────────────────────────────────────────────────── */
+  .header {
+    background: linear-gradient(135deg, #e0e7ff 0%, #fce7f3 50%, #d1fae5 100%);
+    padding: 2rem 2.5rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+  .header h1 { font-size: 1.8rem; font-weight: 800; color: #1e293b; line-height: 1.2; }
+  .header h1 span { color: #6366f1; }
+  .header p.sub { color: #64748b; margin-top: .3rem; font-size: .92rem; }
+  .badge-live {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: #dcfce7; color: #15803d; font-weight: 700;
+    padding: .3rem .8rem; border-radius: 999px; font-size: .78rem;
+    border: 1px solid #bbf7d0;
+  }
+  .badge-live::before { content:''; width:8px; height:8px; border-radius:50%; background:#22c55e; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .author-info { text-align: right; font-size: .82rem; color: #64748b; }
+  .author-info strong { display:block; color:#1e293b; font-size:.95rem; }
+
+  /* ── Layout ─────────────────────────────────────────────────── */
+  .container { max-width: 1400px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+  .section-title {
+    font-size: 1.1rem; font-weight: 700; color: #334155;
+    margin: 1.8rem 0 1rem; padding-left: .8rem;
+    border-left: 4px solid #818cf8;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media(max-width:900px){ .grid2,.grid3,.grid4{ grid-template-columns:1fr; } }
+
+  /* ── Cards ──────────────────────────────────────────────────── */
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.4rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.04);
+    border: 1px solid #f1f5f9;
+  }
+  .stat-card {
+    border-radius: 14px; padding: 1.2rem 1.4rem;
+    background: #fff; border: 1px solid #f1f5f9;
+    box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  }
+  .stat-card .value { font-size: 2rem; font-weight: 800; line-height: 1; margin-top:.3rem; }
+  .stat-card .label { font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing:.05em; color:#64748b; }
+  .stat-card .sub   { font-size: .8rem; color:#94a3b8; margin-top:.2rem; }
+
+  /* ── Progress bar ───────────────────────────────────────────── */
+  .progress { height: 10px; background: #f1f5f9; border-radius: 999px; overflow: hidden; margin-top:.5rem; }
+  .progress-fill { height: 100%; border-radius: 999px; transition: width .8s ease; }
+
+  /* ── Party chip ─────────────────────────────────────────────── */
+  .chip {
+    display: inline-flex; align-items: center; gap:.35rem;
+    padding: .2rem .7rem; border-radius:999px;
+    font-size:.75rem; font-weight:600; white-space:nowrap;
+  }
+  .chip-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+  /* ── Table ──────────────────────────────────────────────────── */
+  table { width:100%; border-collapse:collapse; font-size:.84rem; }
+  th {
+    background:#f8fafc; font-weight:700; color:#475569;
+    padding:.6rem .8rem; text-align:left;
+    border-bottom:2px solid #e2e8f0; font-size:.75rem;
+    text-transform:uppercase; letter-spacing:.04em;
+  }
+  td { padding:.55rem .8rem; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:#fafbff; }
+  .rank { font-weight:800; color:#94a3b8; width:2rem; text-align:center; }
+  .winner-row td { background:#f0fdf4 !important; }
+  .winner-badge { color:#15803d; font-weight:700; }
+  .out-row td { background:#fff7ed !important; }
+
+  /* ── Map cartogram ──────────────────────────────────────────── */
+  .cartogram {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    padding: .5rem;
+  }
+  .region {
+    border-radius: 8px; padding:.5rem .3rem;
+    text-align:center; cursor:default;
+    font-size:.65rem; font-weight:700; line-height:1.3;
+    transition: transform .15s, box-shadow .15s;
+    min-height:52px; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:2px;
+    border: 1px solid rgba(255,255,255,.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  }
+  .region:hover { transform:scale(1.08); box-shadow:0 4px 12px rgba(0,0,0,.18); z-index:10; position:relative; }
+  .region .pct { font-size:.6rem; font-weight:500; opacity:.85; }
+  .region.span2 { grid-column: span 2; }
+  .region.empty { background:transparent; box-shadow:none; border:none; }
+
+  /* ── Cusco special ──────────────────────────────────────────── */
+  .cusco-section {
+    background: linear-gradient(135deg, #ede9fe 0%, #fce7f3 100%);
+    border-radius: 20px; padding: 1.8rem;
+    border: 1px solid #ddd6fe;
+  }
+  .cusco-title {
+    font-size:1.3rem; font-weight:800; color:#4c1d95;
+    display:flex; align-items:center; gap:.5rem; margin-bottom:1rem;
+  }
+  .elected-card {
+    background:#fff; border-radius:12px; padding:1rem 1.2rem;
+    border-left:4px solid #818cf8; margin-bottom:.6rem;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    transition: transform .15s;
+  }
+  .elected-card:hover { transform: translateX(4px); }
+  .elected-card .num { font-size:1.4rem; font-weight:900; color:#c7d2fe; margin-right:.8rem; }
+  .elected-card .name { font-weight:700; font-size:.92rem; }
+  .elected-card .party { font-size:.78rem; color:#64748b; }
+  .elected-card .votes { text-align:right; font-size:.8rem; color:#94a3b8; }
+  .elected-card .votes strong { display:block; color:#1e293b; font-size:.92rem; }
+
+  .out-card {
+    background:#fff8f1; border-radius:12px; padding:.8rem 1rem;
+    border-left:4px solid #fed7aa; margin-bottom:.5rem;
+    display:flex; justify-content:space-between; align-items:center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    opacity:.9;
+  }
+  .out-card .name { font-weight:600; font-size:.88rem; color:#78350f; }
+  .out-card .party { font-size:.74rem; color:#92400e; }
+  .out-card .cociente { text-align:right; font-size:.78rem; color:#b45309; }
+
+  /* ── Legend ─────────────────────────────────────────────────── */
+  .legend { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:1rem; }
+  .legend-item { display:flex; align-items:center; gap:.35rem; font-size:.78rem; font-weight:600; }
+  .legend-swatch { width:14px; height:14px; border-radius:4px; }
+
+  /* ── Footer ─────────────────────────────────────────────────── */
+  .footer {
+    text-align:center; padding:2rem; margin-top:1rem;
+    background: linear-gradient(135deg, #f8f9fe, #ede9fe);
+    border-top:1px solid #e2e8f0;
+  }
+  .footer .name { font-size:1rem; font-weight:700; color:#1e293b; }
+  .footer .handle { font-size:.88rem; color:#6366f1; font-weight:600; }
+  .footer .note { font-size:.75rem; color:#94a3b8; margin-top:.4rem; }
+
+  canvas { max-height: 380px; }
+
+  .tab-bar { display:flex; gap:.5rem; margin-bottom:1rem; flex-wrap:wrap; }
+  .tab-btn {
+    padding:.4rem 1rem; border-radius:8px; border:2px solid #e2e8f0;
+    background:#fff; font-size:.82rem; font-weight:600; cursor:pointer;
+    transition: all .15s; color:#64748b;
+  }
+  .tab-btn.active { border-color:#818cf8; background:#ede9fe; color:#4c1d95; }
+  .tab-btn:hover:not(.active) { border-color:#c7d2fe; }
+  .tab-content { display:none; } .tab-content.active { display:block; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="badge-live">EN VIVO · Datos ONPE</div>
+      <h1 style="margin-top:.5rem">🗳️ <span>Elecciones Generales</span> y Parlamento Andino <span>2026</span></h1>
+      <p class="sub">12 de abril de 2026 · República del Perú · Fuente: API oficial ONPE</p>
+    </div>
+    <div class="author-info">
+      <strong>Sergio Contreras Valenzuela</strong>
+      <span>@7borreguitos_</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ BODY ═══════════════════ -->
+<div class="container">
+
+  <!-- ── LEYENDA ─── -->
+  <div class="legend" style="margin-top:1rem">
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--fp)"></div> Fuerza Popular</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--jpp)"></div> Juntos por el Perú</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--rp)"></div> Renovación Popular</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--bg)"></div> Partido del Buen Gobierno</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--pco)"></div> Partido Cívico Obras</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--an)"></div> Ahora Nación - AN</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:var(--oth)"></div> Otros</div>
+  </div>
+
+  <!-- ── STAT CARDS ─── -->
+  <div class="section-title">📊 Estado del Conteo</div>
+  <div class="grid4">
+    <div class="stat-card">
+      <div class="label">Presidencial — Actas</div>
+      <div class="value" style="color:#3b82f6">96.8%</div>
+      <div class="progress"><div class="progress-fill" style="width:96.81%;background:#93c5fd"></div></div>
+      <div class="sub">89,807 / 92,766 actas</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Participación ciudadana</div>
+      <div class="value" style="color:#10b981">71.5%</div>
+      <div class="progress"><div class="progress-fill" style="width:71.53%;background:#86efac"></div></div>
+      <div class="sub">19.5 millones de votos emitidos</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Senadores único — Actas</div>
+      <div class="value" style="color:#8b5cf6">80.4%</div>
+      <div class="progress"><div class="progress-fill" style="width:80.41%;background:#c4b5fd"></div></div>
+      <div class="sub">74,589 / 92,766 actas</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Parlamento Andino — Actas</div>
+      <div class="value" style="color:#f59e0b">84.2%</div>
+      <div class="progress"><div class="progress-fill" style="width:84.18%;background:#fde68a"></div></div>
+      <div class="sub">78,092 / 92,766 actas</div>
+    </div>
+  </div>
+
+  <!-- ── PRESIDENCIAL ─── -->
+  <div class="section-title">🇵🇪 Elección Presidencial <small style="font-weight:400;font-size:.85rem;color:#94a3b8">&nbsp;96.8% de actas · 16.26M votos válidos</small></div>
+  <div class="grid2">
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:1rem;color:#475569">Resultados por candidato — Top 10</div>
+      <canvas id="chartPres"></canvas>
+    </div>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <thead><tr>
+          <th class="rank">#</th>
+          <th>Candidato</th>
+          <th>Partido</th>
+          <th style="text-align:right">Votos</th>
+          <th style="text-align:right">%</th>
+        </tr></thead>
+        <tbody id="tbodyPres"></tbody>
+      </table>
+      <div style="margin-top:.8rem;padding:.7rem;background:#fef3c7;border-radius:10px;font-size:.8rem;color:#92400e">
+        ⚠️ <strong>Segunda vuelta probable</strong> · Ningún candidato supera el 50%. Fujimori (FP, 17.1%) vs Sánchez (JPP, 12.0%)
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAPA + SENADORES ─── -->
+  <div class="section-title">🗺️ Mapa Electoral por Distrito</div>
+  <div class="grid2">
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:.7rem;color:#475569">Partido más votado — Diputados</div>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('diput')">Diputados</button>
+        <button class="tab-btn" onclick="switchTab('senat')">Senadores Múltiple</button>
+      </div>
+      <div id="tab-diput" class="tab-content active">
+        <div class="cartogram" id="cartogramDiput"></div>
+      </div>
+      <div id="tab-senat" class="tab-content">
+        <div class="cartogram" id="cartogramSenat"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-weight:700;margin-bottom:.7rem;color:#475569">Senadores Único Nacional — Por partido</div>
+      <canvas id="chartSen"></canvas>
+      <div style="margin-top:.8rem;font-size:.78rem;color:#94a3b8;text-align:center">80.4% de actas · 12.2M votos válidos</div>
+    </div>
+  </div>
+
+  <!-- ── TABLA DISTRITOS ─── -->
+  <div class="section-title">📋 Resultados por Distrito Electoral — Diputados</div>
+  <div class="card" style="overflow-x:auto">
+    <table>
+      <thead><tr>
+        <th>Distrito</th>
+        <th>Partido Ganador</th>
+        <th style="text-align:right">Votos</th>
+        <th style="text-align:right">%</th>
+        <th style="text-align:right">Actas</th>
+      </tr></thead>
+      <tbody id="tbodyDistritos"></tbody>
+    </table>
+  </div>
+
+  <!-- ── PARLAMENTO ANDINO ─── -->
+  <div class="section-title">🌎 Parlamento Andino — Top 10 candidatos</div>
+  <div class="card" style="overflow-x:auto">
+    <table>
+      <thead><tr>
+        <th class="rank">#</th>
+        <th>Candidato</th>
+        <th>Partido</th>
+        <th style="text-align:right">Votos</th>
+        <th>Estado</th>
+      </tr></thead>
+      <tbody id="tbodyParlamento"></tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════ CUSCO ═══════════════════ -->
+  <div class="section-title" style="border-color:#a855f7">🏔️ Apartado especial — Cusco</div>
+  <div class="cusco-section">
+    <div class="cusco-title">🏔️ CUSCO — Diputados (6 escaños) · 85.3% actas</div>
+
+    <div class="grid2">
+      <!-- Elegidos -->
+      <div>
+        <div style="font-weight:700;color:#4c1d95;margin-bottom:.8rem;font-size:.9rem">✅ ELEGIDOS — D'Hondt + Voto Preferencial</div>
+        <div id="cuscoElegidos"></div>
+
+        <div style="margin-top:.8rem;padding:.7rem;background:#ede9fe;border-radius:10px;font-size:.76rem;color:#4c1d95">
+          <strong>Distribución D'Hondt:</strong>
+          Juntos por el Perú → 2 escaños · Ahora Nación → 2 escaños · Cívico Obras → 1 · Buen Gobierno → 1
+          <br><span style="color:#7c3aed">Umbral D'Hondt para entrar: cociente ≥ 41,289</span>
+        </div>
+      </div>
+
+      <!-- Fuera + Gráfico -->
+      <div>
+        <div style="font-weight:700;color:#92400e;margin-bottom:.8rem;font-size:.9rem">❌ QUEDARON FUERA — Siguientes 5</div>
+        <div id="cuscoFuera"></div>
+
+        <div style="margin-top:1rem">
+          <canvas id="chartCusco" style="max-height:220px"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<!-- ─── FOOTER ─── -->
+<div class="footer">
+  <div class="name">Sergio Contreras Valenzuela</div>
+  <div class="handle">@7borreguitos_</div>
+  <div class="note">Datos obtenidos en tiempo real de la API oficial de ONPE · Elecciones Generales y Parlamento Andino 2026 · Dashboard elaborado con fines de análisis político</div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+//  DATA
+// ════════════════════════════════════════════════════════════
+const PRESIDENCIAL = [{"nombre_candidato":"KEIKO SOFIA FUJIMORI HIGUCHI","nombre_agrupacion":"FUERZA POPULAR","votos_validos":2780533,"pct_votos_validos":17.095},{"nombre_candidato":"ROBERTO HELBERT SANCHEZ PALOMINO","nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":1957817,"pct_votos_validos":12.037},{"nombre_candidato":"RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA","nombre_agrupacion":"RENOVACIÓN POPULAR","votos_validos":1932163,"pct_votos_validos":11.879},{"nombre_candidato":"JORGE NIETO MONTESINOS","nombre_agrupacion":"PARTIDO DEL BUEN GOBIERNO","votos_validos":1790082,"pct_votos_validos":11.006},{"nombre_candidato":"RICARDO PABLO BELMONT CASSINELLI","nombre_agrupacion":"PARTIDO CÍVICO OBRAS","votos_validos":1653735,"pct_votos_validos":10.168},{"nombre_candidato":"CARLOS GONSALO ALVAREZ LOAYZA","nombre_agrupacion":"PARTIDO PAÍS PARA TODOS","votos_validos":1285290,"pct_votos_validos":7.902},{"nombre_candidato":"PABLO ALFONSO LOPEZ CHAU NAVA","nombre_agrupacion":"AHORA NACIÓN - AN","votos_validos":1191401,"pct_votos_validos":7.325},{"nombre_candidato":"MARIA SOLEDAD PEREZ TELLO","nombre_agrupacion":"PRIMERO LA GENTE – COMUNIDAD, ECOLOGÍA, LIBERTAD Y PROGRESO","votos_validos":556536,"pct_votos_validos":3.422},{"nombre_candidato":"ALFONSO CARLOS ESPA Y GARCES-ALVEAR","nombre_agrupacion":"PARTIDO SICREO","votos_validos":546878,"pct_votos_validos":3.362},{"nombre_candidato":"LUIS FERNANDO OLIVERA VEGA","nombre_agrupacion":"PARTIDO FRENTE DE LA ESPERANZA 2021","votos_validos":300778,"pct_votos_validos":1.849}];
+
+const SEN_UNICO = [{"nombre_agrupacion":"FUERZA POPULAR","votos_validos":1799419,"pct_votos_validos":14.733},{"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":1441305,"pct_votos_validos":11.801},{"nombre_agrupacion":"RENOVACIÓN POPULAR","votos_validos":1397956,"pct_votos_validos":11.446},{"nombre_agrupacion":"PARTIDO DEL BUEN GOBIERNO","votos_validos":1327637,"pct_votos_validos":10.87},{"nombre_agrupacion":"PARTIDO CÍVICO OBRAS","votos_validos":1078109,"pct_votos_validos":8.827},{"nombre_agrupacion":"AHORA NACIÓN - AN","votos_validos":1020629,"pct_votos_validos":8.357},{"nombre_agrupacion":"PARTIDO PAÍS PARA TODOS","votos_validos":709449,"pct_votos_validos":5.809},{"nombre_agrupacion":"PRIMERO LA GENTE – COMUNIDAD, ECOLOGÍA, LIBERTAD Y PROGRESO","votos_validos":445883,"pct_votos_validos":3.651},{"nombre_agrupacion":"PARTIDO SICREO","votos_validos":342201,"pct_votos_validos":2.802},{"nombre_agrupacion":"ALIANZA PARA EL PROGRESO","votos_validos":312526,"pct_votos_validos":2.559},{"nombre_agrupacion":"PODEMOS PERÚ","votos_validos":265964,"pct_votos_validos":2.178},{"nombre_agrupacion":"PARTIDO APRISTA PERUANO","votos_validos":209195,"pct_votos_validos":1.713}];
+
+const PARLAMENTO = [{"nombre_candidato":"MAALI OLGA BETTY DEL POMAR SAETTONE","nombre_agrupacion":"RENOVACIÓN POPULAR","votos_validos":244587},{"nombre_candidato":"LUIS FERNANDO GALARRETA VELARDE","nombre_agrupacion":"FUERZA POPULAR","votos_validos":216455},{"nombre_candidato":"PAUL PERCY FERNANDEZ BRAVO","nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":165433},{"nombre_candidato":"JOSE GUILLERMO RAMOS ANAHUE","nombre_agrupacion":"AHORA NACIÓN - AN","votos_validos":161410},{"nombre_candidato":"ROSARIO DEL CARMEN MORI ISUISA","nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":143351},{"nombre_candidato":"GUILLERMO HUMBERTO VALDIVIESO MENDEZ","nombre_agrupacion":"RENOVACIÓN POPULAR","votos_validos":131991},{"nombre_candidato":"MARCIO MARINO BENDEZU ECHEVARRIA","nombre_agrupacion":"PARTIDO DEL BUEN GOBIERNO","votos_validos":116499},{"nombre_candidato":"JEAN ALBERTO TENORIO VALENZUELA","nombre_agrupacion":"PARTIDO PAÍS PARA TODOS","votos_validos":89602},{"nombre_candidato":"ROSARIO DE LAS NIEVES GUEVARA BADILLO","nombre_agrupacion":"FUERZA POPULAR","votos_validos":71948},{"nombre_candidato":"YESENIA ANGELITA MAMANI ZAPATA","nombre_agrupacion":"AHORA NACIÓN - AN","votos_validos":70961}];
+
+const DISTRITOS = [{"distrito":"AMAZONAS","codigo":1,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":18594,"pct_votos_validos":24.7,"pct_actas_contabilizadas":81.3},{"distrito":"ÁNCASH","codigo":2,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":57492,"pct_votos_validos":15.1,"pct_actas_contabilizadas":79.9},{"distrito":"APURÍMAC","codigo":3,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":60142,"pct_votos_validos":39.5,"pct_actas_contabilizadas":87.5},{"distrito":"AREQUIPA","codigo":4,"nombre_agrupacion":"PARTIDO DEL BUEN GOBIERNO","votos_validos":127949,"pct_votos_validos":17.8,"pct_actas_contabilizadas":90.2},{"distrito":"AYACUCHO","codigo":5,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":64901,"pct_votos_validos":29.0,"pct_actas_contabilizadas":88.7},{"distrito":"CAJAMARCA","codigo":6,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":175044,"pct_votos_validos":39.5,"pct_actas_contabilizadas":79.1},{"distrito":"CALLAO","codigo":7,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":81014,"pct_votos_validos":18.3,"pct_actas_contabilizadas":91.4},{"distrito":"CUSCO","codigo":8,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":115263,"pct_votos_validos":21.9,"pct_actas_contabilizadas":85.3},{"distrito":"HUANCAVELICA","codigo":9,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":55203,"pct_votos_validos":43.6,"pct_actas_contabilizadas":87.3},{"distrito":"HUÁNUCO","codigo":10,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":67470,"pct_votos_validos":27.9,"pct_actas_contabilizadas":80.1},{"distrito":"ICA","codigo":11,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":48956,"pct_votos_validos":16.6,"pct_actas_contabilizadas":69.8},{"distrito":"JUNÍN","codigo":12,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":65347,"pct_votos_validos":13.9,"pct_actas_contabilizadas":84.0},{"distrito":"LA LIBERTAD","codigo":13,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":112083,"pct_votos_validos":17.0,"pct_actas_contabilizadas":78.1},{"distrito":"LAMBAYEQUE","codigo":14,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":110751,"pct_votos_validos":23.6,"pct_actas_contabilizadas":81.4},{"distrito":"LIMA METROPOLITANA","codigo":15,"nombre_agrupacion":"RENOVACIÓN POPULAR","votos_validos":820624,"pct_votos_validos":18.5,"pct_actas_contabilizadas":89.1},{"distrito":"LIMA PROVINCIAS","codigo":16,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":81384,"pct_votos_validos":21.3,"pct_actas_contabilizadas":84.1},{"distrito":"LORETO","codigo":17,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":45436,"pct_votos_validos":24.1,"pct_actas_contabilizadas":65.4},{"distrito":"MADRE DE DIOS","codigo":18,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":12161,"pct_votos_validos":23.5,"pct_actas_contabilizadas":75.0},{"distrito":"MOQUEGUA","codigo":19,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":12443,"pct_votos_validos":15.3,"pct_actas_contabilizadas":87.9},{"distrito":"PASCO","codigo":20,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":13971,"pct_votos_validos":19.0,"pct_actas_contabilizadas":85.2},{"distrito":"PIURA","codigo":21,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":144829,"pct_votos_validos":28.4,"pct_actas_contabilizadas":74.1},{"distrito":"PUNO","codigo":22,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":128825,"pct_votos_validos":25.3,"pct_actas_contabilizadas":88.5},{"distrito":"SAN MARTÍN","codigo":23,"nombre_agrupacion":"JUNTOS POR EL PERÚ","votos_validos":52589,"pct_votos_validos":21.9,"pct_actas_contabilizadas":74.7},{"distrito":"TACNA","codigo":24,"nombre_agrupacion":"PARTIDO CÍVICO OBRAS","votos_validos":21622,"pct_votos_validos":12.4,"pct_actas_contabilizadas":89.3},{"distrito":"TUMBES","codigo":25,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":16691,"pct_votos_validos":25.2,"pct_actas_contabilizadas":77.5},{"distrito":"UCAYALI","codigo":26,"nombre_agrupacion":"FUERZA POPULAR","votos_validos":38606,"pct_votos_validos":27.6,"pct_actas_contabilizadas":73.5},{"distrito":"RESIDENTES EXTRANJERO","codigo":27,"nombre_agrupacion":"RENOVACIÓN POPULAR","votos_validos":37701,"pct_votos_validos":26.3,"pct_actas_contabilizadas":60.3}];
+
+const SEN_DISTRITOS = [{"distrito":"AMAZONAS","codigo":1,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":25.8,"pct_actas_contabilizadas":83.1},{"distrito":"ÁNCASH","codigo":2,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":16.1,"pct_actas_contabilizadas":82.0},{"distrito":"APURÍMAC","codigo":3,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":38.7,"pct_actas_contabilizadas":86.9},{"distrito":"AREQUIPA","codigo":4,"nombre_agrupacion":"PARTIDO DEL BUEN GOBIERNO","pct_votos_validos":20.0,"pct_actas_contabilizadas":92.6},{"distrito":"AYACUCHO","codigo":5,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":30.0,"pct_actas_contabilizadas":88.2},{"distrito":"CAJAMARCA","codigo":6,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":19.4,"pct_actas_contabilizadas":84.0},{"distrito":"CALLAO","codigo":7,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":18.9,"pct_actas_contabilizadas":92.7},{"distrito":"CUSCO","codigo":8,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":22.7,"pct_actas_contabilizadas":86.6},{"distrito":"HUANCAVELICA","codigo":9,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":53.4,"pct_actas_contabilizadas":87.5},{"distrito":"HUÁNUCO","codigo":10,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":29.2,"pct_actas_contabilizadas":81.8},{"distrito":"ICA","codigo":11,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":17.8,"pct_actas_contabilizadas":74.7},{"distrito":"JUNÍN","codigo":12,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":14.9,"pct_actas_contabilizadas":86.9},{"distrito":"LA LIBERTAD","codigo":13,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":17.6,"pct_actas_contabilizadas":80.6},{"distrito":"LAMBAYEQUE","codigo":14,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":24.4,"pct_actas_contabilizadas":81.7},{"distrito":"LIMA METROPOLITANA","codigo":15,"nombre_agrupacion":"RENOVACIÓN POPULAR","pct_votos_validos":19.9,"pct_actas_contabilizadas":90.7},{"distrito":"LIMA PROVINCIAS","codigo":16,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":21.6,"pct_actas_contabilizadas":84.7},{"distrito":"LORETO","codigo":17,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":25.8,"pct_actas_contabilizadas":69.5},{"distrito":"MADRE DE DIOS","codigo":18,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":27.9,"pct_actas_contabilizadas":80.3},{"distrito":"MOQUEGUA","codigo":19,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":15.1,"pct_actas_contabilizadas":89.6},{"distrito":"PASCO","codigo":20,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":18.4,"pct_actas_contabilizadas":86.7},{"distrito":"PIURA","codigo":21,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":26.3,"pct_actas_contabilizadas":78.5},{"distrito":"PUNO","codigo":22,"nombre_agrupacion":"JUNTOS POR EL PERÚ","pct_votos_validos":28.3,"pct_actas_contabilizadas":91.1},{"distrito":"SAN MARTÍN","codigo":23,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":28.4,"pct_actas_contabilizadas":78.8},{"distrito":"TACNA","codigo":24,"nombre_agrupacion":"PARTIDO CÍVICO OBRAS","pct_votos_validos":13.0,"pct_actas_contabilizadas":90.0},{"distrito":"TUMBES","codigo":25,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":27.0,"pct_actas_contabilizadas":74.8},{"distrito":"UCAYALI","codigo":26,"nombre_agrupacion":"FUERZA POPULAR","pct_votos_validos":34.4,"pct_actas_contabilizadas":73.4}];
+
+const CUSCO_ELEGIDOS = [{"nombre":"ANALI MARQUEZ HUANCA","partido":"Juntos por el Perú","pref":16960},{"nombre":"CESAR AUGUSTO HOLGUIN LOAIZA","partido":"Ahora Nación - AN","pref":23663},{"nombre":"HEBER LOPEZ LETONA","partido":"Partido Cívico Obras","pref":7552},{"nombre":"JULIAN LUIS PEREZ MALLQUI","partido":"Juntos por el Perú","pref":13073},{"nombre":"EDWIN ESPINOZA HUILLCA","partido":"Partido del Buen Gobierno","pref":8338},{"nombre":"HILLARY RUBI VILLALOBOS CACERES","partido":"Ahora Nación - AN","pref":9951}];
+
+const CUSCO_FUERA = [{"nombre":"MARIA LUZ HUACAC ESPINOZA","partido":"Juntos por el Perú","pref":4528,"cociente":38421},{"nombre":"CARLOS AGUILAR ORTIZ","partido":"Partido Cívico Obras","pref":3620,"cociente":32198},{"nombre":"HECTOR EDSON CALLA CHURA","partido":"Ahora Nación - AN","pref":5060,"cociente":27526},{"nombre":"AYDE MEZA FERNANDEZ","partido":"Partido del Buen Gobierno","pref":3328,"cociente":22853},{"nombre":"CESAR ARMANDO NAVINTA TACONA","partido":"Fuerza Popular","pref":3047,"cociente":22779}];
+
+// ════════════════════════════════════════════════════════════
+//  HELPERS
+// ════════════════════════════════════════════════════════════
+const PARTY_COLOR = {
+  'FUERZA POPULAR':             {bg:'var(--fp)', dark:'var(--fp-dark)', label:'FP'},
+  'JUNTOS POR EL PERÚ':         {bg:'var(--jpp)',dark:'var(--jpp-dark)',label:'JPP'},
+  'RENOVACIÓN POPULAR':         {bg:'var(--rp)', dark:'var(--rp-dark)', label:'RP'},
+  'PARTIDO DEL BUEN GOBIERNO':  {bg:'var(--bg)', dark:'var(--bg-dark)', label:'PBG'},
+  'PARTIDO CÍVICO OBRAS':       {bg:'var(--pco)',dark:'var(--pco-dark)',label:'PCO'},
+  'AHORA NACIÓN - AN':          {bg:'var(--an)', dark:'var(--an-dark)', label:'AN'},
+  'PARTIDO PAÍS PARA TODOS':    {bg:'var(--ppt)',dark:'var(--ppt-dark)',label:'PPT'},
+};
+function partyColor(name) {
+  return PARTY_COLOR[name] || {bg:'var(--oth)',dark:'var(--oth-dark)',label:'…'};
+}
+function shortParty(name) {
+  const map = {
+    'FUERZA POPULAR':'Fuerza Popular',
+    'JUNTOS POR EL PERÚ':'Juntos por el Perú',
+    'RENOVACIÓN POPULAR':'Renovación Popular',
+    'PARTIDO DEL BUEN GOBIERNO':'Buen Gobierno',
+    'PARTIDO CÍVICO OBRAS':'Cívico Obras',
+    'AHORA NACIÓN - AN':'Ahora Nación',
+    'PARTIDO PAÍS PARA TODOS':'País para Todos',
+    'PRIMERO LA GENTE – COMUNIDAD, ECOLOGÍA, LIBERTAD Y PROGRESO':'Primero la Gente',
+  };
+  return map[name] || name.replace('PARTIDO ','').substring(0,22);
+}
+function fmt(n){ return n?.toLocaleString('es-PE') || '—'; }
+
+// ════════════════════════════════════════════════════════════
+//  PRESIDENTIAL TABLE
+// ════════════════════════════════════════════════════════════
+const tbodyPres = document.getElementById('tbodyPres');
+PRESIDENCIAL.forEach((c, i) => {
+  const col = partyColor(c.nombre_agrupacion);
+  tbodyPres.innerHTML += `<tr>
+    <td class="rank">${i+1}</td>
+    <td style="font-weight:600;font-size:.82rem">${c.nombre_candidato.replace(/ ([A-Z]{2,})$/,'')}</td>
+    <td><span class="chip" style="background:${col.bg}"><span class="chip-dot" style="background:${col.dark}"></span>${shortParty(c.nombre_agrupacion)}</span></td>
+    <td style="text-align:right;font-weight:700">${fmt(c.votos_validos)}</td>
+    <td style="text-align:right;font-weight:800;color:${col.dark}">${c.pct_votos_validos.toFixed(1)}%</td>
+  </tr>`;
+});
+
+// ════════════════════════════════════════════════════════════
+//  CHART — PRESIDENCIAL
+// ════════════════════════════════════════════════════════════
+const top10 = PRESIDENCIAL.slice(0, 10);
+new Chart(document.getElementById('chartPres'), {
+  type: 'bar',
+  data: {
+    labels: top10.map(c => c.nombre_candidato.split(' ').slice(-2).join(' ')),
+    datasets: [{
+      label: '% votos válidos',
+      data: top10.map(c => c.pct_votos_validos),
+      backgroundColor: top10.map(c => partyColor(c.nombre_agrupacion).bg),
+      borderColor:     top10.map(c => partyColor(c.nombre_agrupacion).dark),
+      borderWidth: 2, borderRadius: 8,
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true,
+    plugins: { legend: { display: false }, tooltip: {
+      callbacks: { label: ctx => ` ${ctx.raw.toFixed(2)}%` }
+    }},
+    scales: {
+      x: { grid:{color:'#f1f5f9'}, ticks:{callback:v=>v+'%'} },
+      y: { grid:{display:false} }
+    }
+  }
+});
+
+// ════════════════════════════════════════════════════════════
+//  CHART — SENADORES ÚNICO
+// ════════════════════════════════════════════════════════════
+const senTop8 = SEN_UNICO.slice(0,8);
+const otherPct = SEN_UNICO.slice(8).reduce((s,r)=>s+r.pct_votos_validos,0);
+const senLabels = [...senTop8.map(r=>shortParty(r.nombre_agrupacion)), 'Otros'];
+const senData   = [...senTop8.map(r=>r.pct_votos_validos), otherPct];
+const senColors = [...senTop8.map(r=>partyColor(r.nombre_agrupacion).bg), 'var(--oth)'];
+
+new Chart(document.getElementById('chartSen'), {
+  type: 'doughnut',
+  data: { labels: senLabels, datasets: [{ data: senData, backgroundColor: senColors, borderWidth: 2, borderColor: '#fff', hoverOffset: 8 }] },
+  options: {
+    responsive: true, cutout: '60%',
+    plugins: {
+      legend: { position:'right', labels:{font:{size:11},boxWidth:14,padding:10} },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw.toFixed(1)}%` } }
+    }
+  }
+});
+
+// ════════════════════════════════════════════════════════════
+//  CARTOGRAM
+// ════════════════════════════════════════════════════════════
+// Geographic layout of Peru's regions (row by row, N→S)
+// Each entry: [codDist or null] — null = empty cell
+const LAYOUT = [
+  [25, 21,  1, 17, null],   // Tumbes, Piura, Amazonas, Loreto
+  [14,  6, 23, null, null], // Lambayeque, Cajamarca, San Martín
+  [13,  2, 10, 26, null],   // La Libertad, Áncash, Huánuco, Ucayali
+  [15, 16, 20, 12, 18],     // Lima Met, Lima Prov, Pasco, Junín, Madre de Dios
+  [ 7, 11,  9,  8, null],   // Callao, Ica, Huancavelica, Cusco
+  [null, 4,  5,  3, 22],    // —, Arequipa, Ayacucho, Apurímac, Puno
+  [null,19,null,24, null],  // —, Moquegua, —, Tacna
+  [27, null,null,null,null],// Residentes extranjero
+];
+
+function buildCartogram(containerId, data) {
+  const byCode = {};
+  data.forEach(d => byCode[d.codigo] = d);
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  LAYOUT.forEach(row => {
+    row.forEach(code => {
+      const div = document.createElement('div');
+      if (code === null) { div.className='region empty'; el.appendChild(div); return; }
+      const d = byCode[code];
+      if (!d) { div.className='region empty'; el.appendChild(div); return; }
+      const col = partyColor(d.nombre_agrupacion);
+      div.className = 'region';
+      div.style.background = col.bg;
+      div.style.color = '#1e293b';
+      div.title = `${d.distrito}\n${d.nombre_agrupacion}\n${(d.pct_votos_validos||0).toFixed(1)}% votos`;
+      div.innerHTML = `<span>${d.distrito.split(' ')[0].substring(0,10)}</span><span class="pct">${(d.pct_votos_validos||0).toFixed(1)}%</span>`;
+      el.appendChild(div);
+    });
+  });
+}
+buildCartogram('cartogramDiput', DISTRITOS);
+buildCartogram('cartogramSenat', SEN_DISTRITOS);
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ════════════════════════════════════════════════════════════
+//  TABLA DISTRITOS
+// ════════════════════════════════════════════════════════════
+const tbodyD = document.getElementById('tbodyDistritos');
+DISTRITOS.forEach(d => {
+  const col = partyColor(d.nombre_agrupacion);
+  const pct = d.pct_actas_contabilizadas || 0;
+  const barW = Math.min(100, pct);
+  tbodyD.innerHTML += `<tr>
+    <td style="font-weight:600">${d.distrito}</td>
+    <td><span class="chip" style="background:${col.bg}"><span class="chip-dot" style="background:${col.dark}"></span>${shortParty(d.nombre_agrupacion)}</span></td>
+    <td style="text-align:right;font-weight:700">${fmt(d.votos_validos)}</td>
+    <td style="text-align:right;color:${col.dark};font-weight:800">${(d.pct_votos_validos||0).toFixed(1)}%</td>
+    <td style="min-width:100px">
+      <div style="display:flex;align-items:center;gap:.4rem">
+        <div style="flex:1;height:6px;background:#f1f5f9;border-radius:3px;overflow:hidden">
+          <div style="width:${barW}%;height:100%;background:${col.bg};border-radius:3px"></div>
+        </div>
+        <span style="font-size:.74rem;color:#64748b;white-space:nowrap">${pct.toFixed(1)}%</span>
+      </div>
+    </td>
+  </tr>`;
+});
+
+// ════════════════════════════════════════════════════════════
+//  PARLAMENTO ANDINO
+// ════════════════════════════════════════════════════════════
+const tbodyParl = document.getElementById('tbodyParlamento');
+PARLAMENTO.forEach((c,i) => {
+  const col = partyColor(c.nombre_agrupacion);
+  const elected = i < 5;
+  tbodyParl.innerHTML += `<tr class="${elected?'winner-row':''}">
+    <td class="rank">${i+1}</td>
+    <td style="font-weight:${elected?'700':'400'}">${c.nombre_candidato}</td>
+    <td><span class="chip" style="background:${col.bg}"><span class="chip-dot" style="background:${col.dark}"></span>${shortParty(c.nombre_agrupacion)}</span></td>
+    <td style="text-align:right;font-weight:700">${fmt(c.votos_validos)}</td>
+    <td>${elected?'<span class="winner-badge">✓ Elegido</span>':'<span style="color:#94a3b8;font-size:.78rem">Siguiente</span>'}</td>
+  </tr>`;
+});
+
+// ════════════════════════════════════════════════════════════
+//  CUSCO ELEGIDOS
+// ════════════════════════════════════════════════════════════
+const partyColorMap = {
+  'Juntos por el Perú':    {bg:'#fca5a5',dark:'#ef4444'},
+  'Ahora Nación - AN':     {bg:'#fde68a',dark:'#f59e0b'},
+  'Partido Cívico Obras':  {bg:'#fdba74',dark:'#f97316'},
+  'Partido del Buen Gobierno':{bg:'#86efac',dark:'#22c55e'},
+  'Fuerza Popular':        {bg:'#93c5fd',dark:'#3b82f6'},
+  'Renovación Popular':    {bg:'#c4b5fd',dark:'#8b5cf6'},
+};
+const elDiv = document.getElementById('cuscoElegidos');
+CUSCO_ELEGIDOS.forEach((c,i) => {
+  const col = partyColorMap[c.partido] || {bg:'#e5e7eb',dark:'#9ca3af'};
+  elDiv.innerHTML += `<div class="elected-card">
+    <div style="display:flex;align-items:center">
+      <span class="num">${i+1}</span>
+      <div>
+        <div class="name">${c.nombre}</div>
+        <div class="party"><span class="chip" style="background:${col.bg};margin-top:.2rem"><span class="chip-dot" style="background:${col.dark}"></span>${c.partido}</span></div>
+      </div>
+    </div>
+    <div class="votes"><strong>${fmt(c.pref)}</strong>votos pref.</div>
+  </div>`;
+});
+
+const fueraDiv = document.getElementById('cuscoFuera');
+CUSCO_FUERA.forEach((c,i) => {
+  fueraDiv.innerHTML += `<div class="out-card">
+    <div>
+      <div class="name">${c.nombre}</div>
+      <div class="party">${c.partido}</div>
+    </div>
+    <div class="cociente">
+      <strong>${fmt(c.cociente)}</strong>
+      <div>cociente</div>
+    </div>
+  </div>`;
+});
+
+// ════════════════════════════════════════════════════════════
+//  CUSCO CHART
+// ════════════════════════════════════════════════════════════
+const cuscoParties = [
+  {label:'JPP', votos:115263, color:'#fca5a5'},
+  {label:'AN',  votos:82577,  color:'#fde68a'},
+  {label:'Obras',votos:64396, color:'#fdba74'},
+  {label:'B.Gob',votos:45705, color:'#86efac'},
+  {label:'FP',  votos:22779,  color:'#93c5fd'},
+  {label:'RP',  votos:21485,  color:'#c4b5fd'},
+  {label:'Otros',votos:15054, color:'#e5e7eb'},
+];
+new Chart(document.getElementById('chartCusco'), {
+  type: 'bar',
+  data: {
+    labels: cuscoParties.map(p=>p.label),
+    datasets: [{
+      label:'Votos (Diputados Cusco)',
+      data: cuscoParties.map(p=>p.votos),
+      backgroundColor: cuscoParties.map(p=>p.color),
+      borderRadius:8, borderWidth:0
+    }]
+  },
+  options: {
+    responsive:true, plugins:{legend:{display:false}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{grid:{color:'#f1f5f9'}, ticks:{callback:v=>v>=1000?Math.round(v/1000)+'k':v}}
+    }
+  }
+});
+</script>
+</body>
+</html>
