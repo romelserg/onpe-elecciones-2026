@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elecciones 2026 — Análisis Subnacional del Sur del Perú</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f8f7f4;
+    --card: #ffffff;
+    --border: #e8e3dc;
+    --text: #1a1a1a;
+    --muted: #6b6560;
+    --accent: #7c3aed;
+
+    --jpp: #93c5fd;
+    --jpp-dark: #2563eb;
+    --an: #fca5a5;
+    --an-dark: #dc2626;
+    --bg-p: #86efac;
+    --bg-dark: #16a34a;
+    --obras: #fdba74;
+    --obras-dark: #ea580c;
+    --rp: #c4b5fd;
+    --rp-dark: #7c3aed;
+    --fp: #fde68a;
+    --fp-dark: #d97706;
+    --coop: #a7f3d0;
+    --coop-dark: #059669;
+    --other: #e5e7eb;
+    --other-dark: #6b7280;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #6d28d9 100%);
+    color: white;
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px; padding: 4px 12px; font-size: .75rem;
+    margin-bottom: 1rem;
+  }
+  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.3)} }
+  .header h1 { font-size: clamp(1.4rem,3vw,2.2rem); font-weight: 700; margin-bottom: .4rem; }
+  .header h2 { font-size: clamp(1rem,2vw,1.35rem); font-weight: 400; opacity: .85; margin-bottom: 1.2rem; }
+  .header-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .meta-item { font-size: .8rem; opacity: .75; }
+  .author-block { margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.2); padding-top: 1rem; }
+  .author-name { font-size: .9rem; font-weight: 600; }
+  .author-handle { font-size: .8rem; opacity: .7; }
+
+  /* ── ABOUT ── */
+  .about {
+    background: linear-gradient(135deg, #ede9fe 0%, #fdf4ff 100%);
+    border-left: 4px solid var(--accent);
+    margin: 1.5rem auto; max-width: 1100px;
+    padding: 1.2rem 1.5rem; border-radius: 0 12px 12px 0;
+  }
+  .about h3 { font-size: 1rem; color: var(--accent); margin-bottom: .5rem; }
+  .about p { font-size: .875rem; color: #4b5563; line-height: 1.7; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem 3rem; }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-size: 1.1rem; font-weight: 700; color: var(--text);
+    margin: 2rem 0 1rem; padding-bottom: .4rem;
+    border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .section-title span { font-size: .85rem; font-weight: 400; color: var(--muted); }
+
+  /* ── OVERVIEW CARDS ── */
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .ov-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1rem 1.2rem; cursor: pointer; transition: all .2s;
+    border-left: 4px solid var(--other);
+  }
+  .ov-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+  .ov-card.active { box-shadow: 0 4px 16px rgba(124,58,237,.2); border-color: var(--accent) !important; }
+  .ov-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .3rem; }
+  .ov-card .seats { font-size: .75rem; color: var(--muted); margin-bottom: .5rem; }
+  .ov-winner { display: flex; align-items: center; gap: .4rem; margin-bottom: .2rem; }
+  .party-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .ov-winner-text { font-size: .78rem; }
+  .ov-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: .4rem; }
+  .ov-bar-fill { height: 100%; border-radius: 2px; transition: width .8s ease; }
+
+  /* ── REGION DETAIL ── */
+  .region-detail { display: none; }
+  .region-detail.active { display: block; }
+  .region-header {
+    background: linear-gradient(135deg, #1e1b4b, #4c1d95);
+    color: white; border-radius: 16px; padding: 1.2rem 1.5rem;
+    margin-bottom: 1.2rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  .region-header h3 { font-size: 1.3rem; font-weight: 700; }
+  .region-stats { display: flex; gap: 1.5rem; }
+  .rstat { text-align: center; }
+  .rstat-num { font-size: 1.4rem; font-weight: 700; }
+  .rstat-label { font-size: .7rem; opacity: .7; }
+
+  /* ── TWO-COLUMN ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  @media(max-width:700px){ .two-col { grid-template-columns: 1fr; } }
+
+  /* ── CARD ── */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
+  .card h5 { font-size: .85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 1rem; }
+
+  /* ── TABLE ── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+  .data-table th { text-align: left; padding: .5rem .6rem; background: #f3f0ff; color: var(--accent); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; border-bottom: 2px solid var(--border); }
+  .data-table td { padding: .55rem .6rem; border-bottom: 1px solid #f0ece5; vertical-align: middle; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #faf9f7; }
+  .seat-num { font-weight: 700; color: var(--accent); width: 28px; }
+  .candidate-name { font-weight: 600; }
+  .party-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: 20px; font-size: .72rem; font-weight: 600;
+    white-space: nowrap;
+  }
+  .pref-votes { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
+  .party-votes { text-align: right; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+  .pct-cell { text-align: right; color: var(--muted); font-size: .78rem; }
+  .bar-cell { width: 60px; }
+  .mini-bar { height: 6px; border-radius: 3px; }
+
+  /* ── SENATOR CARD ── */
+  .senator-card {
+    border-radius: 12px; padding: 1rem 1.2rem;
+    display: flex; align-items: center; gap: 1rem;
+    border: 1px solid var(--border); background: var(--card);
+  }
+  .senator-icon { font-size: 2rem; }
+  .senator-info h6 { font-size: .8rem; color: var(--muted); margin-bottom: .25rem; }
+  .senator-party { font-size: 1rem; font-weight: 700; }
+  .senator-votes { font-size: .8rem; color: var(--muted); }
+
+  /* ── CHART CONTAINER ── */
+  .chart-wrap { position: relative; height: 200px; }
+
+  /* ── SUMMARY TABLE ── */
+  .summary-section { margin-top: 2rem; }
+  .full-table { width: 100%; border-collapse: collapse; font-size: .82rem; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  .full-table th { padding: .6rem .8rem; background: #1e1b4b; color: white; text-align: left; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+  .full-table td { padding: .55rem .8rem; border-bottom: 1px solid #f0ece5; }
+  .full-table tr:last-child td { border-bottom: none; }
+  .full-table tr:hover td { background: #faf9f7; }
+  .region-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 6px;
+    font-size: .72rem; font-weight: 700; background: #ede9fe; color: var(--accent);
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #1e1b4b; color: rgba(255,255,255,.7);
+    text-align: center; padding: 2rem;
+    font-size: .8rem; margin-top: 3rem;
+  }
+  .footer strong { color: white; }
+  .footer a { color: #a78bfa; text-decoration: none; }
+  .footer .disclaimer { margin-top: .5rem; font-size: .72rem; opacity: .6; }
+
+  /* ── PARTY COLORS ── */
+  .chip-jpp  { background: #dbeafe; color: #1d4ed8; }
+  .chip-an   { background: #fee2e2; color: #b91c1c; }
+  .chip-bg   { background: #dcfce7; color: #15803d; }
+  .chip-obras{ background: #ffedd5; color: #c2410c; }
+  .chip-rp   { background: #f3e8ff; color: #6d28d9; }
+  .chip-fp   { background: #fef9c3; color: #92400e; }
+  .chip-coop { background: #d1fae5; color: #065f46; }
+  .chip-other{ background: #f3f4f6; color: #374151; }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-inner">
+    <div class="badge"><span class="badge-dot"></span> DATOS ONPE · Elecciones 2026</div>
+    <h1>Resultados Electorales 2026</h1>
+    <h2>Análisis Subnacional del Sur del Perú</h2>
+    <div class="header-meta">
+      <span class="meta-item">📅 30 de abril, 2026</span>
+      <span class="meta-item">🗺️ 8 regiones del sur</span>
+      <span class="meta-item">🏛️ Diputados + Senadores regionales</span>
+      <span class="meta-item">⚠️ Datos parciales (actas en conteo)</span>
+    </div>
+    <div class="author-block">
+      <div class="author-name">Sergio Contreras Valenzuela</div>
+      <div class="author-handle">@7borreguitos_</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="about">
+  <h3>📌 Sobre este dashboard</h3>
+  <p>
+    Este dashboard es un esfuerzo por poner énfasis en el <strong>análisis a nivel subnacional</strong>,
+    en específico en el <strong>Sur del Perú</strong>. Los grandes titulares nacionales a menudo ocultan
+    la rica heterogeneidad política entre regiones: quién gana en Lima no necesariamente refleja
+    lo que ocurre en Puno, Arequipa o Cusco. Aquí se presentan los resultados de los 8 distritos
+    electorales del sur — con nombres de candidatos electos, votos preferenciales y distribución
+    de escaños calculada por el método D'Hondt — para entender cómo se construye la representación
+    parlamentaria región por región.
+  </p>
+</div>
+
+<div class="container">
+
+  <!-- ══ OVERVIEW CARDS ══ -->
+  <div class="section-title">Resumen por Región <span>Haz clic en una región para ver el detalle</span></div>
+  <div class="overview-grid" id="overviewGrid"></div>
+
+  <!-- ══ OVERVIEW CHART ══ -->
+  <div class="card" style="margin-bottom:1.5rem;">
+    <h5>Distribución de Escaños por Partido — Sur del Perú (Diputados)</h5>
+    <div style="position:relative;height:260px;"><canvas id="overviewChart"></canvas></div>
+  </div>
+
+  <!-- ══ REGION DETAILS ══ -->
+  <div class="section-title">Detalle por Región</div>
+  <div id="regionDetails"></div>
+
+  <!-- ══ SUMMARY TABLE ══ -->
+  <div class="summary-section">
+    <div class="section-title">Tabla Consolidada — Candidatos Electos del Sur <span>Diputados con nombre confirmado</span></div>
+    <div style="overflow-x:auto;">
+      <table class="full-table" id="fullTable"></table>
+    </div>
+  </div>
+
+  <!-- ══ SENATOR SUMMARY ══ -->
+  <div style="margin-top:2rem;">
+    <div class="section-title">Senadores Regionales — Sur del Perú <span>1 escaño por distrito (partido ganador)</span></div>
+    <div style="overflow-x:auto;">
+      <table class="full-table" id="senatorTable"></table>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+  <div><strong>Sergio Contreras Valenzuela</strong></div>
+  <div><a href="https://twitter.com/7borreguitos_">@7borreguitos_</a></div>
+  <div class="disclaimer">
+    Datos: ONPE — Resultados Electorales 2026 (parciales al 30/04/2026). Escaños calculados con método D'Hondt.
+    Nombres de candidatos según votos preferenciales. Solo distritos del sur del Perú.
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════════════════
+const PARTY_META = {
+  JPP:     { label: 'Juntos por el Perú',      chip: 'chip-jpp',   color: '#93c5fd', dark: '#2563eb' },
+  AN:      { label: 'Ahora Nación',            chip: 'chip-an',    color: '#fca5a5', dark: '#dc2626' },
+  BG:      { label: 'Buen Gobierno',           chip: 'chip-bg',    color: '#86efac', dark: '#16a34a' },
+  Obras:   { label: 'Partido Cívico Obras',    chip: 'chip-obras', color: '#fdba74', dark: '#ea580c' },
+  RP:      { label: 'Renovación Popular',      chip: 'chip-rp',    color: '#c4b5fd', dark: '#7c3aed' },
+  FP:      { label: 'Fuerza Popular',          chip: 'chip-fp',    color: '#fde68a', dark: '#d97706' },
+  CoopPop: { label: 'Cooperación Popular',     chip: 'chip-coop',  color: '#a7f3d0', dark: '#059669' },
+  Other:   { label: 'Otro',                    chip: 'chip-other', color: '#e5e7eb', dark: '#6b7280' },
+};
+
+const REGIONES = [
+  {
+    id: 'apurimac', nombre: 'APURÍMAC', diputados: 2, senadorEscanos: 1,
+    pctActas: 89.2,
+    dipPartidos: [
+      { partido:'JPP', cod:10, votos:60142, pct:57.4 },
+      { partido:'AN',  cod:2,  votos:18292, pct:17.5 },
+      { partido:'Obras',cod:14,votos:17581, pct:16.8 },
+      { partido:'FP',  cod:8,  votos:8820,  pct:8.4  },
+    ],
+    electos: [
+      { num:1, nombre:'JESUS PEREZ ALCCAHUAMAN',   partido:'JPP',  prefVotos:12177, partidoVotos:60142, pct:57.4 },
+      { num:2, nombre:'LUZ MERIDA SOTO FERRARI',    partido:'JPP',  prefVotos:5513,  partidoVotos:null,  pct:null  },
+    ],
+    senador: { partido:'JPP', votos:60590, pct:63.3 },
+  },
+  {
+    id: 'arequipa', nombre: 'AREQUIPA', diputados: 6, senadorEscanos: 1,
+    pctActas: 91.5,
+    dipPartidos: [
+      { partido:'BG',   cod:16, votos:128517, pct:24.1 },
+      { partido:'JPP',  cod:10, votos:72261,  pct:13.5 },
+      { partido:'AN',   cod:2,  votos:69930,  pct:13.1 },
+      { partido:'RP',   cod:35, votos:68549,  pct:12.9 },
+      { partido:'Obras',cod:14, votos:66983,  pct:12.6 },
+      { partido:'Other',cod:23, votos:54730,  pct:10.3 },
+    ],
+    electos: [
+      { num:1, nombre:'EDGAR DEMBER GONZALES POLAR',       partido:'BG',   prefVotos:18162, partidoVotos:128517, pct:24.1 },
+      { num:2, nombre:'GLORIA CHARITO HIRACHE PIZARRO',    partido:'BG',   prefVotos:8836,  partidoVotos:null,   pct:null  },
+      { num:3, nombre:'AMALIA EMILIA PALOMINO PACHECO',    partido:'JPP',  prefVotos:10790, partidoVotos:72261,  pct:13.5 },
+      { num:4, nombre:'MARLENY BIBIANA ARMINTA VALENCIA',  partido:'AN',   prefVotos:14226, partidoVotos:69930,  pct:13.1 },
+      { num:5, nombre:'CHRISTIAN ARANDA VASQUEZ',          partido:'RP',   prefVotos:14694, partidoVotos:68549,  pct:12.9 },
+      { num:6, nombre:'LUIS AURELIO MASCO CACERES',        partido:'Obras',prefVotos:8057,  partidoVotos:66983,  pct:12.6 },
+    ],
+    senador: { partido:'BG', votos:140978, pct:50.5 },
+  },
+  {
+    id: 'ayacucho', nombre: 'AYACUCHO', diputados: 3, senadorEscanos: 1,
+    pctActas: 87.8,
+    dipPartidos: [
+      { partido:'JPP',  cod:10, votos:65542, pct:42.7 },
+      { partido:'AN',   cod:2,  votos:36494, pct:23.8 },
+      { partido:'Obras',cod:14, votos:24819, pct:16.2 },
+      { partido:'FP',   cod:8,  votos:14757, pct:9.6  },
+    ],
+    electos: [
+      { num:1, nombre:'ALEJANDRO JOSÉ MANAY PILLACA', partido:'JPP', prefVotos:11227, partidoVotos:65542, pct:42.7 },
+      { num:2, nombre:'PILAR SULCA CASTILLO',          partido:'JPP', prefVotos:1968,  partidoVotos:null,  pct:null  },
+      { num:3, nombre:'FRESHMAN BUITRON MARTINEZ',     partido:'AN',  prefVotos:8634,  partidoVotos:36494, pct:23.8 },
+    ],
+    senador: { partido:'JPP', votos:66215, pct:52.5 },
+  },
+  {
+    id: 'cusco', nombre: 'CUSCO', diputados: 5, senadorEscanos: 1,
+    pctActas: 85.3,
+    dipPartidos: [
+      { partido:'JPP',  cod:10, votos:115263, pct:32.7 },
+      { partido:'AN',   cod:2,  votos:82577,  pct:23.4 },
+      { partido:'Obras',cod:14, votos:64396,  pct:18.3 },
+      { partido:'BG',   cod:16, votos:45705,  pct:13.0 },
+      { partido:'FP',   cod:8,  votos:22779,  pct:6.5  },
+      { partido:'RP',   cod:35, votos:21485,  pct:6.1  },
+    ],
+    electos: [
+      { num:1, nombre:'ANALI MARQUEZ HUANCA',       partido:'JPP',  prefVotos:16960, partidoVotos:115263, pct:32.7 },
+      { num:2, nombre:'JULIAN LUIS PEREZ MALLQUI',  partido:'JPP',  prefVotos:13073, partidoVotos:null,   pct:null  },
+      { num:3, nombre:'CESAR AUGUSTO HOLGUIN LOAIZA',partido:'AN',  prefVotos:23663, partidoVotos:82577,  pct:23.4 },
+      { num:4, nombre:'HEBER LOPEZ LETONA',          partido:'Obras',prefVotos:7552,  partidoVotos:64396,  pct:18.3 },
+      { num:5, nombre:'EDWIN ESPINOZA HUILLCA',      partido:'BG',   prefVotos:8338,  partidoVotos:45705,  pct:13.0 },
+    ],
+    senador: { partido:'JPP', votos:116995, pct:43.8 },
+  },
+  {
+    id: 'madre-de-dios', nombre: 'MADRE DE DIOS', diputados: 2, senadorEscanos: 1,
+    pctActas: 83.1,
+    dipPartidos: [
+      { partido:'JPP',  cod:10, votos:12161, pct:45.7 },
+      { partido:'Obras',cod:14, votos:5190,  pct:19.5 },
+      { partido:'FP',   cod:8,  votos:4999,  pct:18.8 },
+      { partido:'AN',   cod:2,  votos:4264,  pct:16.0 },
+    ],
+    electos: [
+      { num:1, nombre:'JAMES ARTURO HOLGUIN AGUIRRE',  partido:'JPP', prefVotos:2130, partidoVotos:12161, pct:45.7 },
+      { num:2, nombre:'HAYDEE CELINDA POMA HUAMANI',   partido:'JPP', prefVotos:1522, partidoVotos:null,  pct:null  },
+    ],
+    senador: { partido:'JPP', votos:13673, pct:57.0 },
+  },
+  {
+    id: 'moquegua', nombre: 'MOQUEGUA', diputados: 2, senadorEscanos: 1,
+    pctActas: 88.4,
+    dipPartidos: [
+      { partido:'JPP',  cod:10, votos:12443, pct:32.6 },
+      { partido:'BG',   cod:16, votos:9292,  pct:24.4 },
+      { partido:'AN',   cod:2,  votos:8870,  pct:23.2 },
+      { partido:'Other',cod:29, votos:7534,  pct:19.7 },
+    ],
+    electos: [
+      { num:1, nombre:'GRACIELA CHIPANA CONDORI',    partido:'JPP', prefVotos:2376, partidoVotos:12443, pct:32.6 },
+      { num:2, nombre:'NERY RODOLFO FERNANDEZ NINA', partido:'BG',  prefVotos:1430, partidoVotos:9292,  pct:24.4 },
+    ],
+    senador: { partido:'JPP', votos:12516, pct:40.0 },
+  },
+  {
+    id: 'puno', nombre: 'PUNO', diputados: 5, senadorEscanos: 1,
+    pctActas: 86.6,
+    dipPartidos: [
+      { partido:'JPP',    cod:10, votos:128976, pct:35.7 },
+      { partido:'Obras',  cod:14, votos:75190,  pct:20.8 },
+      { partido:'AN',     cod:2,  votos:62440,  pct:17.3 },
+      { partido:'CoopPop',cod:25, votos:44717,  pct:12.4 },
+      { partido:'Other',  cod:3,  votos:30343,  pct:8.4  },
+    ],
+    electos: [
+      { num:1, nombre:'JESSICA SADITH PEREZ QUISPE',       partido:'JPP',    prefVotos:18856, partidoVotos:128976, pct:35.7 },
+      { num:2, nombre:'CESAR HUGO TITO ROJAS',              partido:'JPP',    prefVotos:17468, partidoVotos:null,   pct:null  },
+      { num:3, nombre:'DINA IRENE HANCCO HANCCO',           partido:'Obras',  prefVotos:11731, partidoVotos:75190,  pct:20.8 },
+      { num:4, nombre:'HELARD BLADIMIR SONCO VILLANUEVA',   partido:'AN',     prefVotos:13144, partidoVotos:62440,  pct:17.3 },
+      { num:5, nombre:'OSCAR GONZALES HUAMAN',              partido:'CoopPop',prefVotos:8440,  partidoVotos:44717,  pct:12.4 },
+    ],
+    senador: { partido:'JPP', votos:134957, pct:49.1 },
+  },
+  {
+    id: 'tacna', nombre: 'TACNA', diputados: 2, senadorEscanos: 1,
+    pctActas: 90.3,
+    dipPartidos: [
+      { partido:'Obras',cod:14, votos:21622, pct:26.5 },
+      { partido:'JPP',  cod:10, votos:21617, pct:26.5 },
+      { partido:'BG',   cod:16, votos:19975, pct:24.5 },
+      { partido:'AN',   cod:2,  votos:18500, pct:22.7 },
+    ],
+    electos: [
+      { num:1, nombre:'JUAN CESAR CABRERA NIETO',         partido:'Obras', prefVotos:3212, partidoVotos:21622, pct:26.5 },
+      { num:2, nombre:'SVIETA VALIA FERNANDEZ GONZALEZ',  partido:'JPP',   prefVotos:3274, partidoVotos:21617, pct:26.5 },
+    ],
+    senador: { partido:'Obras', votos:22448, pct:35.1 },
+  },
+];
+
+// ═══════════════════════════════════════════════════════
+//  HELPERS
+// ═══════════════════════════════════════════════════════
+function pMeta(p) { return PARTY_META[p] || PARTY_META.Other; }
+
+function chip(p) {
+  const m = pMeta(p);
+  return `<span class="party-chip ${m.chip}">${p}</span>`;
+}
+
+function fmt(n) {
+  if (n == null) return '<span style="color:#ccc">—</span>';
+  return n.toLocaleString('es-PE');
+}
+
+function partyColor(p) { return pMeta(p).color; }
+function partyDark(p)  { return pMeta(p).dark; }
+
+// ═══════════════════════════════════════════════════════
+//  BUILD OVERVIEW CARDS
+// ═══════════════════════════════════════════════════════
+function buildOverviewCards() {
+  const grid = document.getElementById('overviewGrid');
+  REGIONES.forEach((r, i) => {
+    const lead = r.dipPartidos[0];
+    const borderColor = partyDark(lead.partido);
+    const card = document.createElement('div');
+    card.className = 'ov-card' + (i === 0 ? ' active' : '');
+    card.style.borderLeftColor = borderColor;
+    card.innerHTML = `
+      <h4>${r.nombre}</h4>
+      <div class="seats">${r.diputados} diputados · ${r.senadorEscanos} senador</div>
+      <div class="ov-winner">
+        <div class="party-dot" style="background:${partyColor(lead.partido)}"></div>
+        <div class="ov-winner-text">${pMeta(lead.partido).label}</div>
+      </div>
+      <div style="font-size:.72rem;color:#9ca3af;margin-bottom:4px">${lead.pct}% votos válidos</div>
+      <div class="ov-bar">
+        <div class="ov-bar-fill" style="width:${lead.pct}%;background:${partyColor(lead.partido)}"></div>
+      </div>
+      <div style="font-size:.7rem;color:#9ca3af;margin-top:6px">⚡ ${r.pctActas}% actas</div>
+    `;
+    card.addEventListener('click', () => showRegion(r.id, card));
+    grid.appendChild(card);
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  BUILD REGION DETAILS
+// ═══════════════════════════════════════════════════════
+function buildRegionDetails() {
+  const container = document.getElementById('regionDetails');
+  REGIONES.forEach((r, i) => {
+    const div = document.createElement('div');
+    div.className = 'region-detail' + (i === 0 ? ' active' : '');
+    div.id = 'detail-' + r.id;
+
+    const totalVotos = r.dipPartidos.reduce((s,p) => s + p.votos, 0);
+
+    // Build party bar chart data
+    const chartLabels = r.dipPartidos.map(p => p.partido);
+    const chartData   = r.dipPartidos.map(p => p.votos);
+    const chartColors = r.dipPartidos.map(p => partyColor(p.partido));
+    const chartBorders= r.dipPartidos.map(p => partyDark(p.partido));
+
+    // Elected rows
+    const electosRows = r.electos.map(e => `
+      <tr>
+        <td class="seat-num">${e.num}</td>
+        <td class="candidate-name">${e.nombre}</td>
+        <td>${chip(e.partido)}</td>
+        <td class="pref-votes">${fmt(e.prefVotos)}</td>
+        <td class="party-votes">${fmt(e.partidoVotos)}</td>
+        <td class="pct-cell">${e.pct != null ? e.pct + '%' : '—'}</td>
+        <td class="bar-cell">
+          ${e.pct != null ? `<div class="mini-bar" style="width:${Math.min(e.pct,100)}%;background:${partyColor(e.partido)};height:6px;border-radius:3px"></div>` : ''}
+        </td>
+      </tr>
+    `).join('');
+
+    div.innerHTML = `
+      <div class="region-header">
+        <div>
+          <h3>📍 ${r.nombre}</h3>
+          <div style="font-size:.8rem;opacity:.7;margin-top:.2rem">${r.pctActas}% de actas contabilizadas</div>
+        </div>
+        <div class="region-stats">
+          <div class="rstat">
+            <div class="rstat-num">${r.diputados}</div>
+            <div class="rstat-label">Diputados</div>
+          </div>
+          <div class="rstat">
+            <div class="rstat-num">${r.senadorEscanos}</div>
+            <div class="rstat-label">Senador</div>
+          </div>
+          <div class="rstat">
+            <div class="rstat-num">${r.dipPartidos.length}</div>
+            <div class="rstat-label">Partidos</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h5>Diputados Electos</h5>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Candidato</th>
+                <th>Partido</th>
+                <th>Vot. Pref.</th>
+                <th>Vot. Partido</th>
+                <th>%</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>${electosRows}</tbody>
+          </table>
+        </div>
+        <div class="card">
+          <h5>Votos por Partido (Diputados)</h5>
+          <div class="chart-wrap">
+            <canvas id="chart-${r.id}"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="senator-card" style="border-left:4px solid ${partyDark(r.senador.partido)}">
+        <div class="senator-icon">🏛️</div>
+        <div class="senator-info">
+          <h6>Senador Regional (1 escaño)</h6>
+          <div class="senator-party">${pMeta(r.senador.partido).label} ${chip(r.senador.partido)}</div>
+          <div class="senator-votes">${fmt(r.senador.votos)} votos · ${r.senador.pct}% — Nota: Nombres de candidatos senatoriales no disponibles en la API de ONPE.</div>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(div);
+
+    // Render chart after DOM insert
+    requestAnimationFrame(() => {
+      const ctx = document.getElementById('chart-' + r.id);
+      if (!ctx) return;
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: chartLabels,
+          datasets: [{
+            data: chartData,
+            backgroundColor: chartColors,
+            borderColor: chartBorders,
+            borderWidth: 1.5,
+            borderRadius: 6,
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.raw.toLocaleString('es-PE')} votos (${((ctx.raw/totalVotos)*100).toFixed(1)}%)`
+            }
+          }},
+          scales: {
+            x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+            y: { grid: { color: '#f0ece5' }, ticks: { font: { size: 10 }, callback: v => v >= 1000 ? (v/1000).toFixed(0)+'k' : v } }
+          }
+        }
+      });
+    });
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  SHOW REGION
+// ═══════════════════════════════════════════════════════
+function showRegion(id, clickedCard) {
+  document.querySelectorAll('.region-detail').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.ov-card').forEach(c => c.classList.remove('active'));
+  document.getElementById('detail-' + id).classList.add('active');
+  clickedCard.classList.add('active');
+  document.getElementById('detail-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ═══════════════════════════════════════════════════════
+//  OVERVIEW CHART
+// ═══════════════════════════════════════════════════════
+function buildOverviewChart() {
+  const parties = ['JPP','BG','AN','Obras','RP','CoopPop','FP','Other'];
+  const regionNames = REGIONES.map(r => r.nombre);
+
+  // Count seats per party per region
+  const datasets = parties.map(p => {
+    const data = REGIONES.map(r => r.electos.filter(e => e.partido === p).length);
+    const total = data.reduce((a,b)=>a+b,0);
+    if (total === 0) return null;
+    return {
+      label: p,
+      data,
+      backgroundColor: partyColor(p),
+      borderColor: partyDark(p),
+      borderWidth: 1,
+      borderRadius: 4,
+    };
+  }).filter(Boolean);
+
+  new Chart(document.getElementById('overviewChart'), {
+    type: 'bar',
+    data: { labels: regionNames, datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 11 }, padding: 12 } },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } },
+        y: { stacked: true, grid: { color: '#f0ece5' }, ticks: { stepSize: 1, font: { size: 10 } }, title: { display: true, text: 'Escaños', font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════
+//  FULL TABLE
+// ═══════════════════════════════════════════════════════
+function buildFullTable() {
+  const tbl = document.getElementById('fullTable');
+  tbl.innerHTML = `
+    <thead>
+      <tr>
+        <th>Región</th><th>Escaño</th><th>Candidato Electo</th>
+        <th>Partido</th><th>Votos Pref.</th><th>Votos Partido</th><th>% Partido</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${REGIONES.flatMap(r =>
+        r.electos.map(e => `
+          <tr>
+            <td><span class="region-badge">${r.nombre}</span></td>
+            <td style="font-weight:700;color:#7c3aed">${e.num}</td>
+            <td style="font-weight:600">${e.nombre}</td>
+            <td>${chip(e.partido)}</td>
+            <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:600">${fmt(e.prefVotos)}</td>
+            <td style="text-align:right;font-variant-numeric:tabular-nums;color:#6b7280">${fmt(e.partidoVotos)}</td>
+            <td style="text-align:right;color:#6b7280">${e.pct != null ? e.pct+'%' : '—'}</td>
+          </tr>
+        `)
+      ).join('')}
+    </tbody>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════
+//  SENATOR TABLE
+// ═══════════════════════════════════════════════════════
+function buildSenatorTable() {
+  const tbl = document.getElementById('senatorTable');
+  tbl.innerHTML = `
+    <thead>
+      <tr>
+        <th>Región</th><th>Partido Ganador</th><th>Votos</th><th>% Votos Válidos</th><th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${REGIONES.map(r => `
+        <tr>
+          <td><span class="region-badge">${r.nombre}</span></td>
+          <td>${chip(r.senador.partido)} <span style="font-size:.82rem;margin-left:4px">${pMeta(r.senador.partido).label}</span></td>
+          <td style="text-align:right;font-weight:600;font-variant-numeric:tabular-nums">${fmt(r.senador.votos)}</td>
+          <td style="text-align:right;color:#6b7280">${r.senador.pct}%</td>
+          <td style="font-size:.75rem;color:#6b7280">Candidato no disponible en API</td>
+        </tr>
+      `).join('')}
+    </tbody>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════════════════
+buildOverviewCards();
+buildRegionDetails();
+buildOverviewChart();
+buildFullTable();
+buildSenatorTable();
+</script>
+</body>
+</html>
