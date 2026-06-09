@@ -233,13 +233,13 @@
 
     <!-- Roberto -->
     <div class="fw-char" id="fw-r" style="left:30%">
-      <img id="img-r" class="f-img" src="anim_frames/r_base.png" alt="Roberto">
+      <img id="img-r" class="f-img" src="borrego_frames/r_base.png" alt="Roberto">
       <div class="char-label">Roberto</div>
     </div>
 
     <!-- Keiko (sprites ya miran a la derecha) -->
     <div class="fw-char" id="fw-k" style="left:55%">
-      <img id="img-k" class="f-img" src="anim_frames/k_base.png" alt="Keiko">
+      <img id="img-k" class="f-img" src="borrego_frames/k_base.png" alt="Keiko">
       <div class="char-label">Keiko</div>
     </div>
 
@@ -292,42 +292,30 @@ let D=null,sort='votos';
 const fmt=n=>Number(n).toLocaleString('es-PE');
 const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 
-// ── Animación: personaje base → llama 1..N → repite ──
-// Todos los frames son canvas 200×200 transparente anclados al fondo
-const FRAMES_R=[
-  'anim_frames/r_base.png',   // Roberto normal
-  'anim_frames/r0.png',       // llama parada
-  'anim_frames/r1.png',       // trote
-  'anim_frames/r2.png',
-  'anim_frames/r3.png',
-  'anim_frames/r4.png'        // galope en llamas
-];
-const FRAMES_K=[
-  'anim_frames/k_base.png',   // Keiko normal
-  'anim_frames/k0.png',       // alpaca parada
-  'anim_frames/k1.png',
-  'anim_frames/k2.png',
-  'anim_frames/k3.png'        // alpaca al galope
-];
-let fR=0,fK=0;
+// ── Animación de personajes ──────────────────────────────────────────
+// Fase 1: personaje quieto 1.5s
+// Fase 2: loop infinito de 4 frames de borrego (nunca vuelve al base)
+const SEQ_R = ['borrego_frames/s0.png','borrego_frames/s1.png','borrego_frames/s2.png','borrego_frames/s3.png'];
+const SEQ_K = ['borrego_frames/k0.png','borrego_frames/k1.png','borrego_frames/k2.png','borrego_frames/k3.png'];
 
-function stepR(){
-  fR=(fR+1)%FRAMES_R.length;
-  const el=document.getElementById('img-r');
-  if(el)el.src=FRAMES_R[fR];
-  const spd=document.getElementById('fw-r').classList.contains('leader')?80:125;
-  // Frame base dura más (pausa antes de arrancar)
-  setTimeout(stepR, fR===0 ? spd*2.5 : spd);
+function startLoop(imgId, charId, frames){
+  let fi = 0;
+  function step(){
+    fi = (fi + 1) % frames.length;
+    const el = document.getElementById(imgId);
+    if(el) el.src = frames[fi];
+    const spd = document.getElementById(charId).classList.contains('leader') ? 110 : 160;
+    setTimeout(step, spd);
+  }
+  // Mostrar frame 0 del borrego inmediatamente, luego arrancar el loop
+  const el = document.getElementById(imgId);
+  if(el) el.src = frames[0];
+  setTimeout(step, document.getElementById(charId).classList.contains('leader') ? 110 : 160);
 }
-function stepK(){
-  fK=(fK+1)%FRAMES_K.length;
-  const el=document.getElementById('img-k');
-  if(el)el.src=FRAMES_K[fK];
-  const spd=document.getElementById('fw-k').classList.contains('leader')?80:125;
-  setTimeout(stepK, fK===0 ? spd*2.5 : spd);
-}
-setTimeout(stepR,80);
-setTimeout(stepK,80);
+
+// Tras 1.5s de quietud arrancar la animación de borregos
+setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 1500);
+setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 1500);
 
 function updateArena(r,k){
   const rP=+r.pct, kP=+k.pct, rLeads=rP>=kP;
