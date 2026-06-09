@@ -266,14 +266,14 @@
       <img src="Meta.png?v=1" alt="Meta">
     </div>
 
-    <!-- Roberto -->
-    <div class="fw-char" id="fw-r" style="left:30%">
+    <!-- Roberto — posición inicial de salida (centro-izquierda) -->
+    <div class="fw-char" id="fw-r" style="left:18%">
       <img id="img-r" class="f-img" src="borrego_frames/r_base.png" alt="Roberto">
       <div class="char-label">Roberto</div>
     </div>
 
-    <!-- Keiko (sprites ya miran a la derecha) -->
-    <div class="fw-char" id="fw-k" style="left:55%">
+    <!-- Keiko — posición inicial de salida (centro-derecha) -->
+    <div class="fw-char" id="fw-k" style="left:44%">
       <img id="img-k" class="f-img" src="borrego_frames/k_base.png" alt="Keiko">
       <div class="char-label">Keiko</div>
     </div>
@@ -369,37 +369,53 @@ function startLoop(imgId, charId, frames){
   setTimeout(step, document.getElementById(charId).classList.contains('leader') ? 110 : 160);
 }
 
-// Splash dura 3s + 0.7s fadeout = ~3.7s de pantalla tapada.
-// Personajes quietos visibles ~1.8s más → borregos arrancan a los 5.5s
+// Splash: 3s + 0.7s fadeout = ~3.7s tapado.
+// Personajes quietos en posición de salida ~1.8s → van a su lugar → borregos a los 5.5s
 setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 5500);
-setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 5500);;
+setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 5500);
 
-function updateArena(r,k){
-  const rP=+r.pct, kP=+k.pct, rLeads=rP>=kP;
+// Flag: primera vez que llega datos → esperar a que el splash desaparezca antes de mover
+let _positionReady = false;
+let _pendingArena  = null;
 
-  // Barra única
-  document.getElementById('sb-r').style.width = rP.toFixed(1)+'%';
-  document.getElementById('pct-r').textContent = rP.toFixed(2)+'%';
-  document.getElementById('pct-k').textContent = kP.toFixed(2)+'%';
+function applyPositions(rP, kP){
+  const rLeads = rP >= kP;
+  const diff   = Math.abs(rP - kP);
+  const gapFactor = Math.min(diff / 10, 1);
+  const leaderL  = (44 + 9  * gapFactor).toFixed(1);
+  const trailerL = (22 - 20 * gapFactor).toFixed(1);
 
-  // Posiciones de carrera (corridas a la izq. para dejar espacio a la Meta)
-  const diff=Math.abs(rP-kP);
-  const gapFactor=Math.min(diff/10,1);
-  const leaderL=(44+9*gapFactor).toFixed(1);   // antes 55+10 → ahora 44+9  (máx ~53%)
-  const trailerL=(22-20*gapFactor).toFixed(1); // antes 35-27 → ahora 22-20  (mín ~2%)
-
-  const fwR=document.getElementById('fw-r');
-  const fwK=document.getElementById('fw-k');
+  const fwR = document.getElementById('fw-r');
+  const fwK = document.getElementById('fw-k');
   if(rLeads){
-    fwR.style.left=leaderL+'%';  fwR.className='fw-char leader';
-    fwK.style.left=trailerL+'%'; fwK.className='fw-char trailer';
+    fwR.style.left = leaderL  + '%';  fwR.className = 'fw-char leader';
+    fwK.style.left = trailerL + '%';  fwK.className = 'fw-char trailer';
   } else {
-    fwK.style.left=leaderL+'%';  fwK.className='fw-char leader';
-    fwR.style.left=trailerL+'%'; fwR.className='fw-char trailer';
+    fwK.style.left = leaderL  + '%';  fwK.className = 'fw-char leader';
+    fwR.style.left = trailerL + '%';  fwR.className = 'fw-char trailer';
   }
-  // Guardar posición base del trailer para la animación de avance
-  window._trailerLeft  = parseFloat(trailerL);
-  window._leaderLeft   = parseFloat(leaderL);
+  window._trailerLeft = parseFloat(trailerL);
+  window._leaderLeft  = parseFloat(leaderL);
+}
+
+function updateArena(r, k){
+  const rP = +r.pct, kP = +k.pct;
+
+  // HUD: siempre actualiza inmediatamente
+  document.getElementById('sb-r').style.width  = rP.toFixed(1) + '%';
+  document.getElementById('pct-r').textContent = rP.toFixed(2) + '%';
+  document.getElementById('pct-k').textContent = kP.toFixed(2) + '%';
+
+  if(!_positionReady){
+    // Primera carga: esperar a que el splash haya desaparecido (≈4s) + 0.5s extra
+    _pendingArena = [rP, kP];
+    setTimeout(() => {
+      _positionReady = true;
+      if(_pendingArena) applyPositions(_pendingArena[0], _pendingArena[1]);
+    }, 4500);
+  } else {
+    applyPositions(rP, kP);
+  }
 }
 
 // ── Animación de avance del segundo puesto ────────────────────────────
@@ -438,12 +454,12 @@ function renderH2H(cands){
   const r=cands.find(c=>c.codigo===R)||{},k=cands.find(c=>c.codigo===K)||{};
   const rW=(r.votos||0)>(k.votos||0);
   const diff=Math.abs((r.votos||0)-(k.votos||0));
-  const dpt=Math.abs((+r.pct||0)-(+k.pct||0)).toFixed(2);
+  const dpt=Math.abs((+r.pct||0)-(+k.pct||0)).toFixed(3);
   document.getElementById('h2h').innerHTML=`
     <div class="ccard rc ${rW?'win':''}">
       <div class="ptag">Juntos por el Perú</div>
       <div class="cname">ROBERTO SÁNCHEZ<br>PALOMINO</div>
-      <div class="cpct">${fpt(r.pct,2)}</div>
+      <div class="cpct">${fpt(r.pct,3)}</div>
       <div class="cvotos">${fmt(r.votos)} votos</div>
       <div class="wtag">▲ VA GANANDO</div>
     </div>
@@ -455,7 +471,7 @@ function renderH2H(cands){
     <div class="ccard kc ${!rW?'win':''}">
       <div class="ptag">Fuerza Popular</div>
       <div class="cname">KEIKO FUJIMORI<br>HIGUCHI</div>
-      <div class="cpct">${fpt(k.pct,2)}</div>
+      <div class="cpct">${fpt(k.pct,3)}</div>
       <div class="cvotos">${fmt(k.votos)} votos</div>
       <div class="wtag">▲ VA GANANDO</div>
     </div>`;
