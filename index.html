@@ -39,40 +39,97 @@
     .actas-track{height:7px;background:var(--border);border-radius:4px;overflow:hidden}
     .actas-fill{height:100%;background:linear-gradient(90deg,var(--r2),var(--r));border-radius:4px;transition:width 1.2s ease}
 
-    /* ARENA */
+    /* ARENA — estilo carrera */
     .arena-wrap{width:100%;max-width:900px;margin:0 auto 20px;padding:0 14px}
-    .arena{position:relative;width:100%;height:215px;border-radius:14px;overflow:hidden;background:url('./bg_plaza.png') center 30%/cover no-repeat;border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
-    .arena::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(200,210,255,.15) 100%);pointer-events:none}
+    .arena{position:relative;width:100%;height:230px;border-radius:14px;overflow:hidden;background:url('./bg_plaza.png') center 30%/cover no-repeat;border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
+    .arena::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(180,200,255,.12) 100%);pointer-events:none}
 
-    .fw{position:absolute;bottom:0;display:flex;flex-direction:column;align-items:center;transition:left 2s cubic-bezier(.4,0,.2,1),right 2s cubic-bezier(.4,0,.2,1);z-index:10}
-    #fw-k{left:3%}
-    #fw-r{right:3%}
-    .f-lbl{font-size:.62rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:10px;margin-bottom:3px;border:1px solid}
-    #fw-k .f-lbl{background:rgba(200,74,0,.1);color:var(--k);border-color:rgba(200,74,0,.2)}
-    #fw-r .f-lbl{background:rgba(0,150,199,.1);color:var(--r);border-color:rgba(0,150,199,.2)}
-    .f-img{display:block;height:150px;width:auto;image-rendering:pixelated;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
-    #fw-r .f-img{transform:scaleX(-1)}
+    /* HUD de videojuego — parte superior del arena */
+    .arena-hud{
+      position:absolute;top:0;left:0;right:0;z-index:20;
+      display:flex;align-items:center;justify-content:center;gap:6px;
+      padding:6px 12px;
+      background:rgba(10,10,40,.60);
+      backdrop-filter:blur(4px);
+      font-family:'Courier New',monospace;
+    }
+    .hud-rank{
+      font-size:.7rem;font-weight:900;color:#ffd700;letter-spacing:1px;
+      background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);
+      border-radius:6px;padding:2px 7px;
+    }
+    .hud-name{font-size:.78rem;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+    .hud-name.r{color:#5dd8f8}.hud-name.k{color:#ffaa66}
+    .hud-sep{color:rgba(255,255,255,.3);font-size:.9rem}
+    .hud-lead{font-size:.72rem;color:#fff;font-weight:700}
+    .hud-pts{font-size:.65rem;color:rgba(255,255,255,.6);margin-left:2px}
+    .hud-arrow{font-size:.9rem;color:#ffd700;animation:pulse-arrow .6s ease-in-out infinite alternate}
+    @keyframes pulse-arrow{from{transform:translateX(0)}to{transform:translateX(4px)}}
 
-    .arena-mid{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:5;pointer-events:none}
-    .arena-vs{font-size:1.2rem;font-weight:900;color:rgba(255,255,255,.9);text-shadow:0 1px 6px rgba(0,0,0,.6);letter-spacing:2px}
-    .arena-diff{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.5);margin-top:2px}
+    /* Personajes — ambos usan left, corren hacia la derecha */
+    .fw{
+      position:absolute;bottom:0;
+      display:flex;flex-direction:column;align-items:center;
+      transition:left 2s cubic-bezier(.25,.8,.25,1);
+      z-index:10;
+    }
+    /* Keiko mira a la derecha (flip) · Roberto mira a la derecha (natural) */
+    .f-img{display:block;height:148px;width:auto;image-rendering:pixelated}
+    /* Keiko necesita flip para mirar a la derecha */
+    #fw-k .f-img{transform:scaleX(-1)}
+    /* Roberto ya mira a la derecha — sin flip */
 
-    /* Fighter animations */
-    @keyframes bob{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px)}60%{transform:translateY(-10px)}}
-    @keyframes bob-flip{0%,100%{transform:scaleX(-1) translateY(0)}40%{transform:scaleX(-1) translateY(-14px)}60%{transform:scaleX(-1) translateY(-10px)}}
-    @keyframes shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-4px) rotate(-2deg)}75%{transform:translateX(4px) rotate(2deg)}}
-    @keyframes shake-flip{0%,100%{transform:scaleX(-1) translateX(0)}25%{transform:scaleX(-1) translateX(-4px)}75%{transform:scaleX(-1) translateX(4px)}}
+    /* Etiqueta de posición */
+    .f-pos{
+      font-family:'Courier New',monospace;
+      font-size:.68rem;font-weight:900;letter-spacing:.5px;
+      padding:1px 8px;border-radius:8px;margin-bottom:2px;
+      border:1px solid;
+    }
+    .f-pos.p1{background:rgba(255,215,0,.25);color:#c9a000;border-color:rgba(255,215,0,.5)}
+    .f-pos.p2{background:rgba(150,150,200,.15);color:#7070a0;border-color:rgba(150,150,200,.3)}
+    .f-lbl{font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.5)}
+
+    /* Animaciones de carrera — siempre corriendo */
+    @keyframes run{
+      0%  {transform:scaleX(-1) translateY(0)   rotate(0deg)}
+      20% {transform:scaleX(-1) translateY(-11px) rotate(-3deg)}
+      50% {transform:scaleX(-1) translateY(-14px) rotate(0deg)}
+      80% {transform:scaleX(-1) translateY(-11px) rotate(3deg)}
+      100%{transform:scaleX(-1) translateY(0)   rotate(0deg)}
+    }
+    @keyframes run-r{
+      0%  {transform:translateY(0)   rotate(0deg)}
+      20% {transform:translateY(-11px) rotate(3deg)}
+      50% {transform:translateY(-14px) rotate(0deg)}
+      80% {transform:translateY(-11px) rotate(-3deg)}
+      100%{transform:translateY(0)   rotate(0deg)}
+    }
+    /* Polvo/velocidad para el que va primero */
+    @keyframes dust{
+      0%{opacity:.7;transform:translateX(0) scale(1)}
+      100%{opacity:0;transform:translateX(-18px) scale(1.6)}
+    }
     @keyframes star-pop{0%{opacity:0;transform:translate(0,0) scale(.5)}50%{opacity:1;transform:translate(var(--sx),var(--sy)) scale(1)}100%{opacity:0;transform:translate(calc(var(--sx)*1.8),calc(var(--sy)*1.8)) scale(0)}}
 
-    .fw.winner .f-img{filter:drop-shadow(0 0 14px rgba(255,215,0,.75)) drop-shadow(0 4px 8px rgba(0,0,0,.3))}
-    .fw.loser  .f-img{filter:brightness(.6) saturate(.4) drop-shadow(0 4px 8px rgba(0,0,0,.3))}
-    #fw-k.winner .f-img{animation:bob      .65s ease-in-out infinite}
-    #fw-r.winner .f-img{animation:bob-flip .65s ease-in-out infinite}
-    #fw-k.loser  .f-img{animation:shake      .35s ease-in-out infinite}
-    #fw-r.loser  .f-img{animation:shake-flip .35s ease-in-out infinite}
+    /* Siempre corren */
+    #fw-k .f-img{animation:run   .45s ease-in-out infinite}
+    #fw-r .f-img{animation:run-r .45s ease-in-out infinite}
 
-    .stars{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:60px;height:50px;pointer-events:none}
-    .sp{position:absolute;top:50%;left:50%;width:8px;height:8px;background:gold;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:star-pop 1.2s ease-out infinite}
+    /* 1° lugar: más velocidad, brillo */
+    .fw.p1 .f-img{
+      animation-duration:.38s !important;
+      filter:drop-shadow(0 0 10px rgba(255,215,0,.6)) drop-shadow(0 4px 6px rgba(0,0,0,.3));
+    }
+    /* 2° lugar: ligeramente más lento, atenuado */
+    .fw.p2 .f-img{
+      animation-duration:.5s !important;
+      filter:brightness(.8) saturate(.7) drop-shadow(0 3px 6px rgba(0,0,0,.3));
+    }
+
+    /* Estrellas / destellos del líder */
+    .stars{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:50px;height:40px;pointer-events:none}
+    .sp{position:absolute;top:50%;left:50%;width:7px;height:7px;background:gold;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:star-pop 1s ease-out infinite}
 
     /* MAIN */
     main{max-width:900px;margin:0 auto;padding:18px 14px 48px}
@@ -175,32 +232,43 @@
   </div>
 </header>
 
-<!-- ARENA -->
+<!-- ARENA — CARRERA -->
 <div class="arena-wrap">
   <div class="arena">
 
-    <div class="fw" id="fw-k">
-      <div class="stars" id="sk" style="display:none">
-        <div class="sp" style="--sx:-16px;--sy:-20px;animation-delay:0s"></div>
-        <div class="sp" style="--sx:18px;--sy:-24px;animation-delay:.4s"></div>
-        <div class="sp" style="--sx:-6px;--sy:-30px;animation-delay:.8s"></div>
+    <!-- HUD videojuego -->
+    <div class="arena-hud" id="arena-hud">
+      <span class="hud-rank">1°</span>
+      <span class="hud-name r" id="hud-leader">ROBERTO</span>
+      <span class="hud-arrow">▶▶</span>
+      <span class="hud-lead" id="hud-lead">+…</span>
+      <span class="hud-pts"  id="hud-pts"></span>
+      <span class="hud-sep">|</span>
+      <span class="hud-rank" style="background:rgba(150,150,200,.12);border-color:rgba(150,150,200,.3);color:#aaa">2°</span>
+      <span class="hud-name k" id="hud-trailer">KEIKO</span>
+    </div>
+
+    <!-- Personaje Keiko -->
+    <div class="fw p1" id="fw-k" style="left:20%">
+      <div class="stars" id="sk">
+        <div class="sp" style="--sx:-14px;--sy:-18px;animation-delay:0s"></div>
+        <div class="sp" style="--sx:16px;--sy:-22px;animation-delay:.35s"></div>
+        <div class="sp" style="--sx:-4px;--sy:-28px;animation-delay:.7s"></div>
       </div>
-      <div class="f-lbl">Keiko</div>
+      <div class="f-pos p1" id="pos-k">🥇 1°</div>
+      <div class="f-lbl" id="lbl-k">KEIKO</div>
       <img src="./sprite_keiko_t.png" class="f-img" alt="Keiko">
     </div>
 
-    <div class="arena-mid">
-      <div class="arena-vs">VS</div>
-      <div class="arena-diff" id="arena-diff"></div>
-    </div>
-
-    <div class="fw" id="fw-r">
-      <div class="stars" id="sr" style="display:none">
-        <div class="sp" style="--sx:-16px;--sy:-20px;animation-delay:0s"></div>
-        <div class="sp" style="--sx:18px;--sy:-24px;animation-delay:.4s"></div>
-        <div class="sp" style="--sx:-6px;--sy:-30px;animation-delay:.8s"></div>
+    <!-- Personaje Roberto -->
+    <div class="fw p1" id="fw-r" style="left:55%">
+      <div class="stars" id="sr">
+        <div class="sp" style="--sx:-14px;--sy:-18px;animation-delay:0s"></div>
+        <div class="sp" style="--sx:16px;--sy:-22px;animation-delay:.35s"></div>
+        <div class="sp" style="--sx:-4px;--sy:-28px;animation-delay:.7s"></div>
       </div>
-      <div class="f-lbl">Roberto</div>
+      <div class="f-pos p1" id="pos-r">🥇 1°</div>
+      <div class="f-lbl" id="lbl-r">ROBERTO</div>
       <img src="./sprite_roberto_t.png" class="f-img" alt="Roberto">
     </div>
 
@@ -253,21 +321,55 @@ const fmt=n=>Number(n).toLocaleString('es-PE');
 const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 
 function updateArena(r,k){
-  const rP=+r.pct,kP=+k.pct,rWin=rP>kP;
+  const rP=+r.pct,kP=+k.pct,rLeads=rP>kP;
   const margin=Math.abs(rP-kP);
-  const adv=Math.min(margin*4,22);
-  const fwK=document.getElementById('fw-k'),fwR=document.getElementById('fw-r');
-  const sK=document.getElementById('sk'),sR=document.getElementById('sr');
-  if(rWin){
-    fwR.className='fw winner';fwK.className='fw loser';
-    fwR.style.right=Math.max(2,12-adv)+'%';fwK.style.left='3%';
-    sR.style.display='block';sK.style.display='none';
-  }else{
-    fwK.className='fw winner';fwR.className='fw loser';
-    fwK.style.left=Math.min(28,3+adv)+'%';fwR.style.right='3%';
-    sK.style.display='block';sR.style.display='none';
+  const diff=Math.abs(r.votos-k.votos);
+
+  // Separación visual según margen (máx 30% de separación)
+  const gap=Math.min(Math.max(margin*3.5,8),30);
+
+  // El líder va delante (más a la derecha), el 2° va detrás (más a la izquierda)
+  // Centro del arena ≈ 50%; líder a la derecha, trailer a la izquierda
+  const posLead  = Math.min(52+gap/2, 62);  // líder: 52–62%
+  const posTrail = Math.max(10, 20-gap/3);  // trailer: 10–20%
+
+  const fwR=document.getElementById('fw-r');
+  const fwK=document.getElementById('fw-k');
+
+  if(rLeads){
+    // Roberto 1°, Keiko 2°
+    fwR.className='fw p1'; fwR.style.left=posLead+'%';
+    fwK.className='fw p2'; fwK.style.left=posTrail+'%';
+    document.getElementById('pos-r').textContent='🥇 1°';
+    document.getElementById('pos-k').textContent='🥈 2°';
+    document.getElementById('pos-r').className='f-pos p1';
+    document.getElementById('pos-k').className='f-pos p2';
+    document.getElementById('sk').style.display='none';
+    document.getElementById('sr').style.display='block';
+    // HUD
+    document.getElementById('hud-leader').textContent='ROBERTO';
+    document.getElementById('hud-leader').className='hud-name r';
+    document.getElementById('hud-trailer').textContent='KEIKO';
+    document.getElementById('hud-trailer').className='hud-name k';
+  } else {
+    // Keiko 1°, Roberto 2°
+    fwK.className='fw p1'; fwK.style.left=posLead+'%';
+    fwR.className='fw p2'; fwR.style.left=posTrail+'%';
+    document.getElementById('pos-k').textContent='🥇 1°';
+    document.getElementById('pos-r').textContent='🥈 2°';
+    document.getElementById('pos-k').className='f-pos p1';
+    document.getElementById('pos-r').className='f-pos p2';
+    document.getElementById('sr').style.display='none';
+    document.getElementById('sk').style.display='block';
+    // HUD
+    document.getElementById('hud-leader').textContent='KEIKO';
+    document.getElementById('hud-leader').className='hud-name k';
+    document.getElementById('hud-trailer').textContent='ROBERTO';
+    document.getElementById('hud-trailer').className='hud-name r';
   }
-  document.getElementById('arena-diff').textContent='+'+fmt(Math.abs(r.votos-k.votos))+' votos';
+
+  document.getElementById('hud-lead').textContent='+'+fmt(diff)+' votos';
+  document.getElementById('hud-pts').textContent='(+'+margin.toFixed(2)+'pts)';
 }
 
 function renderH2H(cands){
