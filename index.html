@@ -2,6 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Segunda Vuelta Perú 2026 — Resultados en Vivo</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
@@ -41,7 +44,7 @@
 
     /* ARENA — estilo carrera */
     .arena-wrap{width:100%;max-width:900px;margin:0 auto 20px;padding:0 14px}
-    .arena{position:relative;width:100%;height:230px;border-radius:14px;overflow:hidden;background:url('./bg_plaza.png') center 30%/cover no-repeat;border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
+    .arena{position:relative;width:100%;height:230px;border-radius:14px;overflow:hidden;background:url('./bg_plaza.png?v=3') center 30%/cover no-repeat;border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
     .arena::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(180,200,255,.12) 100%);pointer-events:none}
 
     /* HUD de videojuego — parte superior del arena */
@@ -97,7 +100,7 @@
     /* Mostrar a 88×148px → sheet display: 528×148px */
     .spr-k{
       width:88px; height:148px;
-      background-image:url(run_keiko_r.png);
+      background-image:url(run_keiko_r.png?v=3);
       background-size:528px 148px;
       animation:sprite-k .48s steps(6) infinite;
     }
@@ -109,7 +112,7 @@
     /* Mostrar a 112×130px → sheet display: 672×130px */
     .spr-r{
       width:112px; height:130px;
-      background-image:url(run_roberto.png);
+      background-image:url(run_roberto.png?v=3);
       background-size:672px 130px;
       animation:sprite-r .48s steps(6) infinite;
     }
