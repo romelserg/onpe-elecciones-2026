@@ -84,9 +84,13 @@
       display:flex;flex-direction:column;align-items:center;
       transition:left 1.8s cubic-bezier(.25,.46,.45,.94);
     }
-    .f-img{display:block;image-rendering:pixelated;image-rendering:-webkit-optimize-contrast;}
-    #img-r{height:130px;width:auto}
-    #img-k{height:140px;width:auto}
+    /* Canvas fijo 200x200 → se muestra a 160x160; sprite anclado al fondo dentro del canvas */
+    .f-img{
+      display:block;
+      width:160px;height:160px;
+      image-rendering:pixelated;
+      image-rendering:-webkit-optimize-contrast;
+    }
     .char-label{
       font-size:.58rem;font-weight:800;color:#fff;
       text-shadow:0 1px 4px rgba(0,0,0,.9);
@@ -104,8 +108,7 @@
     }
     @media(max-width:560px){
       .arena{height:200px}
-      #img-r{height:88px}
-      #img-k{height:96px}
+      .f-img{width:110px;height:110px}
     }
 
     /* MAIN */
@@ -230,13 +233,13 @@
 
     <!-- Roberto -->
     <div class="fw-char" id="fw-r" style="left:30%">
-      <img id="img-r" class="f-img" src="sprite_roberto_t.png" alt="Roberto">
+      <img id="img-r" class="f-img" src="anim_frames/r_base.png" alt="Roberto">
       <div class="char-label">Roberto</div>
     </div>
 
     <!-- Keiko (sprites ya miran a la derecha) -->
     <div class="fw-char" id="fw-k" style="left:55%">
-      <img id="img-k" class="f-img" src="sprite_keiko_flip.png" alt="Keiko">
+      <img id="img-k" class="f-img" src="anim_frames/k_base.png" alt="Keiko">
       <div class="char-label">Keiko</div>
     </div>
 
@@ -289,28 +292,42 @@ let D=null,sort='votos';
 const fmt=n=>Number(n).toLocaleString('es-PE');
 const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 
-// ── Animación de carrera: base → frame1 → frame2 → frame3 → frame4 → frame5 → repite ──
-const FRAMES_R=['sprite_roberto_t.png','run_frames/s0.png','run_frames/s1.png','run_frames/s2.png','run_frames/s3.png','run_frames/s4.png'];
-const FRAMES_K=['sprite_keiko_flip.png','run_frames/k0.png','run_frames/k1.png','run_frames/k2.png','run_frames/k3.png','run_frames/k4.png'];
+// ── Animación: personaje base → llama 1..N → repite ──
+// Todos los frames son canvas 200×200 transparente anclados al fondo
+const FRAMES_R=[
+  'anim_frames/r_base.png',   // Roberto normal
+  'anim_frames/r0.png',       // llama parada
+  'anim_frames/r1.png',       // trote
+  'anim_frames/r2.png',
+  'anim_frames/r3.png',
+  'anim_frames/r4.png'        // galope en llamas
+];
+const FRAMES_K=[
+  'anim_frames/k_base.png',   // Keiko normal
+  'anim_frames/k0.png',       // alpaca parada
+  'anim_frames/k1.png',
+  'anim_frames/k2.png',
+  'anim_frames/k3.png'        // alpaca al galope
+];
 let fR=0,fK=0;
 
 function stepR(){
   fR=(fR+1)%FRAMES_R.length;
   const el=document.getElementById('img-r');
   if(el)el.src=FRAMES_R[fR];
-  // Frame base (0) dura el doble para dar efecto de arranque
-  const base=document.getElementById('fw-r').classList.contains('leader')?72:115;
-  setTimeout(stepR, fR===0 ? base*2 : base);
+  const spd=document.getElementById('fw-r').classList.contains('leader')?80:125;
+  // Frame base dura más (pausa antes de arrancar)
+  setTimeout(stepR, fR===0 ? spd*2.5 : spd);
 }
 function stepK(){
   fK=(fK+1)%FRAMES_K.length;
   const el=document.getElementById('img-k');
   if(el)el.src=FRAMES_K[fK];
-  const base=document.getElementById('fw-k').classList.contains('leader')?72:115;
-  setTimeout(stepK, fK===0 ? base*2 : base);
+  const spd=document.getElementById('fw-k').classList.contains('leader')?80:125;
+  setTimeout(stepK, fK===0 ? spd*2.5 : spd);
 }
-setTimeout(stepR,72);
-setTimeout(stepK,72);
+setTimeout(stepR,80);
+setTimeout(stepK,80);
 
 function updateArena(r,k){
   const rP=+r.pct, kP=+k.pct, rLeads=rP>=kP;
