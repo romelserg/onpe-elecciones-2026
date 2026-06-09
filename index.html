@@ -298,6 +298,12 @@
   <div class="ext-note">⚠️ <div>Las actas del exterior se cuentan al final. Este bloque puede cambiar significativamente cuando se consoliden todos los votos.</div></div>
   <div class="ext-grid" id="ext-grid"></div>
 
+  <!-- Sección: zonas con conteo incompleto -->
+  <div id="pendientes-section" style="display:none;margin-bottom:20px">
+    <div class="stitle" style="margin-top:4px">⏳ Zonas con conteo incompleto <span id="pend-count" style="font-weight:400;font-size:.7rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)"></span></div>
+    <div id="pendientes-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px"></div>
+  </div>
+
   <div class="stitle" style="margin-top:4px">🗺️ Resultados por Departamento</div>
   <div class="tcard">
     <div class="tctrl">
@@ -502,6 +508,39 @@ function renderDepts(depts){
   }).join('');
 }
 
+function renderPendientes(depts){
+  const pending = depts
+    .filter(d => d.pct_actas < 95)
+    .sort((a,b) => a.pct_actas - b.pct_actas); // los más incompletos primero
+  const sec  = document.getElementById('pendientes-section');
+  const grid = document.getElementById('pendientes-grid');
+  const cnt  = document.getElementById('pend-count');
+  if(!pending.length){ sec.style.display='none'; return; }
+  sec.style.display='';
+  cnt.textContent = pending.length + (pending.length===1?' zona':' zonas');
+  grid.innerHTML = pending.map(d=>{
+    const r=d.candidatos.find(c=>c.codigo===R),k=d.candidatos.find(c=>c.codigo===K);
+    const rP=r?.pct||0, kP=k?.pct||0;
+    const rW=(r?.votos||0)>=(k?.votos||0);
+    const winColor=rW?'var(--r)':'var(--k)', winName=rW?'Roberto':'Keiko';
+    const pct=d.pct_actas;
+    const barColor = pct<50 ? '#e05' : pct<75 ? '#f80' : '#f5c800';
+    return `<div class="ecard" style="border-left:3px solid ${barColor}">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <div class="erg">${d.nombre}</div>
+        <span style="font-size:.68rem;font-weight:900;color:${barColor}">${pct}%</span>
+      </div>
+      <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:6px">
+        <div style="height:100%;width:${pct}%;background:${barColor};border-radius:2px;transition:width 1s"></div>
+      </div>
+      ${rP||kP ? `<div style="font-size:.68rem;font-weight:800;color:${winColor};margin-bottom:2px">${winName} va ganando</div>
+      <div class="ecd er"><span class="en">Roberto</span><span class="ev" style="color:var(--r);font-weight:700">${rP.toFixed(1)}%</span></div>
+      <div class="ecd ek"><span class="en">Keiko</span><span class="ev" style="color:var(--k);font-weight:700">${kP.toFixed(1)}%</span></div>`
+      :'<div class="nd">Sin votos aún</div>'}
+    </div>`;
+  }).join('');
+}
+
 function setSort(m){
   sort=m;
   document.querySelectorAll('.sbtn').forEach(b=>b.classList.toggle('active',b.dataset.s===m));
@@ -522,6 +561,7 @@ function renderAll(d){
   renderH2H(candidatos);
   updateArena(r,k);
   renderExterior(exterior);
+  renderPendientes(por_departamento);
   renderDepts(por_departamento);
   document.getElementById('loading').style.display='none';
 }
