@@ -1,0 +1,62 @@
+# ══════════════════════════════════════════════════════════════
+# INSTRUCCIONES: Sube este archivo a tu repo en:
+#   .github/workflows/update.yml
+#
+# Qué hace:
+#   Cada 10 minutos, GitHub ejecuta el scraper de ONPE,
+#   genera data.json y hace commit automático.
+#   GitHub Pages sirve el JSON actualizado al dashboard.
+# ══════════════════════════════════════════════════════════════
+
+name: "🗳️ Actualizar datos ONPE"
+
+on:
+  schedule:
+    # Cada 10 minutos (mínimo permitido por GitHub Actions)
+    - cron: "*/10 * * * *"
+  # Permite correrlo manualmente desde la pestaña "Actions"
+  workflow_dispatch:
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+
+    steps:
+      # 1) Checkout del repo
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # 2) Python 3.11
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: onpe/requirements.txt
+
+      # 3) Dependencias
+      - name: Install dependencies
+        run: pip install -r onpe/requirements.txt
+
+      # 4) Scraping → SQLite
+      - name: Scrape ONPE
+        run: python onpe/main.py --db onpe/onpe_elecciones_2026.db
+        continue-on-error: true   # si falla CF, no rompe el workflow
+
+      # 5) Generar data.json
+      - name: Generate data.json
+        run: python onpe/generate_data.py --db onpe/onpe_elecciones_2026.db --out data.json
+
+      # 6) Commit + push si hubo cambios
+      - name: Commit data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --staged --quiet && echo "Sin cambios" || (
+            git commit -m "🗳️ Update data.json · $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          )
