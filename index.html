@@ -7,710 +7,381 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
     :root {
-      --roberto: #4cc9f0;
-      --roberto-dark: #0096c7;
-      --keiko: #ff6b35;
-      --keiko-dark: #d84315;
-      --bg: #0d0d1a;
-      --card: #12122a;
-      --card2: #1a1a35;
-      --border: #2a2a50;
-      --text: #e0e0ff;
-      --text-muted: #8888bb;
-      --gold: #ffd700;
+      --bg:      #f3f5ff;
+      --card:    #ffffff;
+      --card2:   #eef0fb;
+      --border:  #dce2f5;
+      --text:    #1a1a4e;
+      --muted:   #7070a0;
+      --r:       #0096c7;
+      --r2:      #006a96;
+      --k:       #c84a00;
+      --k2:      #962300;
+      --gold:    #b8860b;
+      --shadow:  rgba(100,110,200,0.10);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-    /* ── HEADER ── */
-    header {
-      background: linear-gradient(135deg, #0a0a1e 0%, #1a1a35 100%);
-      border-bottom: 2px solid var(--border);
-      padding: 18px 20px 14px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: clamp(1.3rem, 4vw, 2.2rem);
-      font-weight: 800;
-      letter-spacing: 1px;
-      background: linear-gradient(90deg, var(--roberto) 0%, #ffffff 50%, var(--keiko) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    header .subtitle {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-top: 4px;
-    }
-    header .update-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-    }
-    .badge {
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 4px 14px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-    .badge.live {
-      border-color: #4caf50;
-      color: #4caf50;
-    }
-    .badge.live::before {
-      content: "● ";
-      animation: blink 1.5s infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    /* HEADER */
+    header{background:linear-gradient(160deg,#e8ecff 0%,#f5f0ff 100%);border-bottom:2px solid var(--border);padding:16px 20px 12px;text-align:center;box-shadow:0 2px 12px var(--shadow)}
+    header h1{font-size:clamp(1.3rem,4vw,2.1rem);font-weight:900;letter-spacing:1px;color:var(--text)}
+    .flag{font-size:1.3em;margin:0 5px}
+    .author{font-size:.95rem;font-weight:700;color:var(--text);margin-top:5px}
+    .handle{font-size:.75rem;color:var(--muted);margin-top:2px}
+    .update-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+    .badge{background:#fff;border:1px solid var(--border);border-radius:20px;padding:3px 11px;font-size:.73rem;color:var(--muted);box-shadow:0 1px 3px var(--shadow)}
+    .badge.live{border-color:#1b7a35;color:#1b7a35;font-weight:700}
+    .badge.live::before{content:"● ";animation:blink 1.5s infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    .actas-bar{max-width:580px;margin:9px auto 0;padding:0 12px}
+    .actas-bar-labels{display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:3px}
+    .actas-track{height:7px;background:var(--border);border-radius:4px;overflow:hidden}
+    .actas-fill{height:100%;background:linear-gradient(90deg,var(--r2),var(--r));border-radius:4px;transition:width 1.2s ease}
 
-    /* ── PROGRESS BAR ── */
-    .actas-bar {
-      max-width: 700px;
-      margin: 12px auto 0;
-      padding: 0 20px;
-    }
-    .actas-bar-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-    .actas-bar-track {
-      height: 8px;
-      background: var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .actas-bar-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--roberto-dark), var(--roberto));
-      border-radius: 4px;
-      transition: width 1s ease;
-    }
+    /* ARENA */
+    .arena-wrap{width:100%;max-width:900px;margin:0 auto 20px;padding:0 14px}
+    .arena{position:relative;width:100%;height:215px;border-radius:14px;overflow:hidden;background:url('./bg_plaza.png') center 30%/cover no-repeat;border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
+    .arena::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(200,210,255,.15) 100%);pointer-events:none}
 
-    /* ── MAIN ── */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
-    }
+    .fw{position:absolute;bottom:0;display:flex;flex-direction:column;align-items:center;transition:left 2s cubic-bezier(.4,0,.2,1),right 2s cubic-bezier(.4,0,.2,1);z-index:10}
+    #fw-k{left:3%}
+    #fw-r{right:3%}
+    .f-lbl{font-size:.62rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 9px;border-radius:10px;margin-bottom:3px;border:1px solid}
+    #fw-k .f-lbl{background:rgba(200,74,0,.1);color:var(--k);border-color:rgba(200,74,0,.2)}
+    #fw-r .f-lbl{background:rgba(0,150,199,.1);color:var(--r);border-color:rgba(0,150,199,.2)}
+    .f-img{display:block;height:150px;width:auto;image-rendering:pixelated;filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
+    #fw-r .f-img{transform:scaleX(-1)}
 
-    /* ── HEAD TO HEAD ── */
-    .h2h-section {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-    .candidate-card {
-      background: var(--card);
-      border: 2px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .candidate-card.roberto { border-color: var(--roberto); }
-    .candidate-card.keiko   { border-color: var(--keiko); }
-    .candidate-card.winner  { box-shadow: 0 0 24px rgba(76,201,240,0.25); }
-    .candidate-card.winner.keiko { box-shadow: 0 0 24px rgba(255,107,53,0.25); }
-    .candidate-card .party-tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 3px 10px;
-      border-radius: 12px;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-    .candidate-card.roberto .party-tag { background: rgba(76,201,240,0.15); color: var(--roberto); }
-    .candidate-card.keiko   .party-tag { background: rgba(255,107,53,0.15);  color: var(--keiko); }
-    .candidate-card .cand-name {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      font-weight: 700;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-    .candidate-card .cand-pct {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -1px;
-    }
-    .candidate-card.roberto .cand-pct { color: var(--roberto); }
-    .candidate-card.keiko   .cand-pct { color: var(--keiko); }
-    .candidate-card .cand-votos {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-    .candidate-card .winner-badge {
-      display: none;
-      margin-top: 10px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 1px;
-    }
-    .candidate-card.winner .winner-badge { display: block; }
+    .arena-mid{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:5;pointer-events:none}
+    .arena-vs{font-size:1.2rem;font-weight:900;color:rgba(255,255,255,.9);text-shadow:0 1px 6px rgba(0,0,0,.6);letter-spacing:2px}
+    .arena-diff{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.5);margin-top:2px}
 
-    /* Middle diff panel */
-    .diff-panel {
-      text-align: center;
-      min-width: 100px;
-    }
-    .diff-panel .diff-label { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 2px; }
-    .diff-panel .diff-votes {
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      font-weight: 900;
-      color: var(--gold);
-      white-space: nowrap;
-    }
-    .diff-panel .diff-sub { font-size: 0.65rem; color: var(--text-muted); margin-top: 2px; }
+    /* Fighter animations */
+    @keyframes bob{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px)}60%{transform:translateY(-10px)}}
+    @keyframes bob-flip{0%,100%{transform:scaleX(-1) translateY(0)}40%{transform:scaleX(-1) translateY(-14px)}60%{transform:scaleX(-1) translateY(-10px)}}
+    @keyframes shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-4px) rotate(-2deg)}75%{transform:translateX(4px) rotate(2deg)}}
+    @keyframes shake-flip{0%,100%{transform:scaleX(-1) translateX(0)}25%{transform:scaleX(-1) translateX(-4px)}75%{transform:scaleX(-1) translateX(4px)}}
+    @keyframes star-pop{0%{opacity:0;transform:translate(0,0) scale(.5)}50%{opacity:1;transform:translate(var(--sx),var(--sy)) scale(1)}100%{opacity:0;transform:translate(calc(var(--sx)*1.8),calc(var(--sy)*1.8)) scale(0)}}
 
-    /* ── VOTE BAR ── */
-    .vote-bar-section {
-      margin-bottom: 28px;
-    }
-    .vote-bar-track {
-      height: 32px;
-      border-radius: 16px;
-      overflow: hidden;
-      display: flex;
-    }
-    .vote-bar-left  { background: var(--roberto); transition: width 1s ease; display: flex; align-items: center; padding-left: 12px; font-size: 0.85rem; font-weight: 700; }
-    .vote-bar-right { background: var(--keiko);   transition: width 1s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 12px; font-size: 0.85rem; font-weight: 700; flex: 1; }
-    .vote-bar-labels { display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+    .fw.winner .f-img{filter:drop-shadow(0 0 14px rgba(255,215,0,.75)) drop-shadow(0 4px 8px rgba(0,0,0,.3))}
+    .fw.loser  .f-img{filter:brightness(.6) saturate(.4) drop-shadow(0 4px 8px rgba(0,0,0,.3))}
+    #fw-k.winner .f-img{animation:bob      .65s ease-in-out infinite}
+    #fw-r.winner .f-img{animation:bob-flip .65s ease-in-out infinite}
+    #fw-k.loser  .f-img{animation:shake      .35s ease-in-out infinite}
+    #fw-r.loser  .f-img{animation:shake-flip .35s ease-in-out infinite}
 
-    /* ── SECTION HEADERS ── */
-    .section-title {
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .section-title .icon { font-size: 1.2rem; }
+    .stars{position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:60px;height:50px;pointer-events:none}
+    .sp{position:absolute;top:50%;left:50%;width:8px;height:8px;background:gold;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:star-pop 1.2s ease-out infinite}
 
-    /* ── DEPARTMENT TABLE ── */
-    .dept-table-wrapper {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 28px;
-    }
-    .dept-controls {
-      padding: 12px 16px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      border-bottom: 1px solid var(--border);
-      background: var(--card2);
-    }
-    .sort-btn {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .sort-btn:hover { border-color: var(--roberto); color: var(--roberto); }
-    .sort-btn.active { background: var(--roberto); border-color: var(--roberto); color: #000; font-weight: 700; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-    }
-    th {
-      background: var(--card2);
-      color: var(--text-muted);
-      font-weight: 600;
-      padding: 10px 12px;
-      text-align: left;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: var(--card2); }
-    .dept-name { font-weight: 600; }
-    .dept-winner { font-weight: 700; }
-    .dept-winner.roberto { color: var(--roberto); }
-    .dept-winner.keiko   { color: var(--keiko); }
-    .dept-bar {
-      height: 8px;
-      border-radius: 4px;
-      overflow: hidden;
-      display: flex;
-      min-width: 80px;
-    }
-    .dept-bar-r { background: var(--roberto); }
-    .dept-bar-k { background: var(--keiko); }
-    .pct-chip {
-      font-size: 0.7rem;
-      padding: 2px 6px;
-      border-radius: 10px;
-      font-weight: 700;
-    }
-    .pct-chip.roberto { background: rgba(76,201,240,0.15); color: var(--roberto); }
-    .pct-chip.keiko   { background: rgba(255,107,53,0.15);  color: var(--keiko); }
-    .actas-pct {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .actas-low { color: #f39c12; }
+    /* MAIN */
+    main{max-width:900px;margin:0 auto;padding:18px 14px 48px}
 
-    /* ── EXTERIOR SECTION ── */
-    .exterior-section {
-      margin-bottom: 28px;
-    }
-    .exterior-note {
-      background: rgba(243,156,18,0.08);
-      border: 1px solid rgba(243,156,18,0.3);
-      border-radius: 10px;
-      padding: 12px 16px;
-      font-size: 0.82rem;
-      color: #f39c12;
-      margin-bottom: 14px;
-      display: flex;
-      gap: 10px;
-    }
-    .exterior-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 12px;
-    }
-    .exterior-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 14px;
-    }
-    .exterior-card .ext-name {
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-    .exterior-card .ext-actas {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .ext-mini-bar {
-      height: 6px;
-      border-radius: 3px;
-      background: var(--border);
-      overflow: hidden;
-      display: flex;
-      margin-bottom: 6px;
-    }
-    .ext-mini-bar-r { background: var(--roberto); }
-    .ext-mini-bar-k { background: var(--keiko); }
-    .ext-cand {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.73rem;
-      margin-top: 3px;
-    }
-    .ext-cand .ext-name-short { color: var(--text-muted); }
-    .ext-cand.roberto .ext-pct { color: var(--roberto); font-weight: 700; }
-    .ext-cand.keiko   .ext-pct { color: var(--keiko);   font-weight: 700; }
-    .no-data { color: var(--text-muted); font-size: 0.72rem; font-style: italic; }
+    /* H2H */
+    .h2h{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin-bottom:20px}
+    .ccard{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:16px;text-align:center;box-shadow:0 2px 10px var(--shadow)}
+    .rc{border-color:#b8dff0}.kc{border-color:#f5ccb0}
+    .rc.win{box-shadow:0 4px 18px rgba(0,150,199,.18)}.kc.win{box-shadow:0 4px 18px rgba(200,74,0,.18)}
+    .ptag{font-size:.63rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 10px;border-radius:10px;display:inline-block;margin-bottom:7px}
+    .rc .ptag{background:#d4eef8;color:var(--r2)}.kc .ptag{background:#fde8d5;color:var(--k2)}
+    .cname{font-size:clamp(.78rem,2.2vw,.98rem);font-weight:700;line-height:1.3;margin-bottom:5px}
+    .cpct{font-size:clamp(2.2rem,5.5vw,3.4rem);font-weight:900;line-height:1;letter-spacing:-1px}
+    .rc .cpct{color:var(--r)}.kc .cpct{color:var(--k)}
+    .cvotos{font-size:.8rem;color:var(--muted);margin-top:3px}
+    .wtag{display:none;font-size:.66rem;font-weight:800;color:var(--gold);letter-spacing:1px;margin-top:7px;text-transform:uppercase}
+    .win .wtag{display:block}
+    .dmid{text-align:center;padding:0 4px}
+    .dnum{font-size:clamp(.95rem,2.5vw,1.35rem);font-weight:900;color:var(--gold);white-space:nowrap}
+    .dsub{font-size:.6rem;color:var(--muted);margin-top:2px}
+    .dlbl{font-size:.58rem;color:var(--muted)}
 
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 24px;
-      color: var(--text-muted);
-      font-size: 0.75rem;
-      border-top: 1px solid var(--border);
-    }
-    footer a { color: var(--roberto); text-decoration: none; }
+    /* VOTE BAR */
+    .vbwrap{margin-bottom:26px}
+    .vbar{height:27px;border-radius:14px;overflow:hidden;display:flex;box-shadow:0 2px 8px var(--shadow)}
+    .vbr{background:linear-gradient(90deg,var(--r2),var(--r));transition:width 1.2s;display:flex;align-items:center;padding-left:9px;font-size:.75rem;font-weight:700;color:#fff}
+    .vbk{background:linear-gradient(90deg,var(--k),var(--k2));transition:width 1.2s;display:flex;align-items:center;justify-content:flex-end;padding-right:9px;font-size:.75rem;font-weight:700;color:#fff;flex:1}
+    .vblbls{display:flex;justify-content:space-between;font-size:.7rem;margin-top:4px}
 
-    /* ── LOADING ── */
-    #loading {
-      position: fixed; inset: 0;
-      background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 100;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .spinner {
-      width: 48px; height: 48px;
-      border: 4px solid var(--border);
-      border-top-color: var(--roberto);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    /* SECTION */
+    .stitle{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:12px;display:flex;align-items:center;gap:6px}
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .h2h-section { grid-template-columns: 1fr; }
-      .diff-panel { display: flex; gap: 12px; justify-content: center; align-items: center; }
-      .diff-panel .diff-label { display: none; }
+    /* EXTERIOR */
+    .ext-note{background:#fff8e8;border:1px solid #e8c96a;border-radius:9px;padding:9px 13px;font-size:.76rem;color:#7a5c00;margin-bottom:12px;display:flex;gap:7px}
+    .ext-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px;margin-bottom:26px}
+    .ecard{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:11px;box-shadow:0 1px 4px var(--shadow)}
+    .erg{font-size:.8rem;font-weight:700;margin-bottom:2px}
+    .eac{font-size:.66rem;color:var(--muted);margin-bottom:7px}
+    .ebar{height:5px;border-radius:3px;background:var(--border);overflow:hidden;display:flex;margin-bottom:4px}
+    .ebr{background:var(--r)}.ebk{background:var(--k)}
+    .ecd{display:flex;justify-content:space-between;font-size:.68rem;margin-top:2px}
+    .ecd .en{color:var(--muted)}
+    .ecd.er .ev{color:var(--r);font-weight:700}
+    .ecd.ek .ev{color:var(--k);font-weight:700}
+    .nd{font-size:.68rem;color:var(--muted);font-style:italic}
+
+    /* TABLE */
+    .tcard{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px var(--shadow);margin-bottom:8px}
+    .tctrl{padding:9px 13px;display:flex;gap:6px;flex-wrap:wrap;background:var(--card2);border-bottom:1px solid var(--border)}
+    .slbl{font-size:.7rem;color:var(--muted);align-self:center}
+    .sbtn{background:#fff;border:1px solid var(--border);color:var(--muted);padding:3px 10px;border-radius:14px;font-size:.7rem;cursor:pointer;transition:all .15s}
+    .sbtn:hover{border-color:var(--r);color:var(--r)}
+    .sbtn.active{background:var(--r);border-color:var(--r);color:#fff;font-weight:700}
+    table{width:100%;border-collapse:collapse;font-size:.8rem}
+    th{background:var(--card2);color:var(--muted);font-weight:600;padding:8px 11px;text-align:left;font-size:.68rem;text-transform:uppercase;letter-spacing:.5px}
+    td{padding:6px 11px;border-bottom:1px solid var(--border);vertical-align:middle}
+    tr:last-child td{border-bottom:none}
+    tr:hover td{background:#f8f9ff}
+    .dnm{font-weight:600}
+    .wn{font-weight:700}.wn.r{color:var(--r)}.wn.k{color:var(--k)}
+    .pc{font-size:.66rem;padding:1px 5px;border-radius:7px;font-weight:700}
+    .pc.r{background:#d4eef8;color:var(--r2)}.pc.k{background:#fde8d5;color:var(--k2)}
+    .mbar{height:7px;border-radius:4px;overflow:hidden;display:flex;min-width:65px}
+    .mbr{background:var(--r)}.mbk{background:var(--k)}
+    .an{font-size:.7rem;color:var(--muted)}.al{color:#c07000;font-weight:600}
+
+    /* LOADING */
+    #loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;flex-direction:column;gap:13px}
+    .spin{width:42px;height:42px;border:4px solid var(--border);border-top-color:var(--r);border-radius:50%;animation:spin .75s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* FOOTER */
+    footer{text-align:center;padding:22px;color:var(--muted);font-size:.7rem;border-top:1px solid var(--border)}
+    footer a{color:var(--r);text-decoration:none}
+
+    @media(max-width:560px){
+      .h2h{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+      .dmid{grid-column:1/-1;display:flex;gap:14px;justify-content:center}
+      .arena{height:160px}.f-img{height:115px}
     }
   </style>
 </head>
 <body>
 
-<div id="loading">
-  <div class="spinner"></div>
-  <div style="color:var(--text-muted);font-size:0.9rem">Cargando datos de ONPE...</div>
-</div>
+<div id="loading"><div class="spin"></div><div style="color:var(--muted);font-size:.85rem">Cargando datos…</div></div>
 
 <header>
-  <h1>🗳️ SEGUNDA VUELTA PERÚ 2026</h1>
-  <div class="subtitle">Resultados en tiempo real · Fuente: ONPE</div>
-  <div class="update-info">
-    <span class="badge live" id="live-badge">EN VIVO</span>
-    <span class="badge" id="update-badge">Cargando...</span>
-    <span class="badge" id="actas-badge">Actas: —%</span>
-    <span class="badge" id="participacion-badge">Participación: —%</span>
+  <h1><span class="flag">🇵🇪</span>SEGUNDA VUELTA 2026<span class="flag">🇵🇪</span></h1>
+  <div class="author">Sergio Contreras Valenzuela</div>
+  <div class="handle">@7borreguitos_</div>
+  <div class="update-row">
+    <span class="badge live">EN VIVO</span>
+    <span class="badge" id="upd-badge">Cargando…</span>
+    <span class="badge" id="act-badge">Actas: —</span>
+    <span class="badge" id="par-badge">Participación: —</span>
   </div>
   <div class="actas-bar">
-    <div class="actas-bar-labels">
-      <span id="actas-label-left">Actas contabilizadas</span>
-      <span id="actas-label-right">—%</span>
-    </div>
-    <div class="actas-bar-track">
-      <div class="actas-bar-fill" id="actas-fill" style="width:0%"></div>
-    </div>
+    <div class="actas-bar-labels"><span>Actas contabilizadas</span><span id="act-pct">—%</span></div>
+    <div class="actas-track"><div class="actas-fill" id="act-fill" style="width:0"></div></div>
   </div>
 </header>
 
+<!-- ARENA -->
+<div class="arena-wrap">
+  <div class="arena">
+
+    <div class="fw" id="fw-k">
+      <div class="stars" id="sk" style="display:none">
+        <div class="sp" style="--sx:-16px;--sy:-20px;animation-delay:0s"></div>
+        <div class="sp" style="--sx:18px;--sy:-24px;animation-delay:.4s"></div>
+        <div class="sp" style="--sx:-6px;--sy:-30px;animation-delay:.8s"></div>
+      </div>
+      <div class="f-lbl">Keiko</div>
+      <img src="./sprite_keiko_t.png" class="f-img" alt="Keiko">
+    </div>
+
+    <div class="arena-mid">
+      <div class="arena-vs">VS</div>
+      <div class="arena-diff" id="arena-diff"></div>
+    </div>
+
+    <div class="fw" id="fw-r">
+      <div class="stars" id="sr" style="display:none">
+        <div class="sp" style="--sx:-16px;--sy:-20px;animation-delay:0s"></div>
+        <div class="sp" style="--sx:18px;--sy:-24px;animation-delay:.4s"></div>
+        <div class="sp" style="--sx:-6px;--sy:-30px;animation-delay:.8s"></div>
+      </div>
+      <div class="f-lbl">Roberto</div>
+      <img src="./sprite_roberto_t.png" class="f-img" alt="Roberto">
+    </div>
+
+  </div>
+</div>
+
 <main>
+  <div class="h2h" id="h2h"></div>
 
-  <!-- ── HEAD TO HEAD ── -->
-  <div class="h2h-section" id="h2h-section">
-    <!-- Filled by JS -->
-  </div>
-
-  <!-- ── VOTE BAR ── -->
-  <div class="vote-bar-section">
-    <div class="vote-bar-track" id="vote-bar">
-      <div class="vote-bar-left"  id="bar-roberto" style="width:50%"></div>
-      <div class="vote-bar-right" id="bar-keiko"   style="width:50%"></div>
-    </div>
-    <div class="vote-bar-labels">
-      <span id="bar-label-l">Roberto Sánchez</span>
-      <span id="bar-label-r">Keiko Fujimori</span>
+  <div class="vbwrap">
+    <div class="vbar"><div class="vbr" id="vbr" style="width:50%"></div><div class="vbk" id="vbk"></div></div>
+    <div class="vblbls">
+      <span style="color:var(--r);font-weight:700">Roberto Sánchez</span>
+      <span style="color:var(--k);font-weight:700">Keiko Fujimori</span>
     </div>
   </div>
 
-  <!-- ── VOTO EXTRANJERO ── -->
-  <div class="exterior-section">
-    <div class="section-title">
-      <span class="icon">✈️</span>
-      Voto en el Exterior
-      <span id="ext-pct-label" style="font-size:0.75rem;color:#f39c12;margin-left:auto;font-weight:400;text-transform:none;letter-spacing:0"></span>
-    </div>
-    <div class="exterior-note">
-      ⚠️ <div>Las actas del exterior se cuentan después que las de Perú. Este bloque puede cambiar significativamente cuando se consoliden los votos.</div>
-    </div>
-    <div class="exterior-grid" id="exterior-grid">
-      <!-- Filled by JS -->
-    </div>
+  <div class="stitle">✈️ Voto en el Exterior
+    <span id="ext-sum" style="margin-left:auto;font-size:.68rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)"></span>
   </div>
+  <div class="ext-note">⚠️ <div>Las actas del exterior se cuentan al final. Este bloque puede cambiar significativamente cuando se consoliden todos los votos.</div></div>
+  <div class="ext-grid" id="ext-grid"></div>
 
-  <!-- ── POR DEPARTAMENTO ── -->
-  <div class="section-title" style="margin-top:8px">
-    <span class="icon">🗺️</span>
-    Resultados por Departamento
-  </div>
-  <div class="dept-table-wrapper">
-    <div class="dept-controls">
-      <span style="font-size:0.75rem;color:var(--text-muted);margin-right:4px">Ordenar:</span>
-      <button class="sort-btn active" data-sort="alpha"   onclick="sortTable('alpha')">A–Z</button>
-      <button class="sort-btn" data-sort="roberto"        onclick="sortTable('roberto')">↑ Roberto</button>
-      <button class="sort-btn" data-sort="keiko"          onclick="sortTable('keiko')">↑ Keiko</button>
-      <button class="sort-btn" data-sort="actas"          onclick="sortTable('actas')">Actas contadas</button>
-      <button class="sort-btn" data-sort="diff"           onclick="sortTable('diff')">Mayor diferencia</button>
+  <div class="stitle" style="margin-top:4px">🗺️ Resultados por Departamento</div>
+  <div class="tcard">
+    <div class="tctrl">
+      <span class="slbl">Ordenar:</span>
+      <button class="sbtn active" data-s="alpha"   onclick="setSort('alpha')">A–Z</button>
+      <button class="sbtn"        data-s="roberto" onclick="setSort('roberto')">↑ Roberto</button>
+      <button class="sbtn"        data-s="keiko"   onclick="setSort('keiko')">↑ Keiko</button>
+      <button class="sbtn"        data-s="actas"   onclick="setSort('actas')">Actas</button>
+      <button class="sbtn"        data-s="diff"    onclick="setSort('diff')">Mayor diff.</button>
     </div>
-    <table id="dept-table">
-      <thead>
-        <tr>
-          <th>Departamento</th>
-          <th>Resultado</th>
-          <th>Distribución</th>
-          <th>Actas</th>
-        </tr>
-      </thead>
-      <tbody id="dept-tbody">
-        <!-- Filled by JS -->
-      </tbody>
-    </table>
+    <table><thead><tr><th>Departamento</th><th>Resultado</th><th>Distribución</th><th>Actas</th></tr></thead>
+    <tbody id="dept-tbody"></tbody></table>
   </div>
-
 </main>
 
 <footer>
   Datos: <a href="https://resultadosegundavuelta.onpe.gob.pe" target="_blank">ONPE</a> ·
-  Actualización automática cada 30s ·
-  Por <strong>Sergio Contreras Valenzuela</strong> &amp;
-  <a href="https://twitter.com/07borreguitos_" target="_blank">@07borreguitos_</a>
+  Actualización cada 30s ·
+  <strong>Sergio Contreras Valenzuela</strong> /
+  <a href="https://twitter.com/7borreguitos_" target="_blank">@7borreguitos_</a>
 </footer>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────
-let currentData = null;
-let currentSort = 'alpha';
+const R=10,K=8;
+let D=null,sort='alpha';
+const fmt=n=>Number(n).toLocaleString('es-PE');
+const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 
-const ROBERTO_CODE = 10;
-const KEIKO_CODE   = 8;
-const ROBERTO_COLOR = '#4cc9f0';
-const KEIKO_COLOR   = '#ff6b35';
-
-function fmtNum(n) {
-  return Number(n).toLocaleString('es-PE');
-}
-function fmtPct(p, dec=2) {
-  return Number(p).toFixed(dec) + '%';
-}
-function shortName(nombre) {
-  if (!nombre) return '';
-  if (nombre.includes('ROBERTO') || nombre.includes('SÁNCHEZ') || nombre.includes('SANCHEZ')) return 'Roberto';
-  if (nombre.includes('KEIKO') || nombre.includes('FUJIMORI')) return 'Keiko';
-  return nombre.split(' ')[0];
-}
-
-// ── RENDER ────────────────────────────────────────────────────────────────
-function renderAll(data) {
-  const { meta, candidatos, por_departamento, exterior } = data;
-
-  // Find Roberto and Keiko
-  const roberto = candidatos.find(c => c.codigo === ROBERTO_CODE) || {};
-  const keiko   = candidatos.find(c => c.codigo === KEIKO_CODE)   || {};
-  const rPct    = parseFloat(roberto.pct || 0);
-  const kPct    = parseFloat(keiko.pct   || 0);
-  const rVotos  = roberto.votos || 0;
-  const kVotos  = keiko.votos   || 0;
-  const diff    = Math.abs(rVotos - kVotos);
-  const winner  = rVotos > kVotos ? 'roberto' : 'keiko';
-
-  // Update header
-  const pctAct = parseFloat(meta.pct_actas || 0);
-  document.getElementById('actas-fill').style.width = pctAct + '%';
-  document.getElementById('actas-label-right').textContent = fmtPct(pctAct, 3);
-  document.getElementById('actas-badge').textContent = 'Actas: ' + fmtPct(pctAct, 3);
-  document.getElementById('participacion-badge').textContent = 'Participación: ' + fmtPct(meta.participacion, 1);
-
-  const scrapeDate = new Date(meta.scraped_at);
-  document.getElementById('update-badge').textContent =
-    'Actualizado: ' + scrapeDate.toLocaleTimeString('es-PE', {hour:'2-digit',minute:'2-digit'});
-
-  // ── H2H CARDS ──
-  const h2h = document.getElementById('h2h-section');
-  h2h.innerHTML = `
-    <div class="candidate-card roberto ${winner==='roberto'?'winner':''}">
-      <div class="party-tag">JUNTOS POR EL PERÚ</div>
-      <div class="cand-name">ROBERTO SÁNCHEZ<br>PALOMINO</div>
-      <div class="cand-pct">${fmtPct(rPct, 2)}</div>
-      <div class="cand-votos">${fmtNum(rVotos)} votos</div>
-      <div class="winner-badge">▲ VA GANANDO</div>
-    </div>
-    <div class="diff-panel">
-      <div class="diff-label">Diferencia</div>
-      <div class="diff-votes">+${fmtNum(diff)}</div>
-      <div class="diff-sub">${fmtPct(Math.abs(rPct - kPct), 2)} pts</div>
-    </div>
-    <div class="candidate-card keiko ${winner==='keiko'?'winner keiko':''}">
-      <div class="party-tag">FUERZA POPULAR</div>
-      <div class="cand-name">KEIKO FUJIMORI<br>HIGUCHI</div>
-      <div class="cand-pct">${fmtPct(kPct, 2)}</div>
-      <div class="cand-votos">${fmtNum(kVotos)} votos</div>
-      <div class="winner-badge">▲ VA GANANDO</div>
-    </div>
-  `;
-
-  // ── VOTE BAR ──
-  document.getElementById('bar-roberto').style.width = rPct + '%';
-  document.getElementById('bar-roberto').textContent = rPct.toFixed(1) + '%';
-  document.getElementById('bar-keiko').textContent   = kPct.toFixed(1) + '%';
-
-  // ── EXTERIOR ──
-  renderExterior(exterior);
-
-  // ── DEPT TABLE ──
-  renderDeptTable(por_departamento);
-
-  document.getElementById('loading').style.display = 'none';
-}
-
-function renderExterior(exterior) {
-  if (!exterior || !exterior.length) {
-    document.getElementById('exterior-grid').innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem">No hay datos disponibles aún.</p>';
-    return;
+function updateArena(r,k){
+  const rP=+r.pct,kP=+k.pct,rWin=rP>kP;
+  const margin=Math.abs(rP-kP);
+  const adv=Math.min(margin*4,22);
+  const fwK=document.getElementById('fw-k'),fwR=document.getElementById('fw-r');
+  const sK=document.getElementById('sk'),sR=document.getElementById('sr');
+  if(rWin){
+    fwR.className='fw winner';fwK.className='fw loser';
+    fwR.style.right=Math.max(2,12-adv)+'%';fwK.style.left='3%';
+    sR.style.display='block';sK.style.display='none';
+  }else{
+    fwK.className='fw winner';fwR.className='fw loser';
+    fwK.style.left=Math.min(28,3+adv)+'%';fwR.style.right='3%';
+    sK.style.display='block';sR.style.display='none';
   }
+  document.getElementById('arena-diff').textContent='+'+fmt(Math.abs(r.votos-k.votos))+' votos';
+}
 
-  // Total exterior actas
-  const totalExt = exterior.reduce((sum, d) => sum + (d.actas_contabilizadas || 0), 0);
-  const avgAct   = exterior.reduce((sum, d) => sum + d.pct_actas, 0) / exterior.length;
-  document.getElementById('ext-pct-label').textContent =
-    `Promedio actas: ${avgAct.toFixed(1)}% · ${fmtNum(totalExt)} actas contadas`;
+function renderH2H(cands){
+  const r=cands.find(c=>c.codigo===R)||{},k=cands.find(c=>c.codigo===K)||{};
+  const rW=(r.votos||0)>(k.votos||0);
+  const diff=Math.abs((r.votos||0)-(k.votos||0));
+  const dpt=Math.abs((+r.pct||0)-(+k.pct||0)).toFixed(2);
+  document.getElementById('h2h').innerHTML=`
+    <div class="ccard rc ${rW?'win':''}">
+      <div class="ptag">Juntos por el Perú</div>
+      <div class="cname">ROBERTO SÁNCHEZ<br>PALOMINO</div>
+      <div class="cpct">${fpt(r.pct,2)}</div>
+      <div class="cvotos">${fmt(r.votos)} votos</div>
+      <div class="wtag">▲ VA GANANDO</div>
+    </div>
+    <div class="dmid">
+      <div class="dlbl">Diferencia</div>
+      <div class="dnum">+${fmt(diff)}</div>
+      <div class="dsub">${dpt} pts</div>
+    </div>
+    <div class="ccard kc ${!rW?'win':''}">
+      <div class="ptag">Fuerza Popular</div>
+      <div class="cname">KEIKO FUJIMORI<br>HIGUCHI</div>
+      <div class="cpct">${fpt(k.pct,2)}</div>
+      <div class="cvotos">${fmt(k.votos)} votos</div>
+      <div class="wtag">▲ VA GANANDO</div>
+    </div>`;
+  document.getElementById('vbr').style.width=r.pct+'%';
+  document.getElementById('vbr').textContent=fpt(r.pct,1);
+  document.getElementById('vbk').textContent=fpt(k.pct,1);
+}
 
-  const html = exterior.map(d => {
-    const r = d.candidatos.find(c => c.codigo === ROBERTO_CODE);
-    const k = d.candidatos.find(c => c.codigo === KEIKO_CODE);
-    const rV = r ? r.votos : 0;
-    const kV = k ? k.votos : 0;
-    const rP = r ? r.pct : 0;
-    const kP = k ? k.pct : 0;
-    const total = rV + kV;
-    const hasData = total > 0;
-
-    const rWidth = hasData ? rP : 50;
-    const kWidth = hasData ? kP : 50;
-
-    return `<div class="exterior-card">
-      <div class="ext-name">${d.nombre}</div>
-      <div class="ext-actas">
-        ${d.pct_actas}% actas · ${fmtNum(d.actas_contabilizadas)} actas
-      </div>
-      ${!hasData ? '<div class="no-data">Sin votos contados aún</div>' : `
-      <div class="ext-mini-bar">
-        <div class="ext-mini-bar-r" style="width:${rWidth}%"></div>
-        <div class="ext-mini-bar-k" style="width:${kWidth}%"></div>
-      </div>
-      <div class="ext-cand roberto">
-        <span class="ext-name-short">Roberto</span>
-        <span class="ext-pct">${fmtPct(rP, 1)}</span>
-      </div>
-      <div class="ext-cand keiko">
-        <span class="ext-name-short">Keiko</span>
-        <span class="ext-pct">${fmtPct(kP, 1)}</span>
-      </div>
-      `}
+function renderExterior(ext){
+  const avg=ext.length?ext.reduce((s,d)=>s+d.pct_actas,0)/ext.length:0;
+  document.getElementById('ext-sum').textContent='Promedio actas: '+avg.toFixed(1)+'%';
+  document.getElementById('ext-grid').innerHTML=ext.map(d=>{
+    const r=d.candidatos.find(c=>c.codigo===R),k=d.candidatos.find(c=>c.codigo===K);
+    const rV=r?.votos||0,kV=k?.votos||0,rP=r?.pct||0,kP=k?.pct||0;
+    return`<div class="ecard">
+      <div class="erg">${d.nombre}</div>
+      <div class="eac">${d.pct_actas}% actas · ${fmt(d.actas_contabilizadas)} actas</div>
+      ${rV+kV>0?`<div class="ebar"><div class="ebr" style="width:${rP}%"></div><div class="ebk" style="width:${kP}%"></div></div>
+      <div class="ecd er"><span class="en">Roberto</span><span class="ev">${fpt(rP,1)}</span></div>
+      <div class="ecd ek"><span class="en">Keiko</span><span class="ev">${fpt(kP,1)}</span></div>`
+      :'<div class="nd">Sin votos aún</div>'}
     </div>`;
   }).join('');
-
-  document.getElementById('exterior-grid').innerHTML = html;
 }
 
-function renderDeptTable(depts) {
-  if (!depts || !depts.length) {
-    document.getElementById('dept-tbody').innerHTML =
-      '<tr><td colspan="4" style="color:var(--text-muted);text-align:center;padding:20px">No hay datos disponibles</td></tr>';
-    return;
-  }
-
-  const sorted = sortDepts([...depts], currentSort);
-
-  const rows = sorted.map(d => {
-    const r = d.candidatos.find(c => c.codigo === ROBERTO_CODE);
-    const k = d.candidatos.find(c => c.codigo === KEIKO_CODE);
-    const rP = r ? r.pct : 0;
-    const kP = k ? k.pct : 0;
-    const rV = r ? r.votos : 0;
-    const kV = k ? k.votos : 0;
-    const winner  = rV > kV ? 'roberto' : 'keiko';
-    const winName = winner === 'roberto' ? 'Roberto' : 'Keiko';
-    const winPct  = winner === 'roberto' ? rP : kP;
-    const losePct = winner === 'roberto' ? kP : rP;
-    const diffPts = Math.abs(rP - kP).toFixed(1);
-    const lowActas = d.pct_actas < 70;
-
-    return `<tr>
-      <td class="dept-name">${d.nombre}</td>
-      <td>
-        <span class="dept-winner ${winner}">${winName}</span>
-        <span style="color:var(--text-muted);font-size:0.78rem;margin-left:4px">+${diffPts}pts</span><br>
-        <span class="pct-chip roberto">${rP.toFixed(1)}%</span>
-        <span style="color:var(--text-muted);font-size:0.72rem"> vs </span>
-        <span class="pct-chip keiko">${kP.toFixed(1)}%</span>
-      </td>
-      <td>
-        <div class="dept-bar">
-          <div class="dept-bar-r" style="width:${rP}%"></div>
-          <div class="dept-bar-k" style="width:${kP}%"></div>
-        </div>
-      </td>
-      <td class="actas-pct ${lowActas ? 'actas-low' : ''}">
-        ${d.pct_actas}%
-        ${lowActas ? ' ⚠️' : ''}
-      </td>
-    </tr>`;
-  }).join('');
-
-  document.getElementById('dept-tbody').innerHTML = rows;
-}
-
-function sortDepts(depts, mode) {
-  return depts.sort((a, b) => {
-    const ra = a.candidatos.find(c => c.codigo === ROBERTO_CODE);
-    const rb = b.candidatos.find(c => c.codigo === ROBERTO_CODE);
-    const ka = a.candidatos.find(c => c.codigo === KEIKO_CODE);
-    const kb = b.candidatos.find(c => c.codigo === KEIKO_CODE);
-    switch(mode) {
-      case 'alpha':   return a.nombre.localeCompare(b.nombre, 'es');
-      case 'roberto': return (rb ? rb.pct : 0) - (ra ? ra.pct : 0);
-      case 'keiko':   return (kb ? kb.pct : 0) - (ka ? ka.pct : 0);
-      case 'actas':   return b.pct_actas - a.pct_actas;
-      case 'diff': {
-        const diffA = Math.abs((ra ? ra.pct : 0) - (ka ? ka.pct : 0));
-        const diffB = Math.abs((rb ? rb.pct : 0) - (kb ? kb.pct : 0));
-        return diffB - diffA;
-      }
-      default: return 0;
+function renderDepts(depts){
+  const sd=[...depts].sort((a,b)=>{
+    const ra=a.candidatos.find(c=>c.codigo===R),rb=b.candidatos.find(c=>c.codigo===R);
+    const ka=a.candidatos.find(c=>c.codigo===K),kb=b.candidatos.find(c=>c.codigo===K);
+    switch(sort){
+      case'alpha':return a.nombre.localeCompare(b.nombre,'es');
+      case'roberto':return(rb?.pct||0)-(ra?.pct||0);
+      case'keiko':return(kb?.pct||0)-(ka?.pct||0);
+      case'actas':return b.pct_actas-a.pct_actas;
+      case'diff':return Math.abs((rb?.pct||0)-(kb?.pct||0))-Math.abs((ra?.pct||0)-(ka?.pct||0));
     }
   });
+  document.getElementById('dept-tbody').innerHTML=sd.map(d=>{
+    const r=d.candidatos.find(c=>c.codigo===R),k=d.candidatos.find(c=>c.codigo===K);
+    const rP=r?.pct||0,kP=k?.pct||0;
+    const rW=(r?.votos||0)>(k?.votos||0);
+    const w=rW?'r':'k',wn=rW?'Roberto':'Keiko';
+    const dp=Math.abs(rP-kP).toFixed(1),low=d.pct_actas<70;
+    return`<tr>
+      <td class="dnm">${d.nombre}</td>
+      <td><span class="wn ${w}">${wn}</span><span style="color:var(--muted);font-size:.7rem"> +${dp}pts</span><br>
+      <span class="pc r">${rP.toFixed(1)}%</span><span style="color:var(--muted);font-size:.66rem"> vs </span><span class="pc k">${kP.toFixed(1)}%</span></td>
+      <td><div class="mbar"><div class="mbr" style="width:${rP}%"></div><div class="mbk" style="width:${kP}%"></div></div></td>
+      <td class="an ${low?'al':''}">${d.pct_actas}%${low?' ⚠️':''}</td>
+    </tr>`;
+  }).join('');
 }
 
-function sortTable(mode) {
-  currentSort = mode;
-  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`[data-sort="${mode}"]`).classList.add('active');
-  if (currentData) {
-    renderDeptTable(currentData.por_departamento);
+function setSort(m){
+  sort=m;
+  document.querySelectorAll('.sbtn').forEach(b=>b.classList.toggle('active',b.dataset.s===m));
+  if(D)renderDepts(D.por_departamento);
+}
+
+function renderAll(d){
+  D=d;
+  const{meta,candidatos,por_departamento,exterior}=d;
+  const r=candidatos.find(c=>c.codigo===R)||{},k=candidatos.find(c=>c.codigo===K)||{};
+  const pct=parseFloat(meta.pct_actas||0);
+  document.getElementById('act-fill').style.width=pct+'%';
+  document.getElementById('act-pct').textContent=fpt(pct,3);
+  document.getElementById('act-badge').textContent='Actas: '+fpt(pct,1);
+  document.getElementById('par-badge').textContent='Participación: '+fpt(meta.participacion,1);
+  const t=new Date(meta.scraped_at);
+  document.getElementById('upd-badge').textContent='Actualizado: '+t.toLocaleTimeString('es-PE',{hour:'2-digit',minute:'2-digit'});
+  renderH2H(candidatos);
+  updateArena(r,k);
+  renderExterior(exterior);
+  renderDepts(por_departamento);
+  document.getElementById('loading').style.display='none';
+}
+
+async function load(){
+  try{
+    const res=await fetch('./data.json?t='+Date.now());
+    if(!res.ok)throw new Error(res.status);
+    renderAll(await res.json());
+  }catch(e){
+    console.error(e);
+    const b=document.getElementById('upd-badge');
+    b.textContent='⚠️ Error al cargar';b.style.color='#c00';
+    document.getElementById('loading').style.display='none';
   }
 }
-
-// ── FETCH DATA ────────────────────────────────────────────────────────────
-async function fetchData() {
-  try {
-    const r = await fetch('./data.json?t=' + Date.now());
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const data = await r.json();
-    currentData = data;
-    renderAll(data);
-  } catch(e) {
-    console.error('Error al cargar datos:', e);
-    const badge = document.getElementById('update-badge');
-    badge.textContent = '⚠️ Error al actualizar';
-    badge.style.color = '#f44336';
-  }
-}
-
-// Initial load
-fetchData();
-// Refresh every 30 seconds
-setInterval(fetchData, 30000);
+load();setInterval(load,30000);
 </script>
 </body>
 </html>
