@@ -106,9 +106,22 @@
     .fw-char.trailer .f-img{
       filter:brightness(.65) saturate(.5) drop-shadow(0 3px 6px rgba(0,0,0,.5));
     }
+    /* ── Meta al final derecho ── */
+    #arena-meta{
+      position:absolute;right:0;bottom:0;z-index:12;
+      height:100%;
+      display:flex;align-items:flex-end;
+      pointer-events:none;
+    }
+    #arena-meta img{
+      height:220px;width:auto;
+      image-rendering:pixelated;
+      image-rendering:-webkit-optimize-contrast;
+    }
     @media(max-width:560px){
       .arena{height:200px}
       .f-img{width:110px;height:110px}
+      #arena-meta img{height:160px}
     }
 
     /* MAIN */
@@ -231,6 +244,11 @@
       </div>
     </div>
 
+    <!-- Meta al final derecho -->
+    <div id="arena-meta">
+      <img src="Meta.png?v=1" alt="Meta">
+    </div>
+
     <!-- Roberto -->
     <div class="fw-char" id="fw-r" style="left:30%">
       <img id="img-r" class="f-img" src="borrego_frames/r_base.png" alt="Roberto">
@@ -313,9 +331,9 @@ function startLoop(imgId, charId, frames){
   setTimeout(step, document.getElementById(charId).classList.contains('leader') ? 110 : 160);
 }
 
-// Tras 1.5s de quietud arrancar la animación de borregos
-setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 1500);
-setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 1500);
+// Tras 4s de quietud arrancar la animación de borregos
+setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 4000);
+setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 4000);
 
 function updateArena(r,k){
   const rP=+r.pct, kP=+k.pct, rLeads=rP>=kP;
@@ -325,11 +343,11 @@ function updateArena(r,k){
   document.getElementById('pct-r').textContent = rP.toFixed(2)+'%';
   document.getElementById('pct-k').textContent = kP.toFixed(2)+'%';
 
-  // Posiciones de carrera
+  // Posiciones de carrera (corridas a la izq. para dejar espacio a la Meta)
   const diff=Math.abs(rP-kP);
   const gapFactor=Math.min(diff/10,1);
-  const leaderL=(55+10*gapFactor).toFixed(1);
-  const trailerL=(35-27*gapFactor).toFixed(1);
+  const leaderL=(44+9*gapFactor).toFixed(1);   // antes 55+10 → ahora 44+9  (máx ~53%)
+  const trailerL=(22-20*gapFactor).toFixed(1); // antes 35-27 → ahora 22-20  (mín ~2%)
 
   const fwR=document.getElementById('fw-r');
   const fwK=document.getElementById('fw-k');
