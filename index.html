@@ -551,7 +551,7 @@ async function load(){
   }
   overlay.addEventListener('click',   dismiss);
   overlay.addEventListener('touchend', function(e){ e.preventDefault(); dismiss(); });
-  setTimeout(dismiss, 4000);
+  setTimeout(dismiss, 3000);
 })();
 
 load();setInterval(load,30000);
