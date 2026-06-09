@@ -73,11 +73,6 @@
       transition:left 2s cubic-bezier(.25,.8,.25,1);
       z-index:10;
     }
-    /* Keiko mira a la derecha (flip) · Roberto mira a la derecha (natural) */
-    .f-img{display:block;height:148px;width:auto;image-rendering:pixelated}
-    /* Keiko necesita flip para mirar a la derecha */
-    #fw-k .f-img{transform:scaleX(-1)}
-    /* Roberto ya mira a la derecha — sin flip */
 
     /* Etiqueta de posición */
     .f-pos{
@@ -90,42 +85,55 @@
     .f-pos.p2{background:rgba(150,150,200,.15);color:#7070a0;border-color:rgba(150,150,200,.3)}
     .f-lbl{font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.5)}
 
-    /* Animaciones de carrera — siempre corriendo */
-    @keyframes run{
-      0%  {transform:scaleX(-1) translateY(0)   rotate(0deg)}
-      20% {transform:scaleX(-1) translateY(-11px) rotate(-3deg)}
-      50% {transform:scaleX(-1) translateY(-14px) rotate(0deg)}
-      80% {transform:scaleX(-1) translateY(-11px) rotate(3deg)}
-      100%{transform:scaleX(-1) translateY(0)   rotate(0deg)}
+    /* ── SPRITE SHEET ANIMATION ── */
+    /* Hojas de 6 frames; cada div muestra UN frame y salta con steps(6) */
+    .f-sprite{
+      display:block;
+      background-repeat:no-repeat;
+      image-rendering:pixelated;
+      image-rendering:crisp-edges;
     }
-    @keyframes run-r{
-      0%  {transform:translateY(0)   rotate(0deg)}
-      20% {transform:translateY(-11px) rotate(3deg)}
-      50% {transform:translateY(-14px) rotate(0deg)}
-      80% {transform:translateY(-11px) rotate(-3deg)}
-      100%{transform:translateY(0)   rotate(0deg)}
+    /* Keiko — hoja run_keiko_r.png: 3126×877px / 6 frames = 521×877 cada uno */
+    /* Mostrar a 88×148px → sheet display: 528×148px */
+    .spr-k{
+      width:88px; height:148px;
+      background-image:url(run_keiko_r.png);
+      background-size:528px 148px;
+      animation:sprite-k .48s steps(6) infinite;
     }
-    /* Polvo/velocidad para el que va primero */
+    @keyframes sprite-k{
+      from{background-position:0 0}
+      to  {background-position:-528px 0}
+    }
+    /* Roberto — hoja run_roberto.png: 1764×342px / 6 frames = 294×342 cada uno */
+    /* Mostrar a 112×130px → sheet display: 672×130px */
+    .spr-r{
+      width:112px; height:130px;
+      background-image:url(run_roberto.png);
+      background-size:672px 130px;
+      animation:sprite-r .48s steps(6) infinite;
+    }
+    @keyframes sprite-r{
+      from{background-position:0 0}
+      to  {background-position:-672px 0}
+    }
+
+    /* 1° lugar: más velocidad + brillo dorado */
+    .fw.p1 .f-sprite{
+      animation-duration:.36s !important;
+      filter:drop-shadow(0 0 8px rgba(255,215,0,.7)) drop-shadow(0 4px 6px rgba(0,0,0,.35));
+    }
+    /* 2° lugar: más lento + atenuado */
+    .fw.p2 .f-sprite{
+      animation-duration:.54s !important;
+      filter:brightness(.75) saturate(.65) drop-shadow(0 3px 6px rgba(0,0,0,.3));
+    }
+
     @keyframes dust{
       0%{opacity:.7;transform:translateX(0) scale(1)}
       100%{opacity:0;transform:translateX(-18px) scale(1.6)}
     }
     @keyframes star-pop{0%{opacity:0;transform:translate(0,0) scale(.5)}50%{opacity:1;transform:translate(var(--sx),var(--sy)) scale(1)}100%{opacity:0;transform:translate(calc(var(--sx)*1.8),calc(var(--sy)*1.8)) scale(0)}}
-
-    /* Siempre corren */
-    #fw-k .f-img{animation:run   .45s ease-in-out infinite}
-    #fw-r .f-img{animation:run-r .45s ease-in-out infinite}
-
-    /* 1° lugar: más velocidad, brillo */
-    .fw.p1 .f-img{
-      animation-duration:.38s !important;
-      filter:drop-shadow(0 0 10px rgba(255,215,0,.6)) drop-shadow(0 4px 6px rgba(0,0,0,.3));
-    }
-    /* 2° lugar: ligeramente más lento, atenuado */
-    .fw.p2 .f-img{
-      animation-duration:.5s !important;
-      filter:brightness(.8) saturate(.7) drop-shadow(0 3px 6px rgba(0,0,0,.3));
-    }
 
     /* Estrellas / destellos del líder */
     .stars{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:50px;height:40px;pointer-events:none}
@@ -208,7 +216,11 @@
     @media(max-width:560px){
       .h2h{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
       .dmid{grid-column:1/-1;display:flex;gap:14px;justify-content:center}
-      .arena{height:160px}.f-img{height:115px}
+      .arena{height:160px}
+      /* Reducir sprites en móvil con scale */
+      .fw{transform-origin:bottom center}
+      #fw-k{transform:scale(.72)}
+      #fw-r{transform:scale(.72)}
     }
   </style>
 </head>
@@ -257,7 +269,7 @@
       </div>
       <div class="f-pos p1" id="pos-k">🥇 1°</div>
       <div class="f-lbl" id="lbl-k">KEIKO</div>
-      <img src="./sprite_keiko_t.png" class="f-img" alt="Keiko">
+      <div class="f-sprite spr-k" role="img" aria-label="Keiko"></div>
     </div>
 
     <!-- Personaje Roberto -->
@@ -269,7 +281,7 @@
       </div>
       <div class="f-pos p1" id="pos-r">🥇 1°</div>
       <div class="f-lbl" id="lbl-r">ROBERTO</div>
-      <img src="./sprite_roberto_t.png" class="f-img" alt="Roberto">
+      <div class="f-sprite spr-r" role="img" aria-label="Roberto"></div>
     </div>
 
   </div>
