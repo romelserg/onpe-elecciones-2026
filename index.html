@@ -88,47 +88,21 @@
     .f-pos.p2{background:rgba(150,150,200,.15);color:#7070a0;border-color:rgba(150,150,200,.3)}
     .f-lbl{font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.5)}
 
-    /* ── SPRITE SHEET ANIMATION ── */
-    /* Hojas de 6 frames; cada div muestra UN frame y salta con steps(6) */
-    .f-sprite{
+    /* ── PERSONAJES CORRIENDO ── */
+    .f-img{
       display:block;
-      background-repeat:no-repeat;
       image-rendering:pixelated;
-      image-rendering:crisp-edges;
+      image-rendering:-webkit-optimize-contrast;
     }
-    /* Keiko — hoja run_keiko_r.png: 3126×877px / 6 frames = 521×877 cada uno */
-    /* Mostrar a 88×148px → sheet display: 528×148px */
-    .spr-k{
-      width:88px; height:148px;
-      background-image:url(run_keiko_r.png?v=3);
-      background-size:528px 148px;
-      animation:sprite-k .48s steps(6) infinite;
-    }
-    @keyframes sprite-k{
-      from{background-position:0 0}
-      to  {background-position:-528px 0}
-    }
-    /* Roberto — hoja run_roberto.png: 1764×342px / 6 frames = 294×342 cada uno */
-    /* Mostrar a 112×130px → sheet display: 672×130px */
-    .spr-r{
-      width:112px; height:130px;
-      background-image:url(run_roberto.png?v=3);
-      background-size:672px 130px;
-      animation:sprite-r .48s steps(6) infinite;
-    }
-    @keyframes sprite-r{
-      from{background-position:0 0}
-      to  {background-position:-672px 0}
-    }
+    #img-k{ height:148px; width:auto; }
+    #img-r{ height:130px; width:auto; }
 
-    /* 1° lugar: más velocidad + brillo dorado */
-    .fw.p1 .f-sprite{
-      animation-duration:.36s !important;
+    /* 1° lugar: brillo dorado */
+    .fw.p1 .f-img{
       filter:drop-shadow(0 0 8px rgba(255,215,0,.7)) drop-shadow(0 4px 6px rgba(0,0,0,.35));
     }
-    /* 2° lugar: más lento + atenuado */
-    .fw.p2 .f-sprite{
-      animation-duration:.54s !important;
+    /* 2° lugar: atenuado */
+    .fw.p2 .f-img{
       filter:brightness(.75) saturate(.65) drop-shadow(0 3px 6px rgba(0,0,0,.3));
     }
 
@@ -272,7 +246,7 @@
       </div>
       <div class="f-pos p1" id="pos-k">🥇 1°</div>
       <div class="f-lbl" id="lbl-k">KEIKO</div>
-      <div class="f-sprite spr-k" role="img" aria-label="Keiko"></div>
+      <img id="img-k" class="f-img" src="frames/k0.png" alt="Keiko">
     </div>
 
     <!-- Personaje Roberto -->
@@ -284,7 +258,7 @@
       </div>
       <div class="f-pos p1" id="pos-r">🥇 1°</div>
       <div class="f-lbl" id="lbl-r">ROBERTO</div>
-      <div class="f-sprite spr-r" role="img" aria-label="Roberto"></div>
+      <img id="img-r" class="f-img" src="frames/r0.png" alt="Roberto">
     </div>
 
   </div>
@@ -385,6 +359,12 @@ function updateArena(r,k){
 
   document.getElementById('hud-lead').textContent='+'+fmt(diff)+' votos';
   document.getElementById('hud-pts').textContent='(+'+margin.toFixed(2)+'pts)';
+
+  // Velocidad de carrera: líder más rápido, trailer más lento
+  if(window._runSpeed){
+    window._runSpeed.r = rLeads ? 65 : 110;
+    window._runSpeed.k = rLeads ? 110 : 65;
+  }
 }
 
 function renderH2H(cands){
@@ -499,6 +479,40 @@ async function load(){
   }
 }
 load();setInterval(load,30000);
+
+// ── ANIMACIÓN DE CARRERA ── frames individuales via JS (compatible todos los navegadores)
+(function(){
+  const NF = 6;
+  // Precargar todos los frames
+  const framesK = [], framesR = [];
+  for(let i=0;i<NF;i++){
+    const ik=new Image(); ik.src='frames/k'+i+'.png'; framesK.push(ik);
+    const ir=new Image(); ir.src='frames/r'+i+'.png'; framesR.push(ir);
+  }
+  const imgK = document.getElementById('img-k');
+  const imgR = document.getElementById('img-r');
+  let ki=0, ri=0;
+  // Velocidades: 80ms/frame = ~12fps (líder), 120ms = ~8fps (trailer)
+  // Se ajustan dinámicamente según posición
+  window._runSpeed = { k: 80, r: 80 };
+
+  function tickK(){
+    ki = (ki+1) % NF;
+    imgK.src = framesK[ki].src;
+    setTimeout(tickK, window._runSpeed.k);
+  }
+  function tickR(){
+    ri = (ri+1) % NF;
+    imgR.src = framesR[ri].src;
+    setTimeout(tickR, window._runSpeed.r);
+  }
+  // Arrancar cuando los frames estén listos
+  framesK[0].onload = tickK;
+  framesR[0].onload = tickR;
+  // Fallback si ya estaban en caché
+  if(framesK[0].complete) tickK();
+  if(framesR[0].complete) tickR();
+})();
 </script>
 </body>
 </html>
