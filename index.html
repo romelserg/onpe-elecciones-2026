@@ -100,6 +100,9 @@
       position:absolute;bottom:0;z-index:10;
       display:flex;flex-direction:column;align-items:center;
     }
+    /* Wrapper para flip de Keiko sin interferir con la animación */
+    .flip-k{display:inline-block;transform:scaleX(-1)}
+
     /* Roberto izquierda (sprite mira derecha = mira al centro) */
     #fw-r{left:4%}
     /* Keiko derecha (sprite mira izquierda = mira al centro) */
@@ -275,7 +278,7 @@
 
     <!-- Keiko (derecha, sprite mira izquierda = mira al centro) -->
     <div class="fw-char" id="fw-k">
-      <img id="img-k" class="f-img" src="sprite_keiko_t.png" alt="Keiko">
+      <div class="flip-k"><img id="img-k" class="f-img" src="sprite_keiko_t.png" alt="Keiko"></div>
     </div>
 
   </div>
@@ -302,11 +305,12 @@
   <div class="tcard">
     <div class="tctrl">
       <span class="slbl">Ordenar:</span>
-      <button class="sbtn active" data-s="alpha"   onclick="setSort('alpha')">A–Z</button>
+      <button class="sbtn"        data-s="alpha"   onclick="setSort('alpha')">A–Z</button>
       <button class="sbtn"        data-s="roberto" onclick="setSort('roberto')">↑ Roberto</button>
       <button class="sbtn"        data-s="keiko"   onclick="setSort('keiko')">↑ Keiko</button>
       <button class="sbtn"        data-s="actas"   onclick="setSort('actas')">Actas</button>
       <button class="sbtn"        data-s="diff"    onclick="setSort('diff')">Mayor diff.</button>
+      <button class="sbtn active" data-s="votos"   onclick="setSort('votos')">Mayor bolsón</button>
     </div>
     <table><thead><tr><th>Departamento</th><th>Resultado</th><th>Distribución</th><th>Actas</th></tr></thead>
     <tbody id="dept-tbody"></tbody></table>
@@ -322,7 +326,7 @@
 
 <script>
 const R=10,K=8;
-let D=null,sort='alpha';
+let D=null,sort='votos';
 const fmt=n=>Number(n).toLocaleString('es-PE');
 const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 
@@ -370,15 +374,26 @@ function renderH2H(cands){
 }
 
 function renderExterior(ext){
-  const avg=ext.length?ext.reduce((s,d)=>s+d.pct_actas,0)/ext.length:0;
-  document.getElementById('ext-sum').textContent='Promedio actas: '+avg.toFixed(1)+'%';
-  document.getElementById('ext-grid').innerHTML=ext.map(d=>{
+  // Ordenar por mayor bolsón electoral (más votos totales primero)
+  const sorted=[...ext].sort((a,b)=>{
+    const va=(a.candidatos||[]).reduce((s,c)=>s+c.votos,0);
+    const vb=(b.candidatos||[]).reduce((s,c)=>s+c.votos,0);
+    return vb-va;
+  });
+  const total=sorted.reduce((s,d)=>s+(d.candidatos||[]).reduce((t,c)=>t+c.votos,0),0);
+  document.getElementById('ext-sum').textContent=fmt(total)+' votos totales en exterior';
+  document.getElementById('ext-grid').innerHTML=sorted.map(d=>{
     const r=d.candidatos.find(c=>c.codigo===R),k=d.candidatos.find(c=>c.codigo===K);
     const rV=r?.votos||0,kV=k?.votos||0,rP=r?.pct||0,kP=k?.pct||0;
+    const tot=rV+kV, pct=tot>0?((Math.max(rP,kP)).toFixed(1)):'—';
+    const rW=rV>=kV, winColor=rW?'var(--r)':'var(--k)', winName=rW?'Roberto':'Keiko';
     return`<div class="ecard">
-      <div class="erg">${d.nombre}</div>
-      <div class="eac">${d.pct_actas}% actas · ${fmt(d.actas_contabilizadas)} actas</div>
-      ${rV+kV>0?`<div class="ebar"><div class="ebr" style="width:${rP}%"></div><div class="ebk" style="width:${kP}%"></div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+        <div class="erg">${d.nombre}</div>
+        ${tot>0?`<span style="font-size:.65rem;font-weight:800;color:${winColor}">${winName} ${pct}%</span>`:''}
+      </div>
+      <div class="eac">${d.pct_actas}% actas · ${fmt(tot)} votos</div>
+      ${tot>0?`<div class="ebar"><div class="ebr" style="width:${rP}%"></div><div class="ebk" style="width:${kP}%"></div></div>
       <div class="ecd er"><span class="en">Roberto</span><span class="ev">${fpt(rP,1)}</span></div>
       <div class="ecd ek"><span class="en">Keiko</span><span class="ev">${fpt(kP,1)}</span></div>`
       :'<div class="nd">Sin votos aún</div>'}
@@ -395,6 +410,7 @@ function renderDepts(depts){
       case'roberto':return(rb?.pct||0)-(ra?.pct||0);
       case'keiko':return(kb?.pct||0)-(ka?.pct||0);
       case'actas':return b.pct_actas-a.pct_actas;
+      case'votos':return (b.candidatos.reduce((s,c)=>s+c.votos,0))-(a.candidatos.reduce((s,c)=>s+c.votos,0));
       case'diff':return Math.abs((rb?.pct||0)-(kb?.pct||0))-Math.abs((ra?.pct||0)-(ka?.pct||0));
     }
   });
@@ -404,8 +420,9 @@ function renderDepts(depts){
     const rW=(r?.votos||0)>(k?.votos||0);
     const w=rW?'r':'k',wn=rW?'Roberto':'Keiko';
     const dp=Math.abs(rP-kP).toFixed(1),low=d.pct_actas<70;
+    const totVotos=(r?.votos||0)+(k?.votos||0);
     return`<tr>
-      <td class="dnm">${d.nombre}</td>
+      <td class="dnm">${d.nombre}<br><span style="font-size:.63rem;color:var(--muted)">${fmt(totVotos)} votos</span></td>
       <td><span class="wn ${w}">${wn}</span><span style="color:var(--muted);font-size:.7rem"> +${dp}pts</span><br>
       <span class="pc r">${rP.toFixed(1)}%</span><span style="color:var(--muted);font-size:.66rem"> vs </span><span class="pc k">${kP.toFixed(1)}%</span></td>
       <td><div class="mbar"><div class="mbr" style="width:${rP}%"></div><div class="mbk" style="width:${kP}%"></div></div></td>
