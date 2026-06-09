@@ -331,9 +331,9 @@ function startLoop(imgId, charId, frames){
   setTimeout(step, document.getElementById(charId).classList.contains('leader') ? 110 : 160);
 }
 
-// Tras 4s de quietud arrancar la animación de borregos
-setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 4000);
-setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 4000);
+// Tras 2s de quietud arrancar la animación de borregos
+setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 2000);
+setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 2000);
 
 function updateArena(r,k){
   const rP=+r.pct, kP=+k.pct, rLeads=rP>=kP;
