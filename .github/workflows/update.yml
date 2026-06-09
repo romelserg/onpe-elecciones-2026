@@ -15,6 +15,9 @@ on:
   # Permite correrlo manualmente desde la pestaña "Actions"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
