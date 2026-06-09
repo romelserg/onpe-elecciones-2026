@@ -1,0 +1,27 @@
+# Archivos del sistema
+.DS_Store
+.claude/
+
+# Base de datos (demasiado grande y contiene datos sensibles)
+*.db
+*.db-shm
+*.db-wal
+
+# Datos personales / investigación (no relacionados con elecciones)
+*.xlsx
+*.csv
+Lecturas protestas/
+Produccion Minera/
+Transferencias Canon*/
+canon_*.txt
+pobreza_*.csv
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Scripts locales
+onpe/auto_update.sh
+onpe/github_workflow.yml

@@ -3,715 +3,592 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elecciones 2026 — Análisis Subnacional del Sur del Perú</title>
+<title>Segunda Vuelta 2026 · Conteo en Vivo</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-  :root {
-    --bg: #f8f7f4;
-    --card: #ffffff;
-    --border: #e8e3dc;
-    --text: #1a1a1a;
-    --muted: #6b6560;
-    --accent: #7c3aed;
+:root {
+  --bg:#0f0e17; --bg2:#1a1929; --card:#1f1e2e; --card2:#262540;
+  --border:#2e2d45; --text:#fffffe; --muted:#a7a9be; --faint:#454560;
+  --k:#ff6b35; --k-l:#ff8c5a; --k-bg:rgba(255,107,53,.12); --k-bd:rgba(255,107,53,.35);
+  --r:#4cc9f0; --r-l:#72d9f8; --r-bg:rgba(76,201,240,.12); --r-bd:rgba(76,201,240,.35);
+  --green:#4ade80; --accent:#a78bfa; --yellow:#fbbf24; --red:#f87171;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
 
-    --jpp: #93c5fd;
-    --jpp-dark: #2563eb;
-    --an: #fca5a5;
-    --an-dark: #dc2626;
-    --bg-p: #86efac;
-    --bg-dark: #16a34a;
-    --obras: #fdba74;
-    --obras-dark: #ea580c;
-    --rp: #c4b5fd;
-    --rp-dark: #7c3aed;
-    --fp: #fde68a;
-    --fp-dark: #d97706;
-    --coop: #a7f3d0;
-    --coop-dark: #059669;
-    --other: #e5e7eb;
-    --other-dark: #6b7280;
-  }
+/* HEADER */
+.header{background:linear-gradient(135deg,#0f0e17,#1a0533 60%,#0d1b2a);border-bottom:1px solid var(--border);padding:1.2rem 1.5rem .8rem}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.8rem}
+.header-left h1{font-size:clamp(1.3rem,3vw,2rem);font-weight:800;letter-spacing:-.02em}
+.header-left h1 span{color:var(--accent)}
+.header-sub{font-size:.8rem;color:var(--muted);margin-top:.2rem}
+.badge-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.4rem}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:.7rem;font-weight:700}
+.badge-live{background:rgba(74,222,128,.15);border:1px solid rgba(74,222,128,.3);color:#4ade80}
+.badge-wait{background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.3);color:#f87171}
+.badge-pct{background:rgba(167,139,250,.15);border:1px solid rgba(167,139,250,.3);color:var(--accent)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 1.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.author-box{text-align:right}
+.author-name{font-size:.82rem;font-weight:700}
+.author-handle{font-size:.72rem;color:var(--accent)}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+/* LIVE BAR */
+.live-bar{background:var(--card);border-bottom:1px solid var(--border);padding:.6rem 1.5rem}
+.live-bar-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.actas-block{}
+.actas-pct{font-size:1.6rem;font-weight:800;color:var(--green);display:inline;margin-right:.4rem}
+.actas-label{font-size:.7rem;color:var(--muted)}
+.progress-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:.3rem;width:300px;max-width:100%}
+.progress-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--green),#22c55e);transition:width 1.2s ease}
+.meta-pills{display:flex;gap:.8rem;flex-wrap:wrap}
+.mpill{font-size:.7rem;color:var(--faint)}
+.mpill strong{color:var(--muted)}
 
-  /* ── HEADER ── */
-  .header {
-    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 50%, #6d28d9 100%);
-    color: white;
-    padding: 2.5rem 2rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; }
-  .badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 20px; padding: 4px 12px; font-size: .75rem;
-    margin-bottom: 1rem;
-  }
-  .badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 1.5s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.3)} }
-  .header h1 { font-size: clamp(1.4rem,3vw,2.2rem); font-weight: 700; margin-bottom: .4rem; }
-  .header h2 { font-size: clamp(1rem,2vw,1.35rem); font-weight: 400; opacity: .85; margin-bottom: 1.2rem; }
-  .header-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .meta-item { font-size: .8rem; opacity: .75; }
-  .author-block { margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.2); padding-top: 1rem; }
-  .author-name { font-size: .9rem; font-weight: 600; }
-  .author-handle { font-size: .8rem; opacity: .7; }
+/* REFRESH */
+.refresh-bar{background:var(--bg2);border-bottom:1px solid var(--border);padding:.35rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.refresh-inner{max-width:1100px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.refresh-status{font-size:.7rem;color:var(--faint);display:flex;align-items:center;gap:.4rem}
+.countdown{font-size:.7rem;color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums}
+.refresh-btn{font-size:.7rem;color:var(--accent);background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3);border-radius:6px;padding:2px 10px;cursor:pointer;transition:all .15s}
+.refresh-btn:hover{background:rgba(167,139,250,.2)}
+.last-update{font-size:.68rem;color:var(--faint)}
+.spinner{width:10px;height:10px;border:2px solid var(--faint);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;display:none}
+.spinner.active{display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  /* ── ABOUT ── */
-  .about {
-    background: linear-gradient(135deg, #ede9fe 0%, #fdf4ff 100%);
-    border-left: 4px solid var(--accent);
-    margin: 1.5rem auto; max-width: 1100px;
-    padding: 1.2rem 1.5rem; border-radius: 0 12px 12px 0;
-  }
-  .about h3 { font-size: 1rem; color: var(--accent); margin-bottom: .5rem; }
-  .about p { font-size: .875rem; color: #4b5563; line-height: 1.7; }
+/* MAIN */
+.main{max-width:1100px;margin:0 auto;padding:1.2rem 1.5rem 3rem}
+.section-title{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:1.8rem 0 .7rem;padding-bottom:.35rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.section-title span{font-size:.63rem;color:var(--faint);text-transform:none;letter-spacing:0;font-weight:400}
 
-  /* ── LAYOUT ── */
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem 3rem; }
+/* DUELO */
+.duelo{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:stretch;margin-bottom:1.2rem}
+@media(max-width:580px){.duelo{grid-template-columns:1fr}.vs-block{display:none}}
+.cand-card{border:1px solid var(--border);border-radius:14px;padding:1.2rem;position:relative;overflow:hidden;transition:box-shadow .3s}
+.cand-card.keiko{background:linear-gradient(135deg,var(--card),#2a1a10);border-color:var(--k-bd)}
+.cand-card.roberto{background:linear-gradient(135deg,var(--card),#0d1e2a);border-color:var(--r-bd)}
+.cand-card.updated{animation:flash .6s ease}
+@keyframes flash{0%,100%{opacity:1}50%{opacity:.6}}
+.cand-flag{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.25rem}
+.keiko .cand-flag{color:var(--k)}
+.roberto .cand-flag{color:var(--r)}
+.cand-name{font-size:clamp(.9rem,2.2vw,1.1rem);font-weight:800;line-height:1.2;margin-bottom:.2rem}
+.cand-partido{font-size:.7rem;color:var(--muted);margin-bottom:.8rem}
+.cand-votos{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;font-variant-numeric:tabular-nums;transition:color .4s}
+.keiko .cand-votos{color:var(--k-l)}
+.roberto .cand-votos{color:var(--r-l)}
+.cand-pct{font-size:1rem;font-weight:700;margin-top:.1rem}
+.keiko .cand-pct{color:var(--k)}
+.roberto .cand-pct{color:var(--r)}
+.cand-bar-track{height:5px;background:var(--border);border-radius:3px;margin-top:.7rem;overflow:hidden}
+.cand-bar-fill{height:100%;border-radius:3px;transition:width 1.2s ease}
+.keiko .cand-bar-fill{background:var(--k)}
+.roberto .cand-bar-fill{background:var(--r)}
+.cand-lider{margin-top:.6rem;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block}
+.keiko .cand-lider{background:var(--k-bg);color:var(--k-l);border:1px solid var(--k-bd)}
+.roberto .cand-lider{background:var(--r-bg);color:var(--r-l);border:1px solid var(--r-bd)}
 
-  /* ── SECTION TITLE ── */
-  .section-title {
-    font-size: 1.1rem; font-weight: 700; color: var(--text);
-    margin: 2rem 0 1rem; padding-bottom: .4rem;
-    border-bottom: 2px solid var(--border);
-    display: flex; align-items: center; gap: .5rem;
-  }
-  .section-title span { font-size: .85rem; font-weight: 400; color: var(--muted); }
+/* HEAD-TO-HEAD BAR */
+.h2h-wrap{margin-bottom:1rem}
+.h2h-labels{display:flex;justify-content:space-between;font-size:.72rem;font-weight:700;margin-bottom:.3rem}
+.h2h-labels .kl{color:var(--k-l)}
+.h2h-labels .rl{color:var(--r-l)}
+.h2h-bar{height:20px;border-radius:10px;overflow:hidden;background:var(--border);display:flex}
+.h2h-k{background:var(--k);border-radius:10px 0 0 10px;transition:width 1.2s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:.65rem;font-weight:800;color:rgba(255,255,255,.9)}
+.h2h-r{background:var(--r);flex:1;border-radius:0 10px 10px 0;display:flex;align-items:center;padding-left:6px;font-size:.65rem;font-weight:800;color:rgba(255,255,255,.9)}
+.h2h-diff{text-align:center;font-size:.7rem;color:var(--muted);margin-top:.3rem}
 
-  /* ── OVERVIEW CARDS ── */
-  .overview-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 1rem; margin-bottom: 2rem; }
-  .ov-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
-    padding: 1rem 1.2rem; cursor: pointer; transition: all .2s;
-    border-left: 4px solid var(--other);
-  }
-  .ov-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,.1); }
-  .ov-card.active { box-shadow: 0 4px 16px rgba(124,58,237,.2); border-color: var(--accent) !important; }
-  .ov-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: .3rem; }
-  .ov-card .seats { font-size: .75rem; color: var(--muted); margin-bottom: .5rem; }
-  .ov-winner { display: flex; align-items: center; gap: .4rem; margin-bottom: .2rem; }
-  .party-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .ov-winner-text { font-size: .78rem; }
-  .ov-bar { height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; margin-top: .4rem; }
-  .ov-bar-fill { height: 100%; border-radius: 2px; transition: width .8s ease; }
+/* VS */
+.vs-block{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem}
+.vs-text{font-size:1.5rem;font-weight:900;color:var(--faint);background:var(--card2);border:1px solid var(--border);border-radius:50%;width:48px;height:48px;display:flex;align-items:center;justify-content:center}
 
-  /* ── REGION DETAIL ── */
-  .region-detail { display: none; }
-  .region-detail.active { display: block; }
-  .region-header {
-    background: linear-gradient(135deg, #1e1b4b, #4c1d95);
-    color: white; border-radius: 16px; padding: 1.2rem 1.5rem;
-    margin-bottom: 1.2rem;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
-  }
-  .region-header h3 { font-size: 1.3rem; font-weight: 700; }
-  .region-stats { display: flex; gap: 1.5rem; }
-  .rstat { text-align: center; }
-  .rstat-num { font-size: 1.4rem; font-weight: 700; }
-  .rstat-label { font-size: .7rem; opacity: .7; }
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.1rem}
+.card h5{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.9rem}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:680px){.two-col{grid-template-columns:1fr}}
 
-  /* ── TWO-COLUMN ── */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
-  @media(max-width:700px){ .two-col { grid-template-columns: 1fr; } }
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;font-size:.78rem}
+.data-table th{text-align:left;padding:.4rem .5rem;background:var(--card2);color:var(--muted);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+.data-table td{padding:.4rem .5rem;border-bottom:1px solid rgba(46,45,69,.5);vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:hover td{background:var(--card2)}
+.td-num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.td-pct{text-align:right;color:var(--muted);font-size:.72rem}
+.td-bar{width:70px}
+.mini-bar{height:4px;border-radius:2px}
+.rank{color:var(--faint);font-size:.7rem}
+.chip-1{background:rgba(255,107,53,.15);color:var(--k-l);border:1px solid var(--k-bd);padding:1px 7px;border-radius:10px;font-size:.65rem;font-weight:700}
+.chip-2{background:rgba(76,201,240,.15);color:var(--r-l);border:1px solid var(--r-bd);padding:1px 7px;border-radius:10px;font-size:.65rem;font-weight:700}
 
-  /* ── CARD ── */
-  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
-  .card h5 { font-size: .85rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 1rem; }
+/* REGION TABLE */
+.region-col{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.region-col-hdr{padding:.6rem .9rem;font-size:.7rem;font-weight:700;border-bottom:1px solid var(--border)}
+.region-col.kc .region-col-hdr{background:var(--k-bg);color:var(--k-l)}
+.region-col.rc .region-col-hdr{background:var(--r-bg);color:var(--r-l)}
+.region-row{display:flex;align-items:center;justify-content:space-between;padding:.38rem .9rem;border-bottom:1px solid rgba(46,45,69,.4);font-size:.75rem}
+.region-row:last-child{border-bottom:none}
+.region-row:hover{background:var(--card2)}
+.rname{font-weight:600}
+.ractas{font-size:.62rem;color:var(--faint)}
+.rpct{font-weight:700;font-size:.72rem}
+.kc .rpct{color:var(--k)}
+.rc .rpct{color:var(--r)}
 
-  /* ── TABLE ── */
-  .data-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
-  .data-table th { text-align: left; padding: .5rem .6rem; background: #f3f0ff; color: var(--accent); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; border-bottom: 2px solid var(--border); }
-  .data-table td { padding: .55rem .6rem; border-bottom: 1px solid #f0ece5; vertical-align: middle; }
-  .data-table tr:last-child td { border-bottom: none; }
-  .data-table tr:hover td { background: #faf9f7; }
-  .seat-num { font-weight: 700; color: var(--accent); width: 28px; }
-  .candidate-name { font-weight: 600; }
-  .party-chip {
-    display: inline-flex; align-items: center; gap: 4px;
-    padding: 2px 8px; border-radius: 20px; font-size: .72rem; font-weight: 600;
-    white-space: nowrap;
-  }
-  .pref-votes { font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; }
-  .party-votes { text-align: right; color: var(--muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
-  .pct-cell { text-align: right; color: var(--muted); font-size: .78rem; }
-  .bar-cell { width: 60px; }
-  .mini-bar { height: 6px; border-radius: 3px; }
+/* LOADING */
+.loading-overlay{position:fixed;inset:0;background:rgba(15,14,23,.85);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;z-index:100}
+.loading-overlay.hidden{display:none}
+.loader{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+.loading-text{color:var(--muted);font-size:.85rem}
 
-  /* ── SENATOR CARD ── */
-  .senator-card {
-    border-radius: 12px; padding: 1rem 1.2rem;
-    display: flex; align-items: center; gap: 1rem;
-    border: 1px solid var(--border); background: var(--card);
-  }
-  .senator-icon { font-size: 2rem; }
-  .senator-info h6 { font-size: .8rem; color: var(--muted); margin-bottom: .25rem; }
-  .senator-party { font-size: 1rem; font-weight: 700; }
-  .senator-votes { font-size: .8rem; color: var(--muted); }
+/* ERROR */
+.error-banner{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:#fca5a5;padding:.6rem 1rem;border-radius:8px;font-size:.78rem;margin-bottom:1rem;display:none}
+.error-banner.visible{display:block}
 
-  /* ── CHART CONTAINER ── */
-  .chart-wrap { position: relative; height: 200px; }
+/* NOTE */
+.note{background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:8px;padding:.5rem .9rem;font-size:.7rem;color:var(--muted);margin-bottom:.8rem;line-height:1.6}
+.note strong{color:var(--accent)}
 
-  /* ── SUMMARY TABLE ── */
-  .summary-section { margin-top: 2rem; }
-  .full-table { width: 100%; border-collapse: collapse; font-size: .82rem; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-  .full-table th { padding: .6rem .8rem; background: #1e1b4b; color: white; text-align: left; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
-  .full-table td { padding: .55rem .8rem; border-bottom: 1px solid #f0ece5; }
-  .full-table tr:last-child td { border-bottom: none; }
-  .full-table tr:hover td { background: #faf9f7; }
-  .region-badge {
-    display: inline-block; padding: 2px 8px; border-radius: 6px;
-    font-size: .72rem; font-weight: 700; background: #ede9fe; color: var(--accent);
-  }
+/* CHART */
+.chart-wrap{position:relative}
 
-  /* ── FOOTER ── */
-  .footer {
-    background: #1e1b4b; color: rgba(255,255,255,.7);
-    text-align: center; padding: 2rem;
-    font-size: .8rem; margin-top: 3rem;
-  }
-  .footer strong { color: white; }
-  .footer a { color: #a78bfa; text-decoration: none; }
-  .footer .disclaimer { margin-top: .5rem; font-size: .72rem; opacity: .6; }
+/* FOOTER */
+.footer{background:var(--bg2);border-top:1px solid var(--border);text-align:center;padding:1.5rem;margin-top:3rem}
+.footer .fn{font-size:.95rem;font-weight:700}
+.footer .fh{color:var(--accent);font-size:.8rem;margin-bottom:.6rem}
+.footer .fd{font-size:.68rem;color:var(--faint);max-width:580px;margin:0 auto;line-height:1.7}
 
-  /* ── PARTY COLORS ── */
-  .chip-jpp  { background: #dbeafe; color: #1d4ed8; }
-  .chip-an   { background: #fee2e2; color: #b91c1c; }
-  .chip-bg   { background: #dcfce7; color: #15803d; }
-  .chip-obras{ background: #ffedd5; color: #c2410c; }
-  .chip-rp   { background: #f3e8ff; color: #6d28d9; }
-  .chip-fp   { background: #fef9c3; color: #92400e; }
-  .chip-coop { background: #d1fae5; color: #065f46; }
-  .chip-other{ background: #f3f4f6; color: #374151; }
+/* HIGHLIGHT ANIMATION */
+@keyframes highlight{0%{background:rgba(167,139,250,.2)}100%{background:transparent}}
+.highlight-row{animation:highlight 1.5s ease}
 </style>
 </head>
 <body>
 
-<!-- ══ HEADER ══ -->
+<!-- LOADING -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loader"></div>
+  <div class="loading-text">Cargando datos ONPE...</div>
+</div>
+
+<!-- HEADER -->
 <div class="header">
   <div class="header-inner">
-    <div class="badge"><span class="badge-dot"></span> DATOS ONPE · Elecciones 2026</div>
-    <h1>Resultados Electorales 2026</h1>
-    <h2>Análisis Subnacional del Sur del Perú</h2>
-    <div class="header-meta">
-      <span class="meta-item">📅 30 de abril, 2026</span>
-      <span class="meta-item">🗺️ 8 regiones del sur</span>
-      <span class="meta-item">🏛️ Diputados + Senadores regionales</span>
-      <span class="meta-item">⚠️ Datos parciales (actas en conteo)</span>
+    <div class="header-left">
+      <div class="badge-row">
+        <span class="badge badge-live" id="badgeLive"><span class="badge-dot"></span> EN VIVO · ONPE</span>
+        <span class="badge badge-pct" id="badgePct">—% actas</span>
+      </div>
+      <h1>Segunda Vuelta <span>2026</span></h1>
+      <div class="header-sub">Elecciones Generales · Perú · Conteo en tiempo real</div>
     </div>
-    <div class="author-block">
+    <div class="author-box">
       <div class="author-name">Sergio Contreras Valenzuela</div>
       <div class="author-handle">@7borreguitos_</div>
     </div>
   </div>
 </div>
 
-<!-- ══ ABOUT ══ -->
-<div class="about">
-  <h3>📌 Sobre este dashboard</h3>
-  <p>
-    Este dashboard es un esfuerzo por poner énfasis en el <strong>análisis a nivel subnacional</strong>,
-    en específico en el <strong>Sur del Perú</strong>. Los grandes titulares nacionales a menudo ocultan
-    la rica heterogeneidad política entre regiones: quién gana en Lima no necesariamente refleja
-    lo que ocurre en Puno, Arequipa o Cusco. Aquí se presentan los resultados de los 8 distritos
-    electorales del sur — con nombres de candidatos electos, votos preferenciales y distribución
-    de escaños calculada por el método D'Hondt — para entender cómo se construye la representación
-    parlamentaria región por región.
-  </p>
+<!-- LIVE BAR -->
+<div class="live-bar">
+  <div class="live-bar-inner">
+    <div class="actas-block">
+      <span class="actas-pct" id="pctActas">—</span>
+      <span class="actas-label">de actas contabilizadas (JEE)</span>
+      <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+    <div class="meta-pills">
+      <span class="mpill">Mesas: <strong id="metaMesas">—</strong></span>
+      <span class="mpill">Participación: <strong id="metaPart">—</strong></span>
+      <span class="mpill">Votos válidos: <strong id="metaVV">—</strong></span>
+      <span class="mpill">Proceso: <strong id="metaProceso">—</strong></span>
+    </div>
+  </div>
 </div>
 
-<div class="container">
-
-  <!-- ══ OVERVIEW CARDS ══ -->
-  <div class="section-title">Resumen por Región <span>Haz clic en una región para ver el detalle</span></div>
-  <div class="overview-grid" id="overviewGrid"></div>
-
-  <!-- ══ OVERVIEW CHART ══ -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h5>Distribución de Escaños por Partido — Sur del Perú (Diputados)</h5>
-    <div style="position:relative;height:260px;"><canvas id="overviewChart"></canvas></div>
+<!-- REFRESH BAR -->
+<div class="refresh-bar">
+  <div class="refresh-inner">
+    <div class="refresh-status">
+      <div class="spinner" id="spinner"></div>
+      Actualización automática cada <strong style="color:var(--accent);margin:0 3px">30s</strong>
+      · Próxima en <span class="countdown" id="countdown">30</span>s
+    </div>
+    <div style="display:flex;align-items:center;gap:.8rem">
+      <span class="last-update" id="lastUpdate">—</span>
+      <button class="refresh-btn" onclick="manualRefresh()">⟳ Actualizar ahora</button>
+    </div>
   </div>
+</div>
 
-  <!-- ══ REGION DETAILS ══ -->
-  <div class="section-title">Detalle por Región</div>
-  <div id="regionDetails"></div>
+<div class="main">
+  <div class="error-banner" id="errorBanner">⚠️ No se pudo cargar data.json. Verifica que el archivo esté en el servidor.</div>
 
-  <!-- ══ SUMMARY TABLE ══ -->
-  <div class="summary-section">
-    <div class="section-title">Tabla Consolidada — Candidatos Electos del Sur <span>Diputados con nombre confirmado</span></div>
-    <div style="overflow-x:auto;">
-      <table class="full-table" id="fullTable"></table>
+  <!-- DUELO -->
+  <div class="section-title" id="titleDuelo">Duelo Segunda Vuelta <span id="subDuelo"></span></div>
+
+  <div class="duelo">
+    <div class="cand-card keiko" id="cardKeiko">
+      <div class="cand-flag" id="flagKeiko">🟠 1er lugar</div>
+      <div class="cand-name" id="nameKeiko">CARGANDO...</div>
+      <div class="cand-partido" id="partidoKeiko">—</div>
+      <div class="cand-votos" id="votosKeiko">—</div>
+      <div class="cand-pct" id="pctKeiko">—%</div>
+      <div class="cand-bar-track"><div class="cand-bar-fill" id="barKeiko" style="width:0%"></div></div>
+      <div class="cand-lider" id="liderKeiko">⬆ Liderando</div>
+    </div>
+    <div class="vs-block">
+      <div class="vs-text">VS</div>
+      <div style="font-size:.58rem;color:var(--faint);text-align:center">2da<br>vuelta</div>
+    </div>
+    <div class="cand-card roberto" id="cardRoberto">
+      <div class="cand-flag" id="flagRoberto">🔵 2do lugar</div>
+      <div class="cand-name" id="nameRoberto">CARGANDO...</div>
+      <div class="cand-partido" id="partidoRoberto">—</div>
+      <div class="cand-votos" id="votosRoberto">—</div>
+      <div class="cand-pct" id="pctRoberto">—%</div>
+      <div class="cand-bar-track"><div class="cand-bar-fill" id="barRoberto" style="width:0%"></div></div>
+      <div class="cand-lider" id="liderRoberto">⬆ Liderando</div>
     </div>
   </div>
 
-  <!-- ══ SENATOR SUMMARY ══ -->
-  <div style="margin-top:2rem;">
-    <div class="section-title">Senadores Regionales — Sur del Perú <span>1 escaño por distrito (partido ganador)</span></div>
-    <div style="overflow-x:auto;">
-      <table class="full-table" id="senatorTable"></table>
+  <!-- H2H BAR -->
+  <div class="h2h-wrap" id="h2hWrap">
+    <div class="h2h-labels">
+      <span class="kl" id="h2hLabelK">—</span>
+      <span class="rl" id="h2hLabelR">—</span>
+    </div>
+    <div class="h2h-bar">
+      <div class="h2h-k" id="h2hBarK" style="width:50%"><span id="h2hPctK">50%</span></div>
+      <div class="h2h-r" id="h2hBarR"><span id="h2hPctR">50%</span></div>
+    </div>
+    <div class="h2h-diff" id="h2hDiff">Diferencia: —</div>
+  </div>
+
+  <!-- TODOS LOS CANDIDATOS -->
+  <div class="section-title">Todos los Candidatos <span>Primera vuelta — referencia para la 2da</span></div>
+  <div class="two-col">
+    <div class="card" style="overflow:auto;max-height:440px">
+      <h5>Resultados</h5>
+      <table class="data-table" id="tablaCandidatos">
+        <thead><tr><th>#</th><th>Candidato</th><th>Partido</th><th style="text-align:right">Votos</th><th style="text-align:right">%</th><th></th></tr></thead>
+        <tbody id="tbodyCandidatos"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h5>Distribución de votos (top 10)</h5>
+      <div class="chart-wrap" style="height:340px"><canvas id="chartCandidatos"></canvas></div>
     </div>
   </div>
 
-</div>
+  <!-- REGIONAL -->
+  <div class="section-title">Fuerza por Región <span>Proxy: % votos Diputados · FP→Keiko, JPP→Roberto</span></div>
+  <div class="note"><strong>Nota:</strong> Se usa la distribución de votos en Diputados como indicador de tendencia regional presidencial.</div>
+  <div class="two-col">
+    <div class="region-col kc">
+      <div class="region-col-hdr">🟠 Ventaja FP / Keiko</div>
+      <div id="regionesK"></div>
+    </div>
+    <div class="region-col rc">
+      <div class="region-col-hdr">🔵 Ventaja JPP / Roberto</div>
+      <div id="regionesR"></div>
+    </div>
+  </div>
 
-<!-- ══ FOOTER ══ -->
+  <!-- CHART REGIONAL -->
+  <div class="card" style="margin-top:1rem">
+    <h5>FP vs JPP por distrito (% votos Diputados)</h5>
+    <div class="chart-wrap" style="height:300px"><canvas id="chartRegional"></canvas></div>
+  </div>
+
+</div><!-- /main -->
+
 <div class="footer">
-  <div><strong>Sergio Contreras Valenzuela</strong></div>
-  <div><a href="https://twitter.com/7borreguitos_">@7borreguitos_</a></div>
-  <div class="disclaimer">
-    Datos: ONPE — Resultados Electorales 2026 (parciales al 30/04/2026). Escaños calculados con método D'Hondt.
-    Nombres de candidatos según votos preferenciales. Solo distritos del sur del Perú.
-  </div>
+  <div class="fn">Sergio Contreras Valenzuela</div>
+  <div class="fh">@7borreguitos_</div>
+  <div class="fd">Datos: ONPE — Resultados Elecciones Generales 2026. Actualización automática cada 30 segundos via GitHub Actions. Los datos reflejan el porcentaje de actas contabilizadas indicado arriba.</div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-//  DATA
-// ═══════════════════════════════════════════════════════
-const PARTY_META = {
-  JPP:     { label: 'Juntos por el Perú',      chip: 'chip-jpp',   color: '#93c5fd', dark: '#2563eb' },
-  AN:      { label: 'Ahora Nación',            chip: 'chip-an',    color: '#fca5a5', dark: '#dc2626' },
-  BG:      { label: 'Buen Gobierno',           chip: 'chip-bg',    color: '#86efac', dark: '#16a34a' },
-  Obras:   { label: 'Partido Cívico Obras',    chip: 'chip-obras', color: '#fdba74', dark: '#ea580c' },
-  RP:      { label: 'Renovación Popular',      chip: 'chip-rp',    color: '#c4b5fd', dark: '#7c3aed' },
-  FP:      { label: 'Fuerza Popular',          chip: 'chip-fp',    color: '#fde68a', dark: '#d97706' },
-  CoopPop: { label: 'Cooperación Popular',     chip: 'chip-coop',  color: '#a7f3d0', dark: '#059669' },
-  Other:   { label: 'Otro',                    chip: 'chip-other', color: '#e5e7eb', dark: '#6b7280' },
-};
+// ══════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════
+const DATA_URL   = './data.json';
+const REFRESH_S  = 30;
 
-const REGIONES = [
-  {
-    id: 'apurimac', nombre: 'APURÍMAC', diputados: 2, senadorEscanos: 1,
-    pctActas: 89.2,
-    dipPartidos: [
-      { partido:'JPP', cod:10, votos:60142, pct:57.4 },
-      { partido:'AN',  cod:2,  votos:18292, pct:17.5 },
-      { partido:'Obras',cod:14,votos:17581, pct:16.8 },
-      { partido:'FP',  cod:8,  votos:8820,  pct:8.4  },
-    ],
-    electos: [
-      { num:1, nombre:'JESUS PEREZ ALCCAHUAMAN',   partido:'JPP',  prefVotos:12177, partidoVotos:60142, pct:57.4 },
-      { num:2, nombre:'LUZ MERIDA SOTO FERRARI',    partido:'JPP',  prefVotos:5513,  partidoVotos:null,  pct:null  },
-    ],
-    senador: { partido:'JPP', votos:60590, pct:63.3 },
-  },
-  {
-    id: 'arequipa', nombre: 'AREQUIPA', diputados: 6, senadorEscanos: 1,
-    pctActas: 91.5,
-    dipPartidos: [
-      { partido:'BG',   cod:16, votos:128517, pct:24.1 },
-      { partido:'JPP',  cod:10, votos:72261,  pct:13.5 },
-      { partido:'AN',   cod:2,  votos:69930,  pct:13.1 },
-      { partido:'RP',   cod:35, votos:68549,  pct:12.9 },
-      { partido:'Obras',cod:14, votos:66983,  pct:12.6 },
-      { partido:'Other',cod:23, votos:54730,  pct:10.3 },
-    ],
-    electos: [
-      { num:1, nombre:'EDGAR DEMBER GONZALES POLAR',       partido:'BG',   prefVotos:18162, partidoVotos:128517, pct:24.1 },
-      { num:2, nombre:'GLORIA CHARITO HIRACHE PIZARRO',    partido:'BG',   prefVotos:8836,  partidoVotos:null,   pct:null  },
-      { num:3, nombre:'AMALIA EMILIA PALOMINO PACHECO',    partido:'JPP',  prefVotos:10790, partidoVotos:72261,  pct:13.5 },
-      { num:4, nombre:'MARLENY BIBIANA ARMINTA VALENCIA',  partido:'AN',   prefVotos:14226, partidoVotos:69930,  pct:13.1 },
-      { num:5, nombre:'CHRISTIAN ARANDA VASQUEZ',          partido:'RP',   prefVotos:14694, partidoVotos:68549,  pct:12.9 },
-      { num:6, nombre:'LUIS AURELIO MASCO CACERES',        partido:'Obras',prefVotos:8057,  partidoVotos:66983,  pct:12.6 },
-    ],
-    senador: { partido:'BG', votos:140978, pct:50.5 },
-  },
-  {
-    id: 'ayacucho', nombre: 'AYACUCHO', diputados: 3, senadorEscanos: 1,
-    pctActas: 87.8,
-    dipPartidos: [
-      { partido:'JPP',  cod:10, votos:65542, pct:42.7 },
-      { partido:'AN',   cod:2,  votos:36494, pct:23.8 },
-      { partido:'Obras',cod:14, votos:24819, pct:16.2 },
-      { partido:'FP',   cod:8,  votos:14757, pct:9.6  },
-    ],
-    electos: [
-      { num:1, nombre:'ALEJANDRO JOSÉ MANAY PILLACA', partido:'JPP', prefVotos:11227, partidoVotos:65542, pct:42.7 },
-      { num:2, nombre:'PILAR SULCA CASTILLO',          partido:'JPP', prefVotos:1968,  partidoVotos:null,  pct:null  },
-      { num:3, nombre:'FRESHMAN BUITRON MARTINEZ',     partido:'AN',  prefVotos:8634,  partidoVotos:36494, pct:23.8 },
-    ],
-    senador: { partido:'JPP', votos:66215, pct:52.5 },
-  },
-  {
-    id: 'cusco', nombre: 'CUSCO', diputados: 5, senadorEscanos: 1,
-    pctActas: 85.3,
-    dipPartidos: [
-      { partido:'JPP',  cod:10, votos:115263, pct:32.7 },
-      { partido:'AN',   cod:2,  votos:82577,  pct:23.4 },
-      { partido:'Obras',cod:14, votos:64396,  pct:18.3 },
-      { partido:'BG',   cod:16, votos:45705,  pct:13.0 },
-      { partido:'FP',   cod:8,  votos:22779,  pct:6.5  },
-      { partido:'RP',   cod:35, votos:21485,  pct:6.1  },
-    ],
-    electos: [
-      { num:1, nombre:'ANALI MARQUEZ HUANCA',       partido:'JPP',  prefVotos:16960, partidoVotos:115263, pct:32.7 },
-      { num:2, nombre:'JULIAN LUIS PEREZ MALLQUI',  partido:'JPP',  prefVotos:13073, partidoVotos:null,   pct:null  },
-      { num:3, nombre:'CESAR AUGUSTO HOLGUIN LOAIZA',partido:'AN',  prefVotos:23663, partidoVotos:82577,  pct:23.4 },
-      { num:4, nombre:'HEBER LOPEZ LETONA',          partido:'Obras',prefVotos:7552,  partidoVotos:64396,  pct:18.3 },
-      { num:5, nombre:'EDWIN ESPINOZA HUILLCA',      partido:'BG',   prefVotos:8338,  partidoVotos:45705,  pct:13.0 },
-    ],
-    senador: { partido:'JPP', votos:116995, pct:43.8 },
-  },
-  {
-    id: 'madre-de-dios', nombre: 'MADRE DE DIOS', diputados: 2, senadorEscanos: 1,
-    pctActas: 83.1,
-    dipPartidos: [
-      { partido:'JPP',  cod:10, votos:12161, pct:45.7 },
-      { partido:'Obras',cod:14, votos:5190,  pct:19.5 },
-      { partido:'FP',   cod:8,  votos:4999,  pct:18.8 },
-      { partido:'AN',   cod:2,  votos:4264,  pct:16.0 },
-    ],
-    electos: [
-      { num:1, nombre:'JAMES ARTURO HOLGUIN AGUIRRE',  partido:'JPP', prefVotos:2130, partidoVotos:12161, pct:45.7 },
-      { num:2, nombre:'HAYDEE CELINDA POMA HUAMANI',   partido:'JPP', prefVotos:1522, partidoVotos:null,  pct:null  },
-    ],
-    senador: { partido:'JPP', votos:13673, pct:57.0 },
-  },
-  {
-    id: 'moquegua', nombre: 'MOQUEGUA', diputados: 2, senadorEscanos: 1,
-    pctActas: 88.4,
-    dipPartidos: [
-      { partido:'JPP',  cod:10, votos:12443, pct:32.6 },
-      { partido:'BG',   cod:16, votos:9292,  pct:24.4 },
-      { partido:'AN',   cod:2,  votos:8870,  pct:23.2 },
-      { partido:'Other',cod:29, votos:7534,  pct:19.7 },
-    ],
-    electos: [
-      { num:1, nombre:'GRACIELA CHIPANA CONDORI',    partido:'JPP', prefVotos:2376, partidoVotos:12443, pct:32.6 },
-      { num:2, nombre:'NERY RODOLFO FERNANDEZ NINA', partido:'BG',  prefVotos:1430, partidoVotos:9292,  pct:24.4 },
-    ],
-    senador: { partido:'JPP', votos:12516, pct:40.0 },
-  },
-  {
-    id: 'puno', nombre: 'PUNO', diputados: 5, senadorEscanos: 1,
-    pctActas: 86.6,
-    dipPartidos: [
-      { partido:'JPP',    cod:10, votos:128976, pct:35.7 },
-      { partido:'Obras',  cod:14, votos:75190,  pct:20.8 },
-      { partido:'AN',     cod:2,  votos:62440,  pct:17.3 },
-      { partido:'CoopPop',cod:25, votos:44717,  pct:12.4 },
-      { partido:'Other',  cod:3,  votos:30343,  pct:8.4  },
-    ],
-    electos: [
-      { num:1, nombre:'JESSICA SADITH PEREZ QUISPE',       partido:'JPP',    prefVotos:18856, partidoVotos:128976, pct:35.7 },
-      { num:2, nombre:'CESAR HUGO TITO ROJAS',              partido:'JPP',    prefVotos:17468, partidoVotos:null,   pct:null  },
-      { num:3, nombre:'DINA IRENE HANCCO HANCCO',           partido:'Obras',  prefVotos:11731, partidoVotos:75190,  pct:20.8 },
-      { num:4, nombre:'HELARD BLADIMIR SONCO VILLANUEVA',   partido:'AN',     prefVotos:13144, partidoVotos:62440,  pct:17.3 },
-      { num:5, nombre:'OSCAR GONZALES HUAMAN',              partido:'CoopPop',prefVotos:8440,  partidoVotos:44717,  pct:12.4 },
-    ],
-    senador: { partido:'JPP', votos:134957, pct:49.1 },
-  },
-  {
-    id: 'tacna', nombre: 'TACNA', diputados: 2, senadorEscanos: 1,
-    pctActas: 90.3,
-    dipPartidos: [
-      { partido:'Obras',cod:14, votos:21622, pct:26.5 },
-      { partido:'JPP',  cod:10, votos:21617, pct:26.5 },
-      { partido:'BG',   cod:16, votos:19975, pct:24.5 },
-      { partido:'AN',   cod:2,  votos:18500, pct:22.7 },
-    ],
-    electos: [
-      { num:1, nombre:'JUAN CESAR CABRERA NIETO',         partido:'Obras', prefVotos:3212, partidoVotos:21622, pct:26.5 },
-      { num:2, nombre:'SVIETA VALIA FERNANDEZ GONZALEZ',  partido:'JPP',   prefVotos:3274, partidoVotos:21617, pct:26.5 },
-    ],
-    senador: { partido:'Obras', votos:22448, pct:35.1 },
-  },
+// Mapa partido → candidato 1ra vuelta para identificar top 2
+const KEIKO_KEYWORDS  = ['FUJIMORI', 'FUERZA POPULAR'];
+const ROBERTO_KEYWORDS= ['SANCHEZ PALOMINO', 'JUNTOS POR EL PERÚ', 'JUNTOS POR EL PERU'];
+
+// Colores por partido
+const PCOLORS = {
+  'FUERZA POPULAR':'#ff6b35','JUNTOS POR EL PERÚ':'#4cc9f0',
+  'RENOVACIÓN POPULAR':'#c4b5fd','PARTIDO DEL BUEN GOBIERNO':'#86efac',
+  'PARTIDO CÍVICO OBRAS':'#fdba74','AHORA NACIÓN - AN':'#fca5a5',
+  'PARTIDO PAÍS PARA TODOS':'#fde68a',
+};
+const pColor = p => PCOLORS[p] || '#454560';
+
+// Datos regionales proxy (FP vs JPP en diputados)
+const REGIONES_PROXY = [
+  {n:'AMAZONAS',fp:24.7,jpp:0.0,a:81.3},{n:'APURÍMAC',fp:5.8,jpp:39.5,a:87.5},
+  {n:'AREQUIPA',fp:5.5,jpp:10.0,a:90.2},{n:'AYACUCHO',fp:6.5,jpp:29.0,a:88.7},
+  {n:'CAJAMARCA',fp:11.7,jpp:39.5,a:79.1},{n:'CALLAO',fp:18.3,jpp:3.3,a:91.4},
+  {n:'CUSCO',fp:4.3,jpp:21.9,a:85.3},{n:'HUANCAVELICA',fp:6.5,jpp:43.6,a:87.3},
+  {n:'HUÁNUCO',fp:13.0,jpp:27.9,a:80.1},{n:'ICA',fp:16.6,jpp:7.9,a:69.8},
+  {n:'JUNÍN',fp:13.9,jpp:11.9,a:84.0},{n:'LA LIBERTAD',fp:17.0,jpp:9.4,a:78.1},
+  {n:'LAMBAYEQUE',fp:23.6,jpp:10.4,a:81.4},{n:'LIMA METRO',fp:14.4,jpp:2.9,a:89.1},
+  {n:'LIMA PROV.',fp:21.3,jpp:8.6,a:84.1},{n:'LORETO',fp:24.1,jpp:8.7,a:65.4},
+  {n:'MADRE DE DIOS',fp:9.7,jpp:23.5,a:75.0},{n:'MOQUEGUA',fp:5.5,jpp:15.2,a:87.9},
+  {n:'PASCO',fp:19.0,jpp:0.0,a:85.2},{n:'EXTRANJERO',fp:15.9,jpp:0.0,a:60.3},
+  {n:'PIURA',fp:28.4,jpp:0.0,a:74.1},{n:'PUNO',fp:2.8,jpp:25.3,a:88.5},
+  {n:'SAN MARTÍN',fp:20.2,jpp:21.9,a:74.7},{n:'TACNA',fp:5.2,jpp:12.4,a:89.3},
+  {n:'TUMBES',fp:25.2,jpp:7.3,a:77.5},{n:'UCAYALI',fp:27.6,jpp:11.4,a:73.5},
+  {n:'ÁNCASH',fp:15.1,jpp:14.0,a:79.9},
 ];
 
-// ═══════════════════════════════════════════════════════
-//  HELPERS
-// ═══════════════════════════════════════════════════════
-function pMeta(p) { return PARTY_META[p] || PARTY_META.Other; }
+// ══════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════
+let lastData = null;
+let chartCands = null;
+let chartReg   = null;
+let countdownVal = REFRESH_S;
+let countdownTimer = null;
 
-function chip(p) {
-  const m = pMeta(p);
-  return `<span class="party-chip ${m.chip}">${p}</span>`;
+// ══════════════════════════════════════════
+// HELPERS
+// ══════════════════════════════════════════
+const fmt  = n => (n||0).toLocaleString('es-PE');
+const fmtP = n => (n||0).toFixed(2) + '%';
+
+function isKeiko(c)  { return KEIKO_KEYWORDS.some(k => (c.nombre||'').toUpperCase().includes(k) || (c.partido||'').toUpperCase().includes(k)); }
+function isRoberto(c){ return ROBERTO_KEYWORDS.some(k => (c.nombre||'').toUpperCase().includes(k) || (c.partido||'').toUpperCase().includes(k)); }
+
+function animateNumber(el, newVal, formatter) {
+  const oldText = el.textContent;
+  const newText = formatter ? formatter(newVal) : fmt(newVal);
+  if (oldText !== newText) {
+    el.textContent = newText;
+    el.closest('.cand-card')?.classList.add('updated');
+    setTimeout(() => el.closest('.cand-card')?.classList.remove('updated'), 700);
+  }
 }
 
-function fmt(n) {
-  if (n == null) return '<span style="color:#ccc">—</span>';
-  return n.toLocaleString('es-PE');
+function formatTime(isoStr) {
+  if (!isoStr) return '—';
+  const d = new Date(isoStr);
+  return d.toLocaleString('es-PE', { timeZone:'America/Lima', hour:'2-digit', minute:'2-digit', second:'2-digit' });
 }
 
-function partyColor(p) { return pMeta(p).color; }
-function partyDark(p)  { return pMeta(p).dark; }
+// ══════════════════════════════════════════
+// UPDATE DASHBOARD
+// ══════════════════════════════════════════
+function updateDashboard(data) {
+  const { meta, candidatos, por_distrito, last_scrape } = data;
 
-// ═══════════════════════════════════════════════════════
-//  BUILD OVERVIEW CARDS
-// ═══════════════════════════════════════════════════════
-function buildOverviewCards() {
-  const grid = document.getElementById('overviewGrid');
-  REGIONES.forEach((r, i) => {
-    const lead = r.dipPartidos[0];
-    const borderColor = partyDark(lead.partido);
-    const card = document.createElement('div');
-    card.className = 'ov-card' + (i === 0 ? ' active' : '');
-    card.style.borderLeftColor = borderColor;
-    card.innerHTML = `
-      <h4>${r.nombre}</h4>
-      <div class="seats">${r.diputados} diputados · ${r.senadorEscanos} senador</div>
-      <div class="ov-winner">
-        <div class="party-dot" style="background:${partyColor(lead.partido)}"></div>
-        <div class="ov-winner-text">${pMeta(lead.partido).label}</div>
-      </div>
-      <div style="font-size:.72rem;color:#9ca3af;margin-bottom:4px">${lead.pct}% votos válidos</div>
-      <div class="ov-bar">
-        <div class="ov-bar-fill" style="width:${lead.pct}%;background:${partyColor(lead.partido)}"></div>
-      </div>
-      <div style="font-size:.7rem;color:#9ca3af;margin-top:6px">⚡ ${r.pctActas}% actas</div>
-    `;
-    card.addEventListener('click', () => showRegion(r.id, card));
-    grid.appendChild(card);
-  });
-}
+  // -- Meta --
+  document.getElementById('pctActas').textContent   = (meta.pct_actas||0).toFixed(2) + '%';
+  document.getElementById('progressFill').style.width = Math.min(meta.pct_actas||0, 100) + '%';
+  document.getElementById('badgePct').textContent   = (meta.pct_actas||0).toFixed(1) + '% actas';
+  document.getElementById('metaMesas').textContent  = `${fmt(meta.actas_contabilizadas)} / ${fmt(meta.total_actas)}`;
+  document.getElementById('metaPart').textContent   = (meta.participacion||0).toFixed(1) + '%';
+  document.getElementById('metaVV').textContent     = fmt(meta.votos_validos);
+  document.getElementById('metaProceso').textContent= meta.proceso || '—';
+  document.getElementById('subDuelo').textContent   = `${(meta.pct_actas||0).toFixed(2)}% de actas · ${formatTime(meta.scraped_at)}`;
 
-// ═══════════════════════════════════════════════════════
-//  BUILD REGION DETAILS
-// ═══════════════════════════════════════════════════════
-function buildRegionDetails() {
-  const container = document.getElementById('regionDetails');
-  REGIONES.forEach((r, i) => {
-    const div = document.createElement('div');
-    div.className = 'region-detail' + (i === 0 ? ' active' : '');
-    div.id = 'detail-' + r.id;
+  if (last_scrape?.finished_at) {
+    document.getElementById('lastUpdate').textContent = 'Último scrape: ' + formatTime(last_scrape.finished_at);
+  }
 
-    const totalVotos = r.dipPartidos.reduce((s,p) => s + p.votos, 0);
+  // -- Top 2 candidates --
+  const top2 = [];
+  let k = candidatos.find(isKeiko);
+  let r = candidatos.find(isRoberto);
 
-    // Build party bar chart data
-    const chartLabels = r.dipPartidos.map(p => p.partido);
-    const chartData   = r.dipPartidos.map(p => p.votos);
-    const chartColors = r.dipPartidos.map(p => partyColor(p.partido));
-    const chartBorders= r.dipPartidos.map(p => partyDark(p.partido));
+  // Si no hay 2da vuelta todavía, usar los 2 primeros
+  if (!k) k = candidatos[0];
+  if (!r) r = candidatos[1];
 
-    // Elected rows
-    const electosRows = r.electos.map(e => `
-      <tr>
-        <td class="seat-num">${e.num}</td>
-        <td class="candidate-name">${e.nombre}</td>
-        <td>${chip(e.partido)}</td>
-        <td class="pref-votes">${fmt(e.prefVotos)}</td>
-        <td class="party-votes">${fmt(e.partidoVotos)}</td>
-        <td class="pct-cell">${e.pct != null ? e.pct + '%' : '—'}</td>
-        <td class="bar-cell">
-          ${e.pct != null ? `<div class="mini-bar" style="width:${Math.min(e.pct,100)}%;background:${partyColor(e.partido)};height:6px;border-radius:3px"></div>` : ''}
-        </td>
-      </tr>
-    `).join('');
+  const totalVV = meta.votos_validos || 1;
+  const kPct = k ? (k.pct || k.votos/totalVV*100) : 0;
+  const rPct = r ? (r.pct || r.votos/totalVV*100) : 0;
+  const h2hTotal = (k?.votos||0) + (r?.votos||0);
+  const kH2H = h2hTotal > 0 ? ((k?.votos||0)/h2hTotal*100) : 50;
+  const rH2H = 100 - kH2H;
 
-    div.innerHTML = `
-      <div class="region-header">
-        <div>
-          <h3>📍 ${r.nombre}</h3>
-          <div style="font-size:.8rem;opacity:.7;margin-top:.2rem">${r.pctActas}% de actas contabilizadas</div>
-        </div>
-        <div class="region-stats">
-          <div class="rstat">
-            <div class="rstat-num">${r.diputados}</div>
-            <div class="rstat-label">Diputados</div>
-          </div>
-          <div class="rstat">
-            <div class="rstat-num">${r.senadorEscanos}</div>
-            <div class="rstat-label">Senador</div>
-          </div>
-          <div class="rstat">
-            <div class="rstat-num">${r.dipPartidos.length}</div>
-            <div class="rstat-label">Partidos</div>
-          </div>
-        </div>
-      </div>
+  if (k) {
+    document.getElementById('nameKeiko').textContent    = k.nombre || '—';
+    document.getElementById('partidoKeiko').textContent = k.partido || '—';
+    animateNumber(document.getElementById('votosKeiko'), k.votos, fmt);
+    document.getElementById('pctKeiko').textContent     = fmtP(kPct);
+    document.getElementById('barKeiko').style.width     = Math.min(kPct/20*100, 100) + '%';
+    document.getElementById('flagKeiko').textContent    = '🟠 ' + (k.votos > (r?.votos||0) ? '1er lugar ⬆' : '2do lugar');
+  }
+  if (r) {
+    document.getElementById('nameRoberto').textContent    = r.nombre || '—';
+    document.getElementById('partidoRoberto').textContent = r.partido || '—';
+    animateNumber(document.getElementById('votosRoberto'), r.votos, fmt);
+    document.getElementById('pctRoberto').textContent     = fmtP(rPct);
+    document.getElementById('barRoberto').style.width     = Math.min(rPct/20*100, 100) + '%';
+    document.getElementById('flagRoberto').textContent    = '🔵 ' + (r.votos > (k?.votos||0) ? '1er lugar ⬆' : '2do lugar');
+  }
 
-      <div class="two-col">
-        <div class="card">
-          <h5>Diputados Electos</h5>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Candidato</th>
-                <th>Partido</th>
-                <th>Vot. Pref.</th>
-                <th>Vot. Partido</th>
-                <th>%</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>${electosRows}</tbody>
-          </table>
-        </div>
-        <div class="card">
-          <h5>Votos por Partido (Diputados)</h5>
-          <div class="chart-wrap">
-            <canvas id="chart-${r.id}"></canvas>
-          </div>
-        </div>
-      </div>
+  // Lider badges
+  if (k && r) {
+    document.getElementById('liderKeiko').textContent  = k.votos >= r.votos ? '⬆ Liderando' : 'Segundo lugar';
+    document.getElementById('liderRoberto').textContent= r.votos >= k.votos ? '⬆ Liderando' : 'Segundo lugar';
+  }
 
-      <div class="senator-card" style="border-left:4px solid ${partyDark(r.senador.partido)}">
-        <div class="senator-icon">🏛️</div>
-        <div class="senator-info">
-          <h6>Senador Regional (1 escaño)</h6>
-          <div class="senator-party">${pMeta(r.senador.partido).label} ${chip(r.senador.partido)}</div>
-          <div class="senator-votes">${fmt(r.senador.votos)} votos · ${r.senador.pct}% — Nota: Nombres de candidatos senatoriales no disponibles en la API de ONPE.</div>
-        </div>
-      </div>
-    `;
+  // H2H bar
+  document.getElementById('h2hLabelK').textContent  = (k?.nombre?.split(' ').slice(0,1).join(' ')||'Keiko') + ` · ${kH2H.toFixed(1)}%`;
+  document.getElementById('h2hLabelR').textContent  = (r?.nombre?.split(' ').slice(0,1).join(' ')||'Roberto') + ` · ${rH2H.toFixed(1)}%`;
+  document.getElementById('h2hBarK').style.width    = kH2H.toFixed(1) + '%';
+  document.getElementById('h2hPctK').textContent    = kH2H.toFixed(1) + '%';
+  document.getElementById('h2hPctR').textContent    = rH2H.toFixed(1) + '%';
+  const diff = Math.abs((k?.votos||0) - (r?.votos||0));
+  const winner = (k?.votos||0) >= (r?.votos||0) ? (k?.nombre||'').split(' ')[0] : (r?.nombre||'').split(' ')[0];
+  document.getElementById('h2hDiff').textContent = `Diferencia: ${fmt(diff)} votos a favor de ${winner}`;
 
-    container.appendChild(div);
+  // -- Tabla candidatos --
+  const tbody = document.getElementById('tbodyCandidatos');
+  const maxVotos = candidatos[0]?.votos || 1;
+  tbody.innerHTML = candidatos.map((c, i) => {
+    const isK = isKeiko(c), isR = isRoberto(c);
+    const badge = isK ? '<span class="chip-1">1ro</span>' : isR ? '<span class="chip-2">2do</span>' : `<span class="rank">${i+1}</span>`;
+    const bw = Math.round(c.votos/maxVotos*100);
+    return `<tr>
+      <td>${badge}</td>
+      <td style="font-size:.73rem;font-weight:600">${c.nombre}</td>
+      <td style="font-size:.68rem;color:var(--muted)">${c.partido}</td>
+      <td class="td-num">${fmt(c.votos)}</td>
+      <td class="td-pct">${fmtP(c.pct)}</td>
+      <td class="td-bar"><div class="mini-bar" style="width:${bw}%;background:${pColor(c.partido)}"></div></td>
+    </tr>`;
+  }).join('');
 
-    // Render chart after DOM insert
-    requestAnimationFrame(() => {
-      const ctx = document.getElementById('chart-' + r.id);
-      if (!ctx) return;
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: chartLabels,
-          datasets: [{
-            data: chartData,
-            backgroundColor: chartColors,
-            borderColor: chartBorders,
-            borderWidth: 1.5,
-            borderRadius: 6,
-          }]
-        },
-        options: {
-          responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: {
-            callbacks: {
-              label: ctx => ` ${ctx.raw.toLocaleString('es-PE')} votos (${((ctx.raw/totalVotos)*100).toFixed(1)}%)`
-            }
-          }},
-          scales: {
-            x: { grid: { display: false }, ticks: { font: { size: 11 } } },
-            y: { grid: { color: '#f0ece5' }, ticks: { font: { size: 10 }, callback: v => v >= 1000 ? (v/1000).toFixed(0)+'k' : v } }
-          }
-        }
-      });
-    });
-  });
-}
-
-// ═══════════════════════════════════════════════════════
-//  SHOW REGION
-// ═══════════════════════════════════════════════════════
-function showRegion(id, clickedCard) {
-  document.querySelectorAll('.region-detail').forEach(d => d.classList.remove('active'));
-  document.querySelectorAll('.ov-card').forEach(c => c.classList.remove('active'));
-  document.getElementById('detail-' + id).classList.add('active');
-  clickedCard.classList.add('active');
-  document.getElementById('detail-' + id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-// ═══════════════════════════════════════════════════════
-//  OVERVIEW CHART
-// ═══════════════════════════════════════════════════════
-function buildOverviewChart() {
-  const parties = ['JPP','BG','AN','Obras','RP','CoopPop','FP','Other'];
-  const regionNames = REGIONES.map(r => r.nombre);
-
-  // Count seats per party per region
-  const datasets = parties.map(p => {
-    const data = REGIONES.map(r => r.electos.filter(e => e.partido === p).length);
-    const total = data.reduce((a,b)=>a+b,0);
-    if (total === 0) return null;
-    return {
-      label: p,
-      data,
-      backgroundColor: partyColor(p),
-      borderColor: partyDark(p),
-      borderWidth: 1,
-      borderRadius: 4,
-    };
-  }).filter(Boolean);
-
-  new Chart(document.getElementById('overviewChart'), {
-    type: 'bar',
-    data: { labels: regionNames, datasets },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'top', labels: { font: { size: 11 }, padding: 12 } },
-        tooltip: { mode: 'index', intersect: false }
+  // -- Chart candidatos --
+  const top10 = candidatos.slice(0,10);
+  if (!chartCands) {
+    chartCands = new Chart(document.getElementById('chartCandidatos'), {
+      type:'bar',
+      data:{
+        labels: top10.map(c=>c.nombre.split(' ').slice(0,2).join(' ')),
+        datasets:[{
+          data: top10.map(c=>c.votos),
+          backgroundColor: top10.map(c=>pColor(c.partido)+'bb'),
+          borderColor: top10.map(c=>pColor(c.partido)),
+          borderWidth:1.5, borderRadius:5,
+        }]
       },
-      scales: {
-        x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } },
-        y: { stacked: true, grid: { color: '#f0ece5' }, ticks: { stepSize: 1, font: { size: 10 } }, title: { display: true, text: 'Escaños', font: { size: 10 } } }
+      options:{
+        indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${fmt(ctx.raw)} votos (${fmtP(ctx.raw/totalVV*100)})`}}},
+        scales:{
+          x:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#a7a9be',font:{size:10},callback:v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1000?(v/1000).toFixed(0)+'k':v}},
+          y:{grid:{display:false},ticks:{color:'#fffffe',font:{size:10}}}
+        }
+      }
+    });
+  } else {
+    chartCands.data.labels = top10.map(c=>c.nombre.split(' ').slice(0,2).join(' '));
+    chartCands.data.datasets[0].data = top10.map(c=>c.votos);
+    chartCands.update('active');
+  }
+}
+
+// ══════════════════════════════════════════
+// REGIONES (proxy estático)
+// ══════════════════════════════════════════
+function buildRegiones() {
+  const keiko  = REGIONES_PROXY.filter(r=>r.fp>r.jpp).sort((a,b)=>(b.fp-b.jpp)-(a.fp-a.jpp));
+  const roberto= REGIONES_PROXY.filter(r=>r.jpp>=r.fp).sort((a,b)=>(b.jpp-b.fp)-(a.jpp-a.fp));
+  document.getElementById('regionesK').innerHTML = keiko.map(r=>`
+    <div class="region-row"><div><div class="rname">${r.n}</div><div class="ractas">${r.a}% actas</div></div><div class="rpct">FP: ${r.fp}%</div></div>`).join('');
+  document.getElementById('regionesR').innerHTML = roberto.map(r=>`
+    <div class="region-row"><div><div class="rname">${r.n}</div><div class="ractas">${r.a}% actas</div></div><div class="rpct">JPP: ${r.jpp}%</div></div>`).join('');
+
+  // Chart regional
+  const sorted = [...REGIONES_PROXY].sort((a,b)=>(b.fp-b.jpp)-(a.fp-a.jpp));
+  chartReg = new Chart(document.getElementById('chartRegional'), {
+    type:'bar',
+    data:{
+      labels: sorted.map(r=>r.n),
+      datasets:[
+        {label:'FP (Keiko)', data:sorted.map(r=>r.fp), backgroundColor:'rgba(255,107,53,.75)', borderColor:'#ff6b35', borderWidth:1, borderRadius:3},
+        {label:'JPP (Roberto)', data:sorted.map(r=>r.jpp), backgroundColor:'rgba(76,201,240,.75)', borderColor:'#4cc9f0', borderWidth:1, borderRadius:3},
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'top',labels:{color:'#a7a9be',font:{size:10},padding:10}},tooltip:{mode:'index',intersect:false}},
+      scales:{
+        x:{grid:{display:false},ticks:{color:'#a7a9be',font:{size:9}}},
+        y:{grid:{color:'rgba(255,255,255,.05)'},ticks:{color:'#a7a9be',font:{size:10},callback:v=>v+'%'},title:{display:true,text:'% votos válidos (Diputados 1ra vuelta)',color:'#454560',font:{size:9}}}
       }
     }
   });
 }
 
-// ═══════════════════════════════════════════════════════
-//  FULL TABLE
-// ═══════════════════════════════════════════════════════
-function buildFullTable() {
-  const tbl = document.getElementById('fullTable');
-  tbl.innerHTML = `
-    <thead>
-      <tr>
-        <th>Región</th><th>Escaño</th><th>Candidato Electo</th>
-        <th>Partido</th><th>Votos Pref.</th><th>Votos Partido</th><th>% Partido</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${REGIONES.flatMap(r =>
-        r.electos.map(e => `
-          <tr>
-            <td><span class="region-badge">${r.nombre}</span></td>
-            <td style="font-weight:700;color:#7c3aed">${e.num}</td>
-            <td style="font-weight:600">${e.nombre}</td>
-            <td>${chip(e.partido)}</td>
-            <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:600">${fmt(e.prefVotos)}</td>
-            <td style="text-align:right;font-variant-numeric:tabular-nums;color:#6b7280">${fmt(e.partidoVotos)}</td>
-            <td style="text-align:right;color:#6b7280">${e.pct != null ? e.pct+'%' : '—'}</td>
-          </tr>
-        `)
-      ).join('')}
-    </tbody>
-  `;
+// ══════════════════════════════════════════
+// FETCH DATA
+// ══════════════════════════════════════════
+async function fetchData(isManual=false) {
+  document.getElementById('spinner').classList.add('active');
+  document.getElementById('errorBanner').classList.remove('visible');
+
+  try {
+    const res = await fetch(DATA_URL + '?t=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    document.getElementById('loadingOverlay').classList.add('hidden');
+    updateDashboard(data);
+    lastData = data;
+    if (isManual) {
+      document.getElementById('countdownVal')
+      resetCountdown();
+    }
+  } catch (err) {
+    console.error('Error fetching data:', err);
+    document.getElementById('errorBanner').classList.add('visible');
+    document.getElementById('errorBanner').textContent = '⚠️ Error al cargar datos: ' + err.message + '. Reintentando en ' + REFRESH_S + 's.';
+    document.getElementById('loadingOverlay').classList.add('hidden');
+  } finally {
+    document.getElementById('spinner').classList.remove('active');
+  }
 }
 
-// ═══════════════════════════════════════════════════════
-//  SENATOR TABLE
-// ═══════════════════════════════════════════════════════
-function buildSenatorTable() {
-  const tbl = document.getElementById('senatorTable');
-  tbl.innerHTML = `
-    <thead>
-      <tr>
-        <th>Región</th><th>Partido Ganador</th><th>Votos</th><th>% Votos Válidos</th><th>Estado</th>
-      </tr>
-    </thead>
-    <tbody>
-      ${REGIONES.map(r => `
-        <tr>
-          <td><span class="region-badge">${r.nombre}</span></td>
-          <td>${chip(r.senador.partido)} <span style="font-size:.82rem;margin-left:4px">${pMeta(r.senador.partido).label}</span></td>
-          <td style="text-align:right;font-weight:600;font-variant-numeric:tabular-nums">${fmt(r.senador.votos)}</td>
-          <td style="text-align:right;color:#6b7280">${r.senador.pct}%</td>
-          <td style="font-size:.75rem;color:#6b7280">Candidato no disponible en API</td>
-        </tr>
-      `).join('')}
-    </tbody>
-  `;
+function manualRefresh() {
+  resetCountdown();
+  fetchData(true);
 }
 
-// ═══════════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════════
-buildOverviewCards();
-buildRegionDetails();
-buildOverviewChart();
-buildFullTable();
-buildSenatorTable();
+// ══════════════════════════════════════════
+// COUNTDOWN
+// ══════════════════════════════════════════
+function resetCountdown() {
+  clearInterval(countdownTimer);
+  countdownVal = REFRESH_S;
+  document.getElementById('countdown').textContent = countdownVal;
+  countdownTimer = setInterval(() => {
+    countdownVal--;
+    document.getElementById('countdown').textContent = Math.max(countdownVal, 0);
+    if (countdownVal <= 0) {
+      countdownVal = REFRESH_S;
+      fetchData();
+    }
+  }, 1000);
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+buildRegiones();
+fetchData();
+resetCountdown();
 </script>
 </body>
 </html>

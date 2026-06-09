@@ -1,0 +1,1336 @@
+{
+  "meta": {
+    "proceso": "ELECCIONES GENERALES Y PARLAMENTO ANDINO 2026",
+    "scraped_at": "2026-06-09T01:34:08.924656+00:00",
+    "id_eleccion": 10,
+    "pct_actas": 96.81,
+    "actas_contabilizadas": 89807,
+    "total_actas": 92766,
+    "votos_emitidos": 19545771,
+    "votos_validos": 16264782,
+    "participacion": 71.53
+  },
+  "candidatos": [
+    {
+      "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+      "partido": "FUERZA POPULAR",
+      "codigo": "8",
+      "votos": 2780814,
+      "pct": 17.095,
+      "pct_emit": 14.226
+    },
+    {
+      "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+      "partido": "JUNTOS POR EL PERÚ",
+      "codigo": "10",
+      "votos": 1958074,
+      "pct": 12.037,
+      "pct_emit": 10.017
+    },
+    {
+      "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+      "partido": "RENOVACIÓN POPULAR",
+      "codigo": "35",
+      "votos": 1932559,
+      "pct": 11.88,
+      "pct_emit": 9.886
+    },
+    {
+      "nombre": "JORGE NIETO MONTESINOS",
+      "partido": "PARTIDO DEL BUEN GOBIERNO",
+      "codigo": "16",
+      "votos": 1790391,
+      "pct": 11.006,
+      "pct_emit": 9.159
+    },
+    {
+      "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+      "partido": "PARTIDO CÍVICO OBRAS",
+      "codigo": "14",
+      "votos": 1653956,
+      "pct": 10.168,
+      "pct_emit": 8.461
+    },
+    {
+      "nombre": "CARLOS GONSALO ALVAREZ LOAYZA",
+      "partido": "PARTIDO PAÍS PARA TODOS",
+      "codigo": "23",
+      "votos": 1285451,
+      "pct": 7.902,
+      "pct_emit": 6.576
+    },
+    {
+      "nombre": "PABLO ALFONSO LOPEZ CHAU NAVA",
+      "partido": "AHORA NACIÓN - AN",
+      "codigo": "2",
+      "votos": 1191511,
+      "pct": 7.325,
+      "pct_emit": 6.095
+    },
+    {
+      "nombre": "MARIA SOLEDAD PEREZ TELLO",
+      "partido": "PRIMERO LA GENTE – COMUNIDAD, ECOLOGÍA, LIBERTAD Y PROGRESO",
+      "codigo": "33",
+      "votos": 556623,
+      "pct": 3.422,
+      "pct_emit": 2.847
+    },
+    {
+      "nombre": "ALFONSO CARLOS ESPA Y GARCES-ALVEAR",
+      "partido": "PARTIDO SICREO",
+      "codigo": "31",
+      "votos": 546959,
+      "pct": 3.362,
+      "pct_emit": 2.798
+    },
+    {
+      "nombre": "LUIS FERNANDO OLIVERA VEGA",
+      "partido": "PARTIDO FRENTE DE LA ESPERANZA 2021",
+      "codigo": "21",
+      "votos": 300811,
+      "pct": 1.849,
+      "pct_emit": 1.539
+    },
+    {
+      "nombre": "JOSE LEON LUNA GALVEZ",
+      "partido": "PODEMOS PERÚ",
+      "codigo": "32",
+      "votos": 258198,
+      "pct": 1.587,
+      "pct_emit": 1.321
+    },
+    {
+      "nombre": "YONHY LESCANO ANCIETA",
+      "partido": "PARTIDO POLÍTICO COOPERACIÓN POPULAR",
+      "codigo": "25",
+      "votos": 210743,
+      "pct": 1.296,
+      "pct_emit": 1.078
+    },
+    {
+      "nombre": "CESAR ACUÑA PERALTA",
+      "partido": "ALIANZA PARA EL PROGRESO",
+      "codigo": "1",
+      "votos": 185504,
+      "pct": 1.14,
+      "pct_emit": 0.949
+    },
+    {
+      "nombre": "PITTER ENRIQUE VALDERRAMA PEÑA",
+      "partido": "PARTIDO APRISTA PERUANO",
+      "codigo": "12",
+      "votos": 156873,
+      "pct": 0.964,
+      "pct_emit": 0.802
+    },
+    {
+      "nombre": "GEORGE PATRICK FORSYTH SOMMER",
+      "partido": "PARTIDO DEMOCRÁTICO SOMOS PERÚ",
+      "codigo": "20",
+      "votos": 145903,
+      "pct": 0.897,
+      "pct_emit": 0.746
+    },
+    {
+      "nombre": "HERBERT CALLER GUTIERREZ",
+      "partido": "PARTIDO PATRIÓTICO DEL PERÚ",
+      "codigo": "24",
+      "votos": 140176,
+      "pct": 0.862,
+      "pct_emit": 0.717
+    },
+    {
+      "nombre": "MARIO ENRIQUE VIZCARRA CORNEJO",
+      "partido": "PARTIDO POLÍTICO PERÚ PRIMERO",
+      "codigo": "29",
+      "votos": 139580,
+      "pct": 0.858,
+      "pct_emit": 0.714
+    },
+    {
+      "nombre": "RONALD DARWIN ATENCIO SOTOMAYOR",
+      "partido": "ALIANZA ELECTORAL VENCEREMOS",
+      "codigo": "3",
+      "votos": 136796,
+      "pct": 0.841,
+      "pct_emit": 0.7
+    },
+    {
+      "nombre": "ROSARIO DEL PILAR FERNANDEZ BAZAN",
+      "partido": "UN CAMINO DIFERENTE",
+      "codigo": "37",
+      "votos": 125647,
+      "pct": 0.772,
+      "pct_emit": 0.643
+    },
+    {
+      "nombre": "CHARLIE CARRASCO SALAZAR",
+      "partido": "PARTIDO DEMÓCRATA UNIDO PERÚ",
+      "codigo": "17",
+      "votos": 115679,
+      "pct": 0.711,
+      "pct_emit": 0.592
+    },
+    {
+      "nombre": "VLADIMIR ROY CERRON ROJAS",
+      "partido": "PARTIDO POLÍTICO NACIONAL PERÚ LIBRE",
+      "codigo": "27",
+      "votos": 97411,
+      "pct": 0.599,
+      "pct_emit": 0.498
+    },
+    {
+      "nombre": "MESIAS ANTONIO GUEVARA AMASIFUEN",
+      "partido": "PARTIDO MORADO",
+      "codigo": "22",
+      "votos": 79896,
+      "pct": 0.491,
+      "pct_emit": 0.409
+    },
+    {
+      "nombre": "ROBERTO ENRIQUE CHIABRA LEON",
+      "partido": "UNIDAD NACIONAL",
+      "codigo": "38",
+      "votos": 65808,
+      "pct": 0.405,
+      "pct_emit": 0.337
+    },
+    {
+      "nombre": "PAUL DAVIS JAIMES BLANCO",
+      "partido": "PROGRESEMOS",
+      "codigo": "34",
+      "votos": 64090,
+      "pct": 0.394,
+      "pct_emit": 0.328
+    },
+    {
+      "nombre": "ALEX GONZALES CASTILLO",
+      "partido": "PARTIDO DEMÓCRATA VERDE",
+      "codigo": "18",
+      "votos": 62016,
+      "pct": 0.381,
+      "pct_emit": 0.317
+    },
+    {
+      "nombre": "WOLFGANG MARIO GROZO COSTA",
+      "partido": "PARTIDO POLÍTICO INTEGRIDAD DEMOCRÁTICA",
+      "codigo": "26",
+      "votos": 61860,
+      "pct": 0.38,
+      "pct_emit": 0.316
+    },
+    {
+      "nombre": "RAFAEL JORGE BELAUNDE LLOSA",
+      "partido": "LIBERTAD POPULAR",
+      "codigo": "11",
+      "votos": 39647,
+      "pct": 0.244,
+      "pct_emit": 0.203
+    },
+    {
+      "nombre": "JOSE DANIEL WILLIAMS ZAPATA",
+      "partido": "AVANZA PAÍS - PARTIDO DE INTEGRACIÓN SOCIAL",
+      "codigo": "7",
+      "votos": 31531,
+      "pct": 0.194,
+      "pct_emit": 0.161
+    },
+    {
+      "nombre": "FRANCISCO ERNESTO DIEZ-CANSECO TÁVARA",
+      "partido": "PARTIDO POLÍTICO PERÚ ACCIÓN",
+      "codigo": "28",
+      "votos": 30680,
+      "pct": 0.189,
+      "pct_emit": 0.157
+    },
+    {
+      "nombre": "FIORELLA GIANNINA MOLINELLI ARISTONDO",
+      "partido": "FUERZA Y LIBERTAD",
+      "codigo": "9",
+      "votos": 26397,
+      "pct": 0.162,
+      "pct_emit": 0.135
+    },
+    {
+      "nombre": "ALVARO GONZALO PAZ DE LA BARRA FREIGEIRO",
+      "partido": "FE EN EL PERÚ",
+      "codigo": "5",
+      "votos": 22600,
+      "pct": 0.139,
+      "pct_emit": 0.116
+    },
+    {
+      "nombre": "ARMANDO JOAQUIN MASSE FERNANDEZ",
+      "partido": "PARTIDO DEMOCRATICO FEDERAL",
+      "codigo": "19",
+      "votos": 21105,
+      "pct": 0.13,
+      "pct_emit": 0.108
+    },
+    {
+      "nombre": "ANTONIO ORTIZ VILLANO",
+      "partido": "SALVEMOS AL PERÚ",
+      "codigo": "36",
+      "votos": 17038,
+      "pct": 0.105,
+      "pct_emit": 0.087
+    },
+    {
+      "nombre": "WALTER GILMER CHIRINOS PURIZAGA",
+      "partido": "PARTIDO POLÍTICO PRIN",
+      "codigo": "30",
+      "votos": 14062,
+      "pct": 0.086,
+      "pct_emit": 0.072
+    },
+    {
+      "nombre": "NAPOLEON BECERRA GARCIA",
+      "partido": "PARTIDO DE LOS TRABAJADORES Y EMPRENDEDORES PTE - PERÚ",
+      "codigo": "15",
+      "votos": 11118,
+      "pct": 0.068,
+      "pct_emit": 0.057
+    },
+    {
+      "nombre": "CARLOS ERNESTO JAICO CARRANZA",
+      "partido": "PERÚ MODERNO",
+      "codigo": "4",
+      "votos": 9477,
+      "pct": 0.058,
+      "pct_emit": 0.048
+    }
+  ],
+  "por_distrito": [
+    {
+      "codigo": 1,
+      "nombre": "AMAZONAS",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 2,
+      "nombre": "ÁNCASH",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 3,
+      "nombre": "APURÍMAC",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 4,
+      "nombre": "AREQUIPA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 5,
+      "nombre": "AYACUCHO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 6,
+      "nombre": "CAJAMARCA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 7,
+      "nombre": "CALLAO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 8,
+      "nombre": "CUSCO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 9,
+      "nombre": "HUANCAVELICA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 10,
+      "nombre": "HUÁNUCO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 11,
+      "nombre": "ICA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 12,
+      "nombre": "JUNÍN",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 13,
+      "nombre": "LA LIBERTAD",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 14,
+      "nombre": "LAMBAYEQUE",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 15,
+      "nombre": "LIMA METROPOLITANA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 16,
+      "nombre": "LIMA PROVINCIAS",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 17,
+      "nombre": "LORETO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 18,
+      "nombre": "MADRE DE DIOS",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 19,
+      "nombre": "MOQUEGUA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 20,
+      "nombre": "PASCO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 21,
+      "nombre": "PIURA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 22,
+      "nombre": "PUNO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 23,
+      "nombre": "SAN MARTÍN",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 24,
+      "nombre": "TACNA",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 25,
+      "nombre": "TUMBES",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 26,
+      "nombre": "UCAYALI",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    },
+    {
+      "codigo": 27,
+      "nombre": "PERUANOS RESIDENTES EN EL EXTRANJERO",
+      "pct_actas": 0.0,
+      "votos_validos": 0,
+      "candidatos": [
+        {
+          "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
+          "partido": "FUERZA POPULAR",
+          "votos": 2780814,
+          "pct": 17.09
+        },
+        {
+          "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
+          "partido": "JUNTOS POR EL PERÚ",
+          "votos": 1958074,
+          "pct": 12.04
+        },
+        {
+          "nombre": "RAFAEL BERNARDO LÓPEZ ALIAGA CAZORLA",
+          "partido": "RENOVACIÓN POPULAR",
+          "votos": 1932559,
+          "pct": 11.88
+        },
+        {
+          "nombre": "JORGE NIETO MONTESINOS",
+          "partido": "PARTIDO DEL BUEN GOBIERNO",
+          "votos": 1790391,
+          "pct": 11.01
+        },
+        {
+          "nombre": "RICARDO PABLO BELMONT CASSINELLI",
+          "partido": "PARTIDO CÍVICO OBRAS",
+          "votos": 1653956,
+          "pct": 10.17
+        }
+      ]
+    }
+  ],
+  "last_scrape": {
+    "started_at": "2026-04-29T22:37:02.497838+00:00",
+    "finished_at": "2026-04-29T22:37:48.262837+00:00",
+    "status": "ok"
+  }
+}
