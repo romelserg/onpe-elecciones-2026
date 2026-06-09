@@ -43,20 +43,15 @@
     .actas-fill{height:100%;background:linear-gradient(90deg,var(--r2),var(--r));border-radius:4px;transition:width 1.2s ease}
 
     /* ── SPLASH SCREEN ─────────────────────────────────────────────── */
-    #splash-wrap{
-      max-width:900px;margin:0 auto 12px;padding:0 14px;
-      cursor:pointer;
-    }
     #splash-overlay{
-      position:relative;width:100%;
-      overflow:hidden;border-radius:14px;
+      position:absolute;inset:0;z-index:50;
+      cursor:pointer;
       transition:opacity .7s ease;
-      line-height:0;
     }
     #splash-overlay.hiding{opacity:0;pointer-events:none}
     #splash-base{
-      display:block;width:100%;height:auto;
-      border-radius:14px;
+      display:block;width:100%;height:100%;
+      object-fit:cover;object-position:center;
     }
 
     /* ── ARENA estilo carrera ── */
@@ -241,16 +236,14 @@
   </div>
 </header>
 
-<!-- SPLASH SCREEN — fuera del arena para no recortarse -->
-<div id="splash-wrap">
-  <div id="splash-overlay">
-    <img id="splash-base" src="splash.jpeg" alt="Siete Politologuitos">
-  </div>
-</div>
-
 <!-- ARENA — CARRERA -->
-<div class="arena-wrap" id="arena-wrap-el" style="display:none">
+<div class="arena-wrap" id="arena-wrap-el">
   <div class="arena">
+
+    <!-- SPLASH dentro del arena — cubre exactamente el gráfico -->
+    <div id="splash-overlay">
+      <img id="splash-base" src="Caratula_borreguito.jpg" alt="Carátula">
+    </div>
 
     <!-- HUD superior: barra única de intención de voto -->
     <div class="fight-hud">
@@ -548,21 +541,16 @@ async function load(){
 // ── Splash screen — 4s auto o toque para saltar ──────────────────────
 (function(){
   const overlay = document.getElementById('splash-overlay');
-  const wrap    = document.getElementById('splash-wrap');
-  const arena   = document.getElementById('arena-wrap-el');
   if(!overlay) return;
   let dismissed = false;
   function dismiss(){
     if(dismissed) return;
     dismissed = true;
     overlay.classList.add('hiding');
-    if(arena) arena.style.display = '';
-    setTimeout(function(){ if(wrap) wrap.remove(); }, 750);
+    setTimeout(function(){ overlay.remove(); }, 750);
   }
-  // Toque o click → saltar inmediatamente
-  wrap.addEventListener('click',  dismiss);
-  wrap.addEventListener('touchend', function(e){ e.preventDefault(); dismiss(); });
-  // Auto-cierre a los 4s
+  overlay.addEventListener('click',   dismiss);
+  overlay.addEventListener('touchend', function(e){ e.preventDefault(); dismiss(); });
   setTimeout(dismiss, 4000);
 })();
 
