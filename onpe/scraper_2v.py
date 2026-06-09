@@ -191,6 +191,29 @@ def scrape(out_path=None):
     with open(out, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
+    # ── Historial de tendencias ────────────────────────────────────────
+    hist_path = out.parent / "history.json"
+    r_cand = next((c for c in candidatos if c["codigo"] == 10), {})
+    k_cand = next((c for c in candidatos if c["codigo"] == 8),  {})
+    new_point = {
+        "t":     meta["scraped_at"],
+        "actas": meta["pct_actas"],
+        "r":     r_cand.get("pct", 0),
+        "k":     k_cand.get("pct", 0),
+    }
+    history = []
+    if hist_path.exists():
+        try:
+            history = json.loads(hist_path.read_text(encoding="utf-8"))
+        except Exception:
+            history = []
+    # Evitar duplicados exactos de porcentaje
+    if not history or history[-1]["r"] != new_point["r"] or history[-1]["k"] != new_point["k"]:
+        history.append(new_point)
+        history = history[-500:]  # conservar últimos 500 puntos
+        hist_path.write_text(json.dumps(history, ensure_ascii=False), encoding="utf-8")
+        print(f"    Historial: {len(history)} puntos → history.json")
+
     print(f"✅  data.json generado → {out}")
     print(f"    Actas: {meta['pct_actas']}%  ({meta['actas_contabilizadas']}/{meta['total_actas']})")
     print(f"    Candidatos: {len(candidatos)}")
