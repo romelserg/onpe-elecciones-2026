@@ -43,20 +43,24 @@
     .actas-fill{height:100%;background:linear-gradient(90deg,var(--r2),var(--r));border-radius:4px;transition:width 1.2s ease}
 
     /* ── SPLASH SCREEN ─────────────────────────────────────────────── */
+    #splash-wrap{
+      max-width:900px;margin:0 auto 12px;padding:0 14px;
+    }
     #splash-overlay{
-      position:absolute;inset:0;z-index:50;
-      cursor:pointer;overflow:hidden;border-radius:14px;
+      position:relative;width:100%;
+      overflow:hidden;border-radius:14px;
       transition:opacity .9s ease;
+      line-height:0; /* evita espacio bajo la imagen */
     }
     #splash-overlay.hiding{opacity:0;pointer-events:none}
     #splash-base{
-      position:absolute;inset:0;width:100%;height:100%;
-      object-fit:cover;object-position:center;display:block;
+      display:block;width:100%;height:auto; /* respeta proporción original */
+      border-radius:14px;
     }
-    /* Capa animada por borrego — misma imagen recortada con clip-path */
-    .sl{position:absolute;inset:0;pointer-events:none}
+    /* Capas animadas de borregos — absolutas sobre la imagen base */
+    .sl{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none}
     .sl img{
-      position:absolute;inset:0;width:100%;height:100%;
+      position:absolute;top:0;left:0;width:100%;height:100%;
       object-fit:cover;object-position:center;
       transform-origin:50% 92%;
     }
@@ -84,16 +88,6 @@
     @keyframes sd5{0%,100%{transform:rotate(-6deg)scaleX(.96)}50%{transform:rotate(6deg)scaleX(1.04)}}
     @keyframes sd6{0%,100%{transform:rotate(-4deg)scaleY(.97)}50%{transform:rotate(4deg)scaleY(1.03)}}
     @keyframes sd7{0%,100%{transform:rotate(-6deg)}          50%{transform:rotate(6deg)}}
-
-    /* Prompt parpadeante */
-    #splash-prompt{
-      position:absolute;bottom:16%;left:50%;transform:translateX(-50%);
-      font-family:'Courier New',monospace;font-size:.85rem;font-weight:900;
-      color:#FFE000;letter-spacing:3px;white-space:nowrap;
-      text-shadow:2px 2px 0 #000,-1px -1px 0 #000;
-      animation:blink-p .75s step-end infinite;z-index:51;
-    }
-    @keyframes blink-p{0%,100%{opacity:1}50%{opacity:0}}
 
     /* ── ARENA estilo carrera ── */
     .arena-wrap{width:100%;max-width:900px;margin:0 auto 20px;padding:0 14px}
@@ -277,22 +271,23 @@
   </div>
 </header>
 
-<!-- ARENA — CARRERA -->
-<div class="arena-wrap">
-  <div class="arena">
+<!-- SPLASH SCREEN — fuera del arena para no recortarse -->
+<div id="splash-wrap">
+  <div id="splash-overlay">
+    <img id="splash-base" src="splash.jpg" alt="Siete Politologuitos">
+    <div class="sl" id="sl1"><img src="splash.jpg"></div>
+    <div class="sl" id="sl2"><img src="splash.jpg"></div>
+    <div class="sl" id="sl3"><img src="splash.jpg"></div>
+    <div class="sl" id="sl4"><img src="splash.jpg"></div>
+    <div class="sl" id="sl5"><img src="splash.jpg"></div>
+    <div class="sl" id="sl6"><img src="splash.jpg"></div>
+    <div class="sl" id="sl7"><img src="splash.jpg"></div>
+  </div>
+</div>
 
-    <!-- SPLASH SCREEN -->
-    <div id="splash-overlay">
-      <img id="splash-base" src="splash.jpg" alt="Siete Politologuitos">
-      <div class="sl" id="sl1"><img src="splash.jpg"></div>
-      <div class="sl" id="sl2"><img src="splash.jpg"></div>
-      <div class="sl" id="sl3"><img src="splash.jpg"></div>
-      <div class="sl" id="sl4"><img src="splash.jpg"></div>
-      <div class="sl" id="sl5"><img src="splash.jpg"></div>
-      <div class="sl" id="sl6"><img src="splash.jpg"></div>
-      <div class="sl" id="sl7"><img src="splash.jpg"></div>
-      <div id="splash-prompt">▶ CLICK PARA INICIAR</div>
-    </div>
+<!-- ARENA — CARRERA -->
+<div class="arena-wrap" id="arena-wrap-el" style="display:none">
+  <div class="arena">
 
     <!-- HUD superior: barra única de intención de voto -->
     <div class="fight-hud">
@@ -587,16 +582,20 @@ async function load(){
     document.getElementById('loading').style.display='none';
   }
 }
-// ── Splash screen ────────────────────────────────────────────────────
+// ── Splash screen — auto-cierre a los 3s, sin interacción ────────────
 (function(){
-  const overlay = document.getElementById('splash-overlay');
+  const overlay  = document.getElementById('splash-overlay');
+  const wrap     = document.getElementById('splash-wrap');
+  const arena    = document.getElementById('arena-wrap-el');
   if(!overlay) return;
-  function dismiss(){
+  setTimeout(function(){
     overlay.classList.add('hiding');
-    setTimeout(()=>overlay.remove(), 950);
-  }
-  overlay.addEventListener('click', dismiss);
-  setTimeout(dismiss, 5000); // auto-cierre a los 5s
+    // Mostrar el arena mientras el splash se desvanece
+    if(arena) arena.style.display = '';
+    setTimeout(function(){
+      if(wrap) wrap.remove();
+    }, 950); // esperar a que termine la transición opacity
+  }, 3000);
 })();
 
 load();setInterval(load,30000);
