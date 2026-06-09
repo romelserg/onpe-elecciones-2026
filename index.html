@@ -93,17 +93,48 @@
       display:block;
       image-rendering:pixelated;
       image-rendering:-webkit-optimize-contrast;
+      transform-origin: bottom center;
     }
-    #img-k{ height:148px; width:auto; }
-    #img-r{ height:130px; width:auto; }
 
-    /* 1° lugar: brillo dorado */
-    .fw.p1 .f-img{
-      filter:drop-shadow(0 0 8px rgba(255,215,0,.7)) drop-shadow(0 4px 6px rgba(0,0,0,.35));
+    /* Keiko: imagen original mira a la izquierda → flip + animación carrera */
+    #img-k{
+      height:148px; width:auto;
+      animation: run-k 0.38s ease-in-out infinite;
     }
-    /* 2° lugar: atenuado */
-    .fw.p2 .f-img{
-      filter:brightness(.75) saturate(.65) drop-shadow(0 3px 6px rgba(0,0,0,.3));
+    @keyframes run-k {
+      0%   { transform: scaleX(-1) translateY(0px)   rotate(-2deg); }
+      15%  { transform: scaleX(-1) translateY(-8px)  rotate(-5deg) scaleY(0.97); }
+      30%  { transform: scaleX(-1) translateY(-14px) rotate(-4deg) scaleY(1.03); }
+      50%  { transform: scaleX(-1) translateY(-16px) rotate(-2deg) scaleY(0.98); }
+      70%  { transform: scaleX(-1) translateY(-10px) rotate(-1deg) scaleY(1.01); }
+      85%  { transform: scaleX(-1) translateY(-4px)  rotate(-3deg) scaleY(0.99); }
+      100% { transform: scaleX(-1) translateY(0px)   rotate(-2deg); }
+    }
+
+    /* Roberto: ya mira a la derecha naturalmente */
+    #img-r{
+      height:130px; width:auto;
+      animation: run-r 0.38s ease-in-out infinite;
+    }
+    @keyframes run-r {
+      0%   { transform: translateY(0px)   rotate(-2deg); }
+      15%  { transform: translateY(-8px)  rotate(-5deg) scaleY(0.97); }
+      30%  { transform: translateY(-14px) rotate(-4deg) scaleY(1.03); }
+      50%  { transform: translateY(-16px) rotate(-2deg) scaleY(0.98); }
+      70%  { transform: translateY(-10px) rotate(-1deg) scaleY(1.01); }
+      85%  { transform: translateY(-4px)  rotate(-3deg) scaleY(0.99); }
+      100% { transform: translateY(0px)   rotate(-2deg); }
+    }
+
+    /* 1° lugar: más rápido + brillo dorado */
+    .fw.p1 #img-k, .fw.p1 #img-r {
+      animation-duration: 0.32s;
+      filter: drop-shadow(0 0 8px rgba(255,215,0,.7)) drop-shadow(0 4px 6px rgba(0,0,0,.35));
+    }
+    /* 2° lugar: más lento + atenuado */
+    .fw.p2 #img-k, .fw.p2 #img-r {
+      animation-duration: 0.52s;
+      filter: brightness(.75) saturate(.65) drop-shadow(0 3px 6px rgba(0,0,0,.3));
     }
 
     @keyframes dust{
@@ -246,7 +277,7 @@
       </div>
       <div class="f-pos p1" id="pos-k">🥇 1°</div>
       <div class="f-lbl" id="lbl-k">KEIKO</div>
-      <img id="img-k" class="f-img" src="frames/k0.png" alt="Keiko">
+      <img id="img-k" class="f-img" src="sprite_keiko_t.png" alt="Keiko">
     </div>
 
     <!-- Personaje Roberto -->
@@ -258,7 +289,7 @@
       </div>
       <div class="f-pos p1" id="pos-r">🥇 1°</div>
       <div class="f-lbl" id="lbl-r">ROBERTO</div>
-      <img id="img-r" class="f-img" src="frames/r0.png" alt="Roberto">
+      <img id="img-r" class="f-img" src="sprite_roberto_t.png" alt="Roberto">
     </div>
 
   </div>
@@ -360,11 +391,6 @@ function updateArena(r,k){
   document.getElementById('hud-lead').textContent='+'+fmt(diff)+' votos';
   document.getElementById('hud-pts').textContent='(+'+margin.toFixed(2)+'pts)';
 
-  // Velocidad de carrera: líder más rápido, trailer más lento
-  if(window._runSpeed){
-    window._runSpeed.r = rLeads ? 65 : 110;
-    window._runSpeed.k = rLeads ? 110 : 65;
-  }
 }
 
 function renderH2H(cands){
@@ -480,39 +506,6 @@ async function load(){
 }
 load();setInterval(load,30000);
 
-// ── ANIMACIÓN DE CARRERA ── frames individuales via JS (compatible todos los navegadores)
-(function(){
-  const NF = 6;
-  // Precargar todos los frames
-  const framesK = [], framesR = [];
-  for(let i=0;i<NF;i++){
-    const ik=new Image(); ik.src='frames/k'+i+'.png'; framesK.push(ik);
-    const ir=new Image(); ir.src='frames/r'+i+'.png'; framesR.push(ir);
-  }
-  const imgK = document.getElementById('img-k');
-  const imgR = document.getElementById('img-r');
-  let ki=0, ri=0;
-  // Velocidades: 80ms/frame = ~12fps (líder), 120ms = ~8fps (trailer)
-  // Se ajustan dinámicamente según posición
-  window._runSpeed = { k: 80, r: 80 };
-
-  function tickK(){
-    ki = (ki+1) % NF;
-    imgK.src = framesK[ki].src;
-    setTimeout(tickK, window._runSpeed.k);
-  }
-  function tickR(){
-    ri = (ri+1) % NF;
-    imgR.src = framesR[ri].src;
-    setTimeout(tickR, window._runSpeed.r);
-  }
-  // Arrancar cuando los frames estén listos
-  framesK[0].onload = tickK;
-  framesR[0].onload = tickR;
-  // Fallback si ya estaban en caché
-  if(framesK[0].complete) tickK();
-  if(framesR[0].complete) tickR();
-})();
 </script>
 </body>
 </html>
