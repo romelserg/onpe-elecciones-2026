@@ -42,6 +42,59 @@
     .actas-track{height:7px;background:var(--border);border-radius:4px;overflow:hidden}
     .actas-fill{height:100%;background:linear-gradient(90deg,var(--r2),var(--r));border-radius:4px;transition:width 1.2s ease}
 
+    /* ── SPLASH SCREEN ─────────────────────────────────────────────── */
+    #splash-overlay{
+      position:absolute;inset:0;z-index:50;
+      cursor:pointer;overflow:hidden;border-radius:14px;
+      transition:opacity .9s ease;
+    }
+    #splash-overlay.hiding{opacity:0;pointer-events:none}
+    #splash-base{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;object-position:center;display:block;
+    }
+    /* Capa animada por borrego — misma imagen recortada con clip-path */
+    .sl{position:absolute;inset:0;pointer-events:none}
+    .sl img{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;object-position:center;
+      transform-origin:50% 92%;
+    }
+    /* Clip-path de cada borrego (top right bottom left) */
+    #sl1{clip-path:inset(44% 83% 11% 4%)}   /* azul */
+    #sl2{clip-path:inset(44% 71% 11% 16%)}  /* verde */
+    #sl3{clip-path:inset(42% 57% 11% 28%)}  /* rojo — más activo */
+    #sl4{clip-path:inset(44% 45% 11% 42%)}  /* amarillo */
+    #sl5{clip-path:inset(44% 33% 11% 54%)}  /* celeste */
+    #sl6{clip-path:inset(46% 21% 11% 66%)}  /* morado */
+    #sl7{clip-path:inset(46% 5%  11% 81%)}  /* naranja */
+
+    #sl1 img{animation:sd1 .70s ease-in-out infinite}
+    #sl2 img{animation:sd2 .85s ease-in-out infinite .12s}
+    #sl3 img{animation:sd3 .50s ease-in-out infinite .05s} /* rojo más rápido */
+    #sl4 img{animation:sd4 .90s ease-in-out infinite .28s}
+    #sl5 img{animation:sd5 .75s ease-in-out infinite .42s}
+    #sl6 img{animation:sd6 .80s ease-in-out infinite .08s}
+    #sl7 img{animation:sd7 .65s ease-in-out infinite .35s}
+
+    @keyframes sd1{0%,100%{transform:rotate(-5deg)}          50%{transform:rotate(5deg)}}
+    @keyframes sd2{0%,100%{transform:rotate(-3deg)scaleY(.97)}50%{transform:rotate(3deg)scaleY(1.03)}}
+    @keyframes sd3{0%,100%{transform:rotate(-9deg)translateY(3px)}50%{transform:rotate(9deg)translateY(-5px)}}
+    @keyframes sd4{0%,100%{transform:rotate(-4deg)}          50%{transform:rotate(4deg)}}
+    @keyframes sd5{0%,100%{transform:rotate(-6deg)scaleX(.96)}50%{transform:rotate(6deg)scaleX(1.04)}}
+    @keyframes sd6{0%,100%{transform:rotate(-4deg)scaleY(.97)}50%{transform:rotate(4deg)scaleY(1.03)}}
+    @keyframes sd7{0%,100%{transform:rotate(-6deg)}          50%{transform:rotate(6deg)}}
+
+    /* Prompt parpadeante */
+    #splash-prompt{
+      position:absolute;bottom:16%;left:50%;transform:translateX(-50%);
+      font-family:'Courier New',monospace;font-size:.85rem;font-weight:900;
+      color:#FFE000;letter-spacing:3px;white-space:nowrap;
+      text-shadow:2px 2px 0 #000,-1px -1px 0 #000;
+      animation:blink-p .75s step-end infinite;z-index:51;
+    }
+    @keyframes blink-p{0%,100%{opacity:1}50%{opacity:0}}
+
     /* ── ARENA estilo carrera ── */
     .arena-wrap{width:100%;max-width:900px;margin:0 auto 20px;padding:0 14px}
     .arena{position:relative;width:100%;height:260px;border-radius:14px;overflow:hidden;
@@ -227,6 +280,19 @@
 <!-- ARENA — CARRERA -->
 <div class="arena-wrap">
   <div class="arena">
+
+    <!-- SPLASH SCREEN -->
+    <div id="splash-overlay">
+      <img id="splash-base" src="splash.jpg" alt="Siete Politologuitos">
+      <div class="sl" id="sl1"><img src="splash.jpg"></div>
+      <div class="sl" id="sl2"><img src="splash.jpg"></div>
+      <div class="sl" id="sl3"><img src="splash.jpg"></div>
+      <div class="sl" id="sl4"><img src="splash.jpg"></div>
+      <div class="sl" id="sl5"><img src="splash.jpg"></div>
+      <div class="sl" id="sl6"><img src="splash.jpg"></div>
+      <div class="sl" id="sl7"><img src="splash.jpg"></div>
+      <div id="splash-prompt">▶ CLICK PARA INICIAR</div>
+    </div>
 
     <!-- HUD superior: barra única de intención de voto -->
     <div class="fight-hud">
@@ -521,6 +587,18 @@ async function load(){
     document.getElementById('loading').style.display='none';
   }
 }
+// ── Splash screen ────────────────────────────────────────────────────
+(function(){
+  const overlay = document.getElementById('splash-overlay');
+  if(!overlay) return;
+  function dismiss(){
+    overlay.classList.add('hiding');
+    setTimeout(()=>overlay.remove(), 950);
+  }
+  overlay.addEventListener('click', dismiss);
+  setTimeout(dismiss, 5000); // auto-cierre a los 5s
+})();
+
 load();setInterval(load,30000);
 
 </script>
