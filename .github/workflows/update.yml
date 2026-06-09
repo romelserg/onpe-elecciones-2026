@@ -1,14 +1,12 @@
 # ══════════════════════════════════════════════════════════════
-# INSTRUCCIONES: Sube este archivo a tu repo en:
-#   .github/workflows/update.yml
+# Segunda Vuelta Presidencial 2026 — Actualización automática
 #
-# Qué hace:
-#   Cada 10 minutos, GitHub ejecuta el scraper de ONPE,
-#   genera data.json y hace commit automático.
-#   GitHub Pages sirve el JSON actualizado al dashboard.
+# Cada 10 minutos, GitHub llama directamente a la API de ONPE,
+# genera data.json y hace commit automático.
+# GitHub Pages sirve el JSON al dashboard.
 # ══════════════════════════════════════════════════════════════
 
-name: "🗳️ Actualizar datos ONPE"
+name: "🗳️ Actualizar datos ONPE 2v"
 
 on:
   schedule:
@@ -37,20 +35,15 @@ jobs:
           cache: "pip"
           cache-dependency-path: onpe/requirements.txt
 
-      # 3) Dependencias
+      # 3) Dependencias (solo curl_cffi)
       - name: Install dependencies
         run: pip install -r onpe/requirements.txt
 
-      # 4) Scraping → SQLite
-      - name: Scrape ONPE
-        run: python onpe/main.py --db onpe/onpe_elecciones_2026.db
-        continue-on-error: true   # si falla CF, no rompe el workflow
+      # 4) Scraper segunda vuelta → data.json directamente
+      - name: Scrape ONPE segunda vuelta
+        run: python onpe/scraper_2v.py --out data.json
 
-      # 5) Generar data.json
-      - name: Generate data.json
-        run: python onpe/generate_data.py --db onpe/onpe_elecciones_2026.db --out data.json
-
-      # 6) Commit + push si hubo cambios
+      # 5) Commit + push si hubo cambios
       - name: Commit data.json
         run: |
           git config user.name  "github-actions[bot]"
