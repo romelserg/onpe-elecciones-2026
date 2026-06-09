@@ -48,45 +48,51 @@
            background:url('./bg_plaza.png?v=3') center 30%/cover no-repeat;
            border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
     .arena::after{content:'';position:absolute;inset:0;
-           background:linear-gradient(to bottom,rgba(0,0,0,.35) 0%,transparent 45%);
+           background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,transparent 50%);
            pointer-events:none;z-index:1}
 
-    /* ── HUD barras de vida ── */
+    /* ── HUD superior: nombre + barra única + porcentajes ── */
     .fight-hud{
       position:absolute;top:0;left:0;right:0;z-index:20;
-      display:grid;grid-template-columns:1fr auto 1fr;
-      align-items:center;gap:8px;
-      padding:8px 12px 6px;
+      padding:8px 12px 7px;
       background:rgba(8,8,35,.82);
       backdrop-filter:blur(6px);
       font-family:'Courier New',monospace;
     }
-    /* lado izquierdo: Keiko */
-    .fhud-k{ display:flex;flex-direction:column;gap:3px; }
-    .fhud-name{ font-size:.72rem;font-weight:900;letter-spacing:1px;text-transform:uppercase }
-    .fhud-name.k{ color:#ffaa66 }
-    .fhud-name.r{ color:#5dd8f8 }
-    .hp-track{ height:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:2px;overflow:hidden }
-    .hp-fill{ height:100%;border-radius:2px;transition:width 1.4s ease }
-    .hp-fill.k{ background:linear-gradient(90deg,#962300,#e85500,#ff8040);width:50% }
-    /* Roberto: barra llena desde la derecha */
-    .hp-track.r{ direction:rtl }
-    .hp-fill.r{ background:linear-gradient(90deg,#004e80,#007dc0,#30c0f0);width:50% }
-    .hp-pct{ font-size:.68rem;font-weight:700;color:rgba(255,255,255,.85) }
-    .fhud-k .hp-pct{ text-align:left }
-    .fhud-r .hp-pct{ text-align:right }
-    /* lado derecho: Roberto */
-    .fhud-r{ display:flex;flex-direction:column;gap:3px;align-items:flex-end }
-    /* VS central */
-    .fight-vs{
-      font-size:1.4rem;font-weight:900;color:#ffd700;
-      text-shadow:0 0 12px rgba(255,215,0,.9),0 0 3px #000;
-      animation:vs-pulse .9s ease-in-out infinite alternate;
-      padding:0 4px;letter-spacing:2px;
+    .hud-names{display:flex;justify-content:space-between;margin-bottom:4px}
+    .hud-fname{font-size:.72rem;font-weight:900;letter-spacing:1px;text-transform:uppercase}
+    .hud-fname.r{color:#5dd8f8}
+    .hud-fname.k{color:#ffaa66}
+    /* Barra única dividida en dos colores */
+    .split-bar{
+      display:flex;height:15px;border-radius:3px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.25);
     }
-    @keyframes vs-pulse{
-      from{text-shadow:0 0 6px rgba(255,215,0,.4),0 0 2px #000;transform:scale(1)}
-      to  {text-shadow:0 0 18px rgba(255,215,0,1),0 0 4px #000;transform:scale(1.08)}
+    .sb-r{
+      background:linear-gradient(90deg,#004e80,#0090d0,#30c0f0);
+      width:50%;transition:width 1.4s ease;flex-shrink:0;
+    }
+    .sb-k{
+      background:linear-gradient(90deg,#e85500,#ff7030,#ffa060);
+      flex:1;
+    }
+    .hud-pcts{display:flex;justify-content:space-between;margin-top:3px}
+    .hud-pct{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.9)}
+
+    /* ── VS en el centro del fondo ── */
+    .vs-bg{
+      position:absolute;top:54%;left:50%;
+      transform:translate(-50%,-50%);
+      z-index:5;pointer-events:none;
+      font-family:'Courier New',monospace;
+      font-size:4.5rem;font-weight:900;letter-spacing:6px;
+      color:rgba(255,210,0,.45);
+      text-shadow:0 0 40px rgba(255,210,0,.35),0 3px 10px rgba(0,0,0,.9);
+      animation:vs-glow 1.4s ease-in-out infinite alternate;
+    }
+    @keyframes vs-glow{
+      from{opacity:.38;transform:translate(-50%,-50%) scale(1)}
+      to  {opacity:.60;transform:translate(-50%,-50%) scale(1.05)}
     }
 
     /* ── Personajes ── */
@@ -94,48 +100,44 @@
       position:absolute;bottom:0;z-index:10;
       display:flex;flex-direction:column;align-items:center;
     }
-    #fw-k{ left:4% }
-    #fw-r{ right:4% }
+    /* Roberto izquierda (sprite mira derecha = mira al centro) */
+    #fw-r{left:4%}
+    /* Keiko derecha (sprite mira izquierda = mira al centro) */
+    #fw-k{right:4%}
 
-    .f-img{
-      display:block;
-      image-rendering:pixelated;
-      image-rendering:-webkit-optimize-contrast;
-      transform-origin:bottom center;
-    }
-    /* Keiko: sprite original mira a la izquierda → mira hacia el centro (derecha) con flip */
-    #img-k{ height:150px;width:auto;animation:idle-k .55s ease-in-out infinite }
-    @keyframes idle-k{
-      0%  {transform:scaleX(-1) translateY(0)   rotate(1deg)}
-      40% {transform:scaleX(-1) translateY(-9px) rotate(3deg) scaleY(1.03)}
-      70% {transform:scaleX(-1) translateY(-12px)rotate(2deg) scaleY(0.98)}
-      100%{transform:scaleX(-1) translateY(0)   rotate(1deg)}
-    }
-    /* Roberto: sprite mira a la derecha → mira hacia el centro (izquierda) con flip */
-    #img-r{ height:132px;width:auto;animation:idle-r .55s ease-in-out infinite }
+    .f-img{display:block;image-rendering:pixelated;image-rendering:-webkit-optimize-contrast;transform-origin:bottom center}
+
+    /* Roberto: inclinación hacia la derecha (hacia Keiko) */
+    #img-r{height:132px;width:auto;animation:idle-r .55s ease-in-out infinite}
     @keyframes idle-r{
-      0%  {transform:scaleX(-1) translateY(0)   rotate(-1deg)}
-      40% {transform:scaleX(-1) translateY(-9px) rotate(-3deg) scaleY(1.03)}
-      70% {transform:scaleX(-1) translateY(-12px)rotate(-2deg) scaleY(0.98)}
-      100%{transform:scaleX(-1) translateY(0)   rotate(-1deg)}
+      0%  {transform:translateY(0)    rotate(-2deg)}
+      40% {transform:translateY(-9px) rotate(-5deg) scaleY(1.03)}
+      70% {transform:translateY(-12px)rotate(-3deg) scaleY(0.97)}
+      100%{transform:translateY(0)    rotate(-2deg)}
     }
-    /* Líder: brillo + más rápido */
-    .fw-char.leader #img-k,
-    .fw-char.leader #img-r{
+    /* Keiko: inclinación hacia la izquierda (hacia Roberto) */
+    #img-k{height:150px;width:auto;animation:idle-k .55s ease-in-out infinite}
+    @keyframes idle-k{
+      0%  {transform:translateY(0)    rotate(2deg)}
+      40% {transform:translateY(-9px) rotate(5deg) scaleY(1.03)}
+      70% {transform:translateY(-12px)rotate(3deg) scaleY(0.97)}
+      100%{transform:translateY(0)    rotate(2deg)}
+    }
+    /* Líder: más rápido + brillo dorado */
+    .fw-char.leader #img-r,.fw-char.leader #img-k{
       animation-duration:.38s;
-      filter:drop-shadow(0 0 10px rgba(255,215,0,.8)) drop-shadow(0 4px 8px rgba(0,0,0,.4));
+      filter:drop-shadow(0 0 10px rgba(255,215,0,.85)) drop-shadow(0 4px 8px rgba(0,0,0,.5));
     }
-    /* Trailing: atenuado + más lento */
-    .fw-char.trailer #img-k,
-    .fw-char.trailer #img-r{
+    /* Trailing: más lento + atenuado */
+    .fw-char.trailer #img-r,.fw-char.trailer #img-k{
       animation-duration:.75s;
-      filter:brightness(.7) saturate(.6) drop-shadow(0 3px 6px rgba(0,0,0,.35));
+      filter:brightness(.68) saturate(.6) drop-shadow(0 3px 6px rgba(0,0,0,.4));
     }
     @media(max-width:560px){
       .arena{height:200px}
-      #img-k{height:110px}
       #img-r{height:96px}
-      .fight-vs{font-size:1rem}
+      #img-k{height:110px}
+      .vs-bg{font-size:3rem}
     }
 
     /* MAIN */
@@ -247,36 +249,33 @@
 <div class="arena-wrap">
   <div class="arena">
 
-    <!-- HUD barras de vida -->
+    <!-- HUD superior: barra única de intención de voto -->
     <div class="fight-hud">
-      <!-- Keiko (izquierda) -->
-      <div class="fhud-k">
-        <span class="fhud-name k">KEIKO FUJIMORI</span>
-        <div class="hp-track">
-          <div class="hp-fill k" id="hp-k" style="width:50%"></div>
-        </div>
-        <span class="hp-pct" id="pct-k">—%</span>
+      <div class="hud-names">
+        <span class="hud-fname r">ROBERTO SÁNCHEZ</span>
+        <span class="hud-fname k">KEIKO FUJIMORI</span>
       </div>
-      <!-- VS central -->
-      <div class="fight-vs">VS</div>
-      <!-- Roberto (derecha) -->
-      <div class="fhud-r">
-        <span class="fhud-name r">ROBERTO SÁNCHEZ</span>
-        <div class="hp-track r">
-          <div class="hp-fill r" id="hp-r" style="width:50%"></div>
-        </div>
-        <span class="hp-pct" id="pct-r">—%</span>
+      <div class="split-bar">
+        <div class="sb-r" id="sb-r" style="width:50%"></div>
+        <div class="sb-k" id="sb-k"></div>
+      </div>
+      <div class="hud-pcts">
+        <span class="hud-pct" id="pct-r">—%</span>
+        <span class="hud-pct" id="pct-k">—%</span>
       </div>
     </div>
 
-    <!-- Personaje Keiko (izquierda, mira a la derecha) -->
-    <div class="fw-char" id="fw-k">
-      <img id="img-k" class="f-img" src="sprite_keiko_t.png" alt="Keiko">
-    </div>
+    <!-- VS en el fondo -->
+    <div class="vs-bg">VS</div>
 
-    <!-- Personaje Roberto (derecha, mira a la izquierda) -->
+    <!-- Roberto (izquierda, sprite mira derecha = mira al centro) -->
     <div class="fw-char" id="fw-r">
       <img id="img-r" class="f-img" src="sprite_roberto_t.png" alt="Roberto">
+    </div>
+
+    <!-- Keiko (derecha, sprite mira izquierda = mira al centro) -->
+    <div class="fw-char" id="fw-k">
+      <img id="img-k" class="f-img" src="sprite_keiko_t.png" alt="Keiko">
     </div>
 
   </div>
@@ -330,15 +329,14 @@ const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 function updateArena(r,k){
   const rP=+r.pct, kP=+k.pct, rLeads=rP>kP;
 
-  // Barras de vida (intención de voto)
-  document.getElementById('hp-k').style.width = kP.toFixed(1)+'%';
-  document.getElementById('hp-r').style.width = rP.toFixed(1)+'%';
-  document.getElementById('pct-k').textContent = kP.toFixed(2)+'%';
+  // Barra única: Roberto (azul) llena según su %, Keiko (naranja) ocupa el resto
+  document.getElementById('sb-r').style.width = rP.toFixed(1)+'%';
   document.getElementById('pct-r').textContent = rP.toFixed(2)+'%';
+  document.getElementById('pct-k').textContent = kP.toFixed(2)+'%';
 
   // Líder brilla, trailer se atenúa
+  document.getElementById('fw-r').className = 'fw-char ' + (rLeads ? 'leader' : 'trailer');
   document.getElementById('fw-k').className = 'fw-char ' + (rLeads ? 'trailer' : 'leader');
-  document.getElementById('fw-r').className = 'fw-char ' + (rLeads ? 'leader'  : 'trailer');
 }
 
 function renderH2H(cands){
