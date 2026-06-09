@@ -178,6 +178,15 @@ def scrape(out_path=None):
         "exterior": exterior,
     }
 
+    # ── Guardia: no sobreescribir con datos vacíos ─────────────────────────
+    if not candidatos or meta["pct_actas"] == 0:
+        print("⚠️  API devolvió datos vacíos (posible bloqueo Cloudflare).")
+        if out.exists():
+            print("   Conservando data.json anterior sin cambios.")
+            return None
+        else:
+            print("   No existe data.json previo — guardando igual.")
+
     out.parent.mkdir(parents=True, exist_ok=True)
     with open(out, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
