@@ -230,13 +230,13 @@
 
     <!-- Roberto -->
     <div class="fw-char" id="fw-r" style="left:30%">
-      <img id="img-r" class="f-img" src="run_frames/s0.png?v=1" alt="Roberto">
+      <img id="img-r" class="f-img" src="sprite_roberto_t.png" alt="Roberto">
       <div class="char-label">Roberto</div>
     </div>
 
     <!-- Keiko (sprites ya miran a la derecha) -->
     <div class="fw-char" id="fw-k" style="left:55%">
-      <img id="img-k" class="f-img" src="run_frames/k0.png?v=1" alt="Keiko">
+      <img id="img-k" class="f-img" src="sprite_keiko_flip.png" alt="Keiko">
       <div class="char-label">Keiko</div>
     </div>
 
@@ -289,27 +289,28 @@ let D=null,sort='votos';
 const fmt=n=>Number(n).toLocaleString('es-PE');
 const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 
-// ── Animación de carrera (frame swap) ──
-const FRAMES_R=['run_frames/s0.png','run_frames/s1.png','run_frames/s2.png','run_frames/s3.png','run_frames/s4.png'];
-const FRAMES_K=['run_frames/k0.png','run_frames/k1.png','run_frames/k2.png','run_frames/k3.png','run_frames/k4.png'];
+// ── Animación de carrera: base → frame1 → frame2 → frame3 → frame4 → frame5 → repite ──
+const FRAMES_R=['sprite_roberto_t.png','run_frames/s0.png','run_frames/s1.png','run_frames/s2.png','run_frames/s3.png','run_frames/s4.png'];
+const FRAMES_K=['sprite_keiko_flip.png','run_frames/k0.png','run_frames/k1.png','run_frames/k2.png','run_frames/k3.png','run_frames/k4.png'];
 let fR=0,fK=0;
 
 function stepR(){
-  fR=(fR+1)%5;
+  fR=(fR+1)%FRAMES_R.length;
   const el=document.getElementById('img-r');
   if(el)el.src=FRAMES_R[fR];
-  const ms=document.getElementById('fw-r').classList.contains('leader')?70:115;
-  setTimeout(stepR,ms);
+  // Frame base (0) dura el doble para dar efecto de arranque
+  const base=document.getElementById('fw-r').classList.contains('leader')?72:115;
+  setTimeout(stepR, fR===0 ? base*2 : base);
 }
 function stepK(){
-  fK=(fK+1)%5;
+  fK=(fK+1)%FRAMES_K.length;
   const el=document.getElementById('img-k');
   if(el)el.src=FRAMES_K[fK];
-  const ms=document.getElementById('fw-k').classList.contains('leader')?70:115;
-  setTimeout(stepK,ms);
+  const base=document.getElementById('fw-k').classList.contains('leader')?72:115;
+  setTimeout(stepK, fK===0 ? base*2 : base);
 }
-setTimeout(stepR,70);
-setTimeout(stepK,70);
+setTimeout(stepR,72);
+setTimeout(stepK,72);
 
 function updateArena(r,k){
   const rP=+r.pct, kP=+k.pct, rLeads=rP>=kP;
