@@ -340,8 +340,42 @@ function updateArena(r,k){
     fwK.style.left=leaderL+'%';  fwK.className='fw-char leader';
     fwR.style.left=trailerL+'%'; fwR.className='fw-char trailer';
   }
-
+  // Guardar posición base del trailer para la animación de avance
+  window._trailerLeft  = parseFloat(trailerL);
+  window._leaderLeft   = parseFloat(leaderL);
 }
+
+// ── Animación de avance del segundo puesto ────────────────────────────
+// Cada 6s el trailer se acerca al líder y luego regresa lentamente
+let _surging = false;
+function doSurge(){
+  if(_surging) return;
+  const trailer = document.querySelector('.fw-char.trailer');
+  const leader  = document.querySelector('.fw-char.leader');
+  if(!trailer || !leader) return;
+
+  const base   = window._trailerLeft ?? parseFloat(trailer.style.left);
+  const lead   = window._leaderLeft  ?? parseFloat(leader.style.left);
+  // Avanza hasta ~65% del espacio que le separa del líder
+  const surge  = base + (lead - base) * 0.65;
+
+  _surging = true;
+  // Avance rápido (0.8s)
+  trailer.style.transition = 'left 0.8s cubic-bezier(.22,.68,0,1.2)';
+  trailer.style.left = surge + '%';
+
+  // Tras 1.6s, retorno lento (3s)
+  setTimeout(()=>{
+    trailer.style.transition = 'left 3s ease-in';
+    trailer.style.left = base + '%';
+    setTimeout(()=>{
+      trailer.style.transition = 'left 1.8s cubic-bezier(.25,.46,.45,.94)';
+      _surging = false;
+    }, 3100);
+  }, 1600);
+}
+// Primera oleada a los 4s de carga, luego cada 7s
+setTimeout(()=>{ doSurge(); setInterval(doSurge, 7000); }, 4000);
 
 function renderH2H(cands){
   const r=cands.find(c=>c.codigo===R)||{},k=cands.find(c=>c.codigo===K)||{};
