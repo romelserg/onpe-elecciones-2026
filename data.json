@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-09T19:50:25.679268+00:00",
-    "pct_actas": 96.021,
-    "actas_contabilizadas": 89075,
+    "scraped_at": "2026-06-09T21:47:56.665423+00:00",
+    "pct_actas": 96.204,
+    "actas_contabilizadas": 89245,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 17807353,
-    "participacion": 69.731,
+    "votos_validos": 17835196,
+    "participacion": 69.837,
     "exterior_pct_actas": 18.7
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 8913678,
-      "pct": 50.056
+      "votos": 8935393,
+      "pct": 50.1
     },
     {
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 8893675,
-      "pct": 49.944
+      "votos": 8899803,
+      "pct": 49.9
     }
   ],
   "por_departamento": [
@@ -111,19 +111,19 @@
       "ubigeo": "050000",
       "nombre": "Ayacucho",
       "pct_actas": 99.2,
-      "actas_contabilizadas": 1884,
+      "actas_contabilizadas": 1885,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 256263,
-          "pct": 79.31
+          "votos": 256362,
+          "pct": 79.32
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 66835,
-          "pct": 20.69
+          "votos": 66849,
+          "pct": 20.68
         }
       ]
     },
@@ -150,20 +150,20 @@
     {
       "ubigeo": "070000",
       "nombre": "Callao",
-      "pct_actas": 93.2,
-      "actas_contabilizadas": 3711,
+      "pct_actas": 96.4,
+      "actas_contabilizadas": 3840,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 560300,
-          "pct": 77.99
+          "votos": 578342,
+          "pct": 78.1
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 158153,
-          "pct": 22.01
+          "votos": 162205,
+          "pct": 21.9
         }
       ]
     },
@@ -310,40 +310,40 @@
     {
       "ubigeo": "150000",
       "nombre": "Lima",
-      "pct_actas": 91.0,
-      "actas_contabilizadas": 2455,
+      "pct_actas": 92.7,
+      "actas_contabilizadas": 2501,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 204541,
-          "pct": 54.17
+          "votos": 206551,
+          "pct": 53.84
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 173018,
-          "pct": 45.83
+          "votos": 177072,
+          "pct": 46.16
         }
       ]
     },
     {
       "ubigeo": "160000",
       "nombre": "Loreto",
-      "pct_actas": 98.4,
-      "actas_contabilizadas": 499,
+      "pct_actas": 99.0,
+      "actas_contabilizadas": 502,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 65081,
-          "pct": 69.15
+          "votos": 65432,
+          "pct": 69.21
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 29039,
-          "pct": 30.85
+          "votos": 29115,
+          "pct": 30.79
         }
       ]
     },
@@ -552,19 +552,19 @@
     {
       "ubigeo": "920000",
       "nombre": "América",
-      "pct_actas": 42.2,
-      "actas_contabilizadas": 662,
+      "pct_actas": 42.4,
+      "actas_contabilizadas": 665,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 49821,
+          "votos": 50004,
           "pct": 68.37
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 23052,
+          "votos": 23136,
           "pct": 31.63
         }
       ]
