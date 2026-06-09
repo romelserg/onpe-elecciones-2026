@@ -1,29 +1,29 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-09T18:16:22.439706+00:00",
-    "pct_actas": 95.979,
-    "actas_contabilizadas": 89036,
+    "scraped_at": "2026-06-09T19:50:25.679268+00:00",
+    "pct_actas": 96.021,
+    "actas_contabilizadas": 89075,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 17802861,
-    "participacion": 69.713,
-    "exterior_pct_actas": 18.3
+    "votos_validos": 17807353,
+    "participacion": 69.731,
+    "exterior_pct_actas": 18.7
   },
   "candidatos": [
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 8911541,
-      "pct": 50.057
+      "votos": 8913678,
+      "pct": 50.056
     },
     {
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 8891320,
-      "pct": 49.943
+      "votos": 8893675,
+      "pct": 49.944
     }
   ],
   "por_departamento": [
@@ -310,19 +310,19 @@
     {
       "ubigeo": "150000",
       "nombre": "Lima",
-      "pct_actas": 90.5,
-      "actas_contabilizadas": 2440,
+      "pct_actas": 91.0,
+      "actas_contabilizadas": 2455,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 203812,
+          "votos": 204541,
           "pct": 54.17
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 172417,
+          "votos": 173018,
           "pct": 45.83
         }
       ]
@@ -552,20 +552,20 @@
     {
       "ubigeo": "920000",
       "nombre": "América",
-      "pct_actas": 40.6,
-      "actas_contabilizadas": 638,
+      "pct_actas": 42.2,
+      "actas_contabilizadas": 662,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 48195,
-          "pct": 69.14
+          "votos": 49821,
+          "pct": 68.37
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 21516,
-          "pct": 30.86
+          "votos": 23052,
+          "pct": 31.63
         }
       ]
     },
