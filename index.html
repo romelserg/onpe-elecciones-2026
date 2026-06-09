@@ -42,110 +42,101 @@
     .actas-track{height:7px;background:var(--border);border-radius:4px;overflow:hidden}
     .actas-fill{height:100%;background:linear-gradient(90deg,var(--r2),var(--r));border-radius:4px;transition:width 1.2s ease}
 
-    /* ARENA — estilo carrera */
+    /* ── ARENA estilo videojuego de pelea ── */
     .arena-wrap{width:100%;max-width:900px;margin:0 auto 20px;padding:0 14px}
-    .arena{position:relative;width:100%;height:230px;border-radius:14px;overflow:hidden;background:url('./bg_plaza.png?v=3') center 30%/cover no-repeat;border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
-    .arena::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(180,200,255,.12) 100%);pointer-events:none}
+    .arena{position:relative;width:100%;height:260px;border-radius:14px;overflow:hidden;
+           background:url('./bg_plaza.png?v=3') center 30%/cover no-repeat;
+           border:2px solid var(--border);box-shadow:0 4px 20px var(--shadow)}
+    .arena::after{content:'';position:absolute;inset:0;
+           background:linear-gradient(to bottom,rgba(0,0,0,.35) 0%,transparent 45%);
+           pointer-events:none;z-index:1}
 
-    /* HUD de videojuego — parte superior del arena */
-    .arena-hud{
+    /* ── HUD barras de vida ── */
+    .fight-hud{
       position:absolute;top:0;left:0;right:0;z-index:20;
-      display:flex;align-items:center;justify-content:center;gap:6px;
-      padding:6px 12px;
-      background:rgba(10,10,40,.60);
-      backdrop-filter:blur(4px);
+      display:grid;grid-template-columns:1fr auto 1fr;
+      align-items:center;gap:8px;
+      padding:8px 12px 6px;
+      background:rgba(8,8,35,.82);
+      backdrop-filter:blur(6px);
       font-family:'Courier New',monospace;
     }
-    .hud-rank{
-      font-size:.7rem;font-weight:900;color:#ffd700;letter-spacing:1px;
-      background:rgba(255,215,0,.15);border:1px solid rgba(255,215,0,.4);
-      border-radius:6px;padding:2px 7px;
+    /* lado izquierdo: Keiko */
+    .fhud-k{ display:flex;flex-direction:column;gap:3px; }
+    .fhud-name{ font-size:.72rem;font-weight:900;letter-spacing:1px;text-transform:uppercase }
+    .fhud-name.k{ color:#ffaa66 }
+    .fhud-name.r{ color:#5dd8f8 }
+    .hp-track{ height:13px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:2px;overflow:hidden }
+    .hp-fill{ height:100%;border-radius:2px;transition:width 1.4s ease }
+    .hp-fill.k{ background:linear-gradient(90deg,#962300,#e85500,#ff8040);width:50% }
+    /* Roberto: barra llena desde la derecha */
+    .hp-track.r{ direction:rtl }
+    .hp-fill.r{ background:linear-gradient(90deg,#004e80,#007dc0,#30c0f0);width:50% }
+    .hp-pct{ font-size:.68rem;font-weight:700;color:rgba(255,255,255,.85) }
+    .fhud-k .hp-pct{ text-align:left }
+    .fhud-r .hp-pct{ text-align:right }
+    /* lado derecho: Roberto */
+    .fhud-r{ display:flex;flex-direction:column;gap:3px;align-items:flex-end }
+    /* VS central */
+    .fight-vs{
+      font-size:1.4rem;font-weight:900;color:#ffd700;
+      text-shadow:0 0 12px rgba(255,215,0,.9),0 0 3px #000;
+      animation:vs-pulse .9s ease-in-out infinite alternate;
+      padding:0 4px;letter-spacing:2px;
     }
-    .hud-name{font-size:.78rem;font-weight:800;letter-spacing:1px;text-transform:uppercase}
-    .hud-name.r{color:#5dd8f8}.hud-name.k{color:#ffaa66}
-    .hud-sep{color:rgba(255,255,255,.3);font-size:.9rem}
-    .hud-lead{font-size:.72rem;color:#fff;font-weight:700}
-    .hud-pts{font-size:.65rem;color:rgba(255,255,255,.6);margin-left:2px}
-    .hud-arrow{font-size:.9rem;color:#ffd700;animation:pulse-arrow .6s ease-in-out infinite alternate}
-    @keyframes pulse-arrow{from{transform:translateX(0)}to{transform:translateX(4px)}}
+    @keyframes vs-pulse{
+      from{text-shadow:0 0 6px rgba(255,215,0,.4),0 0 2px #000;transform:scale(1)}
+      to  {text-shadow:0 0 18px rgba(255,215,0,1),0 0 4px #000;transform:scale(1.08)}
+    }
 
-    /* Personajes — ambos usan left, corren hacia la derecha */
-    .fw{
-      position:absolute;bottom:0;
+    /* ── Personajes ── */
+    .fw-char{
+      position:absolute;bottom:0;z-index:10;
       display:flex;flex-direction:column;align-items:center;
-      transition:left 2s cubic-bezier(.25,.8,.25,1);
-      z-index:10;
     }
+    #fw-k{ left:4% }
+    #fw-r{ right:4% }
 
-    /* Etiqueta de posición */
-    .f-pos{
-      font-family:'Courier New',monospace;
-      font-size:.68rem;font-weight:900;letter-spacing:.5px;
-      padding:1px 8px;border-radius:8px;margin-bottom:2px;
-      border:1px solid;
-    }
-    .f-pos.p1{background:rgba(255,215,0,.25);color:#c9a000;border-color:rgba(255,215,0,.5)}
-    .f-pos.p2{background:rgba(150,150,200,.15);color:#7070a0;border-color:rgba(150,150,200,.3)}
-    .f-lbl{font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px;color:rgba(255,255,255,.85);text-shadow:0 1px 4px rgba(0,0,0,.5)}
-
-    /* ── PERSONAJES CORRIENDO ── */
     .f-img{
       display:block;
       image-rendering:pixelated;
       image-rendering:-webkit-optimize-contrast;
-      transform-origin: bottom center;
+      transform-origin:bottom center;
     }
-
-    /* Keiko: imagen original mira a la izquierda → flip + animación carrera */
-    #img-k{
-      height:148px; width:auto;
-      animation: run-k 0.38s ease-in-out infinite;
+    /* Keiko: sprite original mira a la izquierda → mira hacia el centro (derecha) con flip */
+    #img-k{ height:150px;width:auto;animation:idle-k .55s ease-in-out infinite }
+    @keyframes idle-k{
+      0%  {transform:scaleX(-1) translateY(0)   rotate(1deg)}
+      40% {transform:scaleX(-1) translateY(-9px) rotate(3deg) scaleY(1.03)}
+      70% {transform:scaleX(-1) translateY(-12px)rotate(2deg) scaleY(0.98)}
+      100%{transform:scaleX(-1) translateY(0)   rotate(1deg)}
     }
-    @keyframes run-k {
-      0%   { transform: scaleX(-1) translateY(0px)   rotate(-2deg); }
-      15%  { transform: scaleX(-1) translateY(-8px)  rotate(-5deg) scaleY(0.97); }
-      30%  { transform: scaleX(-1) translateY(-14px) rotate(-4deg) scaleY(1.03); }
-      50%  { transform: scaleX(-1) translateY(-16px) rotate(-2deg) scaleY(0.98); }
-      70%  { transform: scaleX(-1) translateY(-10px) rotate(-1deg) scaleY(1.01); }
-      85%  { transform: scaleX(-1) translateY(-4px)  rotate(-3deg) scaleY(0.99); }
-      100% { transform: scaleX(-1) translateY(0px)   rotate(-2deg); }
+    /* Roberto: sprite mira a la derecha → mira hacia el centro (izquierda) con flip */
+    #img-r{ height:132px;width:auto;animation:idle-r .55s ease-in-out infinite }
+    @keyframes idle-r{
+      0%  {transform:scaleX(-1) translateY(0)   rotate(-1deg)}
+      40% {transform:scaleX(-1) translateY(-9px) rotate(-3deg) scaleY(1.03)}
+      70% {transform:scaleX(-1) translateY(-12px)rotate(-2deg) scaleY(0.98)}
+      100%{transform:scaleX(-1) translateY(0)   rotate(-1deg)}
     }
-
-    /* Roberto: ya mira a la derecha naturalmente */
-    #img-r{
-      height:130px; width:auto;
-      animation: run-r 0.38s ease-in-out infinite;
+    /* Líder: brillo + más rápido */
+    .fw-char.leader #img-k,
+    .fw-char.leader #img-r{
+      animation-duration:.38s;
+      filter:drop-shadow(0 0 10px rgba(255,215,0,.8)) drop-shadow(0 4px 8px rgba(0,0,0,.4));
     }
-    @keyframes run-r {
-      0%   { transform: translateY(0px)   rotate(-2deg); }
-      15%  { transform: translateY(-8px)  rotate(-5deg) scaleY(0.97); }
-      30%  { transform: translateY(-14px) rotate(-4deg) scaleY(1.03); }
-      50%  { transform: translateY(-16px) rotate(-2deg) scaleY(0.98); }
-      70%  { transform: translateY(-10px) rotate(-1deg) scaleY(1.01); }
-      85%  { transform: translateY(-4px)  rotate(-3deg) scaleY(0.99); }
-      100% { transform: translateY(0px)   rotate(-2deg); }
+    /* Trailing: atenuado + más lento */
+    .fw-char.trailer #img-k,
+    .fw-char.trailer #img-r{
+      animation-duration:.75s;
+      filter:brightness(.7) saturate(.6) drop-shadow(0 3px 6px rgba(0,0,0,.35));
     }
-
-    /* 1° lugar: más rápido + brillo dorado */
-    .fw.p1 #img-k, .fw.p1 #img-r {
-      animation-duration: 0.32s;
-      filter: drop-shadow(0 0 8px rgba(255,215,0,.7)) drop-shadow(0 4px 6px rgba(0,0,0,.35));
+    @media(max-width:560px){
+      .arena{height:200px}
+      #img-k{height:110px}
+      #img-r{height:96px}
+      .fight-vs{font-size:1rem}
     }
-    /* 2° lugar: más lento + atenuado */
-    .fw.p2 #img-k, .fw.p2 #img-r {
-      animation-duration: 0.52s;
-      filter: brightness(.75) saturate(.65) drop-shadow(0 3px 6px rgba(0,0,0,.3));
-    }
-
-    @keyframes dust{
-      0%{opacity:.7;transform:translateX(0) scale(1)}
-      100%{opacity:0;transform:translateX(-18px) scale(1.6)}
-    }
-    @keyframes star-pop{0%{opacity:0;transform:translate(0,0) scale(.5)}50%{opacity:1;transform:translate(var(--sx),var(--sy)) scale(1)}100%{opacity:0;transform:translate(calc(var(--sx)*1.8),calc(var(--sy)*1.8)) scale(0)}}
-
-    /* Estrellas / destellos del líder */
-    .stars{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:50px;height:40px;pointer-events:none}
-    .sp{position:absolute;top:50%;left:50%;width:7px;height:7px;background:gold;clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);animation:star-pop 1s ease-out infinite}
 
     /* MAIN */
     main{max-width:900px;margin:0 auto;padding:18px 14px 48px}
@@ -252,43 +243,39 @@
   </div>
 </header>
 
-<!-- ARENA — CARRERA -->
+<!-- ARENA — VIDEOJUEGO DE PELEA -->
 <div class="arena-wrap">
   <div class="arena">
 
-    <!-- HUD videojuego -->
-    <div class="arena-hud" id="arena-hud">
-      <span class="hud-rank">1°</span>
-      <span class="hud-name r" id="hud-leader">ROBERTO</span>
-      <span class="hud-arrow">▶▶</span>
-      <span class="hud-lead" id="hud-lead">+…</span>
-      <span class="hud-pts"  id="hud-pts"></span>
-      <span class="hud-sep">|</span>
-      <span class="hud-rank" style="background:rgba(150,150,200,.12);border-color:rgba(150,150,200,.3);color:#aaa">2°</span>
-      <span class="hud-name k" id="hud-trailer">KEIKO</span>
+    <!-- HUD barras de vida -->
+    <div class="fight-hud">
+      <!-- Keiko (izquierda) -->
+      <div class="fhud-k">
+        <span class="fhud-name k">KEIKO FUJIMORI</span>
+        <div class="hp-track">
+          <div class="hp-fill k" id="hp-k" style="width:50%"></div>
+        </div>
+        <span class="hp-pct" id="pct-k">—%</span>
+      </div>
+      <!-- VS central -->
+      <div class="fight-vs">VS</div>
+      <!-- Roberto (derecha) -->
+      <div class="fhud-r">
+        <span class="fhud-name r">ROBERTO SÁNCHEZ</span>
+        <div class="hp-track r">
+          <div class="hp-fill r" id="hp-r" style="width:50%"></div>
+        </div>
+        <span class="hp-pct" id="pct-r">—%</span>
+      </div>
     </div>
 
-    <!-- Personaje Keiko -->
-    <div class="fw p1" id="fw-k" style="left:20%">
-      <div class="stars" id="sk">
-        <div class="sp" style="--sx:-14px;--sy:-18px;animation-delay:0s"></div>
-        <div class="sp" style="--sx:16px;--sy:-22px;animation-delay:.35s"></div>
-        <div class="sp" style="--sx:-4px;--sy:-28px;animation-delay:.7s"></div>
-      </div>
-      <div class="f-pos p1" id="pos-k">🥇 1°</div>
-      <div class="f-lbl" id="lbl-k">KEIKO</div>
+    <!-- Personaje Keiko (izquierda, mira a la derecha) -->
+    <div class="fw-char" id="fw-k">
       <img id="img-k" class="f-img" src="sprite_keiko_t.png" alt="Keiko">
     </div>
 
-    <!-- Personaje Roberto -->
-    <div class="fw p1" id="fw-r" style="left:55%">
-      <div class="stars" id="sr">
-        <div class="sp" style="--sx:-14px;--sy:-18px;animation-delay:0s"></div>
-        <div class="sp" style="--sx:16px;--sy:-22px;animation-delay:.35s"></div>
-        <div class="sp" style="--sx:-4px;--sy:-28px;animation-delay:.7s"></div>
-      </div>
-      <div class="f-pos p1" id="pos-r">🥇 1°</div>
-      <div class="f-lbl" id="lbl-r">ROBERTO</div>
+    <!-- Personaje Roberto (derecha, mira a la izquierda) -->
+    <div class="fw-char" id="fw-r">
       <img id="img-r" class="f-img" src="sprite_roberto_t.png" alt="Roberto">
     </div>
 
@@ -341,56 +328,17 @@ const fmt=n=>Number(n).toLocaleString('es-PE');
 const fpt=(p,d=2)=>Number(p).toFixed(d)+'%';
 
 function updateArena(r,k){
-  const rP=+r.pct,kP=+k.pct,rLeads=rP>kP;
-  const margin=Math.abs(rP-kP);
-  const diff=Math.abs(r.votos-k.votos);
+  const rP=+r.pct, kP=+k.pct, rLeads=rP>kP;
 
-  // Separación visual según margen (máx 30% de separación)
-  const gap=Math.min(Math.max(margin*3.5,8),30);
+  // Barras de vida (intención de voto)
+  document.getElementById('hp-k').style.width = kP.toFixed(1)+'%';
+  document.getElementById('hp-r').style.width = rP.toFixed(1)+'%';
+  document.getElementById('pct-k').textContent = kP.toFixed(2)+'%';
+  document.getElementById('pct-r').textContent = rP.toFixed(2)+'%';
 
-  // El líder va delante (más a la derecha), el 2° va detrás (más a la izquierda)
-  // Centro del arena ≈ 50%; líder a la derecha, trailer a la izquierda
-  const posLead  = Math.min(52+gap/2, 62);  // líder: 52–62%
-  const posTrail = Math.max(10, 20-gap/3);  // trailer: 10–20%
-
-  const fwR=document.getElementById('fw-r');
-  const fwK=document.getElementById('fw-k');
-
-  if(rLeads){
-    // Roberto 1°, Keiko 2°
-    fwR.className='fw p1'; fwR.style.left=posLead+'%';
-    fwK.className='fw p2'; fwK.style.left=posTrail+'%';
-    document.getElementById('pos-r').textContent='🥇 1°';
-    document.getElementById('pos-k').textContent='🥈 2°';
-    document.getElementById('pos-r').className='f-pos p1';
-    document.getElementById('pos-k').className='f-pos p2';
-    document.getElementById('sk').style.display='none';
-    document.getElementById('sr').style.display='block';
-    // HUD
-    document.getElementById('hud-leader').textContent='ROBERTO';
-    document.getElementById('hud-leader').className='hud-name r';
-    document.getElementById('hud-trailer').textContent='KEIKO';
-    document.getElementById('hud-trailer').className='hud-name k';
-  } else {
-    // Keiko 1°, Roberto 2°
-    fwK.className='fw p1'; fwK.style.left=posLead+'%';
-    fwR.className='fw p2'; fwR.style.left=posTrail+'%';
-    document.getElementById('pos-k').textContent='🥇 1°';
-    document.getElementById('pos-r').textContent='🥈 2°';
-    document.getElementById('pos-k').className='f-pos p1';
-    document.getElementById('pos-r').className='f-pos p2';
-    document.getElementById('sr').style.display='none';
-    document.getElementById('sk').style.display='block';
-    // HUD
-    document.getElementById('hud-leader').textContent='KEIKO';
-    document.getElementById('hud-leader').className='hud-name k';
-    document.getElementById('hud-trailer').textContent='ROBERTO';
-    document.getElementById('hud-trailer').className='hud-name r';
-  }
-
-  document.getElementById('hud-lead').textContent='+'+fmt(diff)+' votos';
-  document.getElementById('hud-pts').textContent='(+'+margin.toFixed(2)+'pts)';
-
+  // Líder brilla, trailer se atenúa
+  document.getElementById('fw-k').className = 'fw-char ' + (rLeads ? 'trailer' : 'leader');
+  document.getElementById('fw-r').className = 'fw-char ' + (rLeads ? 'leader'  : 'trailer');
 }
 
 function renderH2H(cands){
