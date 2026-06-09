@@ -354,9 +354,10 @@ function startLoop(imgId, charId, frames){
   setTimeout(step, document.getElementById(charId).classList.contains('leader') ? 110 : 160);
 }
 
-// Tras 2s de quietud arrancar la animación de borregos
-setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 2000);
-setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 2000);
+// Splash dura 3s + 0.7s fadeout = ~3.7s de pantalla tapada.
+// Personajes quietos visibles ~1.8s más → borregos arrancan a los 5.5s
+setTimeout(() => startLoop('img-r', 'fw-r', SEQ_R), 5500);
+setTimeout(() => startLoop('img-k', 'fw-k', SEQ_K), 5500);;
 
 function updateArena(r,k){
   const rP=+r.pct, kP=+k.pct, rLeads=rP>=kP;
@@ -415,8 +416,8 @@ function doSurge(){
     }, 3100);
   }, 1600);
 }
-// Primera oleada a los 4s de carga, luego cada 7s
-setTimeout(()=>{ doSurge(); setInterval(doSurge, 7000); }, 4000);
+// Primera oleada a los 8s (después de que arrancan los borregos), luego cada 7s
+setTimeout(()=>{ doSurge(); setInterval(doSurge, 7000); }, 8000);
 
 function renderH2H(cands){
   const r=cands.find(c=>c.codigo===R)||{},k=cands.find(c=>c.codigo===K)||{};
