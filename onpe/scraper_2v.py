@@ -83,7 +83,7 @@ def build_dept_rows(data_keiko, data_roberto, ubigeo_pad=6):
                 "nombre": p.get("nombreCandidato", "KEIKO SOFIA FUJIMORI HIGUCHI"),
                 "codigo": 8,
                 "votos": int(p.get("totalVotosValidos") or 0),
-                "pct": round(float(p.get("porcentajeVotosValidos") or 0), 2),
+                "pct": round(float(p.get("porcentajeVotosValidos") or 0), 3),
             })
         if dr and dr.get("participante"):
             p = dr["participante"]
@@ -91,7 +91,7 @@ def build_dept_rows(data_keiko, data_roberto, ubigeo_pad=6):
                 "nombre": p.get("nombreCandidato", "ROBERTO HELBERT SANCHEZ PALOMINO"),
                 "codigo": 10,
                 "votos": int(p.get("totalVotosValidos") or 0),
-                "pct": round(float(p.get("porcentajeVotosValidos") or 0), 2),
+                "pct": round(float(p.get("porcentajeVotosValidos") or 0), 3),
             })
 
         cands.sort(key=lambda c: -c["votos"])
@@ -99,7 +99,7 @@ def build_dept_rows(data_keiko, data_roberto, ubigeo_pad=6):
         rows.append({
             "ubigeo": ub,
             "nombre": DEPT_NAMES.get(ub, ub),
-            "pct_actas": round(float(pct_actas), 1),
+            "pct_actas": round(float(pct_actas), 3),
             "actas_contabilizadas": int(actas_cont),
             "candidatos": cands,
         })

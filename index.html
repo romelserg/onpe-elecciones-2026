@@ -525,15 +525,16 @@ function renderDepts(depts){
     const rP=r?.pct||0,kP=k?.pct||0;
     const rW=(r?.votos||0)>(k?.votos||0);
     const w=rW?'r':'k',wn=rW?'Roberto':'Keiko';
-    const dp=Math.abs(rP-kP).toFixed(1);
-    const falta=(100-d.pct_actas).toFixed(1);
-    const faltaColor=falta>10?'#e05':falta>5?'#f80':falta>0?'#f5c800':'var(--muted)';
+    const dp=Math.abs(rP-kP).toFixed(3);
+    const faltaRaw=+(100-d.pct_actas).toFixed(3);
+    const falta=faltaRaw>0?faltaRaw.toString():'0';
+    const faltaColor=faltaRaw>10?'#e05':faltaRaw>5?'#f80':faltaRaw>0?'#f5c800':'var(--muted)';
     return`<tr>
       <td class="dnm">${d.nombre}</td>
       <td><span class="wn ${w}">${wn}</span><span style="color:var(--muted);font-size:.7rem"> +${dp}pts</span><br>
-      <span class="pc r">${rP.toFixed(1)}%</span><span style="color:var(--muted);font-size:.66rem"> vs </span><span class="pc k">${kP.toFixed(1)}%</span></td>
-      <td class="an" style="font-weight:700;color:${falta>0?faltaColor:'var(--muted)'}">
-        ${falta>0?`−${falta}%`:'✓ 100%'}
+      <span class="pc r">${rP.toFixed(3)}%</span><span style="color:var(--muted);font-size:.66rem"> vs </span><span class="pc k">${kP.toFixed(3)}%</span></td>
+      <td class="an" style="font-weight:700;color:${faltaRaw>0?faltaColor:'var(--muted)'}">
+        ${faltaRaw>0?`${falta}%`:'✓ 100%'}
       </td>
     </tr>`;
   }).join('');
