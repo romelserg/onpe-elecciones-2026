@@ -224,7 +224,7 @@
 <header>
   <h1><span class="flag">🇵🇪</span>SEGUNDA VUELTA 2026<span class="flag">🇵🇪</span></h1>
   <div class="author">Sergio Contreras Valenzuela</div>
-  <div class="handle">@7borreguitos_</div>
+  <div class="handle"><a href="https://x.com/7borreguitos_" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">@7borreguitos_</a></div>
   <div class="update-row">
     <span class="badge live">EN VIVO</span>
     <span class="badge" id="upd-badge">Cargando…</span>
@@ -765,7 +765,6 @@ async function renderMapa(depts, provMapa) {
     {color:'#86efac', label:'Roberto lidera (ajustado)'},
     {color:'#fed7aa', label:'Keiko lidera (ajustado)'},
     {color:'#f97316', label:'Keiko lidera (fuerte)'},
-    {color:'#2a2a45', label:'Sin datos'},
   ];
   stops.forEach(s => {
     const item = legend.append('div').style('display','flex').style('align-items','center').style('gap','4px');
@@ -846,6 +845,20 @@ async function renderMapa(depts, provMapa) {
          .html(`<b>${feat.properties.n}</b><br><span style="color:#aaa">${feat.properties.p}, ${feat.properties.d}</span><br><span style="color:${col}">${lidera}</span>`);
     })
     .on('mouseleave', () => tip.style('display','none'));
+
+  // Líneas de departamentos encima de los distritos
+  try {
+    const deptGeo = await d3.json('./peru-depts.geojson');
+    svg.selectAll('.dept-border')
+      .data(deptGeo.features)
+      .enter().append('path')
+      .attr('class','dept-border')
+      .attr('d', path)
+      .attr('fill', 'none')
+      .attr('stroke', 'rgba(255,255,255,0.55)')
+      .attr('stroke-width', 0.9)
+      .attr('pointer-events', 'none');
+  } catch(e) { /* si no hay dept geojson, no pasa nada */ }
 
   _mapaRendered = true;
 }
