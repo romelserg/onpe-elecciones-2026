@@ -292,33 +292,33 @@
     </div>
   </div>
 
-  <div class="stitle">✈️ Voto en el Exterior
-    <span id="ext-sum" style="margin-left:auto;font-size:.68rem;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)"></span>
-  </div>
-  <div class="ext-note">⚠️ <div>Las actas del exterior se cuentan al final. Este bloque puede cambiar significativamente cuando se consoliden todos los votos.</div></div>
-  <div class="ext-grid" id="ext-grid"></div>
-
   <!-- Sección: Top zonas con votos pendientes clave -->
   <div id="clave-section" style="display:none;margin-bottom:20px">
-    <div class="stitle" style="margin-top:4px">🔑 Zonas con votos pendientes clave
-      <span id="clave-sub" style="font-weight:400;font-size:.7rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)">provincias + países del exterior</span>
-    </div>
+    <div class="stitle" style="margin-top:4px">🔑 Zonas con votos pendientes clave</div>
+    <p style="font-size:.72rem;color:var(--muted);margin:0 0 10px 0;line-height:1.5">
+      Las 10 jurisdicciones —provincias del Perú y países del exterior— con mayor cantidad de votos válidos aún sin contabilizar. Son los espacios que más pueden mover el resultado final.
+    </p>
     <div id="clave-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px"></div>
   </div>
 
-  <!-- Sección 1: zonas con conteo incompleto (<95%) -->
+  <!-- Exterior (oculto, datos usados internamente) -->
+  <div style="display:none">
+    <div id="ext-sum"></div>
+    <div id="ext-grid"></div>
+  </div>
+
+  <!-- Sección 1: zonas con conteo incompleto (<95%) — oculto -->
   <div id="pendientes-section" style="display:none;margin-bottom:20px">
     <div class="stitle" style="margin-top:4px">⏳ Zonas con conteo incompleto <span id="pend-count" style="font-weight:400;font-size:.7rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)"></span></div>
     <div id="pendientes-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px"></div>
   </div>
 
-  <!-- Sección 2: provincias con actas pendientes (datos reales de la API) -->
+  <!-- Sección 2: provincias con actas pendientes — oculto -->
   <div id="provincias-section" style="display:none;margin-bottom:20px">
     <div class="stitle" style="margin-top:4px">📍 Provincias con conteo pendiente
       <span id="prov-count" style="font-weight:400;font-size:.7rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)"></span>
     </div>
     <div id="provincias-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px;margin-bottom:14px"></div>
-    <!-- Exterior -->
     <div class="stitle" style="margin-top:8px;font-size:.72rem">✈️ Exterior — por peso de votos</div>
     <div id="prov-ext" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px"></div>
   </div>
@@ -635,7 +635,10 @@ function renderZonasClave(provs, extPaises) {
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
         <div style="font-size:.68rem;font-weight:800;color:${winColor}">${winName} <span style="font-size:.72rem">${winPct.toFixed(1)}%</span></div>
-        <span style="font-size:.63rem;font-weight:700;color:${faltaColor}">−${falta}%</span>
+        <div style="text-align:right">
+          <span style="font-size:.65rem;font-weight:700;color:${faltaColor};display:block">${falta}%</span>
+          <span style="font-size:.55rem;color:var(--muted);white-space:nowrap">actas sin procesar</span>
+        </div>
       </div>
       <div style="font-size:.63rem;color:var(--muted);border-top:1px solid var(--border);padding-top:3px">~${fmt(z.impacto)} votos pendientes</div>
     </div>`;
