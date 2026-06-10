@@ -1,49 +1,49 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-09T23:06:01.941725+00:00",
-    "pct_actas": 96.289,
-    "actas_contabilizadas": 89323,
+    "scraped_at": "2026-06-10T02:34:06.373912+00:00",
+    "pct_actas": 96.512,
+    "actas_contabilizadas": 89530,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 17846294,
-    "participacion": 69.88,
-    "exterior_pct_actas": 18.7
+    "votos_validos": 17870707,
+    "participacion": 69.974,
+    "exterior_pct_actas": 50.5
   },
   "candidatos": [
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 8944327,
-      "pct": 50.119
+      "votos": 8955656,
+      "pct": 50.114
     },
     {
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 8901967,
-      "pct": 49.881
+      "votos": 8915051,
+      "pct": 49.886
     }
   ],
   "por_departamento": [
     {
       "ubigeo": "010000",
       "nombre": "Amazonas",
-      "pct_actas": 99.7,
-      "actas_contabilizadas": 1274,
+      "pct_actas": 99.8,
+      "actas_contabilizadas": 1275,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 125241,
-          "pct": 64.45
+          "votos": 125348,
+          "pct": 64.46
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 69084,
-          "pct": 35.55
+          "votos": 69119,
+          "pct": 35.54
         }
       ]
     },
@@ -130,20 +130,20 @@
     {
       "ubigeo": "060000",
       "nombre": "Cajamarca",
-      "pct_actas": 99.3,
-      "actas_contabilizadas": 4209,
+      "pct_actas": 99.4,
+      "actas_contabilizadas": 4215,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 490590,
-          "pct": 66.76
+          "votos": 491442,
+          "pct": 66.77
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 244266,
-          "pct": 33.24
+          "votos": 244539,
+          "pct": 33.23
         }
       ]
     },
@@ -251,18 +251,18 @@
       "ubigeo": "120000",
       "nombre": "Junín",
       "pct_actas": 99.3,
-      "actas_contabilizadas": 5266,
+      "actas_contabilizadas": 5265,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 599810,
+          "votos": 599677,
           "pct": 57.52
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 442887,
+          "votos": 442801,
           "pct": 42.48
         }
       ]
@@ -310,20 +310,20 @@
     {
       "ubigeo": "150000",
       "nombre": "Lima",
-      "pct_actas": 93.4,
-      "actas_contabilizadas": 2519,
+      "pct_actas": 94.4,
+      "actas_contabilizadas": 2546,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 207071,
-          "pct": 53.81
+          "votos": 208270,
+          "pct": 53.79
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 177761,
-          "pct": 46.19
+          "votos": 178933,
+          "pct": 46.21
         }
       ]
     },
@@ -390,20 +390,20 @@
     {
       "ubigeo": "190000",
       "nombre": "Pasco",
-      "pct_actas": 98.8,
-      "actas_contabilizadas": 5217,
+      "pct_actas": 98.9,
+      "actas_contabilizadas": 5224,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 582216,
-          "pct": 56.96
+          "votos": 583221,
+          "pct": 56.98
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 439958,
-          "pct": 43.04
+          "votos": 440425,
+          "pct": 43.02
         }
       ]
     },
@@ -510,20 +510,20 @@
     {
       "ubigeo": "250000",
       "nombre": "Ucayali",
-      "pct_actas": 97.2,
-      "actas_contabilizadas": 1520,
+      "pct_actas": 97.3,
+      "actas_contabilizadas": 1521,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 139606,
-          "pct": 52.55
+          "votos": 139624,
+          "pct": 52.54
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 126082,
-          "pct": 47.45
+          "votos": 126113,
+          "pct": 47.46
         }
       ]
     }
@@ -532,20 +532,20 @@
     {
       "ubigeo": "910000",
       "nombre": "África",
-      "pct_actas": 33.3,
-      "actas_contabilizadas": 2,
+      "pct_actas": 83.3,
+      "actas_contabilizadas": 5,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 19,
-          "pct": 86.36
+          "votos": 27,
+          "pct": 65.85
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 3,
-          "pct": 13.64
+          "votos": 14,
+          "pct": 34.15
         }
       ]
     },
@@ -572,60 +572,60 @@
     {
       "ubigeo": "930000",
       "nombre": "Asia",
-      "pct_actas": 1.9,
-      "actas_contabilizadas": 2,
+      "pct_actas": 14.0,
+      "actas_contabilizadas": 15,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 0,
-          "pct": 0.0
+          "votos": 186,
+          "pct": 66.43
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 0,
-          "pct": 0.0
+          "votos": 94,
+          "pct": 33.57
         }
       ]
     },
     {
       "ubigeo": "940000",
       "nombre": "Europa",
-      "pct_actas": 15.9,
-      "actas_contabilizadas": 133,
+      "pct_actas": 31.7,
+      "actas_contabilizadas": 266,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 10141,
-          "pct": 52.45
+          "votos": 19496,
+          "pct": 53.09
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 9193,
-          "pct": 47.55
+          "votos": 17226,
+          "pct": 46.91
         }
       ]
     },
     {
       "ubigeo": "950000",
       "nombre": "Oceanía",
-      "pct_actas": 0.0,
-      "actas_contabilizadas": 0,
+      "pct_actas": 81.0,
+      "actas_contabilizadas": 17,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 0,
-          "pct": 0.0
+          "votos": 1138,
+          "pct": 63.72
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 0,
-          "pct": 0.0
+          "votos": 648,
+          "pct": 36.28
         }
       ]
     }
