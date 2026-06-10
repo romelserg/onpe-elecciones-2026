@@ -313,7 +313,7 @@
   <div style="margin-bottom:20px">
     <div class="stitle" style="margin-top:4px">🗺️ Mapa de resultados por región</div>
     <p style="font-size:.72rem;color:var(--muted);margin:0 0 10px 0;line-height:1.5">
-      Verde = Roberto Sánchez lidera · Naranja = Keiko Fujimori lidera. Mayor intensidad indica mayor margen de victoria.
+      Mapa a nivel de distrito (1,815 distritos). Color por resultado de la provincia. Mayor intensidad = mayor margen.
     </p>
     <div id="mapa-peru" style="width:100%;max-width:380px;margin:0 auto;text-align:center"></div>
   </div>
@@ -712,26 +712,36 @@ function setSort(m){
 // Normaliza un nombre para comparar (quita tildes, minúsculas)
 function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim(); }
 
-// Natural Earth usa "Lima Province" para la provincia costera y "Lima" para la sierra
-// Ambas se mapean al ubigeo 150000 de ONPE
-const GEO_NAME_MAP = {
-  'lima province': 'lima',  // provincia de Lima costera → departamento Lima ONPE
+// Correcciones de nombre GADM → nombre ONPE (normalizado)
+const PROV_FIX = {
+  'la convencion':'la convencion','datem del maranon':'datem del maranon',
 };
 
 let _mapaRendered = false;
 
-async function renderMapa(depts) {
+async function renderMapa(depts, provMapa) {
   if(_mapaRendered) return;
   const container = document.getElementById('mapa-peru');
   if(!container) return;
 
-  // Lookup de datos por nombre normalizado
-  const byName = {};
-  depts.forEach(d => { byName[norm(d.nombre)] = d; });
+  // Índice por dept+prov para colorear distritos
+  // provMapa: [{d, p, r, k}, ...]  (dept name, prov name, r_pct, k_pct)
+  const byProv = {};
+  (provMapa||[]).forEach(p => {
+    const key = norm(p.d) + '|' + norm(p.p);
+    byProv[key] = p;
+  });
+  // Fallback por departamento
+  const byDept = {};
+  (depts||[]).forEach(d => {
+    const r = d.candidatos.find(c=>c.codigo===R);
+    const k = d.candidatos.find(c=>c.codigo===K);
+    byDept[norm(d.nombre)] = {r: r?.pct||0, k: k?.pct||0};
+  });
 
   let geo;
   try {
-    const res = await fetch('./peru-depts.geojson');
+    const res = await fetch('./peru-distritos.geojson');
     if(!res.ok) throw new Error(res.status);
     geo = await res.json();
   } catch(e) {
@@ -739,8 +749,28 @@ async function renderMapa(depts) {
     return;
   }
 
-  const W = Math.min(container.offsetWidth || 340, 380);
-  const H = Math.round(W * 1.45);
+  const W = Math.min(container.offsetWidth || 340, 400);
+  const H = Math.round(W * 1.5);
+
+  d3.select(container).style('position','relative');
+
+  // ── Leyenda ────────────────────────────────────────────────────────────
+  const legend = d3.select(container).append('div')
+    .style('display','flex').style('gap','12px').style('justify-content','center')
+    .style('margin-bottom','8px').style('font-size','.65rem').style('flex-wrap','wrap');
+
+  const stops = [
+    {color:'#22c55e', label:'Roberto lidera (fuerte)'},
+    {color:'#86efac', label:'Roberto lidera (ajustado)'},
+    {color:'#fed7aa', label:'Keiko lidera (ajustado)'},
+    {color:'#f97316', label:'Keiko lidera (fuerte)'},
+    {color:'#2a2a45', label:'Sin datos'},
+  ];
+  stops.forEach(s => {
+    const item = legend.append('div').style('display','flex').style('align-items','center').style('gap','4px');
+    item.append('div').style('width','12px').style('height','12px').style('border-radius','2px').style('background',s.color).style('flex-shrink','0');
+    item.append('span').style('color','var(--muted)').text(s.label);
+  });
 
   const svg = d3.select(container).append('svg')
     .attr('viewBox', `0 0 ${W} ${H}`)
@@ -750,51 +780,48 @@ async function renderMapa(depts) {
   const projection = d3.geoMercator().fitSize([W, H], geo);
   const path = d3.geoPath().projection(projection);
 
-  function getDept(feat) {
-    const raw = feat.properties.name || '';
-    const key = norm(raw);
-    return byName[GEO_NAME_MAP[key] || key];
+  function getColor(feat) {
+    const dKey = norm(feat.properties.d || '');
+    const pKey = norm(feat.properties.p || '');
+    const provData = byProv[dKey + '|' + pKey];
+    const rP = provData ? provData.r : (byDept[dKey]?.r || 0);
+    const kP = provData ? provData.k : (byDept[dKey]?.k || 0);
+    if(!rP && !kP) return '#2a2a45';
+    const margin = Math.abs(rP - kP) / 100;
+    const t = Math.min(0.25 + margin * 1.5, 1);
+    return rP >= kP
+      ? d3.interpolateRgb('#a7f3d0','#15803d')(t)   // verde Roberto
+      : d3.interpolateRgb('#fed7aa','#c2410c')(t);  // naranja Keiko
   }
 
   // tooltip
-  d3.select(container).style('position','relative');
   const tip = d3.select(container).append('div')
     .style('position','absolute').style('pointer-events','none')
-    .style('background','rgba(10,10,30,.92)').style('color','#fff')
-    .style('font-size','.65rem').style('padding','5px 8px')
+    .style('background','rgba(10,10,30,.93)').style('color','#fff')
+    .style('font-size','.63rem').style('padding','5px 8px')
     .style('border-radius','6px').style('display','none')
-    .style('z-index','99').style('max-width','160px').style('line-height','1.5');
+    .style('z-index','99').style('max-width','170px').style('line-height','1.6');
 
   svg.selectAll('path')
     .data(geo.features)
     .enter().append('path')
     .attr('d', path)
-    .attr('stroke','#0d0d1f')
-    .attr('stroke-width', 0.5)
-    .attr('fill', feat => {
-      const dept = getDept(feat);
-      if(!dept || !dept.candidatos.length) return '#2a2a45';
-      const r = dept.candidatos.find(c=>c.codigo===R);
-      const k = dept.candidatos.find(c=>c.codigo===K);
-      const rP = r?.pct||0, kP = k?.pct||0;
-      const margin = Math.abs(rP-kP)/100;
-      const t = Math.min(0.3 + margin*1.4, 1);
-      return rP >= kP
-        ? d3.interpolateRgb('#162416','#22c55e')(t)   // verde Roberto
-        : d3.interpolateRgb('#2e1200','#f97316')(t);  // naranja Keiko
-    })
+    .attr('stroke','rgba(0,0,0,0.25)')
+    .attr('stroke-width', 0.25)
+    .attr('fill', getColor)
     .on('mousemove', function(event, feat) {
-      const dept = getDept(feat);
-      if(!dept) return;
-      const r = dept.candidatos.find(c=>c.codigo===R);
-      const k = dept.candidatos.find(c=>c.codigo===K);
-      const rP = r?.pct||0, kP = k?.pct||0;
+      const dKey = norm(feat.properties.d || '');
+      const pKey = norm(feat.properties.p || '');
+      const pData = byProv[dKey + '|' + pKey];
+      const rP = pData ? pData.r : (byDept[dKey]?.r || 0);
+      const kP = pData ? pData.k : (byDept[dKey]?.k || 0);
       const col = rP>=kP ? '#22c55e' : '#f97316';
       const lidera = rP>=kP ? `Roberto ${rP.toFixed(1)}%` : `Keiko ${kP.toFixed(1)}%`;
       const [x,y] = d3.pointer(event, container);
       tip.style('display','block')
-         .style('left',(x+14)+'px').style('top',(y-10)+'px')
-         .html(`<b>${dept.nombre}</b><br><span style="color:${col}">${lidera}</span><br><span style="color:#aaa;font-size:.6rem">Actas: ${dept.pct_actas}%</span>`);
+         .style('left', (x > W*0.6 ? x-175 : x+12)+'px')
+         .style('top', (y-10)+'px')
+         .html(`<b>${feat.properties.n}</b><br><span style="color:#aaa">${feat.properties.p}, ${feat.properties.d}</span><br><span style="color:${col}">${lidera}</span>`);
     })
     .on('mouseleave', () => tip.style('display','none'));
 
@@ -815,7 +842,7 @@ function renderAll(d){
   renderH2H(candidatos);
   updateArena(r,k);
   renderZonasClave(d.provincias_pendientes||[], d.exterior_paises||[]);
-  renderMapa(por_departamento);
+  renderMapa(por_departamento, d.provincias_mapa||[]);
   renderDepts(por_departamento);
   // nodos ocultos — llamadas necesarias para no romper el estado interno
   renderExterior(exterior);

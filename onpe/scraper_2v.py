@@ -108,17 +108,20 @@ def build_dept_rows(data_keiko, data_roberto, ubigeo_pad=6):
 
 
 def scrape_provincias(s):
-    """Devuelve lista de provincias con actas < 99.5%, ordenadas por impacto potencial."""
+    """Devuelve (provincias_pendientes, provincias_mapa).
+    - provincias_pendientes: actas < 99.5%, ordenadas por impacto potencial.
+    - provincias_mapa: todas las provincias con r_pct/k_pct (para el mapa de calor).
+    """
     import time as _time
     try:
         depts = fetch(s, "/ubigeos/departamentos",
                       {"idEleccion": 10, "idAmbitoGeografico": 1}) or []
     except Exception:
-        return []
+        return [], []
 
-    rows = []
+    pending, mapa = [], []
     for dept in depts:
-        dub = dept["ubigeo"]     # e.g. "070000"
+        dub = dept["ubigeo"]
         dname = dept["nombre"].title()
         try:
             provs = fetch(s, "/ubigeos/provincias",
@@ -128,7 +131,7 @@ def scrape_provincias(s):
             continue
 
         for prov in provs:
-            pub = prov["ubigeo"]   # e.g. "070900"
+            pub   = prov["ubigeo"]
             pname = prov["nombre"].title()
             try:
                 tot = fetch(s, "/resumen-general/totales",
@@ -136,14 +139,14 @@ def scrape_provincias(s):
                              "idAmbitoGeografico": 1,
                              "idUbigeoDepartamento": dub,
                              "idUbigeoProvincia": pub}) or {}
-                pct_actas = float(tot.get("actasContabilizadas") or 0)
+                pct_actas   = float(tot.get("actasContabilizadas") or 0)
                 total_actas = int(tot.get("totalActas") or 0)
                 cont_actas  = int(tot.get("contabilizadas") or 0)
             except Exception:
                 continue
 
-            if pct_actas >= 99.5 or total_actas == 0:
-                continue   # solo las que tienen algo relevante pendiente
+            if total_actas == 0:
+                continue
 
             try:
                 cands_raw = fetch(s, "/resumen-general/participantes",
@@ -161,11 +164,10 @@ def scrape_provincias(s):
             r_votos = int(r_c.get("totalVotosValidos") or 0)
             k_votos = int(k_c.get("totalVotosValidos") or 0)
             total_votos = r_votos + k_votos
-            falta = round(100 - pct_actas, 2)
-            # Impacto estimado: votos pendientes × margen (aprox)
+            falta   = round(100 - pct_actas, 2)
             impacto = round(total_votos * falta / 100) if total_votos else 0
 
-            rows.append({
+            row = {
                 "dept": dname, "dept_ub": dub,
                 "prov": pname, "prov_ub": pub,
                 "pct_actas": round(pct_actas, 2),
@@ -175,13 +177,19 @@ def scrape_provincias(s):
                 "r_votos": r_votos, "k_votos": k_votos,
                 "total_votos": total_votos,
                 "impacto": impacto,
-            })
+            }
+            # Para el mapa: guardar todas las provincias con datos
+            mapa.append({"d": dname, "p": pname, "r": r_pct, "k": k_pct})
+
+            # Para pendientes: solo las que tienen actas sin contar
+            if pct_actas < 99.5:
+                pending.append(row)
+
             _time.sleep(0.05)
 
-    # Ordenar por impacto estimado (mayor bolsón pendiente primero)
-    rows.sort(key=lambda x: -x["impacto"])
-    print(f"    Provincias pendientes: {len(rows)}")
-    return rows
+    pending.sort(key=lambda x: -x["impacto"])
+    print(f"    Provincias pendientes: {len(pending)}  |  Mapa: {len(mapa)} provincias")
+    return pending, mapa
 
 
 CONTINENTES_EXT = {
@@ -305,7 +313,7 @@ def scrape(out_path=None):
                      "idAmbitoGeografico": 2}) or {}
 
     # ── Provincias con actas pendientes ────────────────────────────────────
-    provincias_pendientes = scrape_provincias(s)
+    provincias_pendientes, provincias_mapa = scrape_provincias(s)
 
     # ── Países del exterior con detalle ───────────────────────────────────
     exterior_paises = scrape_exterior_paises(s)
@@ -332,6 +340,7 @@ def scrape(out_path=None):
         "por_departamento": por_departamento,
         "exterior": exterior,
         "provincias_pendientes": provincias_pendientes,
+        "provincias_mapa": provincias_mapa,
         "exterior_paises": exterior_paises,
     }
 
