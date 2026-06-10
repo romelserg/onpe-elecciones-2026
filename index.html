@@ -798,11 +798,18 @@ async function renderMapa(depts, provMapa) {
     return [dk, pk];
   }
 
+  function getData(dKey, pKey) {
+    const provData = byProv[dKey + '|' + pKey];
+    // Usar datos de provincia solo si tiene valores reales (>0)
+    if(provData && (provData.r > 0 || provData.k > 0)) return [provData.r, provData.k];
+    // Fallback a departamento
+    const dept = byDept[dKey];
+    return [dept?.r || 0, dept?.k || 0];
+  }
+
   function getColor(feat) {
     const [dKey, pKey] = resolve(feat.properties.d, feat.properties.p);
-    const provData = byProv[dKey + '|' + pKey];
-    const rP = provData ? provData.r : (byDept[dKey]?.r || 0);
-    const kP = provData ? provData.k : (byDept[dKey]?.k || 0);
+    const [rP, kP] = getData(dKey, pKey);
     if(!rP && !kP) return '#2a2a45';
     const margin = Math.abs(rP - kP) / 100;
     const t = Math.min(0.25 + margin * 1.5, 1);
@@ -828,9 +835,7 @@ async function renderMapa(depts, provMapa) {
     .attr('fill', getColor)
     .on('mousemove', function(event, feat) {
       const [dKey, pKey] = resolve(feat.properties.d, feat.properties.p);
-      const pData = byProv[dKey + '|' + pKey];
-      const rP = pData ? pData.r : (byDept[dKey]?.r || 0);
-      const kP = pData ? pData.k : (byDept[dKey]?.k || 0);
+      const [rP, kP] = getData(dKey, pKey);
       const col = rP>=kP ? '#22c55e' : '#f97316';
       const lidera = rP>=kP ? `Roberto ${rP.toFixed(1)}%` : `Keiko ${kP.toFixed(1)}%`;
       const [x,y] = d3.pointer(event, container);
