@@ -143,7 +143,8 @@ def scrape_provincias(s):
                 total_actas = int(tot.get("totalActas") or 0)
                 cont_actas  = int(tot.get("contabilizadas") or 0)
             except Exception:
-                continue
+                # Si falla totales, intentar igual con participantes (algunos dpts sin totales tienen cands)
+                pct_actas = 0; total_actas = 1; cont_actas = 0
 
             if total_actas == 0:
                 continue

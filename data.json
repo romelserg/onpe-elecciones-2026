@@ -3360,8 +3360,44 @@
     {
       "d": "Tumbes",
       "p": "Contralmirante Villar",
-      "r": 0.0,
-      "k": 0.0
+      "r": 28.82,
+      "k": 71.18
+    },
+    {
+      "d": "Tumbes",
+      "p": "Tumbes",
+      "r": 38.73,
+      "k": 61.27
+    },
+    {
+      "d": "Tumbes",
+      "p": "Zarumilla",
+      "r": 28.82,
+      "k": 71.18
+    },
+    {
+      "d": "Ucayali",
+      "p": "Atalaya",
+      "r": 52.19,
+      "k": 47.81
+    },
+    {
+      "d": "Ucayali",
+      "p": "Coronel Portillo",
+      "r": 43.66,
+      "k": 56.34
+    },
+    {
+      "d": "Ucayali",
+      "p": "Padre Abad",
+      "r": 65.7,
+      "k": 34.3
+    },
+    {
+      "d": "Ucayali",
+      "p": "Purús",
+      "r": 35.12,
+      "k": 64.88
     }
   ],
   "exterior_paises": []
