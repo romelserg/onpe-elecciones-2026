@@ -184,6 +184,78 @@ def scrape_provincias(s):
     return rows
 
 
+CONTINENTES_EXT = {
+    "910000": "África", "920000": "América", "930000": "Asia",
+    "940000": "Europa", "950000": "Oceanía",
+}
+
+
+def scrape_exterior_paises(s):
+    """Devuelve lista de países del exterior con sus votos, ordenados por impacto."""
+    import time as _time
+    rows = []
+    for cont_ub, cont_name in CONTINENTES_EXT.items():
+        try:
+            paises = fetch(s, "/ubigeos/provincias",
+                           {"idEleccion": 10, "idAmbitoGeografico": 2,
+                            "idUbigeoDepartamento": cont_ub}) or []
+        except Exception:
+            continue
+
+        for p in paises:
+            pub   = p["ubigeo"]
+            pname = p["nombre"].title()
+            try:
+                tot = fetch(s, "/resumen-general/totales",
+                            {"idEleccion": 10, "tipoFiltro": "ubigeo_nivel_02",
+                             "idAmbitoGeografico": 2,
+                             "idUbigeoDepartamento": cont_ub,
+                             "idUbigeoProvincia": pub}) or {}
+                pct_actas   = float(tot.get("actasContabilizadas") or 0)
+                total_actas = int(tot.get("totalActas") or 0)
+                cont_actas  = int(tot.get("contabilizadas") or 0)
+            except Exception:
+                continue
+
+            try:
+                cands_raw = fetch(s, "/resumen-general/participantes",
+                                  {"idEleccion": 10, "tipoFiltro": "ubigeo_nivel_02",
+                                   "idAmbitoGeografico": 2,
+                                   "idUbigeoDepartamento": cont_ub,
+                                   "idUbigeoProvincia": pub}) or []
+            except Exception:
+                cands_raw = []
+
+            r_c = next((c for c in cands_raw if c.get("codigoAgrupacionPolitica") == 10), {})
+            k_c = next((c for c in cands_raw if c.get("codigoAgrupacionPolitica") == 8),  {})
+            r_pct   = round(float(r_c.get("porcentajeVotosValidos") or 0), 2)
+            k_pct   = round(float(k_c.get("porcentajeVotosValidos") or 0), 2)
+            r_votos = int(r_c.get("totalVotosValidos") or 0)
+            k_votos = int(k_c.get("totalVotosValidos") or 0)
+            total_votos = r_votos + k_votos
+            falta   = round(100 - pct_actas, 2)
+            impacto = round(total_votos * falta / 100) if total_votos else 0
+
+            rows.append({
+                "continente": cont_name,
+                "cont_ub": cont_ub,
+                "pais": pname,
+                "pais_ub": pub,
+                "pct_actas": round(pct_actas, 2),
+                "actas_cont": cont_actas,
+                "total_actas": total_actas,
+                "r_pct": r_pct, "k_pct": k_pct,
+                "r_votos": r_votos, "k_votos": k_votos,
+                "total_votos": total_votos,
+                "impacto": impacto,
+            })
+            _time.sleep(0.05)
+
+    rows.sort(key=lambda x: -x["impacto"])
+    print(f"    Países exterior: {len(rows)}")
+    return rows
+
+
 def scrape(out_path=None):
     out = Path(out_path) if out_path else DEFAULT_OUT
     s = get_session()
@@ -235,6 +307,9 @@ def scrape(out_path=None):
     # ── Provincias con actas pendientes ────────────────────────────────────
     provincias_pendientes = scrape_provincias(s)
 
+    # ── Países del exterior con detalle ───────────────────────────────────
+    exterior_paises = scrape_exterior_paises(s)
+
     meta = {
         "proceso": "Segunda Elección Presidencial 2026",
         "scraped_at": datetime.now(timezone.utc).isoformat(),
@@ -257,6 +332,7 @@ def scrape(out_path=None):
         "por_departamento": por_departamento,
         "exterior": exterior,
         "provincias_pendientes": provincias_pendientes,
+        "exterior_paises": exterior_paises,
     }
 
     # ── Guardia: no sobreescribir con datos vacíos ─────────────────────────

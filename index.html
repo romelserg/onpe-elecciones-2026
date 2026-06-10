@@ -298,6 +298,14 @@
   <div class="ext-note">⚠️ <div>Las actas del exterior se cuentan al final. Este bloque puede cambiar significativamente cuando se consoliden todos los votos.</div></div>
   <div class="ext-grid" id="ext-grid"></div>
 
+  <!-- Sección: Top zonas con votos pendientes clave -->
+  <div id="clave-section" style="display:none;margin-bottom:20px">
+    <div class="stitle" style="margin-top:4px">🔑 Zonas con votos pendientes clave
+      <span id="clave-sub" style="font-weight:400;font-size:.7rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)">provincias + países del exterior</span>
+    </div>
+    <div id="clave-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px"></div>
+  </div>
+
   <!-- Sección 1: zonas con conteo incompleto (<95%) -->
   <div id="pendientes-section" style="display:none;margin-bottom:20px">
     <div class="stitle" style="margin-top:4px">⏳ Zonas con conteo incompleto <span id="pend-count" style="font-weight:400;font-size:.7rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)"></span></div>
@@ -569,6 +577,71 @@ function renderPendientes(depts){
   }).join('');
 }
 
+function renderZonasClave(provs, extPaises) {
+  const sec  = document.getElementById('clave-section');
+  const grid = document.getElementById('clave-grid');
+
+  // Unir provincias y países del exterior en un solo ranking
+  const rows = [];
+
+  (provs || []).forEach(p => {
+    if (p.impacto > 0) rows.push({
+      nombre:  p.prov,
+      sub:     p.dept,
+      tipo:    'Peru',
+      pct_actas: p.pct_actas,
+      impacto: p.impacto,
+      total_votos: p.total_votos,
+      r_pct: p.r_pct,
+      k_pct: p.k_pct,
+    });
+  });
+
+  (extPaises || []).forEach(p => {
+    if (p.impacto > 0) rows.push({
+      nombre:  p.pais,
+      sub:     p.continente,
+      tipo:    'Exterior',
+      pct_actas: p.pct_actas,
+      impacto: p.impacto,
+      total_votos: p.total_votos,
+      r_pct: p.r_pct,
+      k_pct: p.k_pct,
+    });
+  });
+
+  rows.sort((a, b) => b.impacto - a.impacto);
+  const top = rows.slice(0, 10);
+
+  if (!top.length) { sec.style.display = 'none'; return; }
+  sec.style.display = '';
+
+  grid.innerHTML = top.map((z, i) => {
+    const rW = z.r_pct >= z.k_pct;
+    const winColor = rW ? 'var(--r)' : 'var(--k)';
+    const winPct   = rW ? z.r_pct   : z.k_pct;
+    const winName  = rW ? 'Roberto'  : 'Keiko';
+    const falta    = (100 - z.pct_actas).toFixed(1);
+    const faltaColor = parseFloat(falta) > 10 ? '#e05' : parseFloat(falta) > 3 ? '#f80' : '#fa0';
+    const badge    = z.tipo === 'Exterior' ? '✈️' : '📍';
+    return `<div class="ecard" style="border-left:3px solid ${faltaColor};position:relative">
+      <div style="position:absolute;top:5px;right:7px;font-size:.65rem;font-weight:900;color:#555;opacity:.5">#${i+1}</div>
+      <div style="margin-bottom:2px">
+        <div class="erg" style="font-size:.75rem;line-height:1.2;padding-right:18px">${badge} ${z.nombre}</div>
+        <div style="font-size:.6rem;color:var(--muted);margin-top:1px">${z.sub}</div>
+      </div>
+      <div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:5px">
+        <div style="height:100%;width:${z.pct_actas}%;background:${faltaColor};border-radius:2px"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <div style="font-size:.68rem;font-weight:800;color:${winColor}">${winName} <span style="font-size:.72rem">${winPct.toFixed(1)}%</span></div>
+        <span style="font-size:.63rem;font-weight:700;color:${faltaColor}">−${falta}%</span>
+      </div>
+      <div style="font-size:.63rem;color:var(--muted);border-top:1px solid var(--border);padding-top:3px">~${fmt(z.impacto)} votos pendientes</div>
+    </div>`;
+  }).join('');
+}
+
 function renderProvinciasPendientes(provs, exterior){
   const sec  = document.getElementById('provincias-section');
   const grid = document.getElementById('provincias-grid');
@@ -652,6 +725,7 @@ function renderAll(d){
   renderH2H(candidatos);
   updateArena(r,k);
   renderExterior(exterior);
+  renderZonasClave(d.provincias_pendientes||[], d.exterior_paises||[]);
   renderPendientes(por_departamento);
   renderProvinciasPendientes(d.provincias_pendientes||[], exterior);
   renderDepts(por_departamento);
