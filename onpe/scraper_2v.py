@@ -107,6 +107,83 @@ def build_dept_rows(data_keiko, data_roberto, ubigeo_pad=6):
     return rows
 
 
+def scrape_provincias(s):
+    """Devuelve lista de provincias con actas < 99.5%, ordenadas por impacto potencial."""
+    import time as _time
+    try:
+        depts = fetch(s, "/ubigeos/departamentos",
+                      {"idEleccion": 10, "idAmbitoGeografico": 1}) or []
+    except Exception:
+        return []
+
+    rows = []
+    for dept in depts:
+        dub = dept["ubigeo"]     # e.g. "070000"
+        dname = dept["nombre"].title()
+        try:
+            provs = fetch(s, "/ubigeos/provincias",
+                          {"idEleccion": 10, "idAmbitoGeografico": 1,
+                           "idUbigeoDepartamento": dub}) or []
+        except Exception:
+            continue
+
+        for prov in provs:
+            pub = prov["ubigeo"]   # e.g. "070900"
+            pname = prov["nombre"].title()
+            try:
+                tot = fetch(s, "/resumen-general/totales",
+                            {"idEleccion": 10, "tipoFiltro": "ubigeo_nivel_02",
+                             "idAmbitoGeografico": 1,
+                             "idUbigeoDepartamento": dub,
+                             "idUbigeoProvincia": pub}) or {}
+                pct_actas = float(tot.get("actasContabilizadas") or 0)
+                total_actas = int(tot.get("totalActas") or 0)
+                cont_actas  = int(tot.get("contabilizadas") or 0)
+            except Exception:
+                continue
+
+            if pct_actas >= 99.5 or total_actas == 0:
+                continue   # solo las que tienen algo relevante pendiente
+
+            try:
+                cands_raw = fetch(s, "/resumen-general/participantes",
+                                  {"idEleccion": 10, "tipoFiltro": "ubigeo_nivel_02",
+                                   "idAmbitoGeografico": 1,
+                                   "idUbigeoDepartamento": dub,
+                                   "idUbigeoProvincia": pub}) or []
+            except Exception:
+                cands_raw = []
+
+            r_c = next((c for c in cands_raw if c.get("codigoAgrupacionPolitica") == 10), {})
+            k_c = next((c for c in cands_raw if c.get("codigoAgrupacionPolitica") == 8),  {})
+            r_pct   = round(float(r_c.get("porcentajeVotosValidos") or 0), 2)
+            k_pct   = round(float(k_c.get("porcentajeVotosValidos") or 0), 2)
+            r_votos = int(r_c.get("totalVotosValidos") or 0)
+            k_votos = int(k_c.get("totalVotosValidos") or 0)
+            total_votos = r_votos + k_votos
+            falta = round(100 - pct_actas, 2)
+            # Impacto estimado: votos pendientes × margen (aprox)
+            impacto = round(total_votos * falta / 100) if total_votos else 0
+
+            rows.append({
+                "dept": dname, "dept_ub": dub,
+                "prov": pname, "prov_ub": pub,
+                "pct_actas": round(pct_actas, 2),
+                "actas_cont": cont_actas,
+                "total_actas": total_actas,
+                "r_pct": r_pct, "k_pct": k_pct,
+                "r_votos": r_votos, "k_votos": k_votos,
+                "total_votos": total_votos,
+                "impacto": impacto,
+            })
+            _time.sleep(0.05)
+
+    # Ordenar por impacto estimado (mayor bolsón pendiente primero)
+    rows.sort(key=lambda x: -x["impacto"])
+    print(f"    Provincias pendientes: {len(rows)}")
+    return rows
+
+
 def scrape(out_path=None):
     out = Path(out_path) if out_path else DEFAULT_OUT
     s = get_session()
@@ -155,6 +232,9 @@ def scrape(out_path=None):
                     {"idEleccion": 10, "tipoFiltro": "eleccion",
                      "idAmbitoGeografico": 2}) or {}
 
+    # ── Provincias con actas pendientes ────────────────────────────────────
+    provincias_pendientes = scrape_provincias(s)
+
     meta = {
         "proceso": "Segunda Elección Presidencial 2026",
         "scraped_at": datetime.now(timezone.utc).isoformat(),
@@ -176,6 +256,7 @@ def scrape(out_path=None):
         "candidatos": candidatos,
         "por_departamento": por_departamento,
         "exterior": exterior,
+        "provincias_pendientes": provincias_pendientes,
     }
 
     # ── Guardia: no sobreescribir con datos vacíos ─────────────────────────

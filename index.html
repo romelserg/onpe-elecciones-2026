@@ -304,19 +304,15 @@
     <div id="pendientes-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:9px"></div>
   </div>
 
-  <!-- Sección 2: zonas casi completas pero decisivas por peso de votos -->
-  <div id="decisivas-section" style="display:none;margin-bottom:20px">
-    <div class="stitle" style="margin-top:4px">⚖️ Zonas casi completas, pero decisivas
-      <span id="dec-note" style="font-weight:400;font-size:.68rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)">≥95% — ordenadas por peso de votos</span>
+  <!-- Sección 2: provincias con actas pendientes (datos reales de la API) -->
+  <div id="provincias-section" style="display:none;margin-bottom:20px">
+    <div class="stitle" style="margin-top:4px">📍 Provincias con conteo pendiente
+      <span id="prov-count" style="font-weight:400;font-size:.7rem;margin-left:6px;text-transform:none;letter-spacing:0;color:var(--muted)"></span>
     </div>
-    <div style="background:#fff8e8;border:1px solid #e8c96a;border-radius:9px;padding:8px 13px;font-size:.73rem;color:#7a5c00;margin-bottom:10px">
-      ⚠️ La ONPE no publica datos a nivel de <strong>provincia</strong> en su API pública — solo departamentos. El % restante puede esconder zonas específicas aún pendientes (ej. La Convención en Cusco).
-    </div>
-    <!-- Departamentos -->
-    <div id="decisivas-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px;margin-bottom:14px"></div>
+    <div id="provincias-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px;margin-bottom:14px"></div>
     <!-- Exterior -->
     <div class="stitle" style="margin-top:8px;font-size:.72rem">✈️ Exterior — por peso de votos</div>
-    <div id="decisivas-ext" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px"></div>
+    <div id="prov-ext" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:9px"></div>
   </div>
 
   <div class="stitle" style="margin-top:4px">🗺️ Resultados por Departamento</div>
@@ -573,47 +569,41 @@ function renderPendientes(depts){
   }).join('');
 }
 
-function renderDecisivas(depts, exterior){
-  const sec  = document.getElementById('decisivas-section');
-  const grid = document.getElementById('decisivas-grid');
-  const extG = document.getElementById('decisivas-ext');
+function renderProvinciasPendientes(provs, exterior){
+  const sec  = document.getElementById('provincias-section');
+  const grid = document.getElementById('provincias-grid');
+  const extG = document.getElementById('prov-ext');
+  const cnt  = document.getElementById('prov-count');
 
-  // Departamentos ≥95% con algo pendiente, ordenados por total de votos (peso)
-  const casi = depts
-    .filter(d => d.pct_actas >= 95 && d.pct_actas < 100)
-    .sort((a,b) => {
-      const va = a.candidatos.reduce((s,c)=>s+c.votos,0);
-      const vb = b.candidatos.reduce((s,c)=>s+c.votos,0);
-      return vb - va;
-    });
-
-  if(!casi.length && !exterior.length){ sec.style.display='none'; return; }
+  if((!provs || !provs.length) && !exterior.length){ sec.style.display='none'; return; }
   sec.style.display='';
 
-  grid.innerHTML = casi.map(d=>{
-    const r=d.candidatos.find(c=>c.codigo===R), k=d.candidatos.find(c=>c.codigo===K);
-    const rP=r?.pct||0, kP=k?.pct||0;
-    const totalVotos = d.candidatos.reduce((s,c)=>s+c.votos,0);
-    const rW=rP>=kP;
-    const winColor=rW?'var(--r)':'var(--k)', winName=rW?'Roberto':'Keiko';
-    const falta=(100-d.pct_actas).toFixed(1);
-    return `<div class="ecard" style="border-left:3px solid #aaa">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:3px">
-        <div class="erg">${d.nombre}</div>
-        <span style="font-size:.65rem;font-weight:900;color:#888;white-space:nowrap;margin-left:4px">−${falta}%</span>
+  // Provincias con conteo pendiente — ya vienen ordenadas por impacto desde el scraper
+  if(cnt) cnt.textContent = provs.length ? `(${provs.length} con actas pendientes)` : '';
+
+  grid.innerHTML = (provs||[]).map(p=>{
+    const rW = p.r_pct >= p.k_pct;
+    const winColor = rW ? 'var(--r)' : 'var(--k)';
+    const winName  = rW ? 'Roberto'  : 'Keiko';
+    const falta    = (100 - p.pct_actas).toFixed(2);
+    const faltaColor = parseFloat(falta)>10?'#e05':parseFloat(falta)>5?'#f80':'#fa0';
+    return `<div class="ecard" style="border-left:3px solid ${faltaColor}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2px">
+        <div class="erg" style="font-size:.72rem;line-height:1.2">${p.prov}<span style="font-size:.6rem;font-weight:400;color:var(--muted);display:block">${p.dept}</span></div>
+        <span style="font-size:.65rem;font-weight:900;color:${faltaColor};white-space:nowrap;margin-left:4px">−${falta}%</span>
       </div>
-      <div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:6px">
-        <div style="height:100%;width:${d.pct_actas}%;background:#aaa;border-radius:2px"></div>
+      <div style="height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:5px">
+        <div style="height:100%;width:${p.pct_actas}%;background:${faltaColor};border-radius:2px"></div>
       </div>
       <div style="font-size:.68rem;font-weight:800;color:${winColor};margin-bottom:3px">${winName} lidera</div>
-      <div class="ecd er"><span class="en">Roberto</span><span class="ev" style="color:var(--r);font-weight:700">${rP.toFixed(1)}%</span></div>
-      <div class="ecd ek"><span class="en">Keiko</span><span class="ev" style="color:var(--k);font-weight:700">${kP.toFixed(1)}%</span></div>
-      <div style="font-size:.63rem;color:var(--muted);margin-top:4px;border-top:1px solid var(--border);padding-top:3px">${fmt(totalVotos)} votos válidos</div>
+      <div class="ecd er"><span class="en">Roberto</span><span class="ev" style="color:var(--r);font-weight:700">${p.r_pct.toFixed(1)}%</span></div>
+      <div class="ecd ek"><span class="en">Keiko</span><span class="ev" style="color:var(--k);font-weight:700">${p.k_pct.toFixed(1)}%</span></div>
+      <div style="font-size:.63rem;color:var(--muted);margin-top:4px;border-top:1px solid var(--border);padding-top:3px">${fmt(p.total_votos)} votos · ~${fmt(p.impacto)} pendientes</div>
     </div>`;
   }).join('');
 
   // Exterior ordenado por peso de votos
-  const extSort = [...exterior].sort((a,b)=>{
+  const extSort = [...(exterior||[])].sort((a,b)=>{
     const va=a.candidatos.reduce((s,c)=>s+c.votos,0);
     const vb=b.candidatos.reduce((s,c)=>s+c.votos,0);
     return vb-va;
@@ -663,7 +653,7 @@ function renderAll(d){
   updateArena(r,k);
   renderExterior(exterior);
   renderPendientes(por_departamento);
-  renderDecisivas(por_departamento, exterior);
+  renderProvinciasPendientes(d.provincias_pendientes||[], exterior);
   renderDepts(por_departamento);
   document.getElementById('loading').style.display='none';
 }
