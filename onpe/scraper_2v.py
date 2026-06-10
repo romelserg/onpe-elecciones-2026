@@ -318,6 +318,15 @@ def scrape(out_path=None):
 
     # ── Países del exterior con detalle ───────────────────────────────────
     exterior_paises = scrape_exterior_paises(s)
+    # Si devolvió vacío, conservar el dato anterior (Cloudflare intermitente)
+    if not exterior_paises and out.exists():
+        try:
+            prev = json.loads(out.read_text(encoding="utf-8"))
+            exterior_paises = prev.get("exterior_paises") or []
+            if exterior_paises:
+                print(f"    (exterior_paises: conservando {len(exterior_paises)} países del run anterior)")
+        except Exception:
+            pass
 
     meta = {
         "proceso": "Segunda Elección Presidencial 2026",
