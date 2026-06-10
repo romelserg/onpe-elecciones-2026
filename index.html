@@ -9,7 +9,6 @@
   <title>Segunda Vuelta Perú 2026 — Resultados en Vivo</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
   <style>
     :root {
       --bg:      #f3f5ff;
@@ -713,20 +712,16 @@ function setSort(m){
 // Normaliza un nombre para comparar (quita tildes, minúsculas)
 function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').trim(); }
 
-// Mapa de nombres ONPE → nombre en el TopoJSON (NOMBDEP)
-const DEPT_MAP = {
-  'amazonas':'amazonas','ancash':'ancash','apurimac':'apurimac','arequipa':'arequipa',
-  'ayacucho':'ayacucho','cajamarca':'cajamarca','callao':'callao','cusco':'cusco',
-  'huancavelica':'huancavelica','huanuco':'huanuco','ica':'ica','junin':'junin',
-  'la libertad':'la libertad','lambayeque':'lambayeque','lima':'lima','loreto':'loreto',
-  'madre de dios':'madre de dios','moquegua':'moquegua','pasco':'pasco','piura':'piura',
-  'puno':'puno','san martin':'san martin','tacna':'tacna','tumbes':'tumbes','ucayali':'ucayali'
+// Natural Earth usa "Lima Province" para la provincia costera y "Lima" para la sierra
+// Ambas se mapean al ubigeo 150000 de ONPE
+const GEO_NAME_MAP = {
+  'lima province': 'lima',  // provincia de Lima costera → departamento Lima ONPE
 };
 
 let _mapaRendered = false;
 
 async function renderMapa(depts) {
-  if(_mapaRendered) return; // solo renderizar una vez; los colores no cambian dramáticamente
+  if(_mapaRendered) return;
   const container = document.getElementById('mapa-peru');
   if(!container) return;
 
@@ -736,13 +731,11 @@ async function renderMapa(depts) {
 
   let geo;
   try {
-    const res = await fetch('https://cdn.jsdelivr.net/gh/deldersveld/topojson@master/countries/peru/peru-departments.json');
+    const res = await fetch('./peru-depts.geojson');
     if(!res.ok) throw new Error(res.status);
-    const topo = await res.json();
-    const key  = Object.keys(topo.objects)[0];
-    geo = topojson.feature(topo, topo.objects[key]);
+    geo = await res.json();
   } catch(e) {
-    container.innerHTML = '<p style="color:var(--muted);font-size:.72rem;text-align:center">Mapa no disponible sin conexión</p>';
+    container.innerHTML = '<p style="color:var(--muted);font-size:.72rem;text-align:center">Error cargando mapa</p>';
     return;
   }
 
@@ -757,54 +750,53 @@ async function renderMapa(depts) {
   const projection = d3.geoMercator().fitSize([W, H], geo);
   const path = d3.geoPath().projection(projection);
 
+  function getDept(feat) {
+    const raw = feat.properties.name || '';
+    const key = norm(raw);
+    return byName[GEO_NAME_MAP[key] || key];
+  }
+
   // tooltip
+  d3.select(container).style('position','relative');
   const tip = d3.select(container).append('div')
     .style('position','absolute').style('pointer-events','none')
     .style('background','rgba(10,10,30,.92)').style('color','#fff')
     .style('font-size','.65rem').style('padding','5px 8px')
     .style('border-radius','6px').style('display','none')
-    .style('z-index','99').style('max-width','160px');
+    .style('z-index','99').style('max-width','160px').style('line-height','1.5');
 
   svg.selectAll('path')
     .data(geo.features)
     .enter().append('path')
     .attr('d', path)
     .attr('stroke','#0d0d1f')
-    .attr('stroke-width', 0.6)
+    .attr('stroke-width', 0.5)
     .attr('fill', feat => {
-      // el campo de nombre varía según el TopoJSON; probamos varios
-      const raw = feat.properties.NOMBDEP || feat.properties.DEPARTAMEN || feat.properties.name || '';
-      const key = norm(raw);
-      const dept = byName[key] || byName[DEPT_MAP[key]];
+      const dept = getDept(feat);
       if(!dept || !dept.candidatos.length) return '#2a2a45';
       const r = dept.candidatos.find(c=>c.codigo===R);
       const k = dept.candidatos.find(c=>c.codigo===K);
       const rP = r?.pct||0, kP = k?.pct||0;
-      const margin = Math.abs(rP-kP)/100;          // 0–1
-      const t = Math.min(0.35 + margin*1.3, 1);    // min tint 35%
-      if(rP >= kP) return d3.interpolateRgb('#1a3a1a','#22c55e')(t); // verde Roberto
-      else         return d3.interpolateRgb('#3a1a00','#f97316')(t); // naranja Keiko
+      const margin = Math.abs(rP-kP)/100;
+      const t = Math.min(0.3 + margin*1.4, 1);
+      return rP >= kP
+        ? d3.interpolateRgb('#162416','#22c55e')(t)   // verde Roberto
+        : d3.interpolateRgb('#2e1200','#f97316')(t);  // naranja Keiko
     })
-    .on('mousemove', (event, feat) => {
-      const raw = feat.properties.NOMBDEP || feat.properties.DEPARTAMEN || feat.properties.name || '';
-      const key = norm(raw);
-      const dept = byName[key] || byName[DEPT_MAP[key]];
+    .on('mousemove', function(event, feat) {
+      const dept = getDept(feat);
       if(!dept) return;
       const r = dept.candidatos.find(c=>c.codigo===R);
       const k = dept.candidatos.find(c=>c.codigo===K);
       const rP = r?.pct||0, kP = k?.pct||0;
-      const lidera = rP>=kP ? `<span style="color:#22c55e">Roberto ${rP.toFixed(1)}%</span>` : `<span style="color:#f97316">Keiko ${kP.toFixed(1)}%</span>`;
+      const col = rP>=kP ? '#22c55e' : '#f97316';
+      const lidera = rP>=kP ? `Roberto ${rP.toFixed(1)}%` : `Keiko ${kP.toFixed(1)}%`;
+      const [x,y] = d3.pointer(event, container);
       tip.style('display','block')
-         .html(`<b>${dept.nombre}</b><br>${lidera}<br><span style="color:#aaa">Actas: ${dept.pct_actas}%</span>`);
+         .style('left',(x+14)+'px').style('top',(y-10)+'px')
+         .html(`<b>${dept.nombre}</b><br><span style="color:${col}">${lidera}</span><br><span style="color:#aaa;font-size:.6rem">Actas: ${dept.pct_actas}%</span>`);
     })
     .on('mouseleave', () => tip.style('display','none'));
-
-  // posicionar tooltip relativo al contenedor
-  d3.select(container).style('position','relative');
-  svg.on('mousemove', event => {
-    const [x,y] = d3.pointer(event, container);
-    tip.style('left',(x+12)+'px').style('top',(y-10)+'px');
-  });
 
   _mapaRendered = true;
 }
