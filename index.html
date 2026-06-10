@@ -780,9 +780,26 @@ async function renderMapa(depts, provMapa) {
   const projection = d3.geoMercator().fitSize([W, H], geo);
   const path = d3.geoPath().projection(projection);
 
+  // Correcciones de nombres que quedaron distintos entre GADM y ONPE
+  const DEPT_ALIAS = {'lima province':'lima'};
+  const PROV_ALIAS = {
+    'lima province|lima':'lima|lima',
+    'ancash|antonio raymondi':'ancash|antonio raimondi',
+    'ayacucho|paucar del sara sara':'ayacucho|paucar del sara sara',
+    'ica|nazca':'ica|nasca',
+    'huanuco|huanuco':'huanuco|huanuco',
+  };
+
+  function resolve(dRaw, pRaw) {
+    let dk = norm(dRaw), pk = norm(pRaw);
+    const alias = PROV_ALIAS[dk+'|'+pk];
+    if(alias){ const [da,pa]=alias.split('|'); dk=da; pk=pa; }
+    if(DEPT_ALIAS[dk]) dk = DEPT_ALIAS[dk];
+    return [dk, pk];
+  }
+
   function getColor(feat) {
-    const dKey = norm(feat.properties.d || '');
-    const pKey = norm(feat.properties.p || '');
+    const [dKey, pKey] = resolve(feat.properties.d, feat.properties.p);
     const provData = byProv[dKey + '|' + pKey];
     const rP = provData ? provData.r : (byDept[dKey]?.r || 0);
     const kP = provData ? provData.k : (byDept[dKey]?.k || 0);
@@ -810,8 +827,7 @@ async function renderMapa(depts, provMapa) {
     .attr('stroke-width', 0.25)
     .attr('fill', getColor)
     .on('mousemove', function(event, feat) {
-      const dKey = norm(feat.properties.d || '');
-      const pKey = norm(feat.properties.p || '');
+      const [dKey, pKey] = resolve(feat.properties.d, feat.properties.p);
       const pData = byProv[dKey + '|' + pKey];
       const rP = pData ? pData.r : (byDept[dKey]?.r || 0);
       const kP = pData ? pData.k : (byDept[dKey]?.k || 0);
