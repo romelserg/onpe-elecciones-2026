@@ -409,8 +409,8 @@ function updateArena(r, k){
 
   // HUD: siempre actualiza inmediatamente
   document.getElementById('sb-r').style.width  = rP.toFixed(1) + '%';
-  document.getElementById('pct-r').textContent = rP.toFixed(2) + '%';
-  document.getElementById('pct-k').textContent = kP.toFixed(2) + '%';
+  document.getElementById('pct-r').textContent = rP.toFixed(3) + '%';
+  document.getElementById('pct-k').textContent = kP.toFixed(3) + '%';
 
   if(!_positionReady){
     // Primera carga: esperar a que el splash haya desaparecido (≈4s) + 0.5s extra
