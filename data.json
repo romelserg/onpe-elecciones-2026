@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-11T06:30:18.655694+00:00",
-    "pct_actas": 98.215,
-    "actas_contabilizadas": 91110,
+    "scraped_at": "2026-06-12T09:10:28.804491+00:00",
+    "pct_actas": 98.258,
+    "actas_contabilizadas": 91150,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18064651,
-    "participacion": 70.732,
+    "votos_validos": 18070789,
+    "participacion": 70.756,
     "exterior_pct_actas": 96.3
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9032651,
-      "pct": 50.002
+      "votos": 9036046,
+      "pct": 50.004
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9032000,
-      "pct": 49.998
+      "votos": 9034743,
+      "pct": 49.996
     }
   ],
   "por_departamento": [
@@ -230,40 +230,40 @@
     {
       "ubigeo": "110000",
       "nombre": "Ica",
-      "pct_actas": 99.133,
-      "actas_contabilizadas": 3659,
+      "pct_actas": 99.268,
+      "actas_contabilizadas": 3664,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 391453,
-          "pct": 54.931
+          "votos": 391973,
+          "pct": 54.936
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 321180,
-          "pct": 45.069
+          "votos": 321539,
+          "pct": 45.064
         }
       ]
     },
     {
       "ubigeo": "120000",
       "nombre": "Junín",
-      "pct_actas": 99.302,
-      "actas_contabilizadas": 5265,
+      "pct_actas": 99.359,
+      "actas_contabilizadas": 5268,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 599677,
-          "pct": 57.524
+          "votos": 600185,
+          "pct": 57.534
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 442801,
-          "pct": 42.476
+          "votos": 443005,
+          "pct": 42.466
         }
       ]
     },
@@ -290,40 +290,40 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 96.875,
-      "actas_contabilizadas": 28333,
+      "pct_actas": 96.913,
+      "actas_contabilizadas": 28344,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 3944554,
-          "pct": 63.5
+          "votos": 3945733,
+          "pct": 63.497
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2267388,
-          "pct": 36.5
+          "votos": 2268286,
+          "pct": 36.503
         }
       ]
     },
     {
       "ubigeo": "150000",
       "nombre": "Lima",
-      "pct_actas": 98.257,
-      "actas_contabilizadas": 2650,
+      "pct_actas": 98.443,
+      "actas_contabilizadas": 2655,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 210961,
-          "pct": 53.002
+          "votos": 210966,
+          "pct": 52.954
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 187060,
-          "pct": 46.998
+          "votos": 187430,
+          "pct": 47.046
         }
       ]
     },
@@ -490,40 +490,40 @@
     {
       "ubigeo": "240000",
       "nombre": "Tumbes",
-      "pct_actas": 97.688,
-      "actas_contabilizadas": 2831,
+      "pct_actas": 97.999,
+      "actas_contabilizadas": 2840,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 394631,
-          "pct": 65.598
+          "votos": 395729,
+          "pct": 65.594
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 206963,
-          "pct": 34.402
+          "votos": 207576,
+          "pct": 34.406
         }
       ]
     },
     {
       "ubigeo": "250000",
       "nombre": "Ucayali",
-      "pct_actas": 97.251,
-      "actas_contabilizadas": 1521,
+      "pct_actas": 97.698,
+      "actas_contabilizadas": 1528,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 139624,
-          "pct": 52.542
+          "votos": 139870,
+          "pct": 52.559
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 126113,
-          "pct": 47.458
+          "votos": 126251,
+          "pct": 47.441
         }
       ]
     }
@@ -636,30 +636,30 @@
       "dept_ub": "140000",
       "prov": "Lima",
       "prov_ub": "140100",
-      "pct_actas": 96.65,
-      "actas_cont": 25485,
+      "pct_actas": 96.67,
+      "actas_cont": 25490,
       "total_actas": 26368,
-      "r_pct": 35.46,
-      "k_pct": 64.54,
-      "r_votos": 1993000,
-      "k_votos": 3628119,
-      "total_votos": 5621119,
-      "impacto": 188307
+      "r_pct": 35.45,
+      "k_pct": 64.55,
+      "r_votos": 1993349,
+      "k_votos": 3628812,
+      "total_votos": 5622161,
+      "impacto": 187218
     },
     {
       "dept": "Callao",
       "dept_ub": "240000",
       "prov": "Callao",
       "prov_ub": "240100",
-      "pct_actas": 97.69,
-      "actas_cont": 2831,
+      "pct_actas": 98.0,
+      "actas_cont": 2840,
       "total_actas": 2898,
-      "r_pct": 34.4,
-      "k_pct": 65.6,
-      "r_votos": 206963,
-      "k_votos": 394631,
-      "total_votos": 601594,
-      "impacto": 13897
+      "r_pct": 34.41,
+      "k_pct": 65.59,
+      "r_votos": 207576,
+      "k_votos": 395729,
+      "total_votos": 603305,
+      "impacto": 12066
     },
     {
       "dept": "Piura",
@@ -675,21 +675,6 @@
       "k_votos": 270519,
       "total_votos": 450937,
       "impacto": 6403
-    },
-    {
-      "dept": "La Libertad",
-      "dept_ub": "120000",
-      "prov": "Trujillo",
-      "prov_ub": "120100",
-      "pct_actas": 99.16,
-      "actas_cont": 2825,
-      "total_actas": 2849,
-      "r_pct": 36.8,
-      "k_pct": 63.2,
-      "r_votos": 220795,
-      "k_votos": 379267,
-      "total_votos": 600062,
-      "impacto": 5041
     },
     {
       "dept": "Ucayali",
@@ -720,6 +705,21 @@
       "k_votos": 94700,
       "total_votos": 264964,
       "impacto": 4637
+    },
+    {
+      "dept": "La Libertad",
+      "dept_ub": "120000",
+      "prov": "Trujillo",
+      "prov_ub": "120100",
+      "pct_actas": 99.26,
+      "actas_cont": 2828,
+      "total_actas": 2849,
+      "r_pct": 36.79,
+      "k_pct": 63.21,
+      "r_votos": 220999,
+      "k_votos": 379775,
+      "total_votos": 600774,
+      "impacto": 4446
     },
     {
       "dept": "Áncash",
@@ -889,21 +889,6 @@
     {
       "dept": "Lima",
       "dept_ub": "140000",
-      "prov": "Huarochirí",
-      "prov_ub": "140600",
-      "pct_actas": 97.37,
-      "actas_cont": 333,
-      "total_actas": 342,
-      "r_pct": 50.14,
-      "k_pct": 49.86,
-      "r_votos": 32137,
-      "k_votos": 31954,
-      "total_votos": 64091,
-      "impacto": 1686
-    },
-    {
-      "dept": "Lima",
-      "dept_ub": "140000",
       "prov": "Huaura",
       "prov_ub": "140500",
       "pct_actas": 98.78,
@@ -930,21 +915,6 @@
       "k_votos": 24524,
       "total_votos": 136969,
       "impacto": 1493
-    },
-    {
-      "dept": "Ucayali",
-      "dept_ub": "250000",
-      "prov": "Atalaya",
-      "prov_ub": "250300",
-      "pct_actas": 91.77,
-      "actas_cont": 156,
-      "total_actas": 170,
-      "r_pct": 52.19,
-      "k_pct": 47.81,
-      "r_votos": 9154,
-      "k_votos": 8385,
-      "total_votos": 17539,
-      "impacto": 1443
     },
     {
       "dept": "Arequipa",
@@ -992,21 +962,6 @@
       "impacto": 1343
     },
     {
-      "dept": "Junín",
-      "dept_ub": "110000",
-      "prov": "Satipo",
-      "prov_ub": "110700",
-      "pct_actas": 98.53,
-      "actas_cont": 537,
-      "total_actas": 545,
-      "r_pct": 57.41,
-      "k_pct": 42.59,
-      "r_votos": 52316,
-      "k_votos": 38813,
-      "total_votos": 91129,
-      "impacto": 1340
-    },
-    {
       "dept": "Lima",
       "dept_ub": "140000",
       "prov": "Huaral",
@@ -1037,21 +992,6 @@
       "impacto": 1098
     },
     {
-      "dept": "Junín",
-      "dept_ub": "110000",
-      "prov": "Chanchamayo",
-      "prov_ub": "110800",
-      "pct_actas": 98.75,
-      "actas_cont": 475,
-      "total_actas": 481,
-      "r_pct": 52.51,
-      "k_pct": 47.49,
-      "r_votos": 44998,
-      "k_votos": 40697,
-      "total_votos": 85695,
-      "impacto": 1071
-    },
-    {
       "dept": "Pasco",
       "dept_ub": "180000",
       "prov": "Pasco",
@@ -1065,6 +1005,21 @@
       "k_votos": 20393,
       "total_votos": 65686,
       "impacto": 1044
+    },
+    {
+      "dept": "Junín",
+      "dept_ub": "110000",
+      "prov": "Satipo",
+      "prov_ub": "110700",
+      "pct_actas": 98.9,
+      "actas_cont": 539,
+      "total_actas": 545,
+      "r_pct": 57.45,
+      "k_pct": 42.55,
+      "r_votos": 52547,
+      "k_votos": 38918,
+      "total_votos": 91465,
+      "impacto": 1006
     },
     {
       "dept": "Áncash",
@@ -1232,6 +1187,21 @@
       "impacto": 781
     },
     {
+      "dept": "Ucayali",
+      "dept_ub": "250000",
+      "prov": "Atalaya",
+      "prov_ub": "250300",
+      "pct_actas": 95.88,
+      "actas_cont": 163,
+      "total_actas": 170,
+      "r_pct": 51.84,
+      "k_pct": 48.16,
+      "r_votos": 9292,
+      "k_votos": 8631,
+      "total_votos": 17923,
+      "impacto": 738
+    },
+    {
       "dept": "Cajamarca",
       "dept_ub": "060000",
       "prov": "Celendín",
@@ -1292,21 +1262,6 @@
       "impacto": 625
     },
     {
-      "dept": "Loreto",
-      "dept_ub": "150000",
-      "prov": "Datem Del Marañón",
-      "prov_ub": "150700",
-      "pct_actas": 96.98,
-      "actas_cont": 193,
-      "total_actas": 199,
-      "r_pct": 71.28,
-      "k_pct": 28.72,
-      "r_votos": 14638,
-      "k_votos": 5898,
-      "total_votos": 20536,
-      "impacto": 620
-    },
-    {
       "dept": "Cusco",
       "dept_ub": "070000",
       "prov": "Anta",
@@ -1335,6 +1290,21 @@
       "k_votos": 15176,
       "total_votos": 51403,
       "impacto": 576
+    },
+    {
+      "dept": "Lima",
+      "dept_ub": "140000",
+      "prov": "Huarochirí",
+      "prov_ub": "140600",
+      "pct_actas": 99.12,
+      "actas_cont": 339,
+      "total_actas": 342,
+      "r_pct": 50.19,
+      "k_pct": 49.81,
+      "r_votos": 32686,
+      "k_votos": 32440,
+      "total_votos": 65126,
+      "impacto": 573
     },
     {
       "dept": "Áncash",
@@ -1380,6 +1350,21 @@
       "k_votos": 53551,
       "total_votos": 93725,
       "impacto": 562
+    },
+    {
+      "dept": "Junín",
+      "dept_ub": "110000",
+      "prov": "Chanchamayo",
+      "prov_ub": "110800",
+      "pct_actas": 99.38,
+      "actas_cont": 478,
+      "total_actas": 481,
+      "r_pct": 52.51,
+      "k_pct": 47.49,
+      "r_votos": 45287,
+      "k_votos": 40951,
+      "total_votos": 86238,
+      "impacto": 535
     },
     {
       "dept": "San Martín",
@@ -2269,6 +2254,21 @@
     {
       "dept": "Loreto",
       "dept_ub": "150000",
+      "prov": "Datem Del Marañón",
+      "prov_ub": "150700",
+      "pct_actas": 99.5,
+      "actas_cont": 198,
+      "total_actas": 199,
+      "r_pct": 71.77,
+      "k_pct": 28.23,
+      "r_votos": 15008,
+      "k_votos": 5903,
+      "total_votos": 20911,
+      "impacto": 105
+    },
+    {
+      "dept": "Loreto",
+      "dept_ub": "150000",
       "prov": "Putumayo",
       "prov_ub": "150900",
       "pct_actas": 96.67,
@@ -2682,8 +2682,8 @@
     {
       "d": "Callao",
       "p": "Callao",
-      "r": 34.4,
-      "k": 65.6
+      "r": 34.41,
+      "k": 65.59
     },
     {
       "d": "Cusco",
@@ -2940,8 +2940,8 @@
     {
       "d": "Junín",
       "p": "Satipo",
-      "r": 57.41,
-      "k": 42.59
+      "r": 57.45,
+      "k": 42.55
     },
     {
       "d": "Junín",
@@ -3018,8 +3018,8 @@
     {
       "d": "La Libertad",
       "p": "Trujillo",
-      "r": 36.8,
-      "k": 63.2
+      "r": 36.79,
+      "k": 63.21
     },
     {
       "d": "La Libertad",
@@ -3078,8 +3078,8 @@
     {
       "d": "Lima",
       "p": "Huarochirí",
-      "r": 50.14,
-      "k": 49.86
+      "r": 50.19,
+      "k": 49.81
     },
     {
       "d": "Lima",
@@ -3090,8 +3090,8 @@
     {
       "d": "Lima",
       "p": "Lima",
-      "r": 35.46,
-      "k": 64.54
+      "r": 35.45,
+      "k": 64.55
     },
     {
       "d": "Lima",
@@ -3114,8 +3114,8 @@
     {
       "d": "Loreto",
       "p": "Datem Del Marañón",
-      "r": 71.28,
-      "k": 28.72
+      "r": 71.77,
+      "k": 28.23
     },
     {
       "d": "Loreto",
@@ -3438,8 +3438,8 @@
     {
       "d": "Ucayali",
       "p": "Atalaya",
-      "r": 52.19,
-      "k": 47.81
+      "r": 51.84,
+      "k": 48.16
     },
     {
       "d": "Ucayali",
@@ -3520,21 +3520,6 @@
       "k_votos": 2834,
       "total_votos": 4631,
       "impacto": 211
-    },
-    {
-      "continente": "América",
-      "cont_ub": "920000",
-      "pais": "Paraguay",
-      "pais_ub": "922200",
-      "pct_actas": 50.0,
-      "actas_cont": 2,
-      "total_actas": 4,
-      "r_pct": 19.03,
-      "k_pct": 80.97,
-      "r_votos": 63,
-      "k_votos": 268,
-      "total_votos": 331,
-      "impacto": 166
     },
     {
       "continente": "América",
@@ -3751,14 +3736,14 @@
       "cont_ub": "920000",
       "pais": "Guatemala",
       "pais_ub": "921500",
-      "pct_actas": 100.0,
-      "actas_cont": 2,
-      "total_actas": 2,
-      "r_pct": 22.22,
-      "k_pct": 77.78,
-      "r_votos": 44,
-      "k_votos": 154,
-      "total_votos": 198,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3766,14 +3751,14 @@
       "cont_ub": "920000",
       "pais": "Guayana Francesa",
       "pais_ub": "923000",
-      "pct_actas": 100.0,
-      "actas_cont": 2,
-      "total_actas": 2,
-      "r_pct": 40.23,
-      "k_pct": 59.77,
-      "r_votos": 103,
-      "k_votos": 153,
-      "total_votos": 256,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3781,14 +3766,14 @@
       "cont_ub": "920000",
       "pais": "Honduras",
       "pais_ub": "921700",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 17.54,
-      "k_pct": 82.46,
-      "r_votos": 10,
-      "k_votos": 47,
-      "total_votos": 57,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3796,14 +3781,14 @@
       "cont_ub": "920000",
       "pais": "México",
       "pais_ub": "921900",
-      "pct_actas": 100.0,
-      "actas_cont": 14,
-      "total_actas": 14,
-      "r_pct": 28.57,
-      "k_pct": 71.43,
-      "r_votos": 402,
-      "k_votos": 1005,
-      "total_votos": 1407,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3811,14 +3796,14 @@
       "cont_ub": "920000",
       "pais": "Nicaragua",
       "pais_ub": "922000",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 24.14,
-      "k_pct": 75.86,
-      "r_votos": 14,
-      "k_votos": 44,
-      "total_votos": 58,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3826,14 +3811,29 @@
       "cont_ub": "920000",
       "pais": "Panamá",
       "pais_ub": "922100",
-      "pct_actas": 100.0,
-      "actas_cont": 10,
-      "total_actas": 10,
-      "r_pct": 23.3,
-      "k_pct": 76.7,
-      "r_votos": 292,
-      "k_votos": 961,
-      "total_votos": 1253,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Paraguay",
+      "pais_ub": "922200",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3841,14 +3841,14 @@
       "cont_ub": "920000",
       "pais": "Puerto Rico",
       "pais_ub": "922300",
-      "pct_actas": 100.0,
-      "actas_cont": 2,
-      "total_actas": 2,
-      "r_pct": 26.72,
-      "k_pct": 73.28,
-      "r_votos": 66,
-      "k_votos": 181,
-      "total_votos": 247,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3856,14 +3856,14 @@
       "cont_ub": "920000",
       "pais": "República Dominicana",
       "pais_ub": "922400",
-      "pct_actas": 100.0,
-      "actas_cont": 4,
-      "total_actas": 4,
-      "r_pct": 36.04,
-      "k_pct": 63.96,
-      "r_votos": 213,
-      "k_votos": 378,
-      "total_votos": 591,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3871,14 +3871,14 @@
       "cont_ub": "920000",
       "pais": "Trinidad Y Tobago",
       "pais_ub": "922600",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 12.5,
-      "k_pct": 87.5,
-      "r_votos": 1,
-      "k_votos": 7,
-      "total_votos": 8,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3886,14 +3886,14 @@
       "cont_ub": "920000",
       "pais": "Uruguay",
       "pais_ub": "922700",
-      "pct_actas": 100.0,
-      "actas_cont": 4,
-      "total_actas": 4,
-      "r_pct": 36.78,
-      "k_pct": 63.22,
-      "r_votos": 331,
-      "k_votos": 569,
-      "total_votos": 900,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3901,291 +3901,6 @@
       "cont_ub": "920000",
       "pais": "Venezuela",
       "pais_ub": "922800",
-      "pct_actas": 100.0,
-      "actas_cont": 34,
-      "total_actas": 34,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Arabia Saudita",
-      "pais_ub": "931900",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 14.29,
-      "k_pct": 85.71,
-      "r_votos": 2,
-      "k_votos": 12,
-      "total_votos": 14,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Catar",
-      "pais_ub": "933800",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 31.25,
-      "k_pct": 68.75,
-      "r_votos": 5,
-      "k_votos": 11,
-      "total_votos": 16,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Emiratos Árabes Unidos",
-      "pais_ub": "933700",
-      "pct_actas": 100.0,
-      "actas_cont": 2,
-      "total_actas": 2,
-      "r_pct": 34.57,
-      "k_pct": 65.43,
-      "r_votos": 28,
-      "k_votos": 53,
-      "total_votos": 81,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Filipinas",
-      "pais_ub": "933200",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 33.33,
-      "k_pct": 66.67,
-      "r_votos": 2,
-      "k_votos": 4,
-      "total_votos": 6,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "India",
-      "pais_ub": "930400",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 44.44,
-      "k_pct": 55.56,
-      "r_votos": 4,
-      "k_votos": 5,
-      "total_votos": 9,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Indonesia",
-      "pais_ub": "931100",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 33.33,
-      "k_pct": 66.67,
-      "r_votos": 3,
-      "k_votos": 6,
-      "total_votos": 9,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Irán",
-      "pais_ub": "932400",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Israel",
-      "pais_ub": "930600",
-      "pct_actas": 100.0,
-      "actas_cont": 4,
-      "total_actas": 4,
-      "r_pct": 12.64,
-      "k_pct": 87.36,
-      "r_votos": 23,
-      "k_votos": 159,
-      "total_votos": 182,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Japón",
-      "pais_ub": "930700",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Jordania",
-      "pais_ub": "931300",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Kuwait",
-      "pais_ub": "932800",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Líbano",
-      "pais_ub": "930800",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Malasia",
-      "pais_ub": "933000",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Republica De Corea",
-      "pais_ub": "930100",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "República Popular China",
-      "pais_ub": "930200",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Singapur",
-      "pais_ub": "932500",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Tailandia",
-      "pais_ub": "931000",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Turquía",
-      "pais_ub": "931500",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
-      "impacto": 0
-    },
-    {
-      "continente": "Asia",
-      "cont_ub": "930000",
-      "pais": "Vietnam",
-      "pais_ub": "932000",
       "pct_actas": 0.0,
       "actas_cont": 0,
       "total_actas": 0,
