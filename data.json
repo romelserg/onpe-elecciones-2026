@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-12T09:10:28.804491+00:00",
-    "pct_actas": 98.258,
-    "actas_contabilizadas": 91150,
+    "scraped_at": "2026-06-12T18:07:37.799793+00:00",
+    "pct_actas": 98.271,
+    "actas_contabilizadas": 91162,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18070789,
-    "participacion": 70.756,
+    "votos_validos": 18073276,
+    "participacion": 70.766,
     "exterior_pct_actas": 96.3
   },
   "candidatos": [
@@ -15,14 +15,14 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9036046,
+      "votos": 9037446,
       "pct": 50.004
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9034743,
+      "votos": 9035830,
       "pct": 49.996
     }
   ],
@@ -130,20 +130,20 @@
     {
       "ubigeo": "060000",
       "nombre": "Cajamarca",
-      "pct_actas": 99.41,
-      "actas_contabilizadas": 4215,
+      "pct_actas": 99.458,
+      "actas_contabilizadas": 4217,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 491442,
-          "pct": 66.774
+          "votos": 491700,
+          "pct": 66.766
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 244539,
-          "pct": 33.226
+          "votos": 244749,
+          "pct": 33.234
         }
       ]
     },
@@ -250,19 +250,19 @@
     {
       "ubigeo": "120000",
       "nombre": "Junín",
-      "pct_actas": 99.359,
-      "actas_contabilizadas": 5268,
+      "pct_actas": 99.415,
+      "actas_contabilizadas": 5271,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 600185,
+          "votos": 600510,
           "pct": 57.534
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 443005,
+          "votos": 443238,
           "pct": 42.466
         }
       ]
@@ -490,20 +490,20 @@
     {
       "ubigeo": "240000",
       "nombre": "Tumbes",
-      "pct_actas": 97.999,
-      "actas_contabilizadas": 2840,
+      "pct_actas": 98.24,
+      "actas_contabilizadas": 2847,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 395729,
-          "pct": 65.594
+          "votos": 396594,
+          "pct": 65.578
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 207576,
-          "pct": 34.406
+          "votos": 208172,
+          "pct": 34.422
         }
       ]
     },
@@ -651,15 +651,15 @@
       "dept_ub": "240000",
       "prov": "Callao",
       "prov_ub": "240100",
-      "pct_actas": 98.0,
-      "actas_cont": 2840,
+      "pct_actas": 98.24,
+      "actas_cont": 2847,
       "total_actas": 2898,
-      "r_pct": 34.41,
-      "k_pct": 65.59,
-      "r_votos": 207576,
-      "k_votos": 395729,
-      "total_votos": 603305,
-      "impacto": 12066
+      "r_pct": 34.42,
+      "k_pct": 65.58,
+      "r_votos": 208172,
+      "k_votos": 396594,
+      "total_votos": 604766,
+      "impacto": 10644
     },
     {
       "dept": "Piura",
@@ -675,21 +675,6 @@
       "k_votos": 270519,
       "total_votos": 450937,
       "impacto": 6403
-    },
-    {
-      "dept": "Ucayali",
-      "dept_ub": "250000",
-      "prov": "Coronel Portillo",
-      "prov_ub": "250100",
-      "pct_actas": 97.68,
-      "actas_cont": 1135,
-      "total_actas": 1162,
-      "r_pct": 43.66,
-      "k_pct": 56.34,
-      "r_votos": 90596,
-      "k_votos": 116891,
-      "total_votos": 207487,
-      "impacto": 4814
     },
     {
       "dept": "Cusco",
@@ -711,15 +696,15 @@
       "dept_ub": "120000",
       "prov": "Trujillo",
       "prov_ub": "120100",
-      "pct_actas": 99.26,
-      "actas_cont": 2828,
+      "pct_actas": 99.33,
+      "actas_cont": 2830,
       "total_actas": 2849,
       "r_pct": 36.79,
       "k_pct": 63.21,
-      "r_votos": 220999,
-      "k_votos": 379775,
-      "total_votos": 600774,
-      "impacto": 4446
+      "r_votos": 221167,
+      "k_votos": 380030,
+      "total_votos": 601197,
+      "impacto": 4028
     },
     {
       "dept": "Áncash",
@@ -782,21 +767,6 @@
       "impacto": 2868
     },
     {
-      "dept": "Cajamarca",
-      "dept_ub": "060000",
-      "prov": "Cajamarca",
-      "prov_ub": "060100",
-      "pct_actas": 98.73,
-      "actas_cont": 1008,
-      "total_actas": 1021,
-      "r_pct": 53.97,
-      "k_pct": 46.03,
-      "r_votos": 111076,
-      "k_votos": 94724,
-      "total_votos": 205800,
-      "impacto": 2614
-    },
-    {
       "dept": "Ica",
       "dept_ub": "100000",
       "prov": "Chincha",
@@ -810,6 +780,21 @@
       "k_votos": 76822,
       "total_votos": 141815,
       "impacto": 2241
+    },
+    {
+      "dept": "Cajamarca",
+      "dept_ub": "060000",
+      "prov": "Cajamarca",
+      "prov_ub": "060100",
+      "pct_actas": 98.92,
+      "actas_cont": 1010,
+      "total_actas": 1021,
+      "r_pct": 53.98,
+      "k_pct": 46.02,
+      "r_votos": 111334,
+      "k_votos": 94934,
+      "total_votos": 206268,
+      "impacto": 2228
     },
     {
       "dept": "Ayacucho",
@@ -1652,21 +1637,6 @@
       "impacto": 375
     },
     {
-      "dept": "Ucayali",
-      "dept_ub": "250000",
-      "prov": "Padre Abad",
-      "prov_ub": "250200",
-      "pct_actas": 99.09,
-      "actas_cont": 218,
-      "total_actas": 220,
-      "r_pct": 65.7,
-      "k_pct": 34.3,
-      "r_votos": 25923,
-      "k_votos": 13535,
-      "total_votos": 39458,
-      "impacto": 359
-    },
-    {
       "dept": "Ayacucho",
       "dept_ub": "050000",
       "prov": "Huanta",
@@ -2280,6 +2250,21 @@
       "k_votos": 1755,
       "total_votos": 2461,
       "impacto": 82
+    },
+    {
+      "dept": "Ucayali",
+      "dept_ub": "250000",
+      "prov": "Coronel Portillo",
+      "prov_ub": "250100",
+      "pct_actas": 97.68,
+      "actas_cont": 1135,
+      "total_actas": 1162,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
     }
   ],
   "provincias_mapa": [
@@ -2610,8 +2595,8 @@
     {
       "d": "Cajamarca",
       "p": "Cajamarca",
-      "r": 53.97,
-      "k": 46.03
+      "r": 53.98,
+      "k": 46.02
     },
     {
       "d": "Cajamarca",
@@ -2682,8 +2667,8 @@
     {
       "d": "Callao",
       "p": "Callao",
-      "r": 34.41,
-      "k": 65.59
+      "r": 34.42,
+      "k": 65.58
     },
     {
       "d": "Cusco",
@@ -2988,8 +2973,8 @@
     {
       "d": "La Libertad",
       "p": "Otuzco",
-      "r": 56.08,
-      "k": 43.92
+      "r": 56.06,
+      "k": 43.94
     },
     {
       "d": "La Libertad",
@@ -3444,20 +3429,8 @@
     {
       "d": "Ucayali",
       "p": "Coronel Portillo",
-      "r": 43.66,
-      "k": 56.34
-    },
-    {
-      "d": "Ucayali",
-      "p": "Padre Abad",
-      "r": 65.7,
-      "k": 34.3
-    },
-    {
-      "d": "Ucayali",
-      "p": "Purús",
-      "r": 35.12,
-      "k": 64.88
+      "r": 0.0,
+      "k": 0.0
     }
   ],
   "exterior_paises": [
