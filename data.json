@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-13T19:53:18.272605+00:00",
-    "pct_actas": 98.397,
-    "actas_contabilizadas": 91279,
+    "scraped_at": "2026-06-13T22:33:17.892908+00:00",
+    "pct_actas": 98.524,
+    "actas_contabilizadas": 91397,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18095509,
-    "participacion": 70.852,
+    "votos_validos": 18120931,
+    "participacion": 70.951,
     "exterior_pct_actas": 96.5
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9052039,
-      "pct": 50.024
+      "votos": 9068904,
+      "pct": 50.047
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9043470,
-      "pct": 49.976
+      "votos": 9052027,
+      "pct": 49.953
     }
   ],
   "por_departamento": [
@@ -50,60 +50,60 @@
     {
       "ubigeo": "020000",
       "nombre": "Áncash",
-      "pct_actas": 98.704,
-      "actas_contabilizadas": 3427,
+      "pct_actas": 99.05,
+      "actas_contabilizadas": 3439,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 348824,
-          "pct": 56.6
+          "votos": 350120,
+          "pct": 56.588
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 267472,
-          "pct": 43.4
+          "votos": 268602,
+          "pct": 43.412
         }
       ]
     },
     {
       "ubigeo": "030000",
       "nombre": "Apurímac",
-      "pct_actas": 99.241,
-      "actas_contabilizadas": 1307,
+      "pct_actas": 99.393,
+      "actas_contabilizadas": 1309,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 185825,
-          "pct": 81.162
+          "votos": 186148,
+          "pct": 81.167
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 43132,
-          "pct": 18.838
+          "votos": 43192,
+          "pct": 18.833
         }
       ]
     },
     {
       "ubigeo": "040000",
       "nombre": "Arequipa",
-      "pct_actas": 99.383,
-      "actas_contabilizadas": 4189,
+      "pct_actas": 99.573,
+      "actas_contabilizadas": 4197,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 580426,
-          "pct": 63.594
+          "votos": 581453,
+          "pct": 63.582
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 332286,
-          "pct": 36.406
+          "votos": 333040,
+          "pct": 36.418
         }
       ]
     },
@@ -230,80 +230,80 @@
     {
       "ubigeo": "110000",
       "nombre": "Ica",
-      "pct_actas": 99.404,
-      "actas_contabilizadas": 3669,
+      "pct_actas": 99.648,
+      "actas_contabilizadas": 3678,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 392405,
-          "pct": 54.939
+          "votos": 393226,
+          "pct": 54.935
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 321850,
-          "pct": 45.061
+          "votos": 322573,
+          "pct": 45.065
         }
       ]
     },
     {
       "ubigeo": "120000",
       "nombre": "Junín",
-      "pct_actas": 99.491,
-      "actas_contabilizadas": 5275,
+      "pct_actas": 99.528,
+      "actas_contabilizadas": 5277,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 601001,
-          "pct": 57.536
+          "votos": 601280,
+          "pct": 57.541
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 443564,
-          "pct": 42.464
+          "votos": 443684,
+          "pct": 42.459
         }
       ]
     },
     {
       "ubigeo": "130000",
       "nombre": "La Libertad",
-      "pct_actas": 99.638,
-      "actas_contabilizadas": 3577,
+      "pct_actas": 99.721,
+      "actas_contabilizadas": 3580,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 435721,
-          "pct": 58.848
+          "votos": 436107,
+          "pct": 58.845
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 304695,
-          "pct": 41.152
+          "votos": 304999,
+          "pct": 41.155
         }
       ]
     },
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 97.124,
-      "actas_contabilizadas": 28406,
+      "pct_actas": 97.405,
+      "actas_contabilizadas": 28488,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 3955571,
-          "pct": 63.517
+          "votos": 3969104,
+          "pct": 63.549
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2271968,
-          "pct": 36.483
+          "votos": 2276634,
+          "pct": 36.451
         }
       ]
     },
@@ -636,15 +636,15 @@
       "dept_ub": "140000",
       "prov": "Lima",
       "prov_ub": "140100",
-      "pct_actas": 96.91,
-      "actas_cont": 25552,
+      "pct_actas": 97.2,
+      "actas_cont": 25631,
       "total_actas": 26368,
-      "r_pct": 35.44,
-      "k_pct": 64.56,
-      "r_votos": 1997031,
-      "k_votos": 3638650,
-      "total_votos": 5635681,
-      "impacto": 174143
+      "r_pct": 35.4,
+      "k_pct": 64.6,
+      "r_votos": 2001345,
+      "k_votos": 3651848,
+      "total_votos": 5653193,
+      "impacto": 158289
     },
     {
       "dept": "Callao",
@@ -705,36 +705,6 @@
       "k_votos": 94700,
       "total_votos": 264964,
       "impacto": 4637
-    },
-    {
-      "dept": "Áncash",
-      "dept_ub": "020000",
-      "prov": "Santa",
-      "prov_ub": "021300",
-      "pct_actas": 98.6,
-      "actas_cont": 1268,
-      "total_actas": 1286,
-      "r_pct": 49.81,
-      "k_pct": 50.19,
-      "r_votos": 128494,
-      "k_votos": 129482,
-      "total_votos": 257976,
-      "impacto": 3612
-    },
-    {
-      "dept": "La Libertad",
-      "dept_ub": "120000",
-      "prov": "Trujillo",
-      "prov_ub": "120100",
-      "pct_actas": 99.44,
-      "actas_cont": 2833,
-      "total_actas": 2849,
-      "r_pct": 36.79,
-      "k_pct": 63.21,
-      "r_votos": 221384,
-      "k_votos": 380405,
-      "total_votos": 601789,
-      "impacto": 3370
     },
     {
       "dept": "Cusco",
@@ -932,6 +902,21 @@
       "impacto": 1424
     },
     {
+      "dept": "Áncash",
+      "dept_ub": "020000",
+      "prov": "Santa",
+      "prov_ub": "021300",
+      "pct_actas": 99.46,
+      "actas_cont": 1279,
+      "total_actas": 1286,
+      "r_pct": 49.83,
+      "k_pct": 50.17,
+      "r_votos": 129689,
+      "k_votos": 130570,
+      "total_votos": 260259,
+      "impacto": 1405
+    },
+    {
       "dept": "Lima",
       "dept_ub": "140000",
       "prov": "Cañete",
@@ -1020,21 +1005,6 @@
       "k_votos": 10754,
       "total_votos": 39728,
       "impacto": 961
-    },
-    {
-      "dept": "Apurímac",
-      "dept_ub": "030000",
-      "prov": "Andahuaylas",
-      "prov_ub": "030300",
-      "pct_actas": 98.9,
-      "actas_cont": 449,
-      "total_actas": 454,
-      "r_pct": 83.61,
-      "k_pct": 16.39,
-      "r_votos": 70247,
-      "k_votos": 13770,
-      "total_votos": 84017,
-      "impacto": 924
     },
     {
       "dept": "Huánuco",
@@ -1127,21 +1097,6 @@
       "impacto": 799
     },
     {
-      "dept": "Junín",
-      "dept_ub": "110000",
-      "prov": "Tarma",
-      "prov_ub": "110500",
-      "pct_actas": 98.47,
-      "actas_cont": 258,
-      "total_actas": 262,
-      "r_pct": 47.1,
-      "k_pct": 52.9,
-      "r_votos": 24172,
-      "k_votos": 27144,
-      "total_votos": 51316,
-      "impacto": 785
-    },
-    {
       "dept": "Madre De Dios",
       "dept_ub": "160000",
       "prov": "Tambopata",
@@ -1155,6 +1110,21 @@
       "k_votos": 24744,
       "total_votos": 78067,
       "impacto": 781
+    },
+    {
+      "dept": "Apurímac",
+      "dept_ub": "030000",
+      "prov": "Andahuaylas",
+      "prov_ub": "030300",
+      "pct_actas": 99.12,
+      "actas_cont": 450,
+      "total_actas": 454,
+      "r_pct": 83.61,
+      "k_pct": 16.39,
+      "r_votos": 70438,
+      "k_votos": 13813,
+      "total_votos": 84251,
+      "impacto": 741
     },
     {
       "dept": "Ucayali",
@@ -1260,21 +1230,6 @@
       "k_votos": 15176,
       "total_votos": 51403,
       "impacto": 576
-    },
-    {
-      "dept": "Lima",
-      "dept_ub": "140000",
-      "prov": "Huarochirí",
-      "prov_ub": "140600",
-      "pct_actas": 99.12,
-      "actas_cont": 339,
-      "total_actas": 342,
-      "r_pct": 50.19,
-      "k_pct": 49.81,
-      "r_votos": 32686,
-      "k_votos": 32440,
-      "total_votos": 65126,
-      "impacto": 573
     },
     {
       "dept": "Áncash",
@@ -1667,21 +1622,6 @@
       "impacto": 265
     },
     {
-      "dept": "Áncash",
-      "dept_ub": "020000",
-      "prov": "Pallasca",
-      "prov_ub": "021000",
-      "pct_actas": 97.37,
-      "actas_cont": 74,
-      "total_actas": 76,
-      "r_pct": 69.18,
-      "k_pct": 30.82,
-      "r_votos": 6795,
-      "k_votos": 3027,
-      "total_votos": 9822,
-      "impacto": 258
-    },
-    {
       "dept": "Loreto",
       "dept_ub": "150000",
       "prov": "Requena",
@@ -1740,21 +1680,6 @@
       "k_votos": 4628,
       "total_votos": 8881,
       "impacto": 189
-    },
-    {
-      "dept": "Junín",
-      "dept_ub": "110000",
-      "prov": "Yauli",
-      "prov_ub": "110600",
-      "pct_actas": 99.05,
-      "actas_cont": 104,
-      "total_actas": 105,
-      "r_pct": 61.59,
-      "k_pct": 38.41,
-      "r_votos": 12067,
-      "k_votos": 7526,
-      "total_votos": 19593,
-      "impacto": 186
     },
     {
       "dept": "Cusco",
@@ -1875,21 +1800,6 @@
       "k_votos": 10325,
       "total_votos": 29083,
       "impacto": 172
-    },
-    {
-      "dept": "Apurímac",
-      "dept_ub": "030000",
-      "prov": "Chincheros",
-      "prov_ub": "030700",
-      "pct_actas": 99.36,
-      "actas_cont": 154,
-      "total_actas": 155,
-      "r_pct": 83.75,
-      "k_pct": 16.25,
-      "r_votos": 21559,
-      "k_votos": 4183,
-      "total_votos": 25742,
-      "impacto": 165
     },
     {
       "dept": "Puno",
@@ -2085,6 +1995,21 @@
       "k_votos": 1301,
       "total_votos": 11130,
       "impacto": 134
+    },
+    {
+      "dept": "Áncash",
+      "dept_ub": "020000",
+      "prov": "Pallasca",
+      "prov_ub": "021000",
+      "pct_actas": 98.68,
+      "actas_cont": 75,
+      "total_actas": 76,
+      "r_pct": 69.2,
+      "k_pct": 30.8,
+      "r_votos": 6896,
+      "k_votos": 3069,
+      "total_votos": 9965,
+      "impacto": 132
     },
     {
       "dept": "Áncash",
@@ -2322,8 +2247,8 @@
     {
       "d": "Áncash",
       "p": "Pallasca",
-      "r": 69.18,
-      "k": 30.82
+      "r": 69.2,
+      "k": 30.8
     },
     {
       "d": "Áncash",
@@ -2340,8 +2265,8 @@
     {
       "d": "Áncash",
       "p": "Santa",
-      "r": 49.81,
-      "k": 50.19
+      "r": 49.83,
+      "k": 50.17
     },
     {
       "d": "Áncash",
@@ -2382,8 +2307,8 @@
     {
       "d": "Apurímac",
       "p": "Chincheros",
-      "r": 83.75,
-      "k": 16.25
+      "r": 83.78,
+      "k": 16.22
     },
     {
       "d": "Apurímac",
@@ -2400,8 +2325,8 @@
     {
       "d": "Arequipa",
       "p": "Arequipa",
-      "r": 61.49,
-      "k": 38.51
+      "r": 61.48,
+      "k": 38.52
     },
     {
       "d": "Arequipa",
@@ -2814,8 +2739,8 @@
     {
       "d": "Junín",
       "p": "Chanchamayo",
-      "r": 52.52,
-      "k": 47.48
+      "r": 52.53,
+      "k": 47.47
     },
     {
       "d": "Junín",
@@ -2862,8 +2787,8 @@
     {
       "d": "Junín",
       "p": "Yauli",
-      "r": 61.59,
-      "k": 38.41
+      "r": 61.62,
+      "k": 38.38
     },
     {
       "d": "La Libertad",
@@ -2928,8 +2853,8 @@
     {
       "d": "La Libertad",
       "p": "Trujillo",
-      "r": 36.79,
-      "k": 63.21
+      "r": 36.78,
+      "k": 63.22
     },
     {
       "d": "La Libertad",
@@ -2946,8 +2871,8 @@
     {
       "d": "Lambayeque",
       "p": "Ferreñafe",
-      "r": 49.4,
-      "k": 50.6
+      "r": 49.38,
+      "k": 50.62
     },
     {
       "d": "Lambayeque",
@@ -2988,8 +2913,8 @@
     {
       "d": "Lima",
       "p": "Huarochirí",
-      "r": 50.19,
-      "k": 49.81
+      "r": 50.2,
+      "k": 49.8
     },
     {
       "d": "Lima",
@@ -3000,8 +2925,8 @@
     {
       "d": "Lima",
       "p": "Lima",
-      "r": 35.44,
-      "k": 64.56
+      "r": 35.4,
+      "k": 64.6
     },
     {
       "d": "Lima",
@@ -3991,9 +3916,9 @@
       "cont_ub": "930000",
       "pais": "Líbano",
       "pais_ub": "930800",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
       "r_pct": 0.0,
       "k_pct": 0.0,
       "r_votos": 0,
@@ -4006,14 +3931,14 @@
       "cont_ub": "930000",
       "pais": "Malasia",
       "pais_ub": "933000",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 33.33,
+      "k_pct": 66.67,
+      "r_votos": 2,
+      "k_votos": 4,
+      "total_votos": 6,
       "impacto": 0
     },
     {
@@ -4021,14 +3946,14 @@
       "cont_ub": "930000",
       "pais": "Republica De Corea",
       "pais_ub": "930100",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 45.1,
+      "k_pct": 54.9,
+      "r_votos": 46,
+      "k_votos": 56,
+      "total_votos": 102,
       "impacto": 0
     },
     {
@@ -4036,14 +3961,14 @@
       "cont_ub": "930000",
       "pais": "República Popular China",
       "pais_ub": "930200",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 4,
+      "total_actas": 4,
+      "r_pct": 23.61,
+      "k_pct": 76.39,
+      "r_votos": 34,
+      "k_votos": 110,
+      "total_votos": 144,
       "impacto": 0
     },
     {
