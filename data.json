@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-17T10:04:07.014660+00:00",
-    "pct_actas": 99.152,
-    "actas_contabilizadas": 91979,
+    "scraped_at": "2026-06-17T16:58:32.028386+00:00",
+    "pct_actas": 99.172,
+    "actas_contabilizadas": 91998,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18236515,
-    "participacion": 71.405,
+    "votos_validos": 18240507,
+    "participacion": 71.42,
     "exterior_pct_actas": 97.7
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9136432,
-      "pct": 50.1
+      "votos": 9138823,
+      "pct": 50.102
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9100083,
-      "pct": 49.9
+      "votos": 9101684,
+      "pct": 49.898
     }
   ],
   "por_departamento": [
@@ -290,20 +290,20 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 98.417,
-      "actas_contabilizadas": 28784,
+      "pct_actas": 98.475,
+      "actas_contabilizadas": 28801,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 4011764,
-          "pct": 63.57
+          "votos": 4014001,
+          "pct": 63.569
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2299022,
-          "pct": 36.43
+          "votos": 2300425,
+          "pct": 36.431
         }
       ]
     },
@@ -410,20 +410,20 @@
     {
       "ubigeo": "200000",
       "nombre": "Piura",
-      "pct_actas": 99.617,
-      "actas_contabilizadas": 3384,
+      "pct_actas": 99.647,
+      "actas_contabilizadas": 3385,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 610761,
-          "pct": 86.407
+          "votos": 610937,
+          "pct": 86.41
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 96081,
-          "pct": 13.593
+          "votos": 96085,
+          "pct": 13.59
         }
       ]
     },
@@ -490,20 +490,20 @@
     {
       "ubigeo": "240000",
       "nombre": "Tumbes",
-      "pct_actas": 99.413,
-      "actas_contabilizadas": 2881,
+      "pct_actas": 99.482,
+      "actas_contabilizadas": 2883,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 401417,
-          "pct": 65.585
+          "votos": 401705,
+          "pct": 65.589
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 210642,
-          "pct": 34.415
+          "votos": 210756,
+          "pct": 34.411
         }
       ]
     },
@@ -636,15 +636,15 @@
       "dept_ub": "140000",
       "prov": "Lima",
       "prov_ub": "140100",
-      "pct_actas": 98.29,
-      "actas_cont": 25918,
+      "pct_actas": 98.33,
+      "actas_cont": 25928,
       "total_actas": 26368,
       "r_pct": 35.39,
       "k_pct": 64.61,
-      "r_votos": 2022845,
-      "k_votos": 3693391,
-      "total_votos": 5716236,
-      "impacto": 97748
+      "r_votos": 2023623,
+      "k_votos": 3694800,
+      "total_votos": 5718423,
+      "impacto": 95498
     },
     {
       "dept": "Cusco",
@@ -662,21 +662,6 @@
       "impacto": 4637
     },
     {
-      "dept": "Callao",
-      "dept_ub": "240000",
-      "prov": "Callao",
-      "prov_ub": "240100",
-      "pct_actas": 99.41,
-      "actas_cont": 2881,
-      "total_actas": 2898,
-      "r_pct": 34.41,
-      "k_pct": 65.58,
-      "r_votos": 210642,
-      "k_votos": 401417,
-      "total_votos": 612059,
-      "impacto": 3611
-    },
-    {
       "dept": "Piura",
       "dept_ub": "190000",
       "prov": "Piura",
@@ -690,6 +675,21 @@
       "k_votos": 272636,
       "total_votos": 454247,
       "impacto": 3316
+    },
+    {
+      "dept": "Callao",
+      "dept_ub": "240000",
+      "prov": "Callao",
+      "prov_ub": "240100",
+      "pct_actas": 99.48,
+      "actas_cont": 2883,
+      "total_actas": 2898,
+      "r_pct": 34.41,
+      "k_pct": 65.59,
+      "r_votos": 210756,
+      "k_votos": 401705,
+      "total_votos": 612461,
+      "impacto": 3185
     },
     {
       "dept": "Cusco",
@@ -810,21 +810,6 @@
       "k_votos": 80941,
       "total_votos": 149180,
       "impacto": 1343
-    },
-    {
-      "dept": "Lima",
-      "dept_ub": "140000",
-      "prov": "Huaral",
-      "prov_ub": "140800",
-      "pct_actas": 98.93,
-      "actas_cont": 554,
-      "total_actas": 560,
-      "r_pct": 44.26,
-      "k_pct": 55.74,
-      "r_votos": 52289,
-      "k_votos": 65844,
-      "total_votos": 118133,
-      "impacto": 1264
     },
     {
       "dept": "Ayacucho",
@@ -1217,21 +1202,6 @@
       "impacto": 212
     },
     {
-      "dept": "Lima",
-      "dept_ub": "140000",
-      "prov": "Canta",
-      "prov_ub": "140300",
-      "pct_actas": 97.87,
-      "actas_cont": 46,
-      "total_actas": 47,
-      "r_pct": 47.89,
-      "k_pct": 52.11,
-      "r_votos": 4253,
-      "k_votos": 4628,
-      "total_votos": 8881,
-      "impacto": 189
-    },
-    {
       "dept": "Cusco",
       "dept_ub": "070000",
       "prov": "Paucartambo",
@@ -1275,21 +1245,6 @@
       "k_votos": 6969,
       "total_votos": 15996,
       "impacto": 176
-    },
-    {
-      "dept": "Puno",
-      "dept_ub": "200000",
-      "prov": "Moho",
-      "prov_ub": "201300",
-      "pct_actas": 98.84,
-      "actas_cont": 85,
-      "total_actas": 86,
-      "r_pct": 92.88,
-      "k_pct": 7.12,
-      "r_votos": 13174,
-      "k_votos": 1010,
-      "total_votos": 14184,
-      "impacto": 165
     },
     {
       "dept": "Madre De Dios",
@@ -1828,7 +1783,7 @@
       "d": "Callao",
       "p": "Callao",
       "r": 34.41,
-      "k": 65.58
+      "k": 65.59
     },
     {
       "d": "Cusco",
@@ -2205,8 +2160,8 @@
     {
       "d": "Lima",
       "p": "Canta",
-      "r": 47.89,
-      "k": 52.11
+      "r": 47.91,
+      "k": 52.09
     },
     {
       "d": "Lima",
@@ -2217,8 +2172,8 @@
     {
       "d": "Lima",
       "p": "Huaral",
-      "r": 44.26,
-      "k": 55.74
+      "r": 44.25,
+      "k": 55.75
     },
     {
       "d": "Lima",
@@ -2445,8 +2400,8 @@
     {
       "d": "Puno",
       "p": "Moho",
-      "r": 92.88,
-      "k": 7.12
+      "r": 92.94,
+      "k": 7.06
     },
     {
       "d": "Puno",
