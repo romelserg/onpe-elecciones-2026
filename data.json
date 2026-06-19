@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-19T20:06:40.233804+00:00",
-    "pct_actas": 99.545,
-    "actas_contabilizadas": 92344,
+    "scraped_at": "2026-06-19T21:20:02.816244+00:00",
+    "pct_actas": 99.564,
+    "actas_contabilizadas": 92362,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18308526,
-    "participacion": 71.686,
+    "votos_validos": 18312316,
+    "participacion": 71.701,
     "exterior_pct_actas": 99.9
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9175509,
-      "pct": 50.116
+      "votos": 9177494,
+      "pct": 50.117
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9133017,
-      "pct": 49.884
+      "votos": 9134822,
+      "pct": 49.883
     }
   ],
   "por_departamento": [
@@ -290,20 +290,20 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 99.104,
-      "actas_contabilizadas": 28985,
+      "pct_actas": 99.145,
+      "actas_contabilizadas": 28997,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 4038936,
-          "pct": 63.555
+          "votos": 4040393,
+          "pct": 63.552
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2316094,
-          "pct": 36.445
+          "votos": 2317227,
+          "pct": 36.448
         }
       ]
     },
@@ -370,20 +370,20 @@
     {
       "ubigeo": "180000",
       "nombre": "Moquegua",
-      "pct_actas": 99.501,
-      "actas_contabilizadas": 798,
+      "pct_actas": 99.875,
+      "actas_contabilizadas": 801,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 79718,
-          "pct": 60.858
+          "votos": 79890,
+          "pct": 60.733
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 51273,
-          "pct": 39.142
+          "votos": 51654,
+          "pct": 39.267
         }
       ]
     },
@@ -410,20 +410,20 @@
     {
       "ubigeo": "200000",
       "nombre": "Piura",
-      "pct_actas": 99.823,
-      "actas_contabilizadas": 3391,
+      "pct_actas": 99.882,
+      "actas_contabilizadas": 3393,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 612116,
-          "pct": 86.405
+          "votos": 612558,
+          "pct": 86.41
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 96314,
-          "pct": 13.595
+          "votos": 96336,
+          "pct": 13.59
         }
       ]
     },
@@ -636,15 +636,15 @@
       "dept_ub": "140000",
       "prov": "Lima",
       "prov_ub": "140100",
-      "pct_actas": 99.01,
-      "actas_cont": 26106,
+      "pct_actas": 99.05,
+      "actas_cont": 26118,
       "total_actas": 26368,
       "r_pct": 35.41,
       "k_pct": 64.59,
-      "r_votos": 2038653,
-      "k_votos": 3719037,
-      "total_votos": 5757690,
-      "impacto": 57001
+      "r_votos": 2039786,
+      "k_votos": 3720494,
+      "total_votos": 5760280,
+      "impacto": 54723
     },
     {
       "dept": "Cusco",
@@ -765,21 +765,6 @@
       "k_votos": 14771,
       "total_votos": 36734,
       "impacto": 808
-    },
-    {
-      "dept": "Pasco",
-      "dept_ub": "180000",
-      "prov": "Oxapampa",
-      "prov_ub": "180300",
-      "pct_actas": 98.42,
-      "actas_cont": 312,
-      "total_actas": 317,
-      "r_pct": 43.01,
-      "k_pct": 56.99,
-      "r_votos": 20642,
-      "k_votos": 27351,
-      "total_votos": 47993,
-      "impacto": 758
     },
     {
       "dept": "Ucayali",
@@ -1968,8 +1953,8 @@
     {
       "d": "Pasco",
       "p": "Oxapampa",
-      "r": 43.01,
-      "k": 56.99
+      "r": 42.83,
+      "k": 57.17
     },
     {
       "d": "Pasco",
@@ -2052,8 +2037,8 @@
     {
       "d": "Puno",
       "p": "Huancané",
-      "r": 92.69,
-      "k": 7.31
+      "r": 92.72,
+      "k": 7.29
     },
     {
       "d": "Puno",
@@ -3354,36 +3339,6 @@
       "r_votos": 903,
       "k_votos": 1296,
       "total_votos": 2199,
-      "impacto": 0
-    },
-    {
-      "continente": "Oceanía",
-      "cont_ub": "950000",
-      "pais": "Australia",
-      "pais_ub": "950100",
-      "pct_actas": 100.0,
-      "actas_cont": 18,
-      "total_actas": 18,
-      "r_pct": 36.5,
-      "k_pct": 63.5,
-      "r_votos": 700,
-      "k_votos": 1218,
-      "total_votos": 1918,
-      "impacto": 0
-    },
-    {
-      "continente": "Oceanía",
-      "cont_ub": "950000",
-      "pais": "Nueva Zelanda",
-      "pais_ub": "950200",
-      "pct_actas": 100.0,
-      "actas_cont": 3,
-      "total_actas": 3,
-      "r_pct": 32.94,
-      "k_pct": 67.06,
-      "r_votos": 83,
-      "k_votos": 169,
-      "total_votos": 252,
       "impacto": 0
     }
   ]
