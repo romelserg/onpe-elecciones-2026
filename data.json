@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-19T21:20:02.816244+00:00",
-    "pct_actas": 99.564,
-    "actas_contabilizadas": 92362,
+    "scraped_at": "2026-06-20T16:56:17.938100+00:00",
+    "pct_actas": 99.636,
+    "actas_contabilizadas": 92428,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18312316,
-    "participacion": 71.701,
+    "votos_validos": 18326586,
+    "participacion": 71.756,
     "exterior_pct_actas": 99.9
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9177494,
-      "pct": 50.117
+      "votos": 9184015,
+      "pct": 50.113
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9134822,
-      "pct": 49.883
+      "votos": 9142571,
+      "pct": 49.887
     }
   ],
   "por_departamento": [
@@ -50,20 +50,20 @@
     {
       "ubigeo": "020000",
       "nombre": "Áncash",
-      "pct_actas": 99.741,
-      "actas_contabilizadas": 3463,
+      "pct_actas": 99.77,
+      "actas_contabilizadas": 3464,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 352703,
-          "pct": 56.596
+          "votos": 352818,
+          "pct": 56.602
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 270489,
-          "pct": 43.404
+          "votos": 270510,
+          "pct": 43.398
         }
       ]
     },
@@ -150,20 +150,20 @@
     {
       "ubigeo": "070000",
       "nombre": "Callao",
-      "pct_actas": 99.372,
-      "actas_contabilizadas": 3958,
+      "pct_actas": 99.975,
+      "actas_contabilizadas": 3982,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 592924,
-          "pct": 78.172
+          "votos": 596470,
+          "pct": 78.106
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 165563,
-          "pct": 21.828
+          "votos": 167199,
+          "pct": 21.894
         }
       ]
     },
@@ -190,20 +190,20 @@
     {
       "ubigeo": "090000",
       "nombre": "Huancavelica",
-      "pct_actas": 99.658,
-      "actas_contabilizadas": 2333,
+      "pct_actas": 99.701,
+      "actas_contabilizadas": 2334,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 251476,
-          "pct": 64.195
+          "votos": 251576,
+          "pct": 64.191
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 140260,
-          "pct": 35.805
+          "votos": 140341,
+          "pct": 35.809
         }
       ]
     },
@@ -290,20 +290,20 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 99.145,
-      "actas_contabilizadas": 28997,
+      "pct_actas": 99.234,
+      "actas_contabilizadas": 29023,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 4040393,
-          "pct": 63.552
+          "votos": 4043962,
+          "pct": 63.549
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2317227,
-          "pct": 36.448
+          "votos": 2319545,
+          "pct": 36.451
         }
       ]
     },
@@ -390,39 +390,39 @@
     {
       "ubigeo": "190000",
       "nombre": "Pasco",
-      "pct_actas": 99.432,
-      "actas_contabilizadas": 5251,
+      "pct_actas": 99.508,
+      "actas_contabilizadas": 5255,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 586399,
-          "pct": 56.978
+          "votos": 586846,
+          "pct": 56.975
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 442762,
-          "pct": 43.022
+          "votos": 443162,
+          "pct": 43.025
         }
       ]
     },
     {
       "ubigeo": "200000",
       "nombre": "Piura",
-      "pct_actas": 99.882,
-      "actas_contabilizadas": 3393,
+      "pct_actas": 99.912,
+      "actas_contabilizadas": 3394,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 612558,
+          "votos": 612704,
           "pct": 86.41
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 96336,
+          "votos": 96362,
           "pct": 13.59
         }
       ]
@@ -430,40 +430,40 @@
     {
       "ubigeo": "210000",
       "nombre": "Puno",
-      "pct_actas": 99.763,
-      "actas_contabilizadas": 2528,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 2534,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 263442,
-          "pct": 54.631
+          "votos": 264127,
+          "pct": 54.637
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 218779,
-          "pct": 45.369
+          "votos": 219293,
+          "pct": 45.363
         }
       ]
     },
     {
       "ubigeo": "220000",
       "nombre": "San Martín",
-      "pct_actas": 99.232,
-      "actas_contabilizadas": 1033,
+      "pct_actas": 99.424,
+      "actas_contabilizadas": 1035,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 163863,
-          "pct": 71.368
+          "votos": 164226,
+          "pct": 71.383
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 65739,
-          "pct": 28.632
+          "votos": 65838,
+          "pct": 28.617
         }
       ]
     },
@@ -490,20 +490,20 @@
     {
       "ubigeo": "240000",
       "nombre": "Tumbes",
-      "pct_actas": 99.827,
-      "actas_contabilizadas": 2893,
+      "pct_actas": 99.862,
+      "actas_contabilizadas": 2894,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 403115,
-          "pct": 65.597
+          "votos": 403243,
+          "pct": 65.596
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 211418,
-          "pct": 34.403
+          "votos": 211494,
+          "pct": 34.404
         }
       ]
     },
@@ -636,30 +636,15 @@
       "dept_ub": "140000",
       "prov": "Lima",
       "prov_ub": "140100",
-      "pct_actas": 99.05,
-      "actas_cont": 26118,
+      "pct_actas": 99.15,
+      "actas_cont": 26144,
       "total_actas": 26368,
       "r_pct": 35.41,
-      "k_pct": 64.59,
-      "r_votos": 2039786,
-      "k_votos": 3720494,
-      "total_votos": 5760280,
-      "impacto": 54723
-    },
-    {
-      "dept": "Cusco",
-      "dept_ub": "070000",
-      "prov": "Cusco",
-      "prov_ub": "070100",
-      "pct_actas": 98.25,
-      "actas_cont": 1237,
-      "total_actas": 1259,
-      "r_pct": 64.26,
-      "k_pct": 35.74,
-      "r_votos": 170264,
-      "k_votos": 94700,
-      "total_votos": 264964,
-      "impacto": 4637
+      "k_pct": 64.58,
+      "r_votos": 2042104,
+      "k_votos": 3724063,
+      "total_votos": 5766167,
+      "impacto": 49012
     },
     {
       "dept": "Piura",
@@ -707,21 +692,6 @@
       "impacto": 1841
     },
     {
-      "dept": "Tacna",
-      "dept_ub": "220000",
-      "prov": "Tacna",
-      "prov_ub": "220100",
-      "pct_actas": 99.15,
-      "actas_cont": 937,
-      "total_actas": 945,
-      "r_pct": 70.39,
-      "k_pct": 29.61,
-      "r_votos": 148473,
-      "k_votos": 62466,
-      "total_votos": 210939,
-      "impacto": 1793
-    },
-    {
       "dept": "Arequipa",
       "dept_ub": "040000",
       "prov": "Islay",
@@ -737,19 +707,19 @@
       "impacto": 1424
     },
     {
-      "dept": "Piura",
-      "dept_ub": "190000",
-      "prov": "Paita",
-      "prov_ub": "190500",
-      "pct_actas": 98.86,
-      "actas_cont": 346,
-      "total_actas": 350,
-      "r_pct": 45.81,
-      "k_pct": 54.19,
-      "r_votos": 33095,
-      "k_votos": 39152,
-      "total_votos": 72247,
-      "impacto": 824
+      "dept": "Tacna",
+      "dept_ub": "220000",
+      "prov": "Tacna",
+      "prov_ub": "220100",
+      "pct_actas": 99.36,
+      "actas_cont": 939,
+      "total_actas": 945,
+      "r_pct": 70.41,
+      "k_pct": 29.59,
+      "r_votos": 148836,
+      "k_votos": 62565,
+      "total_votos": 211401,
+      "impacto": 1353
     },
     {
       "dept": "Arequipa",
@@ -797,51 +767,6 @@
       "impacto": 729
     },
     {
-      "dept": "Piura",
-      "dept_ub": "190000",
-      "prov": "Sechura",
-      "prov_ub": "190800",
-      "pct_actas": 98.62,
-      "actas_cont": 215,
-      "total_actas": 218,
-      "r_pct": 48.21,
-      "k_pct": 51.79,
-      "r_votos": 22293,
-      "k_votos": 23949,
-      "total_votos": 46242,
-      "impacto": 638
-    },
-    {
-      "dept": "San Martín",
-      "dept_ub": "210000",
-      "prov": "San Martín",
-      "prov_ub": "210600",
-      "pct_actas": 99.48,
-      "actas_cont": 571,
-      "total_actas": 574,
-      "r_pct": 44.71,
-      "k_pct": 55.29,
-      "r_votos": 51873,
-      "k_votos": 64159,
-      "total_votos": 116032,
-      "impacto": 603
-    },
-    {
-      "dept": "Cusco",
-      "dept_ub": "070000",
-      "prov": "Anta",
-      "prov_ub": "070300",
-      "pct_actas": 98.45,
-      "actas_cont": 191,
-      "total_actas": 194,
-      "r_pct": 82.26,
-      "k_pct": 17.74,
-      "r_votos": 30805,
-      "k_votos": 6644,
-      "total_votos": 37449,
-      "impacto": 580
-    },
-    {
       "dept": "Huánuco",
       "dept_ub": "090000",
       "prov": "Puerto Inca",
@@ -857,19 +782,19 @@
       "impacto": 428
     },
     {
-      "dept": "San Martín",
-      "dept_ub": "210000",
-      "prov": "Tocache",
-      "prov_ub": "210800",
-      "pct_actas": 99.14,
-      "actas_cont": 231,
-      "total_actas": 233,
-      "r_pct": 63.48,
-      "k_pct": 36.52,
-      "r_votos": 26350,
-      "k_votos": 15160,
-      "total_votos": 41510,
-      "impacto": 357
+      "dept": "Piura",
+      "dept_ub": "190000",
+      "prov": "Paita",
+      "prov_ub": "190500",
+      "pct_actas": 99.43,
+      "actas_cont": 348,
+      "total_actas": 350,
+      "r_pct": 45.82,
+      "k_pct": 54.18,
+      "r_votos": 33285,
+      "k_votos": 39360,
+      "total_votos": 72645,
+      "impacto": 414
     },
     {
       "dept": "Huancavelica",
@@ -917,21 +842,6 @@
       "impacto": 265
     },
     {
-      "dept": "Puno",
-      "dept_ub": "200000",
-      "prov": "San Antonio De Putina",
-      "prov_ub": "201100",
-      "pct_actas": 98.85,
-      "actas_cont": 86,
-      "total_actas": 87,
-      "r_pct": 91.59,
-      "k_pct": 8.41,
-      "r_votos": 16920,
-      "k_votos": 1553,
-      "total_votos": 18473,
-      "impacto": 212
-    },
-    {
       "dept": "Tumbes",
       "dept_ub": "230000",
       "prov": "Zarumilla",
@@ -947,6 +857,21 @@
       "impacto": 200
     },
     {
+      "dept": "Cusco",
+      "dept_ub": "070000",
+      "prov": "Anta",
+      "prov_ub": "070300",
+      "pct_actas": 99.48,
+      "actas_cont": 193,
+      "total_actas": 194,
+      "r_pct": 82.25,
+      "k_pct": 17.75,
+      "r_votos": 31139,
+      "k_votos": 6722,
+      "total_votos": 37861,
+      "impacto": 197
+    },
+    {
       "dept": "Arequipa",
       "dept_ub": "040000",
       "prov": "Caravelí",
@@ -960,21 +885,6 @@
       "k_votos": 8868,
       "total_votos": 21320,
       "impacto": 183
-    },
-    {
-      "dept": "San Martín",
-      "dept_ub": "210000",
-      "prov": "Huallaga",
-      "prov_ub": "210200",
-      "pct_actas": 98.9,
-      "actas_cont": 90,
-      "total_actas": 91,
-      "r_pct": 56.43,
-      "k_pct": 43.57,
-      "r_votos": 9027,
-      "k_votos": 6969,
-      "total_votos": 15996,
-      "impacto": 176
     },
     {
       "dept": "Madre De Dios",
@@ -1005,21 +915,6 @@
       "k_votos": 3708,
       "total_votos": 11335,
       "impacto": 135
-    },
-    {
-      "dept": "Áncash",
-      "dept_ub": "020000",
-      "prov": "Mariscal Luzuriaga",
-      "prov_ub": "020900",
-      "pct_actas": 98.59,
-      "actas_cont": 70,
-      "total_actas": 71,
-      "r_pct": 79.63,
-      "k_pct": 20.37,
-      "r_votos": 7561,
-      "k_votos": 1934,
-      "total_votos": 9495,
-      "impacto": 134
     },
     {
       "dept": "Áncash",
@@ -1155,8 +1050,8 @@
     {
       "d": "Áncash",
       "p": "Mariscal Luzuriaga",
-      "r": 79.63,
-      "k": 20.37
+      "r": 79.7,
+      "k": 20.3
     },
     {
       "d": "Áncash",
@@ -1449,8 +1344,8 @@
     {
       "d": "Cusco",
       "p": "Anta",
-      "r": 82.26,
-      "k": 17.74
+      "r": 82.25,
+      "k": 17.75
     },
     {
       "d": "Cusco",
@@ -1479,8 +1374,8 @@
     {
       "d": "Cusco",
       "p": "Cusco",
-      "r": 64.26,
-      "k": 35.74
+      "r": 64.31,
+      "k": 35.69
     },
     {
       "d": "Cusco",
@@ -1599,8 +1494,8 @@
     {
       "d": "Huánuco",
       "p": "Leoncio Prado",
-      "r": 52.64,
-      "k": 47.36
+      "r": 52.65,
+      "k": 47.35
     },
     {
       "d": "Huánuco",
@@ -1846,7 +1741,7 @@
       "d": "Lima",
       "p": "Lima",
       "r": 35.41,
-      "k": 64.59
+      "k": 64.58
     },
     {
       "d": "Lima",
@@ -1983,8 +1878,8 @@
     {
       "d": "Piura",
       "p": "Paita",
-      "r": 45.81,
-      "k": 54.19
+      "r": 45.82,
+      "k": 54.18
     },
     {
       "d": "Piura",
@@ -1995,8 +1890,8 @@
     {
       "d": "Piura",
       "p": "Sechura",
-      "r": 48.21,
-      "k": 51.79
+      "r": 48.2,
+      "k": 51.8
     },
     {
       "d": "Piura",
@@ -2067,8 +1962,8 @@
     {
       "d": "Puno",
       "p": "San Antonio De Putina",
-      "r": 91.59,
-      "k": 8.41
+      "r": 91.53,
+      "k": 8.47
     },
     {
       "d": "Puno",
@@ -2103,8 +1998,8 @@
     {
       "d": "San Martín",
       "p": "Huallaga",
-      "r": 56.43,
-      "k": 43.57
+      "r": 56.61,
+      "k": 43.39
     },
     {
       "d": "San Martín",
@@ -2139,14 +2034,14 @@
     {
       "d": "San Martín",
       "p": "San Martín",
-      "r": 44.71,
-      "k": 55.29
+      "r": 44.72,
+      "k": 55.28
     },
     {
       "d": "San Martín",
       "p": "Tocache",
-      "r": 63.48,
-      "k": 36.52
+      "r": 63.52,
+      "k": 36.48
     },
     {
       "d": "Tacna",
@@ -2163,8 +2058,8 @@
     {
       "d": "Tacna",
       "p": "Tacna",
-      "r": 70.39,
-      "k": 29.61
+      "r": 70.41,
+      "k": 29.59
     },
     {
       "d": "Tacna",
@@ -3301,14 +3196,14 @@
       "cont_ub": "940000",
       "pais": "Rusia",
       "pais_ub": "942900",
-      "pct_actas": 100.0,
-      "actas_cont": 3,
-      "total_actas": 3,
-      "r_pct": 61.29,
-      "k_pct": 38.71,
-      "r_votos": 76,
-      "k_votos": 48,
-      "total_votos": 124,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3316,14 +3211,14 @@
       "cont_ub": "940000",
       "pais": "Suecia",
       "pais_ub": "942700",
-      "pct_actas": 100.0,
-      "actas_cont": 9,
-      "total_actas": 9,
-      "r_pct": 54.09,
-      "k_pct": 45.91,
-      "r_votos": 568,
-      "k_votos": 482,
-      "total_votos": 1050,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -3331,14 +3226,14 @@
       "cont_ub": "940000",
       "pais": "Suiza",
       "pais_ub": "942800",
-      "pct_actas": 100.0,
-      "actas_cont": 19,
-      "total_actas": 19,
-      "r_pct": 41.06,
-      "k_pct": 58.94,
-      "r_votos": 903,
-      "k_votos": 1296,
-      "total_votos": 2199,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     }
   ]
