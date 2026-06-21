@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-20T23:53:33.042314+00:00",
-    "pct_actas": 99.681,
-    "actas_contabilizadas": 92470,
+    "scraped_at": "2026-06-21T11:36:42.864722+00:00",
+    "pct_actas": 99.688,
+    "actas_contabilizadas": 92477,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18335263,
-    "participacion": 71.79,
+    "votos_validos": 18336120,
+    "participacion": 71.794,
     "exterior_pct_actas": 99.9
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9188198,
-      "pct": 50.112
+      "votos": 9188410,
+      "pct": 50.111
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9147065,
-      "pct": 49.888
+      "votos": 9147710,
+      "pct": 49.889
     }
   ],
   "por_departamento": [
@@ -50,20 +50,20 @@
     {
       "ubigeo": "020000",
       "nombre": "Áncash",
-      "pct_actas": 99.77,
-      "actas_contabilizadas": 3464,
+      "pct_actas": 99.971,
+      "actas_contabilizadas": 3471,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 352818,
-          "pct": 56.602
+          "votos": 353463,
+          "pct": 56.628
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 270510,
-          "pct": 43.398
+          "votos": 270722,
+          "pct": 43.372
         }
       ]
     },
@@ -692,21 +692,6 @@
       "impacto": 738
     },
     {
-      "dept": "Áncash",
-      "dept_ub": "020000",
-      "prov": "Huari",
-      "prov_ub": "020800",
-      "pct_actas": 98.18,
-      "actas_cont": 324,
-      "total_actas": 330,
-      "r_pct": 72.93,
-      "k_pct": 27.07,
-      "r_votos": 29225,
-      "k_votos": 10847,
-      "total_votos": 40072,
-      "impacto": 729
-    },
-    {
       "dept": "Huánuco",
       "dept_ub": "090000",
       "prov": "Puerto Inca",
@@ -840,21 +825,6 @@
       "k_votos": 3708,
       "total_votos": 11335,
       "impacto": 135
-    },
-    {
-      "dept": "Áncash",
-      "dept_ub": "020000",
-      "prov": "Carlos Fermín Fitzcarrald",
-      "prov_ub": "021700",
-      "pct_actas": 98.25,
-      "actas_cont": 56,
-      "total_actas": 57,
-      "r_pct": 77.1,
-      "k_pct": 22.9,
-      "r_votos": 5661,
-      "k_votos": 1681,
-      "total_votos": 7342,
-      "impacto": 128
     }
   ],
   "provincias_mapa": [
@@ -933,8 +903,8 @@
     {
       "d": "Áncash",
       "p": "Carlos Fermín Fitzcarrald",
-      "r": 77.1,
-      "k": 22.9
+      "r": 77.19,
+      "k": 22.81
     },
     {
       "d": "Áncash",
@@ -957,8 +927,8 @@
     {
       "d": "Áncash",
       "p": "Huari",
-      "r": 72.93,
-      "k": 27.07
+      "r": 72.95,
+      "k": 27.05
     },
     {
       "d": "Áncash",
@@ -2015,24 +1985,6 @@
       "p": "Atalaya",
       "r": 51.84,
       "k": 48.16
-    },
-    {
-      "d": "Ucayali",
-      "p": "Coronel Portillo",
-      "r": 43.71,
-      "k": 56.29
-    },
-    {
-      "d": "Ucayali",
-      "p": "Padre Abad",
-      "r": 65.67,
-      "k": 34.33
-    },
-    {
-      "d": "Ucayali",
-      "p": "Purús",
-      "r": 35.12,
-      "k": 64.88
     }
   ],
   "exterior_paises": [
