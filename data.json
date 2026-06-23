@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-22T00:12:38.187962+00:00",
-    "pct_actas": 99.688,
-    "actas_contabilizadas": 92477,
+    "scraped_at": "2026-06-23T08:50:59.477325+00:00",
+    "pct_actas": 99.716,
+    "actas_contabilizadas": 92503,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18336120,
-    "participacion": 71.794,
+    "votos_validos": 18341178,
+    "participacion": 71.813,
     "exterior_pct_actas": 99.9
   },
   "candidatos": [
@@ -15,14 +15,14 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9188410,
+      "votos": 9190889,
       "pct": 50.111
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9147710,
+      "votos": 9150289,
       "pct": 49.889
     }
   ],
@@ -170,60 +170,60 @@
     {
       "ubigeo": "080000",
       "nombre": "Cusco",
-      "pct_actas": 99.529,
-      "actas_contabilizadas": 1267,
+      "pct_actas": 99.843,
+      "actas_contabilizadas": 1271,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 161337,
-          "pct": 81.424
+          "votos": 161725,
+          "pct": 81.403
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 36808,
-          "pct": 18.576
+          "votos": 36948,
+          "pct": 18.597
         }
       ]
     },
     {
       "ubigeo": "090000",
       "nombre": "Huancavelica",
-      "pct_actas": 99.701,
-      "actas_contabilizadas": 2334,
+      "pct_actas": 99.829,
+      "actas_contabilizadas": 2337,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 251576,
-          "pct": 64.191
+          "votos": 251799,
+          "pct": 64.176
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 140341,
-          "pct": 35.809
+          "votos": 140559,
+          "pct": 35.824
         }
       ]
     },
     {
       "ubigeo": "100000",
       "nombre": "Huánuco",
-      "pct_actas": 99.959,
-      "actas_contabilizadas": 2442,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 2443,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 282363,
-          "pct": 51.94
+          "votos": 282464,
+          "pct": 51.938
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 261273,
-          "pct": 48.06
+          "votos": 261387,
+          "pct": 48.062
         }
       ]
     },
@@ -250,20 +250,20 @@
     {
       "ubigeo": "120000",
       "nombre": "Junín",
-      "pct_actas": 99.868,
-      "actas_contabilizadas": 5295,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 5302,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 603605,
-          "pct": 57.561
+          "votos": 604436,
+          "pct": 57.565
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 445026,
-          "pct": 42.439
+          "votos": 445569,
+          "pct": 42.435
         }
       ]
     },
@@ -290,19 +290,19 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 99.265,
-      "actas_contabilizadas": 29032,
+      "pct_actas": 99.289,
+      "actas_contabilizadas": 29039,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 4045378,
+          "votos": 4046426,
           "pct": 63.551
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2320167,
+          "votos": 2320760,
           "pct": 36.449
         }
       ]
@@ -330,20 +330,20 @@
     {
       "ubigeo": "160000",
       "nombre": "Loreto",
-      "pct_actas": 99.803,
-      "actas_contabilizadas": 506,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 507,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 65917,
-          "pct": 69.167
+          "votos": 66058,
+          "pct": 69.2
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 29384,
-          "pct": 30.833
+          "votos": 29401,
+          "pct": 30.8
         }
       ]
     },
@@ -410,20 +410,20 @@
     {
       "ubigeo": "200000",
       "nombre": "Piura",
-      "pct_actas": 99.912,
-      "actas_contabilizadas": 3394,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 3397,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 612704,
-          "pct": 86.41
+          "votos": 613281,
+          "pct": 86.406
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 96362,
-          "pct": 13.59
+          "votos": 96486,
+          "pct": 13.594
         }
       ]
     },
@@ -636,15 +636,15 @@
       "dept_ub": "140000",
       "prov": "Lima",
       "prov_ub": "140100",
-      "pct_actas": 99.19,
-      "actas_cont": 26153,
+      "pct_actas": 99.21,
+      "actas_cont": 26160,
       "total_actas": 26368,
       "r_pct": 35.41,
       "k_pct": 64.59,
-      "r_votos": 2042726,
-      "k_votos": 3725479,
-      "total_votos": 5768205,
-      "impacto": 46722
+      "r_votos": 2043319,
+      "k_votos": 3726527,
+      "total_votos": 5769846,
+      "impacto": 45582
     },
     {
       "dept": "Piura",
@@ -692,21 +692,6 @@
       "impacto": 738
     },
     {
-      "dept": "Huánuco",
-      "dept_ub": "090000",
-      "prov": "Puerto Inca",
-      "prov_ub": "090800",
-      "pct_actas": 97.48,
-      "actas_cont": 116,
-      "total_actas": 119,
-      "r_pct": 57.89,
-      "k_pct": 42.11,
-      "r_votos": 9826,
-      "k_votos": 7147,
-      "total_votos": 16973,
-      "impacto": 428
-    },
-    {
       "dept": "Piura",
       "dept_ub": "190000",
       "prov": "Paita",
@@ -720,36 +705,6 @@
       "k_votos": 39360,
       "total_votos": 72645,
       "impacto": 414
-    },
-    {
-      "dept": "Huancavelica",
-      "dept_ub": "080000",
-      "prov": "Tayacaja",
-      "prov_ub": "080500",
-      "pct_actas": 99.36,
-      "actas_cont": 309,
-      "total_actas": 311,
-      "r_pct": 81.53,
-      "k_pct": 18.47,
-      "r_votos": 39202,
-      "k_votos": 8879,
-      "total_votos": 48081,
-      "impacto": 308
-    },
-    {
-      "dept": "Huancavelica",
-      "dept_ub": "080000",
-      "prov": "Churcampa",
-      "prov_ub": "080700",
-      "pct_actas": 98.35,
-      "actas_cont": 119,
-      "total_actas": 121,
-      "r_pct": 81.81,
-      "k_pct": 18.19,
-      "r_votos": 13519,
-      "k_votos": 3006,
-      "total_votos": 16525,
-      "impacto": 273
     },
     {
       "dept": "Piura",
@@ -797,34 +752,19 @@
       "impacto": 197
     },
     {
-      "dept": "Madre De Dios",
-      "dept_ub": "160000",
-      "prov": "Manú",
-      "prov_ub": "160200",
-      "pct_actas": 98.53,
-      "actas_cont": 67,
-      "total_actas": 68,
-      "r_pct": 80.47,
-      "k_pct": 19.53,
-      "r_votos": 8428,
-      "k_votos": 2046,
-      "total_votos": 10474,
-      "impacto": 154
-    },
-    {
       "dept": "Huancavelica",
       "dept_ub": "080000",
-      "prov": "Huaytara",
-      "prov_ub": "080600",
-      "pct_actas": 98.81,
-      "actas_cont": 83,
-      "total_actas": 84,
-      "r_pct": 67.29,
-      "k_pct": 32.71,
-      "r_votos": 7627,
-      "k_votos": 3708,
-      "total_votos": 11335,
-      "impacto": 135
+      "prov": "Churcampa",
+      "prov_ub": "080700",
+      "pct_actas": 99.17,
+      "actas_cont": 120,
+      "total_actas": 121,
+      "r_pct": 81.77,
+      "k_pct": 18.23,
+      "r_votos": 13575,
+      "k_votos": 3027,
+      "total_votos": 16602,
+      "impacto": 138
     }
   ],
   "provincias_mapa": [
@@ -1329,8 +1269,8 @@
     {
       "d": "Huancavelica",
       "p": "Churcampa",
-      "r": 81.81,
-      "k": 18.19
+      "r": 81.77,
+      "k": 18.23
     },
     {
       "d": "Huancavelica",
@@ -1341,14 +1281,14 @@
     {
       "d": "Huancavelica",
       "p": "Huaytara",
-      "r": 67.29,
-      "k": 32.71
+      "r": 67.21,
+      "k": 32.79
     },
     {
       "d": "Huancavelica",
       "p": "Tayacaja",
-      "r": 81.53,
-      "k": 18.47
+      "r": 81.52,
+      "k": 18.48
     },
     {
       "d": "Huánuco",
@@ -1407,8 +1347,8 @@
     {
       "d": "Huánuco",
       "p": "Puerto Inca",
-      "r": 57.89,
-      "k": 42.11
+      "r": 57.71,
+      "k": 42.29
     },
     {
       "d": "Huánuco",
@@ -1551,8 +1491,8 @@
     {
       "d": "La Libertad",
       "p": "Sánchez Carrión",
-      "r": 54.08,
-      "k": 45.92
+      "r": 54.07,
+      "k": 45.93
     },
     {
       "d": "La Libertad",
@@ -1701,8 +1641,8 @@
     {
       "d": "Madre De Dios",
       "p": "Manú",
-      "r": 80.47,
-      "k": 19.53
+      "r": 80.6,
+      "k": 19.4
     },
     {
       "d": "Madre De Dios",
@@ -1870,7 +1810,7 @@
       "d": "Puno",
       "p": "San Román",
       "r": 80.44,
-      "k": 19.57
+      "k": 19.56
     },
     {
       "d": "Puno",
@@ -2007,6 +1947,21 @@
   ],
   "exterior_paises": [
     {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Argentina",
+      "pais_ub": "920200",
+      "pct_actas": 99.67,
+      "actas_cont": 298,
+      "total_actas": 299,
+      "r_pct": 38.74,
+      "k_pct": 61.26,
+      "r_votos": 16918,
+      "k_votos": 26749,
+      "total_votos": 43667,
+      "impacto": 144
+    },
+    {
       "continente": "África",
       "cont_ub": "910000",
       "pais": "Argelia",
@@ -2097,10 +2052,55 @@
       "impacto": 0
     },
     {
-      "continente": "Oceanía",
-      "cont_ub": "950000",
-      "pais": "Australia",
-      "pais_ub": "950100",
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Antillas Holandesas",
+      "pais_ub": "920100",
+      "pct_actas": 100.0,
+      "actas_cont": 2,
+      "total_actas": 2,
+      "r_pct": 19.58,
+      "k_pct": 80.42,
+      "r_votos": 65,
+      "k_votos": 267,
+      "total_votos": 332,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Bolivia",
+      "pais_ub": "920400",
+      "pct_actas": 100.0,
+      "actas_cont": 22,
+      "total_actas": 22,
+      "r_pct": 38.11,
+      "k_pct": 61.89,
+      "r_votos": 1832,
+      "k_votos": 2975,
+      "total_votos": 4807,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Brasil",
+      "pais_ub": "920500",
+      "pct_actas": 100.0,
+      "actas_cont": 44,
+      "total_actas": 44,
+      "r_pct": 44.39,
+      "k_pct": 55.61,
+      "r_votos": 2261,
+      "k_votos": 2832,
+      "total_votos": 5093,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Canadá",
+      "pais_ub": "920600",
       "pct_actas": 0.0,
       "actas_cont": 0,
       "total_actas": 0,
@@ -2112,10 +2112,280 @@
       "impacto": 0
     },
     {
-      "continente": "Oceanía",
-      "cont_ub": "950000",
-      "pais": "Nueva Zelanda",
-      "pais_ub": "950200",
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Chile",
+      "pais_ub": "921000",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Colombia",
+      "pais_ub": "920700",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Costa Rica",
+      "pais_ub": "920800",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Cuba",
+      "pais_ub": "920900",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Ecuador",
+      "pais_ub": "921100",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "El Salvador",
+      "pais_ub": "921200",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Estados Unidos De Ámerica",
+      "pais_ub": "921300",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Guatemala",
+      "pais_ub": "921500",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Guayana Francesa",
+      "pais_ub": "923000",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Honduras",
+      "pais_ub": "921700",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "México",
+      "pais_ub": "921900",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Nicaragua",
+      "pais_ub": "922000",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Panamá",
+      "pais_ub": "922100",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Paraguay",
+      "pais_ub": "922200",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Puerto Rico",
+      "pais_ub": "922300",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "República Dominicana",
+      "pais_ub": "922400",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Trinidad Y Tobago",
+      "pais_ub": "922600",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Uruguay",
+      "pais_ub": "922700",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Venezuela",
+      "pais_ub": "922800",
       "pct_actas": 0.0,
       "actas_cont": 0,
       "total_actas": 0,
