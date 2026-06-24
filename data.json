@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-24T01:28:59.358742+00:00",
-    "pct_actas": 99.805,
-    "actas_contabilizadas": 92585,
+    "scraped_at": "2026-06-24T18:17:07.833574+00:00",
+    "pct_actas": 99.868,
+    "actas_contabilizadas": 92644,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18358081,
-    "participacion": 71.879,
+    "votos_validos": 18370921,
+    "participacion": 71.93,
     "exterior_pct_actas": 99.9
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9200120,
-      "pct": 50.115
+      "votos": 9207474,
+      "pct": 50.12
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9157961,
-      "pct": 49.885
+      "votos": 9163447,
+      "pct": 49.88
     }
   ],
   "por_departamento": [
@@ -290,20 +290,20 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 99.508,
-      "actas_contabilizadas": 29103,
+      "pct_actas": 99.685,
+      "actas_contabilizadas": 29155,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 4053990,
-          "pct": 63.532
+          "votos": 4060377,
+          "pct": 63.519
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2327059,
-          "pct": 36.468
+          "votos": 2331963,
+          "pct": 36.481
         }
       ]
     },
@@ -390,20 +390,20 @@
     {
       "ubigeo": "190000",
       "nombre": "Pasco",
-      "pct_actas": 99.716,
-      "actas_contabilizadas": 5266,
+      "pct_actas": 99.754,
+      "actas_contabilizadas": 5268,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 588278,
-          "pct": 56.988
+          "votos": 588561,
+          "pct": 56.994
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 443997,
-          "pct": 43.012
+          "votos": 444114,
+          "pct": 43.006
         }
       ]
     },
@@ -490,20 +490,20 @@
     {
       "ubigeo": "240000",
       "nombre": "Tumbes",
-      "pct_actas": 99.931,
-      "actas_contabilizadas": 2896,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 2898,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 403538,
-          "pct": 65.595
+          "votos": 403845,
+          "pct": 65.597
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 211657,
-          "pct": 34.405
+          "votos": 211803,
+          "pct": 34.403
         }
       ]
     },
@@ -631,21 +631,6 @@
     }
   ],
   "provincias_pendientes": [
-    {
-      "dept": "Lima",
-      "dept_ub": "140000",
-      "prov": "Lima",
-      "prov_ub": "140100",
-      "pct_actas": 99.44,
-      "actas_cont": 26221,
-      "total_actas": 26368,
-      "r_pct": 35.44,
-      "k_pct": 64.56,
-      "r_votos": 2049299,
-      "k_votos": 3733714,
-      "total_votos": 5783013,
-      "impacto": 32385
-    },
     {
       "dept": "Piura",
       "dept_ub": "190000",
@@ -1107,8 +1092,8 @@
     {
       "d": "Callao",
       "p": "Callao",
-      "r": 34.41,
-      "k": 65.59
+      "r": 34.4,
+      "k": 65.6
     },
     {
       "d": "Cusco",
@@ -1515,8 +1500,8 @@
     {
       "d": "Lima",
       "p": "Lima",
-      "r": 35.44,
-      "k": 64.56
+      "r": 35.45,
+      "k": 64.55
     },
     {
       "d": "Lima",
@@ -1672,7 +1657,7 @@
       "d": "Piura",
       "p": "Sullana",
       "r": 31.07,
-      "k": 68.93
+      "k": 68.94
     },
     {
       "d": "Piura",
@@ -2371,14 +2356,14 @@
       "cont_ub": "930000",
       "pais": "Emiratos Árabes Unidos",
       "pais_ub": "933700",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 2,
+      "total_actas": 2,
+      "r_pct": 34.57,
+      "k_pct": 65.43,
+      "r_votos": 28,
+      "k_votos": 53,
+      "total_votos": 81,
       "impacto": 0
     },
     {
@@ -2386,14 +2371,14 @@
       "cont_ub": "930000",
       "pais": "Filipinas",
       "pais_ub": "933200",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 33.33,
+      "k_pct": 66.67,
+      "r_votos": 2,
+      "k_votos": 4,
+      "total_votos": 6,
       "impacto": 0
     },
     {
@@ -2401,14 +2386,14 @@
       "cont_ub": "930000",
       "pais": "India",
       "pais_ub": "930400",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 44.44,
+      "k_pct": 55.56,
+      "r_votos": 4,
+      "k_votos": 5,
+      "total_votos": 9,
       "impacto": 0
     },
     {
@@ -2416,14 +2401,14 @@
       "cont_ub": "930000",
       "pais": "Indonesia",
       "pais_ub": "931100",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 33.33,
+      "k_pct": 66.67,
+      "r_votos": 3,
+      "k_votos": 6,
+      "total_votos": 9,
       "impacto": 0
     },
     {
@@ -2431,9 +2416,9 @@
       "cont_ub": "930000",
       "pais": "Irán",
       "pais_ub": "932400",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
       "r_pct": 0.0,
       "k_pct": 0.0,
       "r_votos": 0,
@@ -2446,14 +2431,14 @@
       "cont_ub": "930000",
       "pais": "Israel",
       "pais_ub": "930600",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 4,
+      "total_actas": 4,
+      "r_pct": 12.64,
+      "k_pct": 87.36,
+      "r_votos": 23,
+      "k_votos": 159,
+      "total_votos": 182,
       "impacto": 0
     },
     {
@@ -2461,14 +2446,14 @@
       "cont_ub": "930000",
       "pais": "Japón",
       "pais_ub": "930700",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 81,
+      "total_actas": 81,
+      "r_pct": 9.34,
+      "k_pct": 90.67,
+      "r_votos": 788,
+      "k_votos": 7653,
+      "total_votos": 8441,
       "impacto": 0
     },
     {
@@ -2476,14 +2461,14 @@
       "cont_ub": "930000",
       "pais": "Jordania",
       "pais_ub": "931300",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 61.77,
+      "k_pct": 38.23,
+      "r_votos": 21,
+      "k_votos": 13,
+      "total_votos": 34,
       "impacto": 0
     },
     {
@@ -2491,14 +2476,14 @@
       "cont_ub": "930000",
       "pais": "Kuwait",
       "pais_ub": "932800",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 50.0,
+      "k_pct": 50.0,
+      "r_votos": 1,
+      "k_votos": 1,
+      "total_votos": 2,
       "impacto": 0
     },
     {
@@ -2506,9 +2491,9 @@
       "cont_ub": "930000",
       "pais": "Líbano",
       "pais_ub": "930800",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
       "r_pct": 0.0,
       "k_pct": 0.0,
       "r_votos": 0,
@@ -2521,14 +2506,14 @@
       "cont_ub": "930000",
       "pais": "Malasia",
       "pais_ub": "933000",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 33.33,
+      "k_pct": 66.67,
+      "r_votos": 2,
+      "k_votos": 4,
+      "total_votos": 6,
       "impacto": 0
     },
     {
@@ -2536,14 +2521,14 @@
       "cont_ub": "930000",
       "pais": "Republica De Corea",
       "pais_ub": "930100",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 45.1,
+      "k_pct": 54.9,
+      "r_votos": 46,
+      "k_votos": 56,
+      "total_votos": 102,
       "impacto": 0
     },
     {
@@ -2551,14 +2536,14 @@
       "cont_ub": "930000",
       "pais": "República Popular China",
       "pais_ub": "930200",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 4,
+      "total_actas": 4,
+      "r_pct": 23.61,
+      "k_pct": 76.39,
+      "r_votos": 34,
+      "k_votos": 110,
+      "total_votos": 144,
       "impacto": 0
     },
     {
@@ -2566,14 +2551,14 @@
       "cont_ub": "930000",
       "pais": "Singapur",
       "pais_ub": "932500",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 33.33,
+      "k_pct": 66.67,
+      "r_votos": 9,
+      "k_votos": 18,
+      "total_votos": 27,
       "impacto": 0
     },
     {
@@ -2581,14 +2566,14 @@
       "cont_ub": "930000",
       "pais": "Tailandia",
       "pais_ub": "931000",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 1,
+      "total_actas": 1,
+      "r_pct": 38.09,
+      "k_pct": 61.91,
+      "r_votos": 8,
+      "k_votos": 13,
+      "total_votos": 21,
       "impacto": 0
     },
     {
@@ -2596,9 +2581,9 @@
       "cont_ub": "930000",
       "pais": "Turquía",
       "pais_ub": "931500",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
+      "pct_actas": 100.0,
+      "actas_cont": 2,
+      "total_actas": 2,
       "r_pct": 0.0,
       "k_pct": 0.0,
       "r_votos": 0,
