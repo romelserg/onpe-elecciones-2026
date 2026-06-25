@@ -1,7 +1,7 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-25T00:15:59.163678+00:00",
+    "scraped_at": "2026-06-25T08:03:12.947464+00:00",
     "pct_actas": 99.877,
     "actas_contabilizadas": 92652,
     "total_actas": 92766,
@@ -647,21 +647,6 @@
       "impacto": 414
     },
     {
-      "dept": "Tumbes",
-      "dept_ub": "230000",
-      "prov": "Zarumilla",
-      "prov_ub": "230300",
-      "pct_actas": 99.27,
-      "actas_cont": 136,
-      "total_actas": 137,
-      "r_pct": 28.82,
-      "k_pct": 71.18,
-      "r_votos": 7886,
-      "k_votos": 19473,
-      "total_votos": 27359,
-      "impacto": 200
-    },
-    {
       "dept": "Huancavelica",
       "dept_ub": "080000",
       "prov": "Churcampa",
@@ -675,21 +660,6 @@
       "k_votos": 3027,
       "total_votos": 16602,
       "impacto": 138
-    },
-    {
-      "dept": "Ucayali",
-      "dept_ub": "250000",
-      "prov": "Atalaya",
-      "prov_ub": "250300",
-      "pct_actas": 99.41,
-      "actas_cont": 169,
-      "total_actas": 170,
-      "r_pct": 51.81,
-      "k_pct": 48.19,
-      "r_votos": 9674,
-      "k_votos": 8999,
-      "total_votos": 18673,
-      "impacto": 110
     }
   ],
   "provincias_mapa": [
@@ -1830,44 +1800,8 @@
     {
       "d": "Tumbes",
       "p": "Contralmirante Villar",
-      "r": 28.82,
-      "k": 71.18
-    },
-    {
-      "d": "Tumbes",
-      "p": "Tumbes",
-      "r": 38.73,
-      "k": 61.27
-    },
-    {
-      "d": "Tumbes",
-      "p": "Zarumilla",
-      "r": 28.82,
-      "k": 71.18
-    },
-    {
-      "d": "Ucayali",
-      "p": "Atalaya",
-      "r": 51.81,
-      "k": 48.19
-    },
-    {
-      "d": "Ucayali",
-      "p": "Coronel Portillo",
-      "r": 43.71,
-      "k": 56.29
-    },
-    {
-      "d": "Ucayali",
-      "p": "Padre Abad",
-      "r": 65.67,
-      "k": 34.33
-    },
-    {
-      "d": "Ucayali",
-      "p": "Purús",
-      "r": 35.12,
-      "k": 64.88
+      "r": 0.0,
+      "k": 0.0
     }
   ],
   "exterior_paises": [
