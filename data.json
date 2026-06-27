@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-27T00:19:43.956201+00:00",
-    "pct_actas": 99.888,
-    "actas_contabilizadas": 92662,
+    "scraped_at": "2026-06-27T15:43:22.853777+00:00",
+    "pct_actas": 99.975,
+    "actas_contabilizadas": 92743,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18374551,
-    "participacion": 71.945,
+    "votos_validos": 18392515,
+    "participacion": 72.015,
     "exterior_pct_actas": 100.0
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9209711,
-      "pct": 50.122
+      "votos": 9220544,
+      "pct": 50.132
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9164840,
-      "pct": 49.878
+      "votos": 9171971,
+      "pct": 49.868
     }
   ],
   "por_departamento": [
@@ -50,20 +50,20 @@
     {
       "ubigeo": "020000",
       "nombre": "Áncash",
-      "pct_actas": 99.971,
-      "actas_contabilizadas": 3471,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 3472,
       "candidatos": [
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 353463,
-          "pct": 56.628
+          "votos": 353564,
+          "pct": 56.626
         },
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 270722,
-          "pct": 43.372
+          "votos": 270818,
+          "pct": 43.374
         }
       ]
     },
@@ -290,20 +290,20 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 99.723,
-      "actas_contabilizadas": 29166,
+      "pct_actas": 99.997,
+      "actas_contabilizadas": 29246,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 4061932,
-          "pct": 63.518
+          "votos": 4072669,
+          "pct": 63.51
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2332992,
-          "pct": 36.482
+          "votos": 2340022,
+          "pct": 36.49
         }
       ]
     },
@@ -684,12 +684,12 @@
       "pct_actas": 99.41,
       "actas_cont": 169,
       "total_actas": 170,
-      "r_pct": 51.81,
-      "k_pct": 48.19,
-      "r_votos": 9674,
-      "k_votos": 8999,
-      "total_votos": 18673,
-      "impacto": 110
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
     }
   ],
   "provincias_mapa": [
@@ -1500,8 +1500,8 @@
     {
       "d": "Lima",
       "p": "Lima",
-      "r": 35.45,
-      "k": 64.55
+      "r": 35.47,
+      "k": 64.53
     },
     {
       "d": "Lima",
@@ -1848,26 +1848,8 @@
     {
       "d": "Ucayali",
       "p": "Atalaya",
-      "r": 51.81,
-      "k": 48.19
-    },
-    {
-      "d": "Ucayali",
-      "p": "Coronel Portillo",
-      "r": 43.71,
-      "k": 56.29
-    },
-    {
-      "d": "Ucayali",
-      "p": "Padre Abad",
-      "r": 65.67,
-      "k": 34.33
-    },
-    {
-      "d": "Ucayali",
-      "p": "Purús",
-      "r": 35.12,
-      "k": 64.88
+      "r": 0.0,
+      "k": 0.0
     }
   ],
   "exterior_paises": [
