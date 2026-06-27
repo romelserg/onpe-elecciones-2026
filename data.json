@@ -1,29 +1,29 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-26T20:46:38.898677+00:00",
-    "pct_actas": 99.88,
-    "actas_contabilizadas": 92655,
+    "scraped_at": "2026-06-27T00:19:43.956201+00:00",
+    "pct_actas": 99.888,
+    "actas_contabilizadas": 92662,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18373494,
-    "participacion": 71.939,
-    "exterior_pct_actas": 99.9
+    "votos_validos": 18374551,
+    "participacion": 71.945,
+    "exterior_pct_actas": 100.0
   },
   "candidatos": [
     {
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9209041,
-      "pct": 50.121
+      "votos": 9209711,
+      "pct": 50.122
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9164453,
-      "pct": 49.879
+      "votos": 9164840,
+      "pct": 49.878
     }
   ],
   "por_departamento": [
@@ -290,19 +290,19 @@
     {
       "ubigeo": "140000",
       "nombre": "Lambayeque",
-      "pct_actas": 99.72,
-      "actas_contabilizadas": 29165,
+      "pct_actas": 99.723,
+      "actas_contabilizadas": 29166,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 4061793,
+          "votos": 4061932,
           "pct": 63.518
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 2332900,
+          "votos": 2332992,
           "pct": 36.482
         }
       ]
@@ -552,20 +552,20 @@
     {
       "ubigeo": "920000",
       "nombre": "América",
-      "pct_actas": 99.682,
-      "actas_contabilizadas": 1565,
+      "pct_actas": 100.0,
+      "actas_contabilizadas": 1570,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 121319,
-          "pct": 66.562
+          "votos": 121769,
+          "pct": 66.552
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 60947,
-          "pct": 33.438
+          "votos": 61200,
+          "pct": 33.448
         }
       ]
     },
@@ -592,20 +592,20 @@
     {
       "ubigeo": "940000",
       "nombre": "Europa",
-      "pct_actas": 99.762,
-      "actas_contabilizadas": 837,
+      "pct_actas": 99.881,
+      "actas_contabilizadas": 838,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 63910,
-          "pct": 55.788
+          "votos": 63991,
+          "pct": 55.799
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 50649,
-          "pct": 44.212
+          "votos": 50691,
+          "pct": 44.201
         }
       ]
     },
@@ -1872,79 +1872,19 @@
   ],
   "exterior_paises": [
     {
-      "continente": "América",
-      "cont_ub": "920000",
-      "pais": "Chile",
-      "pais_ub": "921000",
-      "pct_actas": 99.29,
-      "actas_cont": 279,
-      "total_actas": 281,
-      "r_pct": 41.26,
-      "k_pct": 58.74,
-      "r_votos": 20116,
-      "k_votos": 28638,
-      "total_votos": 48754,
-      "impacto": 346
-    },
-    {
       "continente": "Europa",
       "cont_ub": "940000",
       "pais": "España",
       "pais_ub": "940900",
-      "pct_actas": 99.55,
-      "actas_cont": 444,
+      "pct_actas": 99.78,
+      "actas_cont": 445,
       "total_actas": 446,
-      "r_pct": 39.85,
-      "k_pct": 60.15,
-      "r_votos": 22565,
-      "k_votos": 34060,
-      "total_votos": 56625,
-      "impacto": 255
-    },
-    {
-      "continente": "América",
-      "cont_ub": "920000",
-      "pais": "Estados Unidos De Ámerica",
-      "pais_ub": "921300",
-      "pct_actas": 99.73,
-      "actas_cont": 747,
-      "total_actas": 749,
-      "r_pct": 23.54,
-      "k_pct": 76.46,
-      "r_votos": 14203,
-      "k_votos": 46132,
-      "total_votos": 60335,
-      "impacto": 163
-    },
-    {
-      "continente": "América",
-      "cont_ub": "920000",
-      "pais": "Argentina",
-      "pais_ub": "920200",
-      "pct_actas": 99.67,
-      "actas_cont": 298,
-      "total_actas": 299,
-      "r_pct": 38.74,
-      "k_pct": 61.26,
-      "r_votos": 16918,
-      "k_votos": 26749,
-      "total_votos": 43667,
-      "impacto": 144
-    },
-    {
-      "continente": "Europa",
-      "cont_ub": "940000",
-      "pais": "Hungría",
-      "pais_ub": "941500",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 37.36,
-      "k_pct": 62.64,
-      "r_votos": 34,
-      "k_votos": 57,
-      "total_votos": 91,
-      "impacto": 91
+      "r_pct": 39.84,
+      "k_pct": 60.16,
+      "r_votos": 22607,
+      "k_votos": 34141,
+      "total_votos": 56748,
+      "impacto": 125
     },
     {
       "continente": "África",
@@ -2054,6 +1994,21 @@
     {
       "continente": "América",
       "cont_ub": "920000",
+      "pais": "Argentina",
+      "pais_ub": "920200",
+      "pct_actas": 100.0,
+      "actas_cont": 299,
+      "total_actas": 299,
+      "r_pct": 38.74,
+      "k_pct": 61.26,
+      "r_votos": 16977,
+      "k_votos": 26845,
+      "total_votos": 43822,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
       "pais": "Bolivia",
       "pais_ub": "920400",
       "pct_actas": 100.0,
@@ -2094,6 +2049,21 @@
       "r_votos": 2090,
       "k_votos": 5423,
       "total_votos": 7513,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Chile",
+      "pais_ub": "921000",
+      "pct_actas": 100.0,
+      "actas_cont": 281,
+      "total_actas": 281,
+      "r_pct": 41.27,
+      "k_pct": 58.73,
+      "r_votos": 20259,
+      "k_votos": 28836,
+      "total_votos": 49095,
       "impacto": 0
     },
     {
@@ -2169,6 +2139,21 @@
       "r_votos": 26,
       "k_votos": 46,
       "total_votos": 72,
+      "impacto": 0
+    },
+    {
+      "continente": "América",
+      "cont_ub": "920000",
+      "pais": "Estados Unidos De Ámerica",
+      "pais_ub": "921300",
+      "pct_actas": 100.0,
+      "actas_cont": 749,
+      "total_actas": 749,
+      "r_pct": 23.54,
+      "k_pct": 76.46,
+      "r_votos": 14254,
+      "k_votos": 46288,
+      "total_votos": 60542,
       "impacto": 0
     },
     {
@@ -2746,14 +2731,14 @@
       "cont_ub": "940000",
       "pais": "Gran Bretaña",
       "pais_ub": "941200",
-      "pct_actas": 100.0,
-      "actas_cont": 13,
-      "total_actas": 13,
-      "r_pct": 38.96,
-      "k_pct": 61.04,
-      "r_votos": 540,
-      "k_votos": 846,
-      "total_votos": 1386,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -2761,14 +2746,14 @@
       "cont_ub": "940000",
       "pais": "Gran Ducado De Luxemburgo",
       "pais_ub": "942000",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 47.65,
-      "k_pct": 52.35,
-      "r_votos": 71,
-      "k_votos": 78,
-      "total_votos": 149,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -2776,14 +2761,14 @@
       "cont_ub": "940000",
       "pais": "Grecia",
       "pais_ub": "941300",
-      "pct_actas": 100.0,
-      "actas_cont": 1,
-      "total_actas": 1,
-      "r_pct": 46.34,
-      "k_pct": 53.66,
-      "r_votos": 19,
-      "k_votos": 22,
-      "total_votos": 41,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
@@ -2791,14 +2776,29 @@
       "cont_ub": "940000",
       "pais": "Holanda",
       "pais_ub": "941400",
-      "pct_actas": 100.0,
-      "actas_cont": 6,
-      "total_actas": 6,
-      "r_pct": 39.47,
-      "k_pct": 60.53,
-      "r_votos": 283,
-      "k_votos": 434,
-      "total_votos": 717,
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
+      "impacto": 0
+    },
+    {
+      "continente": "Europa",
+      "cont_ub": "940000",
+      "pais": "Hungría",
+      "pais_ub": "941500",
+      "pct_actas": 0.0,
+      "actas_cont": 0,
+      "total_actas": 0,
+      "r_pct": 0.0,
+      "k_pct": 0.0,
+      "r_votos": 0,
+      "k_votos": 0,
+      "total_votos": 0,
       "impacto": 0
     },
     {
