@@ -1,13 +1,13 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-27T22:46:07.923131+00:00",
-    "pct_actas": 99.983,
-    "actas_contabilizadas": 92750,
+    "scraped_at": "2026-06-28T06:19:18.525579+00:00",
+    "pct_actas": 99.987,
+    "actas_contabilizadas": 92754,
     "total_actas": 92766,
     "votos_emitidos": 0,
-    "votos_validos": 18393970,
-    "participacion": 72.021,
+    "votos_validos": 18394884,
+    "participacion": 72.024,
     "exterior_pct_actas": 100.0
   },
   "candidatos": [
@@ -15,15 +15,15 @@
       "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
       "partido": "FUERZA POPULAR",
       "codigo": 8,
-      "votos": 9221435,
-      "pct": 50.133
+      "votos": 9222064,
+      "pct": 50.134
     },
     {
       "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
       "partido": "JUNTOS POR EL PERÚ",
       "codigo": 10,
-      "votos": 9172535,
-      "pct": 49.867
+      "votos": 9172820,
+      "pct": 49.866
     }
   ],
   "por_departamento": [
@@ -390,20 +390,20 @@
     {
       "ubigeo": "190000",
       "nombre": "Pasco",
-      "pct_actas": 99.867,
-      "actas_contabilizadas": 5274,
+      "pct_actas": 99.924,
+      "actas_contabilizadas": 5277,
       "candidatos": [
         {
           "nombre": "KEIKO SOFIA FUJIMORI HIGUCHI",
           "codigo": 8,
-          "votos": 589454,
-          "pct": 57.007
+          "votos": 589941,
+          "pct": 57.015
         },
         {
           "nombre": "ROBERTO HELBERT SANCHEZ PALOMINO",
           "codigo": 10,
-          "votos": 444557,
-          "pct": 42.993
+          "votos": 444776,
+          "pct": 42.985
         }
       ]
     },
@@ -1644,8 +1644,8 @@
     {
       "d": "Piura",
       "p": "Piura",
-      "r": 39.98,
-      "k": 60.02
+      "r": 39.97,
+      "k": 60.03
     },
     {
       "d": "Piura",
