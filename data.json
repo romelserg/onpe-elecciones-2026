@@ -1,7 +1,7 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-06-28T23:44:37.940284+00:00",
+    "scraped_at": "2026-06-29T06:54:57.607667+00:00",
     "pct_actas": 99.99,
     "actas_contabilizadas": 92757,
     "total_actas": 92766,
@@ -645,6 +645,21 @@
       "k_votos": 39360,
       "total_votos": 72645,
       "impacto": 414
+    },
+    {
+      "dept": "Ucayali",
+      "dept_ub": "250000",
+      "prov": "Atalaya",
+      "prov_ub": "250300",
+      "pct_actas": 99.41,
+      "actas_cont": 169,
+      "total_actas": 170,
+      "r_pct": 51.81,
+      "k_pct": 48.19,
+      "r_votos": 9674,
+      "k_votos": 8999,
+      "total_votos": 18673,
+      "impacto": 110
     }
   ],
   "provincias_mapa": [
@@ -1757,6 +1772,72 @@
       "p": "Tocache",
       "r": 63.52,
       "k": 36.48
+    },
+    {
+      "d": "Tacna",
+      "p": "Candarave",
+      "r": 86.29,
+      "k": 13.71
+    },
+    {
+      "d": "Tacna",
+      "p": "Jorge Basadre",
+      "r": 81.56,
+      "k": 18.43
+    },
+    {
+      "d": "Tacna",
+      "p": "Tacna",
+      "r": 70.36,
+      "k": 29.64
+    },
+    {
+      "d": "Tacna",
+      "p": "Tarata",
+      "r": 80.93,
+      "k": 19.07
+    },
+    {
+      "d": "Tumbes",
+      "p": "Contralmirante Villar",
+      "r": 28.82,
+      "k": 71.18
+    },
+    {
+      "d": "Tumbes",
+      "p": "Tumbes",
+      "r": 38.73,
+      "k": 61.27
+    },
+    {
+      "d": "Tumbes",
+      "p": "Zarumilla",
+      "r": 28.75,
+      "k": 71.25
+    },
+    {
+      "d": "Ucayali",
+      "p": "Atalaya",
+      "r": 51.81,
+      "k": 48.19
+    },
+    {
+      "d": "Ucayali",
+      "p": "Coronel Portillo",
+      "r": 43.71,
+      "k": 56.29
+    },
+    {
+      "d": "Ucayali",
+      "p": "Padre Abad",
+      "r": 65.67,
+      "k": 34.33
+    },
+    {
+      "d": "Ucayali",
+      "p": "Purús",
+      "r": 35.12,
+      "k": 64.88
     }
   ],
   "exterior_paises": [
