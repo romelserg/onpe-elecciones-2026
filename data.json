@@ -1,7 +1,7 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-07-02T18:51:40.215385+00:00",
+    "scraped_at": "2026-07-03T01:22:29.434526+00:00",
     "pct_actas": 100.0,
     "actas_contabilizadas": 92766,
     "total_actas": 92766,
@@ -1729,84 +1729,6 @@
       "p": "Rioja",
       "r": 59.32,
       "k": 40.68
-    },
-    {
-      "d": "San Martín",
-      "p": "San Martín",
-      "r": 44.72,
-      "k": 55.28
-    },
-    {
-      "d": "San Martín",
-      "p": "Tocache",
-      "r": 63.52,
-      "k": 36.48
-    },
-    {
-      "d": "Tacna",
-      "p": "Candarave",
-      "r": 86.29,
-      "k": 13.71
-    },
-    {
-      "d": "Tacna",
-      "p": "Jorge Basadre",
-      "r": 81.56,
-      "k": 18.43
-    },
-    {
-      "d": "Tacna",
-      "p": "Tacna",
-      "r": 70.36,
-      "k": 29.64
-    },
-    {
-      "d": "Tacna",
-      "p": "Tarata",
-      "r": 80.93,
-      "k": 19.07
-    },
-    {
-      "d": "Tumbes",
-      "p": "Contralmirante Villar",
-      "r": 28.82,
-      "k": 71.18
-    },
-    {
-      "d": "Tumbes",
-      "p": "Tumbes",
-      "r": 38.73,
-      "k": 61.27
-    },
-    {
-      "d": "Tumbes",
-      "p": "Zarumilla",
-      "r": 28.75,
-      "k": 71.25
-    },
-    {
-      "d": "Ucayali",
-      "p": "Atalaya",
-      "r": 51.79,
-      "k": 48.21
-    },
-    {
-      "d": "Ucayali",
-      "p": "Coronel Portillo",
-      "r": 43.71,
-      "k": 56.29
-    },
-    {
-      "d": "Ucayali",
-      "p": "Padre Abad",
-      "r": 65.67,
-      "k": 34.33
-    },
-    {
-      "d": "Ucayali",
-      "p": "Purús",
-      "r": 35.12,
-      "k": 64.88
     }
   ],
   "exterior_paises": [
