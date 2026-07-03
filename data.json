@@ -1,7 +1,7 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-07-03T15:28:44.334843+00:00",
+    "scraped_at": "2026-07-03T21:05:44.288621+00:00",
     "pct_actas": 100.0,
     "actas_contabilizadas": 92766,
     "total_actas": 92766,
@@ -2933,36 +2933,6 @@
       "r_votos": 903,
       "k_votos": 1296,
       "total_votos": 2199,
-      "impacto": 0
-    },
-    {
-      "continente": "Oceanía",
-      "cont_ub": "950000",
-      "pais": "Australia",
-      "pais_ub": "950100",
-      "pct_actas": 100.0,
-      "actas_cont": 18,
-      "total_actas": 18,
-      "r_pct": 36.5,
-      "k_pct": 63.5,
-      "r_votos": 700,
-      "k_votos": 1218,
-      "total_votos": 1918,
-      "impacto": 0
-    },
-    {
-      "continente": "Oceanía",
-      "cont_ub": "950000",
-      "pais": "Nueva Zelanda",
-      "pais_ub": "950200",
-      "pct_actas": 0.0,
-      "actas_cont": 0,
-      "total_actas": 0,
-      "r_pct": 0.0,
-      "k_pct": 0.0,
-      "r_votos": 0,
-      "k_votos": 0,
-      "total_votos": 0,
       "impacto": 0
     }
   ]
