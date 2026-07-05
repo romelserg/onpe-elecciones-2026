@@ -1,7 +1,7 @@
 {
   "meta": {
     "proceso": "Segunda Elección Presidencial 2026",
-    "scraped_at": "2026-07-05T17:09:50.727210+00:00",
+    "scraped_at": "2026-07-05T19:47:19.524895+00:00",
     "pct_actas": 100.0,
     "actas_contabilizadas": 92766,
     "total_actas": 92766,
@@ -1783,30 +1783,6 @@
       "p": "Zarumilla",
       "r": 28.75,
       "k": 71.25
-    },
-    {
-      "d": "Ucayali",
-      "p": "Atalaya",
-      "r": 51.79,
-      "k": 48.21
-    },
-    {
-      "d": "Ucayali",
-      "p": "Coronel Portillo",
-      "r": 43.71,
-      "k": 56.29
-    },
-    {
-      "d": "Ucayali",
-      "p": "Padre Abad",
-      "r": 65.67,
-      "k": 34.33
-    },
-    {
-      "d": "Ucayali",
-      "p": "Purús",
-      "r": 35.12,
-      "k": 64.88
     }
   ],
   "exterior_paises": [
